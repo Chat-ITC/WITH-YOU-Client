@@ -20,6 +20,11 @@ export const BottomEmptyBox = styled.div`
   height: 80px;
 `;
 
+export const TopEmptyBox = styled.div`
+  width: 100px;
+  height: 65px;
+`;
+
 export const Main = styled.div`
   position: fixed;
   left: 300px;
