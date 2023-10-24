@@ -1,20 +1,15 @@
-import React, { useState } from 'react';
 import {
   Aside,
   Main,
   BottomEmptyBox,
   TopEmptyBox,
 } from './style';
-
+import React from 'react';
+import { useSelector } from 'react-redux';
 import CameraHeader from '../../components/CameraHeader';
 
 const Home = () => {
-  const [isAsideVisible, setIsAsideVisible] = useState(true);
-
-  function toggleAsideVisibility() {
-    setIsAsideVisible(!isAsideVisible);
-  }
-
+  const isAsideVisible = useSelector((state) => state.visibility.isAsideVisible);
   return (
     <>
         <Aside>
@@ -84,9 +79,9 @@ const Home = () => {
           <BottomEmptyBox>
           </BottomEmptyBox>
         </Aside>
-        <Main style={{ left: isAsideVisible ? '300px' : '0' }}>
+        <Main style={{ left: isAsideVisible ? '0' : '300px' }}>
+          <CameraHeader></CameraHeader>
           <TopEmptyBox/>
-          <div onClick={toggleAsideVisibility}>눌러</div>
           <p>
             야
           </p>

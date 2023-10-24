@@ -17,4 +17,5 @@ export const CameraHeaderTop = styled.div`
   left: 300px;
   height: 65px;
   background-color: yellow;
+  transition: all 350ms;
 `;
