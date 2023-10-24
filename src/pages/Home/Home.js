@@ -6,6 +6,8 @@ import {
   TopEmptyBox,
 } from './style';
 
+import CameraHeader from '../../components/CameraHeader';
+
 const Home = () => {
   const [isAsideVisible, setIsAsideVisible] = useState(true);
 

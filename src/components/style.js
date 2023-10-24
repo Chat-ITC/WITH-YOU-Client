@@ -9,3 +9,12 @@ export const BottomFix = styled.div`
   height: 80px;
   background-color: green;
 `;
+
+export const CameraHeaderTop = styled.div`
+  position: fixed;
+  top:0;
+  right:0;
+  left: 300px;
+  height: 65px;
+  background-color: yellow;
+`;
