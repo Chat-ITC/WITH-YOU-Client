@@ -18,38 +18,19 @@ export const BottomFix = styled.div`
 export const CameraItemContainer = styled.div`
   width: 300px;
   height: 100px;
-  padding: 10px;
-  border-bottom: 1px solid grey;
+  padding: 10px 10px 10px 15px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.20);
 `;
 
-export const CameraItemTitleContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  width: 280px;
-  margin-top: 5px;
-  
-`;
-
-export const CameraItemTitle = styled.div`
+export const CameraItemTitle = styled.div` 
   font-weight: bold;
-  font-size: 17px;
+  font-size: 17px; 
   height: 19px;
   overflow: hidden;
+  margin-top: 5px;
   text-overflow: ellipsis;
   white-space: none;
 `;
-
-export const CameraItemScrap = styled.div`
-  width: 16px;
-  height: 16px;
-  margin: auto 0 auto 3px;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-image: none;
-  ${props => props.$done && css`
-        background-image: url(${fillStar});
-    `}
-`
 
 export const CameraItemBody = styled.div`
   margin-top: 8px;
@@ -64,12 +45,34 @@ export const CameraItemBody = styled.div`
   -webkit-box-orient: vertical;
 `;
 
-export const CameraItemButtom = styled.div`
- 
+export const CameraItemBottom = styled.div`
+  display: flex;
   width: 280px;
-  color: grey;
-  font-size: 10px;
+  height: 20px;
+  align-content: center;
+  
 `;
+
+export const CameraItemScrap = styled.div`
+  width: 0px;
+  height: 0px;
+  margin: auto 3px auto 0px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: none;
+  ${props => props.$done && css`
+        background-image: url(${fillStar});
+        width: 16px;
+        height: 16px;
+    `}
+`
+
+export const DateContainer = styled.div`
+  color: grey;
+  font-size: 12px;
+  height: 12px;
+  margin: 2px 0px 1px 0px;
+`
 
 //RightTop
 export const CameraHeaderTop = styled.div`

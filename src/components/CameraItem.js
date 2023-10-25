@@ -1,11 +1,11 @@
 //style
 import {
     CameraItemContainer,
-    CameraItemTitleContainer,
     CameraItemTitle,
     CameraItemScrap,
     CameraItemBody,
-    CameraItemButtom,
+    CameraItemBottom,
+    DateContainer,
 } from './style';
 
 //library
@@ -14,28 +14,25 @@ import React, { useState } from 'react';
 const CameraItem = (props) => {
     const [scrapState, setScrapState] = useState(props.$scrap);
 
+    
     return (
-        <>
+        <div>
             <CameraItemContainer>
-                <CameraItemTitleContainer>
-                    <CameraItemTitle>
-                        {props.title}
-                    </CameraItemTitle>
-
-                    <CameraItemScrap
-                        
-                        $done={scrapState} />
-
-                </CameraItemTitleContainer>
+                <CameraItemTitle>
+                    {props.title}
+                </CameraItemTitle>
                 <CameraItemBody>
                     {props.body}
                 </CameraItemBody>
-                <CameraItemButtom>
-                    {props.date}
-                </CameraItemButtom>
+                <CameraItemBottom>
+                    <CameraItemScrap $done={scrapState} />
+                    <DateContainer>
+                        {props.date}
+                    </DateContainer>
+                </CameraItemBottom>
 
             </CameraItemContainer>
-        </>
+        </div>
     );
 }
 
