@@ -52,7 +52,7 @@ export const CameraItemScrap = styled.div`
 `
 
 export const CameraItemBody = styled.div`
-  margin-top: 3px;
+  margin-top: 8px;
   width: 265px;
   height: 50px;
   line-height: 23px;
