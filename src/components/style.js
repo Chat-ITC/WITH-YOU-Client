@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
-
+import openeye from '../assets/openEye.png';
+import closeeye from '../assets/closeEye.png';
 import fillStar from '../assets/FillStar.png';
 import emptyStar from '../assets/clip.png';
 
@@ -10,7 +11,8 @@ export const BottomFix = styled.div`
   right: 0;
   bottom: 0;
   height: 80px;
-  background-color: green;
+  border-top: 1px solid #bababa;
+  background-color: #fff;
 `;
 
 
@@ -103,4 +105,81 @@ export const Setting = styled.select`
   width: 35px;
   height: 60px;
   opacity: 0;
+`;
+
+export const Ul = styled.ul`
+  display: flex;
+  padding: 0 5px;
+  justify-content: space-around;
+  list-style: none;
+`;
+
+export const ImgBtn = styled.img`
+  width: 35px;
+
+`;
+
+//아이디 비밀번호
+export const InputIdContainer = styled.input`
+  width: 260px;
+  height: 43px;
+  border: 1px solid #bababa;
+  border-radius: 5px;
+  padding: 5px;
+  outline: none;
+  font-size: 20px;
+`;
+
+export const InputBox = styled.div`
+  width: 260px;
+  height: 43px;
+  position: relative;
+`;
+
+export const PwNonVisi = styled.input`
+  width: 260px;
+  height: 43px;
+  border: 1px solid #bababa;
+  border-radius: 5px;
+  padding: 5px;
+  outline: none;
+  font-size: 20px;
+`;
+
+export const Eye = styled.div`
+  position: absolute;
+  top: 17px;
+  right: 10px;
+`;
+
+export const EyeState = styled.div` 
+  background-image:  url(${closeeye}); //기본상태: 닫힌 눈
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 20px;
+  height: 20px;
+  opacity: 0.4; //투명도
+  ${props =>
+    props.$done &&
+    css`
+        background-image: url(${openeye}); //props로 false를 전달 받으면 열린 눈
+    `}
+`;
+
+//searchInput
+export const SearchForm = styled.input`
+  width: 240px;
+  background-color: #D9D9D9;
+  border: 0px solid #000;
+  border-radius: 5px;
+  padding-left: 7px;
+  outline: none;
+`;
+
+export const SearchBox = styled.div`
+
+`;
+
+export const Search = styled.img`
+
 `;

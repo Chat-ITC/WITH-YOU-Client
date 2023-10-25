@@ -11,7 +11,6 @@ import Login from './pages/Login/Login';
 import Mypage from './pages/Mypage/Mypage';
 import Scrap from './pages/Scrap/Scrap';
 
-
 function App() {
 
   return (  
@@ -25,8 +24,8 @@ function App() {
           <Route path="/mypage" element={<Mypage/>} />
           <Route path="/scrap" element={<Scrap/>} />
         </Routes>
+        <Bottom/>
       </Router>
-      <Bottom/>
     </Provider>
   );
 }

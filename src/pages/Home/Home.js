@@ -13,9 +13,6 @@ import { useSelector } from 'react-redux';
 import CameraHeader from '../../components/CameraHeader';
 import BodySection from '../../components/BodySection';
 
-//library
-import { Link } from 'react-router-dom';
-
 //components
 import CameraItem from '../../components/CameraItem';
 
