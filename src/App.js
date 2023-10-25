@@ -25,8 +25,8 @@ function App() {
           <Route path="/mypage" element={<Mypage/>} />
           <Route path="/scrap" element={<Scrap/>} />
         </Routes>
+        <Bottom/>
       </Router>
-      <Bottom/>
     </Provider>
   );
 }

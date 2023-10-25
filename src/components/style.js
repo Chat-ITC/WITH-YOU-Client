@@ -10,7 +10,8 @@ export const BottomFix = styled.div`
   right: 0;
   bottom: 0;
   height: 80px;
-  background-color: green;
+  border-top: 1px solid #bababa;
+  background-color: #fff;
 `;
 
 
@@ -100,4 +101,16 @@ export const Setting = styled.select`
   width: 35px;
   height: 60px;
   opacity: 0;
+`;
+
+export const Ul = styled.ul`
+  display: flex;
+  padding: 0 5px;
+  justify-content: space-around;
+  list-style: none;
+`;
+
+export const ImgBtn = styled.img`
+  width: 35px;
+
 `;
