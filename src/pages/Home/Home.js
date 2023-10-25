@@ -46,8 +46,9 @@ const Home = () => {
       <Aside>
         <TopEmptyBox></TopEmptyBox>
           <TopLeftHeader>History</TopLeftHeader>
-        {sampleJson.map((sample) => (
-          <CameraItem
+        {sampleJson.map((sample, index) => (
+          <CameraItem 
+            key={index}
             title={sample.title}
             body={sample.body}
             date={sample.date}
