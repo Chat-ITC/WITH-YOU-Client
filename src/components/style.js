@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 import openeye from '../assets/openEye.png';
 import closeeye from '../assets/closeEye.png';
 import fillStar from '../assets/FillStar.png';
+import camera from '../assets/camera.png'
 import emptyStar from '../assets/clip.png';
 
 //Bottom
@@ -16,7 +17,7 @@ export const BottomFix = styled.div`
 `;
 
 
-//CameraHeader
+//CameraItem
 export const CameraItemContainer = styled.div`
   width: 300px;
   height: 100px;
@@ -76,7 +77,29 @@ export const DateContainer = styled.div`
   margin: 2px 0px 1px 0px;
 `
 
-//RightTop
+//BodySection
+export const CameraButtonContainer = styled.div`
+  display:flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 160px;
+`;
+export const CameraBigButton = styled.div`
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: none;
+  background-image: url(${camera});
+  width: 200px;
+  height: 200px;
+`;
+export const CameraPhrases = styled.div`
+  font-size: 20px;
+`
+
+
+//CameraHeader
 export const CameraHeaderTop = styled.div`
   display: flex;
   justify-content: space-between;
