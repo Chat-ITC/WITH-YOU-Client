@@ -45,9 +45,10 @@ const Home = () => {
     <>
       <Aside>
         <TopEmptyBox></TopEmptyBox>
-          <TopLeftHeader>History</TopLeftHeader>
-        {sampleJson.map((sample) => (
+        <TopLeftHeader>History</TopLeftHeader>
+        {sampleJson.map((sample, index) => (
           <CameraItem
+          key={index}
             title={sample.title}
             body={sample.body}
             date={sample.date}
@@ -59,7 +60,7 @@ const Home = () => {
       </Aside>
       <Main style={{ left: isAsideVisible ? '0' : '300px' }}>
         <CameraHeader></CameraHeader>
-          <TopEmptyBox/>
+        <TopEmptyBox/>
         <p>
           야
         </p>
