@@ -46,7 +46,8 @@ export const Main = styled.div`
   top: 0;
   height: 100%;
   right: 0;
-  background-color:blue;
+  border-left:1px solid rgba(0, 0, 0, 0.20);
+  background-color:white;
   overflow-y: scroll;
   overflow-x: hidden;
   -ms-overflow-style:none;
