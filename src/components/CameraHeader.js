@@ -2,6 +2,7 @@
 import { 
   CameraHeaderTop,
   HeaderImgBox,
+  Setting,
 } from './style';
 //library
 import { useSelector, useDispatch } from 'react-redux';
@@ -37,7 +38,14 @@ const CameraHeader = () => {
       }}/>
       <HeaderImgBox>
         <img src={camera} alt="카메라 버튼" width="35"/>
-        <img src={setting} alt="세팅 버튼" width="35"/>
+        <div>
+            <img src={setting} alt="세팅 버튼" width="35"/>
+            <Setting>
+              <option value="titleChange">이름 변경하기</option>
+              <option value="copy">본문 복사하기</option>
+              <option value="delete">삭제하기</option>
+            </Setting>
+        </div>
       </HeaderImgBox>
     </CameraHeaderTop>
   );
