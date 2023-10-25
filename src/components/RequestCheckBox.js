@@ -1,1 +1,25 @@
- 
+//style
+import {
+  ItemContainer,
+  TextContent,
+} from './style';
+//library
+import React, { useState } from 'react';
+//img
+import checkBoxImg from '../assets/checkbox.png';
+import UnCheckBoxImg from '../assets/uncheckbox.png';
+
+const RequestCheckBox = ({content}) => {
+  const [isCheck, setIsCheck] = useState(false);
+  function imgHandler(){
+    setIsCheck(!isCheck);
+  }
+  return(
+    <ItemContainer>
+      <TextContent>{content}</TextContent>
+      <img src={isCheck ? checkBoxImg : UnCheckBoxImg} alt="체크 버튼" onClick={imgHandler} width="35"/>
+    </ItemContainer>
+  );
+}
+
+export default RequestCheckBox;

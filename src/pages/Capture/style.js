@@ -57,3 +57,11 @@ export const Main = styled.div`
   }
   transition: all 350ms;
 `;
+
+//RequestCheckBoxContainer
+export const RequestCheckBoxContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 79%; 
+`;

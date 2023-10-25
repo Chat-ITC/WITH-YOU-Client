@@ -3,7 +3,6 @@ import openeye from '../assets/openEye.png';
 import closeeye from '../assets/closeEye.png';
 import fillStar from '../assets/FillStar.png';
 import camera from '../assets/camera.png'
-import emptyStar from '../assets/clip.png';
 
 //Bottom
 export const BottomFix = styled.div`
@@ -220,4 +219,15 @@ export const Search = styled.img`
   top: 11px;
   left: 10px;
   width: 18px;
+`;
+//RequestCheckBox
+export const ItemContainer = styled.div`
+  display: flex;
+  padding: 25px 20px;
+  justify-content: space-between;
+`;
+
+export const TextContent = styled.div`
+  height: 35px;
+  line-height: 35px;
 `;
