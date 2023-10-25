@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const Aside = styled.div`
-position: fixed;
+  overscroll-behavior-y: none;
+  position: fixed;
   width: 300px;
   top:0;
   left:0;
@@ -21,11 +22,26 @@ export const BottomEmptyBox = styled.div`
 `;
 
 export const TopEmptyBox = styled.div`
-  width: 100px;
+  width: 300px;
   height: 65px;
 `;
 
+export const TopLeftHeader = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 65px;
+  background-color: #F07878;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+`;
+
 export const Main = styled.div`
+  overscroll-behavior-y: none;
   position: fixed;
   left: 300px;
   top: 0;

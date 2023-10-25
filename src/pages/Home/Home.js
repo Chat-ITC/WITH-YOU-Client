@@ -4,6 +4,7 @@ import {
   Main,
   BottomEmptyBox,
   TopEmptyBox,
+  TopLeftHeader,
 } from './style';
 //library
 import React from 'react';
@@ -17,7 +18,8 @@ const Home = () => {
   return (
     <>
         <Aside>
-          <TopEmptyBox/>
+          <TopEmptyBox></TopEmptyBox>
+          <TopLeftHeader>History</TopLeftHeader>
           <p>친구는 세월의 도둑이다..친구는 세월의 도둑이다..친구는 세월의 도둑이다..친구는 세월의 도둑이다..친구는 세월의 도둑이다..친구는 세월의 도둑이다..친구는 세월의 도둑이다.</p>
           <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
           <p>친구는 세월의 도둑이다..친구는 세월의 도둑이다..친구는 세월의 도둑이다..친구는 세월의 도둑이다..친구는 세월의 도둑이다..친구는 세월의 도둑이다..친구는 세월의 도둑이다.</p>
