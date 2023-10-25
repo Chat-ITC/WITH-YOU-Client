@@ -11,7 +11,6 @@ import Login from './pages/Login/Login';
 import Mypage from './pages/Mypage/Mypage';
 import Scrap from './pages/Scrap/Scrap';
 
-
 function App() {
 
   return (  

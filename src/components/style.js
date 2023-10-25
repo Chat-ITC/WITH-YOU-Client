@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
-
+import openeye from '../assets/openEye.png';
+import closeeye from '../assets/closeEye.png';
 import fillStar from '../assets/FillStar.png';
 import emptyStar from '../assets/clip.png';
 
@@ -113,4 +114,51 @@ export const Ul = styled.ul`
 export const ImgBtn = styled.img`
   width: 35px;
 
+`;
+
+//아이디 비밀번호
+export const InputIdContainer = styled.input`
+  width: 260px;
+  height: 43px;
+  border: 1px solid #bababa;
+  border-radius: 5px;
+  padding: 5px;
+  outline: none;
+  font-size: 20px;
+`;
+
+export const InputBox = styled.div`
+  width: 260px;
+  height: 43px;
+  position: relative;
+`;
+
+export const PwNonVisi = styled.input`
+  width: 260px;
+  height: 43px;
+  border: 1px solid #bababa;
+  border-radius: 5px;
+  padding: 5px;
+  outline: none;
+  font-size: 20px;
+`;
+
+export const Eye = styled.div`
+  position: absolute;
+  top: 17px;
+  right: 10px;
+`;
+
+export const EyeState = styled.div` 
+  background-image:  url(${closeeye}); //기본상태: 닫힌 눈
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 20px;
+  height: 20px;
+  opacity: 0.4; //투명도
+  ${props =>
+    props.$done &&
+    css`
+        background-image: url(${openeye}); //props로 false를 전달 받으면 열린 눈
+    `}
 `;
