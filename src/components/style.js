@@ -125,6 +125,16 @@ export const CameraHeaderTop = styled.div`
   transition: all 350ms;
 `;
 
+//CaptureHeaderTop
+export const CaptureHeaderTop = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 65px;
+  padding: 0 20px;
+  background-color: #FFC1C1;
+`;
+
 export const HeaderImgBox = styled.div`
   display: flex;
   align-items: center;
