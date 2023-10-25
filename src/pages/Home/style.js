@@ -6,7 +6,6 @@ position: fixed;
   top:0;
   left:0;
   height: 100%;
-  background-color: red;
   overflow-y: scroll;
   overflow-x: hidden;
   -ms-overflow-style:none;
