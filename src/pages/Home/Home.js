@@ -1,9 +1,16 @@
-import React, { useState } from 'react';
+//style
 import {
   Aside,
   Main,
   BottomEmptyBox,
+  TopEmptyBox,
+  TopLeftHeader,
 } from './style';
+//library
+import React from 'react';
+import { useSelector } from 'react-redux';
+//components
+import CameraHeader from '../../components/CameraHeader';
 
 //library
 import { Link } from 'react-router-dom';
@@ -12,11 +19,7 @@ import { Link } from 'react-router-dom';
 import CameraItem from '../../components/CameraItem';
 
 const Home = () => {
-  const [isAsideVisible, setIsAsideVisible] = useState(true);
-
-  function toggleAsideVisibility() {
-    setIsAsideVisible(!isAsideVisible);
-  }
+  const isAsideVisible = useSelector((state) => state.visibility.isAsideVisible);
 
   const sampleJson = [
     {
@@ -41,6 +44,8 @@ const Home = () => {
   return (
     <>
       <Aside>
+        <TopEmptyBox></TopEmptyBox>
+          <TopLeftHeader>History</TopLeftHeader>
         {sampleJson.map((sample) => (
           <CameraItem
             title={sample.title}
@@ -52,8 +57,9 @@ const Home = () => {
         <BottomEmptyBox>
         </BottomEmptyBox>
       </Aside>
-      <Main style={{ left: isAsideVisible ? '300px' : '0' }}>
-        <div onClick={toggleAsideVisibility}>눌러</div>
+      <Main style={{ left: isAsideVisible ? '0' : '300px' }}>
+        <CameraHeader></CameraHeader>
+          <TopEmptyBox/>
         <p>
           야
         </p>

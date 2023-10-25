@@ -1,4 +1,6 @@
 import Bottom from './components/Bottom';
+import { Provider } from 'react-redux';
+import store from './store';
 
 //pages
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -13,7 +15,7 @@ import Scrap from './pages/Scrap/Scrap';
 function App() {
 
   return (  
-    <div className="App">
+    <Provider store={store}>
       <Router>
         <Routes>
           <Route path="/" element={<Login/>} />
@@ -25,7 +27,7 @@ function App() {
         </Routes>
       </Router>
       <Bottom/>
-    </div>
+    </Provider>
   );
 }
 
