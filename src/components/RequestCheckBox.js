@@ -9,7 +9,8 @@ import React, { useState } from 'react';
 import checkBoxImg from '../assets/checkbox.png';
 import UnCheckBoxImg from '../assets/uncheckbox.png';
 
-const RequestCheckBox = ({content}) => {
+const RequestCheckBox = ({content, id}) => {
+  console.log(id);
   const [isCheck, setIsCheck] = useState(false);
   function imgHandler(){
     setIsCheck(!isCheck);
