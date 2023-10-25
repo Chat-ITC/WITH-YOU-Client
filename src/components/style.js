@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
-import fillStar from '../assets/FillStar.png'
-import emptyStar from '../assets/clip.png'
+import fillStar from '../assets/FillStar.png';
+import emptyStar from '../assets/clip.png';
 
 //Bottom
 export const BottomFix = styled.div`
