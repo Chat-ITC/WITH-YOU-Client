@@ -15,8 +15,19 @@ export const BottomFix = styled.div`
   background-color: #fff;
 `;
 
+export const Ul = styled.ul`
+  display: flex;
+  padding: 0 5px;
+  justify-content: space-around;
+  list-style: none;
+`;
 
-//CameraHeader
+export const ImgBtn = styled.img`
+  width: 35px;
+  opacity: 0.3;
+`;
+
+//CameraItem
 export const CameraItemContainer = styled.div`
   width: 300px;
   height: 100px;
@@ -76,7 +87,7 @@ export const DateContainer = styled.div`
   margin: 2px 0px 1px 0px;
 `
 
-//RightTop
+//CameraHeader
 export const CameraHeaderTop = styled.div`
   display: flex;
   justify-content: space-between;
@@ -107,19 +118,7 @@ export const Setting = styled.select`
   opacity: 0;
 `;
 
-export const Ul = styled.ul`
-  display: flex;
-  padding: 0 5px;
-  justify-content: space-around;
-  list-style: none;
-`;
-
-export const ImgBtn = styled.img`
-  width: 35px;
-
-`;
-
-//아이디 비밀번호
+//TextInput
 export const InputIdContainer = styled.input`
   width: 260px;
   height: 43px;
@@ -129,7 +128,7 @@ export const InputIdContainer = styled.input`
   outline: none;
   font-size: 20px;
 `;
-
+//PWInput
 export const InputBox = styled.div`
   width: 260px;
   height: 43px;
@@ -166,7 +165,7 @@ export const EyeState = styled.div`
     `}
 `;
 
-//searchInput
+//SearchInput
 export const SearchBox = styled.div`
   width: 240px;
   height: 35px;
