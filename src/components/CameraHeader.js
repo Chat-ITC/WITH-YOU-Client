@@ -1,5 +1,8 @@
 //style
-import { CameraHeaderTop } from './style';
+import { 
+  CameraHeaderTop,
+  HeaderImgBox,
+} from './style';
 //library
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useState } from 'react';
@@ -8,6 +11,8 @@ import { toggleAsideVisibility } from '../store';
 //img
 import screenSplit from '../assets/screen-split.svg';
 import zoom from '../assets/zoom.svg';
+import camera from '../assets/camera.png';
+import setting from '../assets/setting.png';
 
 
 const CameraHeader = () => {
@@ -30,6 +35,10 @@ const CameraHeader = () => {
         AsideHandler();
         ScreenHandler();
       }}/>
+      <HeaderImgBox>
+        <img src={camera} alt="카메라 버튼" width="35"/>
+        <img src={setting} alt="세팅 버튼" width="35"/>
+      </HeaderImgBox>
     </CameraHeaderTop>
   );
 };
