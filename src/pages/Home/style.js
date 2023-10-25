@@ -27,6 +27,7 @@ export const TopEmptyBox = styled.div`
 
 export const TopLeftHeader = styled.div`
   position: fixed;
+  z-index: 1;
   top: 0;
   left: 0;
   width: 300px;
@@ -37,6 +38,13 @@ export const TopLeftHeader = styled.div`
   align-items: center;
   font-size: 24px;
   font-weight: bold;
+`;
+
+export const FromBox = styled.div`
+  width: 280px;
+  height: 40px;
+  padding: 10px;
+  padding-bottom: 5px;
 `;
 
 export const Main = styled.div`

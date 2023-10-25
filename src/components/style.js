@@ -167,19 +167,25 @@ export const EyeState = styled.div`
 `;
 
 //searchInput
-export const SearchForm = styled.input`
+export const SearchBox = styled.div`
   width: 240px;
-  background-color: #D9D9D9;
+  height: 35px;
+  position: relative;
+`;
+
+export const SearchForm = styled.input`
+  width: 235px;
+  height: 35px;
+  background-color: #ededed;
   border: 0px solid #000;
-  border-radius: 5px;
-  padding-left: 7px;
+  border-radius: 9px;
+  padding-left: 40px;
   outline: none;
 `;
 
-export const SearchBox = styled.div`
-
-`;
-
 export const Search = styled.img`
-
+  position: absolute;
+  top: 11px;
+  left: 10px;
+  width: 18px;
 `;

@@ -1,4 +1,5 @@
 import { 
+  SearchBox,
   SearchForm, 
   Search,
 } from './style';
@@ -7,10 +8,10 @@ import {
 
 const SearchInput = () => {
   return (
-    <>
+    <SearchBox>
       <SearchForm/>
-      <img src={SearchImg} alt="검색 버튼" />
-    </>
+      <Search src={SearchImg} alt="검색 버튼" />
+    </SearchBox>
   );
 }
 

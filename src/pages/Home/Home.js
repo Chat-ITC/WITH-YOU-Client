@@ -5,6 +5,7 @@ import {
   BottomEmptyBox,
   TopEmptyBox,
   TopLeftHeader,
+  FromBox,
 } from './style';
 //library
 import React, { useState } from 'react';
@@ -15,6 +16,7 @@ import BodySection from '../../components/BodySection';
 
 //components
 import CameraItem from '../../components/CameraItem';
+import Search from '../../components/SearchInput';
 
 const Home = () => {
   const isAsideVisible = useSelector((state) => state.visibility.isAsideVisible);
@@ -86,6 +88,7 @@ const Home = () => {
       <Aside>
         <TopEmptyBox></TopEmptyBox>
         <TopLeftHeader>History</TopLeftHeader>
+        <FromBox><Search/></FromBox>
         {sampleJson.map((sample, index) => (
           <div
             onClick={() => {
