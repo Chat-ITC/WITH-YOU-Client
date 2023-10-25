@@ -11,10 +11,6 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 //components
 import CameraHeader from '../../components/CameraHeader';
-import Text from '../../components/TextInput';
-import PW from '../../components/PWInput';
-
-
 
 //components
 import CameraItem from '../../components/CameraItem';
@@ -62,8 +58,6 @@ const Home = () => {
       <Main style={{ left: isAsideVisible ? '0' : '300px' }}>
         <CameraHeader></CameraHeader>
         <TopEmptyBox/>
-        <Text></Text>
-        <PW></PW>
         <p>
           야
         </p>

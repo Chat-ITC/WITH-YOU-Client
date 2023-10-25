@@ -162,3 +162,21 @@ export const EyeState = styled.div`
         background-image: url(${openeye}); //props로 false를 전달 받으면 열린 눈
     `}
 `;
+
+//searchInput
+export const SearchForm = styled.input`
+  width: 240px;
+  background-color: #D9D9D9;
+  border: 0px solid #000;
+  border-radius: 5px;
+  padding-left: 7px;
+  outline: none;
+`;
+
+export const SearchBox = styled.div`
+
+`;
+
+export const Search = styled.img`
+
+`;
