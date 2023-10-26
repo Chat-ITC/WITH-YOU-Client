@@ -7,7 +7,7 @@ import {
 //img
 import setting from '../assets/setting.png';
 
-const CameraHeader = () => {
+const Capture = () => {
 
   return (
     <CaptureHeaderTop>
@@ -23,4 +23,4 @@ const CameraHeader = () => {
   );
 };
 
-export default CameraHeader;
+export default Capture;
