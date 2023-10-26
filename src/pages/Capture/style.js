@@ -104,9 +104,9 @@ export const CameraBtn = styled.button`
 export const CameraInput = styled.input`
   display: block;
   position: fixed;
-  bottom: 112px;
+  bottom: 100px;
   left: 497px;
   width: 200px;
-  height: 50px;
+  height: 55px;
   opacity: 0;
 `;

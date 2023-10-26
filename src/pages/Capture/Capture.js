@@ -99,7 +99,7 @@ const Capture = () => {
       </Aside>
       <Main>
         <TopRightHeader/>
-        <button className='crop-Btn' >Crop and Preview!</button>
+        
         <CaptureContainer>
           <ImgContainer className='input-div' onDrop={handleDrop} onWheel={preventScroll}>
             {selectedFile && (
