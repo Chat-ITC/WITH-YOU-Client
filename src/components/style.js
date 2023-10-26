@@ -10,7 +10,7 @@ export const BottomFix = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  height: 80px;
+  height: 79px;
   border-top: 1px solid #bababa;
   background-color: #fff;
 `;

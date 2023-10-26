@@ -9,6 +9,7 @@ import {
   CaptureContainer,
   CameraBtn,
   CameraBtnContainer,
+  ImgContainer,
 } from './style';
 //library
 import React from 'react';
@@ -36,11 +37,13 @@ const Capture = () => {
       <Main>
         <CaptureHeader/>
         <CaptureContainer>
+          <ImgContainer></ImgContainer>
           <CameraBtnContainer>
             <CameraBtn>다시 찍기</CameraBtn>
             <CameraBtn>사진 사용</CameraBtn>
           </CameraBtnContainer>
         </CaptureContainer>
+        <BottomEmptyBox/>
       </Main>
     </>
   );

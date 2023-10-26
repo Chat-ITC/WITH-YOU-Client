@@ -62,9 +62,15 @@ export const RequestCheckBoxContainer = styled.div`
 //CaptureContainer
 export const CaptureContainer = styled.div`
   width: 820px;
-  height: 555px;
+  height: 79%;
   margin: 0 auto;
   position: relative;
+`;
+
+export const ImgContainer = styled.div`
+  margin-top: 5px;
+  width: 820px;
+  height: 87%;
   background-color: yellow;
 `;
 
@@ -87,5 +93,4 @@ export const CameraBtn = styled.button`
   border-radius: 10px;
   color: black;
   font-size: 24px;
-
 `;
