@@ -1,15 +1,18 @@
 //styles
-import { InputIdContainer } from './style';
+import { InputIdContainer, InputId } from './style';
 
 const TextInput = ({value, onChange, placeholder}) => {
 
   return(
     <>
-      <InputIdContainer 
+      <InputIdContainer>
+        <InputId
         type="text"
         placeholder={placeholder}
         value={value}
-        onChange={onChange}/>
+        onChange={onChange}
+        />
+        </InputIdContainer>
     </>
   );
 }

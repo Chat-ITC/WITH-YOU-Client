@@ -297,36 +297,51 @@ export const Setting = styled.select`
 
 
 //TextInput
-export const InputIdContainer = styled.input`
+export const InputIdContainer = styled.div`
   width: 260px;
   height: 43px;
   border: 1px solid #bababa;
   border-radius: 5px;
-  padding: 5px;
-  outline: none;
-  font-size: 20px;
-`;
-//PWInput
-export const InputBox = styled.div`
-  width: 260px;
-  height: 43px;
-  position: relative;
+  margin-bottom: 7px;
 `;
 
-export const PwNonVisi = styled.input`
+export const InputId = styled.input`
+  font-size: 16px;
+  outline: none;
+  border: 0px;
+  width: 240px;
+  height: 35px;
+`;
+
+//PWInput
+export const InputPWContainer = styled.div`
+  display:flex;
   width: 260px;
   height: 43px;
   border: 1px solid #bababa;
   border-radius: 5px;
-  padding: 5px;
+  margin-bottom: 7px;
+`;
+
+export const  PWContainer = styled.div`
+  width: 240px;
+  height: 43px;
+`;
+
+export const InputPW = styled.input`
+  font-size: 16px;
   outline: none;
-  font-size: 20px;
+  border: 0px;
+  width: 240px;
+  height: 35px;
 `;
 
 export const Eye = styled.div`
-  position: absolute;
   top: 17px;
   right: 10px;
+  margin-right:10px;
+  display:flex;
+  align-items: center;
 `;
 
 export const EyeState = styled.div` 

@@ -2,6 +2,7 @@ import Bottom from './components/Bottom';
 import { Provider } from 'react-redux';
 import store from './store';
 
+
 //pages
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Community from './pages/Community/Community';
