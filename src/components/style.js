@@ -96,6 +96,15 @@ export const CameraButtonContainer = styled.div`
   margin: 0 auto;
   margin-top: 160px;
 `;
+
+export const CameraInput = styled.input`
+  display: block;
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  opacity: 0;
+`;
+
 export const CameraBigButton = styled.div`
   background-repeat: no-repeat;
   background-size: contain;
@@ -105,10 +114,10 @@ export const CameraBigButton = styled.div`
   height: 200px;
 `;
 export const CameraPhrases = styled.div`
+  position: relative;
+  top: -14px;
   font-size: 20px;
 `
-
-
 //CameraHeader
 export const CameraHeaderTop = styled.div`
   display: flex;

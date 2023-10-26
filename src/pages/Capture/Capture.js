@@ -13,12 +13,15 @@ import {
 } from './style';
 //library
 import React from 'react';
+import { useLocation } from "react-router-dom";
 //components
 import TopRightHeader from '../../components/Capture';
 import RequestCheckBox from '../../components/RequestCheckBox';
 
 const Capture = () => {
-
+  const location = useLocation();
+  const selectedFile = location.state.selectedFile;
+  console.log('첨부된 파일 잘 받았다:', selectedFile);
   return (
     <>
       <Aside>
@@ -37,7 +40,11 @@ const Capture = () => {
       <Main>
         <TopRightHeader/>
         <CaptureContainer>
-          <ImgContainer></ImgContainer>
+          <ImgContainer>
+            {selectedFile && (
+              <img src={URL.createObjectURL(selectedFile)} alt="사진" width="820" height="100%"/>
+            )}
+          </ImgContainer>
           <CameraBtnContainer>
             <CameraBtn>다시 찍기</CameraBtn>
             <CameraBtn>사진 사용</CameraBtn>
