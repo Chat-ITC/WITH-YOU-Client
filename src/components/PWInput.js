@@ -1,5 +1,5 @@
 //styles
-import { PwNonVisi, Eye, InputBox, EyeState } from './style';
+import { InputPW, Eye, InputPWContainer, EyeState } from './style';
 //library
 import React, { useState } from 'react';
 
@@ -12,8 +12,8 @@ const PWInput = ({ placeholder, value, onChange }) => {
   };
   return (
     <>
-      <InputBox>
-        <PwNonVisi
+      <InputPWContainer>
+        <InputPW
           type={isPasswdVisible ? "text" : "password"}
           placeholder={placeholder}
           value={value}
@@ -23,7 +23,7 @@ const PWInput = ({ placeholder, value, onChange }) => {
             $done={isPasswdVisible}
           />
         </Eye>
-      </InputBox>
+      </InputPWContainer>
     </>
   );
 }
