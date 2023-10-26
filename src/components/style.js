@@ -4,6 +4,7 @@ import closeeye from '../assets/closeEye.png';
 import fillStar from '../assets/FillStar.png';
 import camera from '../assets/camera.png'
 import picture from '../assets/picture.png';
+import Send from '../assets/send.png';
 
 //Bottom
 export const BottomFix = styled.div`
@@ -381,11 +382,147 @@ export const TextContent = styled.div`
 //CommunityBodySection
 export const CommunityBodyContainer = styled.div`
   width: 830px;
-  height: 100%;
+  height: 79%;
   margin: 0 auto;
-  background-color: yellow;
 `;
 
-export const LikeBox = styled.div`
+export const CommunityContent = styled.div`
+  overflow-y: scroll;
+`;
 
+export const CommunityTitle = styled.div`
+  width: 790px;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 10px 20px;
+`;
+
+export const UserData = styled.div`
+  width: 790px;
+  padding: 0 20px;
+`;
+
+export const UserDataSpan = styled.span`
+  font-size: 14px;
+  padding: 5px;
+  height: 10px;
+  line-height: 10px;
+  font-weight: 600;
+  &::after{
+    content: '|';
+    color: #606060;
+    padding: 0 0 0 5px;
+    height: 10px;
+    line-height: 10px;
+    font-weight: 100;
+  }
+  &:nth-child(2){
+    color: #606060;
+  }
+  &:last-child{
+    font-weight: 400;
+    &::after{
+      content: '';
+    }
+  }
+`;
+
+export const CommunityBody = styled.div`
+  width: 790px;
+  font-size: 16px;
+  line-height: 2.18em;
+  padding: 15px 0;
+`;
+
+export const LikeChatBox = styled.div`
+  width: 790px;
+  padding: 0 20px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+`;
+
+export const LikeBtn = styled.button`
+  width: 120px;
+  height: 40px;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  background-color: #FFC6C3;
+  color: #D7443E;
+`;
+
+export const ScrapBtn = styled.button`
+  width: 120px;
+  height: 40px;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  background-color: #FFF2D0;
+  color: #FFCC49;
+`;
+
+export const BtnImg = styled.img`
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+`;
+
+export const BtnText = styled.div`
+  display: inline-block;
+  height: 30px;
+  line-height: 30px;
+`;
+
+export const InputChatBox = styled.div`
+  width: 830px;
+  margin: 0 auto;
+`;
+
+export const CommentBox = styled.div`
+  padding: 10px;
+  margin: 0 auto;
+  width: 780px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+`;
+
+export const TextBox = styled.div`
+  width: 800px;
+  height: 45px;
+  border-radius: 10px;
+  display: flex;
+  gap: 10px;
+`;
+
+export const Textarea = styled.textarea`
+  width: 760px;
+  max-height: 120px; /* 3 lines * 40px per line */
+  height: 40px;
+  line-height: 40px;
+  font-size: 18px;
+  padding-left: 10px;
+  outline: none;
+  background-color: #D9D9D9;
+  border-radius: 10px;
+  border: none;
+  overflow-y: auto;
+`;
+
+
+export const TextImg = styled.button`
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  margin-top: 5px;
+  margin-right: 15px;
+  background-image: url(${Send});
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-color: #fff;
 `;
