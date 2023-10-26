@@ -14,7 +14,7 @@ import {
 //library
 import React from 'react';
 //components
-import CaptureHeader from '../../components/Capture';
+import TopRightHeader from '../../components/Capture';
 import RequestCheckBox from '../../components/RequestCheckBox';
 
 const Capture = () => {
@@ -35,7 +35,7 @@ const Capture = () => {
         <BottomEmptyBox/>
       </Aside>
       <Main>
-        <CaptureHeader/>
+        <TopRightHeader/>
         <CaptureContainer>
           <ImgContainer></ImgContainer>
           <CameraBtnContainer>
