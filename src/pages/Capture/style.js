@@ -13,6 +13,7 @@ export const Aside = styled.div`
   &::-webkit-scrollbar{
     display:none;
   }
+  padding: 0 10px;
 `;
 
 export const BottomEmptyBox = styled.div`
@@ -51,27 +52,12 @@ export const Main = styled.div`
   background-color:white;
 `;
 
-//RequestCheckBoxContainer
-export const RequestCheckBoxContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 79%; 
-`;
 
 //CaptureContainer
-export const CaptureContainer = styled.div`
-  width: 820px;
-  height: 79%;
-  margin: 0 auto;
-  position: relative;
-  z-index: -1;
-`;
-
 export const ImgContainer = styled.div`
   margin-top: 5px;
   width: 820px;
-  height: 87%;
+  max-height: 400px;
 `;
 
 export const CropBtn = styled.button`
@@ -79,18 +65,11 @@ export const CropBtn = styled.button`
   z-index: 1;
 `;
 
-export const CameraBtnContainer = styled.div`
-  width: 820px;
-  display: flex;
-  justify-content: center;
-  gap: 100px;
-  position: absolute;
-  bottom: 10px;
-`;
 
 export const CameraBtn = styled.button`
-  width: 200px;
+  width: 280px;
   height: 50px;
+  margin: 10px auto 10px auto;
   background-color: #FFC1C1;
   text-align: center;
   line-height: 50px;
@@ -98,6 +77,7 @@ export const CameraBtn = styled.button`
   border-radius: 10px;
   color: black;
   font-size: 24px;
+  font-weight: bold;
 `;
 
 //다시찍기 Input 버튼

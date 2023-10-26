@@ -384,13 +384,15 @@ export const Search = styled.img`
 //RequestCheckBox
 export const ItemContainer = styled.div`
   display: flex;
-  padding: 25px 20px;
+  padding: 16px 20px 16px 10px;
   justify-content: space-between;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.20);
 `;
 
 export const TextContent = styled.div`
   height: 35px;
   line-height: 35px;
+  font-size: 20px;
 `;
 
 //CommunityBodySection
