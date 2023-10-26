@@ -29,7 +29,7 @@ const BodySection = (props) => {
                     type="file"
                     accept="image/*;
                     capture=camera"
-                    onChange={handleFileChange}></CameraInput>
+                    onChange={handleFileChange}/>
                     <CameraBigButton/>
                     <CameraPhrases>
                         사진을 찍어보세요!

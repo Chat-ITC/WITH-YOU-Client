@@ -65,13 +65,18 @@ export const CaptureContainer = styled.div`
   height: 79%;
   margin: 0 auto;
   position: relative;
+  z-index: -1;
 `;
 
 export const ImgContainer = styled.div`
   margin-top: 5px;
   width: 820px;
   height: 87%;
-  background-color: yellow;
+`;
+
+export const CropBtn = styled.button`
+  position: absolute;
+  z-index: 1;
 `;
 
 export const CameraBtnContainer = styled.div`
@@ -93,4 +98,15 @@ export const CameraBtn = styled.button`
   border-radius: 10px;
   color: black;
   font-size: 24px;
+`;
+
+//다시찍기 Input 버튼
+export const CameraInput = styled.input`
+  display: block;
+  position: fixed;
+  bottom: 112px;
+  left: 497px;
+  width: 200px;
+  height: 50px;
+  opacity: 0;
 `;
