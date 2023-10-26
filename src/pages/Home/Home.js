@@ -81,8 +81,6 @@ const Home = () => {
 
   ];
 
-
-
   return (
     <>
       <Aside>

@@ -20,6 +20,7 @@ import setting from '../assets/setting.png';
 
 
 const CameraHeader = () => {
+  //화면 크기 전환
   const [fullScreen, setFullScreen] = useState(false);
   function ScreenHandler(){
     setFullScreen(!fullScreen);
@@ -29,6 +30,7 @@ const CameraHeader = () => {
   //useDispatch를 호출하여 dispatch함수를 가져와 이 함수를 이용해 리덕스 스토어에 액션을 보낼 수 있다.
   const dispatch = useDispatch();
 
+  //dispatch함수를 실행해서 toggleAsideVisibility 액션을 수행하게 함
   const AsideHandler = () => {
     dispatch(toggleAsideVisibility());
   };

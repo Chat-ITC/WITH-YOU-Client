@@ -377,3 +377,15 @@ export const TextContent = styled.div`
   height: 35px;
   line-height: 35px;
 `;
+
+//CommunityBodySection
+export const CommunityBodyContainer = styled.div`
+  width: 830px;
+  height: 100%;
+  margin: 0 auto;
+  background-color: yellow;
+`;
+
+export const LikeBox = styled.div`
+
+`;

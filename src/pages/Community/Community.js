@@ -17,7 +17,7 @@ import CommunityItem from '../../components/CommunityItem';
 import CommunityBodySection from '../../components/CommunityBodySection';
 import Search from '../../components/SearchInput';
 
-const Home = () => {
+const Community = () => {
   const isAsideVisible = useSelector((state) => state.visibility.isAsideVisible);
 
   const [bodyData, setBodyData] = useState("camera");
@@ -51,8 +51,6 @@ const Home = () => {
     },
   ];
 
-
-
   return (
     <>
       <Aside>
@@ -85,10 +83,10 @@ const Home = () => {
         <CommunityBodySection
           bodyData={bodyData}
         />
-        <CommunityBodySection/>
+        <BottomEmptyBox/>
       </Main>
     </>
   );
 }
 
-export default Home;
+export default Community;
