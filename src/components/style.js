@@ -3,6 +3,7 @@ import openeye from '../assets/openEye.png';
 import closeeye from '../assets/closeEye.png';
 import fillStar from '../assets/FillStar.png';
 import camera from '../assets/camera.png'
+import picture from '../assets/picture.png';
 
 //Bottom
 export const BottomFix = styled.div`
@@ -87,6 +88,99 @@ export const DateContainer = styled.div`
   margin: 2px 0px 1px 0px;
 `
 
+//CommunityItem
+export const CommunityItemContainer = styled.div`
+  width: 300px;
+  height: 100px;
+  padding: 10px 10px 10px 15px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.20);
+`;
+
+export const CommunityItemTopContainer = styled.div`
+  display: flex;
+`;
+
+export const CommunityItemTitle = styled.div` 
+  font-weight: bold;
+  font-size: 17px; 
+  height: 19px;
+  overflow: hidden;
+  margin-top: 5px;
+  text-overflow: ellipsis;
+  white-space: none;
+`;
+
+export const CommunityItemPicture = styled.div`
+  width: 0px;
+  height: 0px;
+  margin: auto 3px auto 0px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: none;
+  ${props => props.$picture && css`
+        background-image: url(${picture});
+        width: 16px;
+        height: 16px;
+    `}
+`;
+
+export const CommunityItemBody = styled.div`
+  margin-top: 8px;
+  width: 265px;
+  height: 50px;
+  line-height: 23px;
+  font-size: 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+`;
+
+export const CommunityItemBottom = styled.div`
+  display: flex;
+  width: 280px;
+  height: 20px;
+  justify-content: flex-start;
+  align-content: center;
+  gap: 2px;
+`;
+
+export const CommunityItemScrap = styled.div`
+  width: 0px;
+  height: 0px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: none;
+  ${props => props.$scrap && css`
+        background-image: url(${fillStar});
+        width: 14px;
+        height: 14px;
+        margin-top: 3px;
+    `}
+`
+
+export const LikeContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+`;
+
+export const chatContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+`;
+
+export const CommunityDateContainer = styled.div`
+  color: grey;
+  font-size: 12px;
+  height: 12px;
+  margin: 2px 0px 1px 0px;
+`
+
 //BodySection
 export const CameraButtonContainer = styled.div`
   display:flex;
@@ -130,6 +224,20 @@ export const CameraHeaderTop = styled.div`
   height: 65px;
   padding: 0 20px;
   background-color: #FFC1C1;
+  transition: all 350ms;
+`;
+
+export const CommunityHeaderTop = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top:0;
+  right:0;
+  left: 300px;
+  height: 65px;
+  padding: 0 20px;
+  background-color: #D8FFB9;
   transition: all 350ms;
 `;
 

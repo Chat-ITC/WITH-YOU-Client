@@ -13,7 +13,7 @@ import {
   CameraInput,
 } from './style';
 //library
-import React,{ useState, useRef, useEffect } from 'react';
+import React,{ useState, useRef } from 'react';
 import Cropper from "react-cropper";
 import 'cropperjs/dist/cropper.css';
 import { useLocation, useNavigate } from "react-router-dom";

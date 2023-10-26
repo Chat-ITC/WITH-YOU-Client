@@ -1,6 +1,6 @@
 //style
 import { 
-  CameraHeaderTop,
+  CommunityHeaderTop,
   HeaderImgBox,
 } from './style';
 //library
@@ -28,7 +28,7 @@ const CommunityHeader = () => {
   };
 
   return (
-    <CameraHeaderTop style={{ left: isAsideVisible ? '0' : '300px' }}>
+    <CommunityHeaderTop style={{ left: isAsideVisible ? '0' : '300px' }}>
       <img src={fullScreen ? screenSplit : zoom} alt="화면 전환 버튼"  onClick={()=>{
         AsideHandler();
         ScreenHandler();
@@ -36,7 +36,7 @@ const CommunityHeader = () => {
       <HeaderImgBox>
         <img src={write} alt="글쓰기 버튼" width="35"/>
       </HeaderImgBox>
-    </CameraHeaderTop>
+    </CommunityHeaderTop>
   );
 };
 
