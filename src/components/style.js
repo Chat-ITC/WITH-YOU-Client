@@ -70,7 +70,6 @@ export const CameraItemBottom = styled.div`
 export const CameraItemScrap = styled.div`
   width: 0px;
   height: 0px;
-  margin: auto 3px auto 0px;
   background-repeat: no-repeat;
   background-size: contain;
   background-image: none;
@@ -98,6 +97,11 @@ export const CommunityItemContainer = styled.div`
 
 export const CommunityItemTopContainer = styled.div`
   display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 20px;
+  line-height: 20px;
+  gap: 5px;
 `;
 
 export const CommunityItemTitle = styled.div` 
@@ -105,7 +109,6 @@ export const CommunityItemTitle = styled.div`
   font-size: 17px; 
   height: 19px;
   overflow: hidden;
-  margin-top: 5px;
   text-overflow: ellipsis;
   white-space: none;
 `;
@@ -143,7 +146,7 @@ export const CommunityItemBottom = styled.div`
   height: 20px;
   justify-content: flex-start;
   align-content: center;
-  gap: 2px;
+  gap: 5px;
 `;
 
 export const CommunityItemScrap = styled.div`
@@ -156,7 +159,6 @@ export const CommunityItemScrap = styled.div`
         background-image: url(${fillStar});
         width: 14px;
         height: 14px;
-        margin-top: 3px;
     `}
 `
 
@@ -164,22 +166,48 @@ export const LikeContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 20px;
+  line-height: 20px;
   gap: 5px;
 `;
 
-export const chatContainer = styled.div`
+export const LikeImg = styled.img`
+  width: 14px;
+  height: 14px;
+`;
+export const LikeContent = styled.span`
+  font-size: 12px;
+`;
+
+export const ChatImg = styled.img`
+  width: 14px;
+  height: 13px;
+`;
+export const ChatContent = styled.span`
+  font-size: 12px;
+`;
+
+export const ChatContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 20px;
+  line-height: 20px;
   gap: 5px;
 `;
 
 export const CommunityDateContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: grey;
   font-size: 12px;
-  height: 12px;
-  margin: 2px 0px 1px 0px;
+  height: 20px;
+  line-height: 20px;
+  gap: 5px;
 `
+
+
 
 //BodySection
 export const CameraButtonContainer = styled.div`

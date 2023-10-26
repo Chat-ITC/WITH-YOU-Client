@@ -9,7 +9,11 @@ import {
     CommunityItemPicture,
     CommunityItemScrap,
     LikeContainer,
-    chatContainer,
+    LikeImg,
+    LikeContent,
+    ChatImg,
+    ChatContent,
+    ChatContainer,
 } from './style';
 //img
 import Like from '../assets/like.png';
@@ -38,18 +42,22 @@ const CommunityItem = (props) => {
                 <CommunityItemBottom>
                     {props.like > 0 && (
                         <LikeContainer>
-                            <img src={Like} alt="좋아요 버튼" width="14"/>
-                            {props.like}
+                            <LikeImg src={Like} alt="좋아요 버튼"/>
+                            <LikeContent>
+                                {props.like}
+                            </LikeContent>
                         </LikeContainer>
                     )}
                     {props.chat > 0 && (
-                        <chatContainer>
-                            <img src={Chat} alt="댓글 버튼" width="14"/>
-                            {props.chat}
-                        </chatContainer>
+                        <ChatContainer>
+                            <ChatImg src={Chat} alt="댓글 버튼" width="14"/>
+                            <ChatContent>
+                                {props.chat}
+                            </ChatContent> 
+                        </ChatContainer>
                     )}
-                    <CommunityItemScrap $scrap={scrap}/>
                     <CommunityDateContainer>
+                        <CommunityItemScrap $scrap={scrap}/>
                         {props.date}
                     </CommunityDateContainer>
                 </CommunityItemBottom>
