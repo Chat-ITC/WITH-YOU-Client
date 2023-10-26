@@ -3,10 +3,13 @@ import {
   CameraHeaderTop,
   HeaderImgBox,
   Setting,
+  ImgBtn,
 } from './style';
 //library
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useState } from 'react';
+//library
+import { Link } from "react-router-dom";
 //store.js에서 'toggleAsideVisibility'라는 액션을 import
 import { toggleAsideVisibility } from '../store';
 //img
@@ -37,7 +40,14 @@ const CameraHeader = () => {
         ScreenHandler();
       }}/>
       <HeaderImgBox>
-        <img src={camera} alt="카메라 버튼" width="35"/>
+        <Link to="/capture">
+          <ImgBtn
+            src={camera}
+            alt="홈"
+            style={{ opacity: 1 }}
+            color="1"
+          />
+        </Link>
         <div>
             <img src={setting} alt="세팅 버튼" width="35"/>
             <Setting>

@@ -49,13 +49,6 @@ export const Main = styled.div`
   right: 0;
   border-left:1px solid rgba(0, 0, 0, 0.20);
   background-color:white;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  -ms-overflow-style:none;
-  &::-webkit-scrollbar{
-    display:none;
-  }
-  transition: all 350ms;
 `;
 
 //RequestCheckBoxContainer
@@ -64,4 +57,35 @@ export const RequestCheckBoxContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   height: 79%; 
+`;
+
+//CaptureContainer
+export const CaptureContainer = styled.div`
+  width: 820px;
+  height: 555px;
+  margin: 0 auto;
+  position: relative;
+  background-color: yellow;
+`;
+
+export const CameraBtnContainer = styled.div`
+  width: 820px;
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+  position: absolute;
+  bottom: 10px;
+`;
+
+export const CameraBtn = styled.button`
+  width: 200px;
+  height: 50px;
+  background-color: #FFC1C1;
+  text-align: center;
+  line-height: 50px;
+  border: none;
+  border-radius: 10px;
+  color: black;
+  font-size: 24px;
+
 `;
