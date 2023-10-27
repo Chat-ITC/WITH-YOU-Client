@@ -55,8 +55,7 @@ export const Main = styled.div`
 
 //CaptureContainer
 export const ImgContainer = styled.div`
-  margin-top: 5px;
-  width: 820px;
+  width: 100% ;
   max-height: 400px;
 `;
 
@@ -65,17 +64,30 @@ export const CropBtn = styled.button`
   z-index: 1;
 `;
 
+export const CameraAgainBtn = styled.button`
+width: 280px;
+  height: 50px;
+  margin: 10px auto 5px auto;
+  background-color: white;
+  text-align: center;
+  line-height: 50px;
+  border: 1.6px solid #F07878;
+  border-radius: 25px;
+  color: #F07878;
+  font-size: 24px;
+  font-weight: bold;
+`;
 
 export const CameraBtn = styled.button`
   width: 280px;
   height: 50px;
   margin: 10px auto 10px auto;
-  background-color: #FFC1C1;
+  background-color: #F07878;
+  color: white;
   text-align: center;
   line-height: 50px;
-  border: none;
-  border-radius: 10px;
-  color: black;
+  border: 1.6px solid #F07878;
+  border-radius: 25px;
   font-size: 24px;
   font-weight: bold;
 `;

@@ -10,7 +10,7 @@ import BackButtonImg from "../../assets/right.png";
 //components
 import TextInput from '../../components/TextInput';
 import PWInpit from '../../components/PWInput';
-import {MajorSelect, GradeSelect}from './CustomSelect';
+import { MajorSelect, GradeSelect } from './CustomSelect';
 
 //style
 import {
@@ -59,13 +59,22 @@ const Join = () => {
   }
 
   //다음버튼 동작
-  const handleNext = () => {
-    SetIdpwState(!idpwState);
-    SetMgnState(!mgnState);
-    console.log("idpwState", idpwState);
-    console.log("아이디", userId);
-    console.log("비번", password);
-    console.log("비번확인", passwordCheck);
+  const handleNext = async () => {
+    try {
+      const response = await axios.post(
+        `${process.env.REACT_APP_LOCAL_URL}/member/signup/userId`,null,
+        {params: {userId: userId}});
+  
+      console.log('아이디 중복 없음:', response.data);
+      SetIdpwState(!idpwState);
+      SetMgnState(!mgnState);
+    } catch (error) {
+      if(error.response.status === 400){
+        alert("동일한 아이디가 존재합니다!");
+      }
+      console.error('로그인 실패:', error);
+    }
+    
   };
 
   //두번째 폼에서 이전 버튼 동작
@@ -98,11 +107,14 @@ const Join = () => {
       //회원가입 성공
       navigate('/');
     } catch (error) {
+      if(error.response.status === 400){
+        alert("동일한 닉네임이 존재합니다!");
+      }
       console.error('로그인 실패:', error);
     }
   };
 
-  
+
 
   return (
     <>
@@ -156,10 +168,10 @@ const Join = () => {
         </TitleContainer>
         <SubTitleContainer>선택하신 학과에 기반하여<br /> AI가 더욱 정확한 답변을 해드립니다</SubTitleContainer>
         <MajorSelect
-          onDataMajor={getMajor}/>
+          onDataMajor={getMajor} />
         <GradeSelect
-          onDataGrade={getGrade}/>
-        
+          onDataGrade={getGrade} />
+
         <TextInput
           placeholder={"닉네임"}
           value={nickName}

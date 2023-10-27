@@ -17,7 +17,12 @@ const RequestCheckBox = ({content, id}) => {
   return(
     <ItemContainer>
       <TextContent>{content}</TextContent>
-      <img src={isCheck ? checkBoxImg : UnCheckBoxImg} alt="체크 버튼" onClick={imgHandler} width="35"/>
+      <img 
+      src={isCheck ? checkBoxImg : UnCheckBoxImg} 
+      alt="체크 버튼" 
+      onClick={imgHandler} 
+      width="25px"
+      height="25px"/>
     </ItemContainer>
   );
 }

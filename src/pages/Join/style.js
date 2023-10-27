@@ -36,6 +36,7 @@ export const TitleContainer = styled.div`
   align-content: center;
   font-size: 50px;
   margin-bottom: 8px;
+  font-weight: bold;
 `;
 
 export const SubTitleContainer = styled.div`

@@ -12,7 +12,7 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 //components
 import CameraHeader from '../../components/CameraHeader';
-import BodySection from '../../components/BodySection';
+import CameraBodySection from '../../components/CameraBodySection';
 
 //components
 import CameraItem from '../../components/CameraItem';
@@ -80,6 +80,10 @@ const Home = () => {
     },
 
   ];
+  
+  const [cameraListData,setCameraListData] = useState(sampleJson);
+
+  
 
   return (
     <>
@@ -87,7 +91,7 @@ const Home = () => {
         <TopEmptyBox></TopEmptyBox>
         <TopLeftHeader>History</TopLeftHeader>
         <FromBox><Search/></FromBox>
-        {sampleJson.map((sample, index) => (
+        {cameraListData.map((sample, index) => (
           <div
             onClick={() => {
               bodySectionHandler(sample.id)
@@ -108,7 +112,7 @@ const Home = () => {
       <Main style={{ left: isAsideVisible ? '0' : '300px' }}>
         <CameraHeader></CameraHeader>
         <TopEmptyBox />
-        <BodySection
+        <CameraBodySection
           bodyData={bodyData}
         />
         <BottomEmptyBox>

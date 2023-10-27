@@ -5,6 +5,7 @@ import {
   BottomEmptyBox,
   TopEmptyBox,
   TopLeftHeader,
+  CameraAgainBtn,
   RequestCheckBoxContainer,
   CameraBtn,
   ImgContainer,
@@ -26,7 +27,19 @@ const Capture = () => {
   const [imagePath, setImagePath] = useState(state);
   const [croppedImage, setCroppedImage] = useState(""); // 추가: 크롭된 이미지 저장 상태
   const cropperRef = useRef(null);
+  const calculatedHeight = window.innerHeight - 145;
 
+  //다시찍기 핸들러
+  const fileInputRef = useRef(null);
+  const captureAgainHandler = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.click();
+    }
+  };
+  const handleFileChange= (e) => {
+    const fileURL = URL.createObjectURL(e.target.files[0]);
+    setImagePath(fileURL);
+  }
 
 
   return (
@@ -40,26 +53,33 @@ const Capture = () => {
         <RequestCheckBox content="이해하기 쉽게 해설해줘" id="3" />
         <RequestCheckBox content="이해하기 쉽게 풀어줘" id="4" />
         <RequestCheckBox content="이해하기 쉽게 졸리다" id="5" />
-        <RequestCheckBox content="이해하기 쉽게 정리해줘" id="2" />
-        <RequestCheckBox content="이해하기 쉽게 해설해줘" id="3" />
-        <RequestCheckBox content="이해하기 쉽게 풀어줘" id="4" />
-        <RequestCheckBox content="이해하기 쉽게 졸리다" id="5" />
-        <RequestCheckBox content="이해하기 쉽게 정리해줘" id="2" />
-        <RequestCheckBox content="이해하기 쉽게 해설해줘" id="3" />
-        <RequestCheckBox content="이해하기 쉽게 풀어줘" id="4" />
-        <RequestCheckBox content="이해하기 쉽게 졸리다" id="5" />
 
-
-        <CameraBtn>다시 찍기</CameraBtn>
+        <div>
+          <input
+            type="file"
+            accept="image/*; capture=camera"
+            style={{ display: "none" }} 
+            ref={fileInputRef} 
+            onChange={handleFileChange}
+          />
+          <CameraAgainBtn onClick={captureAgainHandler}>다시 찍기</CameraAgainBtn>
+        </div>
         <CameraBtn>사진 분석</CameraBtn>
 
         <BottomEmptyBox />
       </Aside>
       <Main>
         <TopRightHeader />
+        <TopEmptyBox />
         <ImgContainer>
           <div className="canvas" id="canvas">
-            <Cropper id='cropper' src={imagePath} ref={cropperRef} />
+            <Cropper
+              id='cropper'
+              src={imagePath}
+              ref={cropperRef}
+              style={{ height: `${calculatedHeight}px` }}
+              guides={true}
+            />
           </div>
         </ImgContainer>
 

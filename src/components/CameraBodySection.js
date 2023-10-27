@@ -8,7 +8,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import React from "react";
 
-const BodySection = (props) => {
+const CameraBodySection = (props) => {
     const navigate = useNavigate();
     //카메라
     const handleFileChange = (e) => {
@@ -16,7 +16,6 @@ const BodySection = (props) => {
     
     if (fileURL) {
         console.log("선택한 파일(홈페이지):", fileURL);
-
         // 파일을 전달하고 다른 페이지로 이동
         navigate("/capture", { state: fileURL });
         }
@@ -27,8 +26,7 @@ const BodySection = (props) => {
                 <CameraButtonContainer>
                     <CameraInput 
                     type="file"
-                    accept="image/*;
-                    capture=camera"
+                    accept="image/*; capture=camera"
                     onChange={handleFileChange}/>
                     <CameraBigButton/>
                     <CameraPhrases>
@@ -42,4 +40,4 @@ const BodySection = (props) => {
     );
 }
 
-export default BodySection;
+export default CameraBodySection;
