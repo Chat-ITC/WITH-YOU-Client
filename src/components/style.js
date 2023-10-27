@@ -549,3 +549,25 @@ export const CommentContainer = styled.div`
   background-color: #D9D9D9;
   padding: 15px;
 `;
+
+export const ChatUser = styled.span`
+  font-size: 16px;
+  font-weight: bold;
+  padding: 0 5px;
+`;
+
+export const ChatUserGrade = styled.span`
+  font-size: 16px;
+  font-weight: bold;
+  padding: 0 5px;
+  color: #606060;
+`;
+
+export const ChatBody = styled.div`
+  font-size: 16px;
+  padding: 3px 0;
+`;
+
+export const ChatDate = styled.div`
+  font-size: 14px;
+`;

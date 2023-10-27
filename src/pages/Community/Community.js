@@ -21,10 +21,9 @@ const Community = () => {
   const isAsideVisible = useSelector((state) => state.visibility.isAsideVisible);
 
   const [bodyData, setBodyData] = useState("camera");
-
   const bodySectionHandler = (props) => {
     //목록에서 아이템 누를 시 서버로 id 전송후 데이터 받아오기 props: 아이디.
-    setBodyData(`아이템 아이디: ${props}`)
+    setBodyData(`아이템 아이디: ${props.title}`)
   }
 
   const sampleJson = [
@@ -60,7 +59,7 @@ const Community = () => {
         {sampleJson.map((sample, index) => (
           <div
             onClick={() => {
-              bodySectionHandler(sample.id)
+              bodySectionHandler(sample)
             }}
             key={index}>
             <CommunityItem

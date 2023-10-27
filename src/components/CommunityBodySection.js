@@ -22,6 +22,10 @@ import {
   CommunityChatContainer,
   ChatContent,
   CommentContainer,
+  ChatUser,
+  ChatUserGrade,
+  ChatBody,
+  ChatDate,
 } from './style'
 import React from "react";
 import { useRef } from 'react';
@@ -31,7 +35,7 @@ import Star from '../assets/FillStar.png';
 import Chat from '../assets/chat.png';
 
 const CommunityBodySection = (props) => {
-
+  console.log(`커뮤니티 데이터: ${props.title}`)
   //useRef를 이용해 높이를 조절하고자 하는 textarea 엘리먼트에 ref를 지정해 style 조절
   const textarea = useRef();
 
@@ -39,15 +43,15 @@ const CommunityBodySection = (props) => {
     textarea.current.style.height = 'auto';//height 초기화
     textarea.current.style.height = textarea.current.scrollHeight + 'px';
   }
-  console.log(props);
+  console.log(`유저 id: ${props.bodyData}`);
     return (
         <CommunityBodyContainer>
           <CommunityContent>
-            <CommunityTitle>운영체제 스레드 부분 궁금한 거 있어요</CommunityTitle>
+            <CommunityTitle>{props.title}</CommunityTitle>
             <UserData>
               <UserDataSpan>감흥없는 김밥</UserDataSpan>
               <UserDataSpan>의료IT공학과</UserDataSpan>
-              <UserDataSpan>10월 21일</UserDataSpan>
+              <UserDataSpan>10월 21일{props.date}</UserDataSpan>
               <CommunityBody>
                 저번주 운영체제 수업을 빠져서 그러는데요..<br/>
                 스레드를 사용하는 이유를 잘 모르겠어요.<br/>
@@ -90,7 +94,28 @@ const CommunityBodySection = (props) => {
                 </ChatContent>
               </CommunityChatContainer>
               <CommentContainer>
-                스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 
+                <ChatUser>지 성 인{props.nickname}</ChatUser>
+                <ChatUserGrade>의료IT공학과{props.grade}</ChatUserGrade>
+                <ChatBody>
+                  프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 
+                </ChatBody>
+                <ChatDate>10월 21일{props.date}</ChatDate>
+              </CommentContainer>
+              <CommentContainer>
+                <ChatUser>지 성 인{props.nickname}</ChatUser>
+                <ChatUserGrade>의료IT공학과{props.grade}</ChatUserGrade>
+                <ChatBody>
+                  프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 
+                </ChatBody>
+                <ChatDate>10월 21일{props.date}</ChatDate>
+              </CommentContainer>
+              <CommentContainer>
+                <ChatUser>지 성 인{props.nickname}</ChatUser>
+                <ChatUserGrade>의료IT공학과{props.grade}</ChatUserGrade>
+                <ChatBody>
+                  프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 
+                </ChatBody>
+                <ChatDate>10월 21일{props.date}</ChatDate>
               </CommentContainer>
             </CommentBox>
           </InputChatBox>
