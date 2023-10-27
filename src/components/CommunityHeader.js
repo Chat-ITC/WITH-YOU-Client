@@ -6,6 +6,7 @@ import {
 //library
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useState } from 'react';
+import {Link} from 'react-router-dom';
 //store.js에서 'toggleAsideVisibility'라는 액션을 import
 import { toggleAsideVisibility } from '../store';
 //img
@@ -34,7 +35,9 @@ const CommunityHeader = () => {
         ScreenHandler();
       }}/>
       <HeaderImgBox>
-        <img src={write} alt="글쓰기 버튼" width="35"/>
+        <Link to="/writing">
+          <img src={write} alt="글쓰기 버튼" width="35"/>
+        </Link>
       </HeaderImgBox>
     </CommunityHeaderTop>
   );
