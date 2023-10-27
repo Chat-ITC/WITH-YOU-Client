@@ -78,7 +78,7 @@ const CommunityBodySection = (props) => {
                 </LikeContent>
               </CommunityLikeContainer>  
               <TextBox>
-                <Textarea ref={textarea} onChange={handleResizeHeight} placeholder='댓글을 작성해 주세요'></Textarea>
+                <Textarea type="text" placeholder='댓글을 작성해 주세요'></Textarea>
                 <TextImg alt="댓글 보내는 버튼">
                 </TextImg>
               </TextBox>

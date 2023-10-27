@@ -273,6 +273,20 @@ export const CameraHeaderTop = styled.div`
   transition: all 350ms;
 `;
 
+export const ScrapHeaderTop = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top:0;
+  right:0;
+  left: 300px;
+  height: 65px;
+  padding: 0 20px;
+  background-color: #FFE2AB;
+  transition: all 350ms;
+`;
+
 export const CommunityHeaderTop = styled.div`
   display: flex;
   justify-content: space-between;
