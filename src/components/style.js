@@ -213,6 +213,7 @@ export const CommunityChatContainer = styled.div`
   height: 20px;
   line-height: 20px;
   gap: 5px;
+  margin-top: 25px;
 `;
 
 export const CommunityDateContainer = styled.div`
@@ -419,7 +420,7 @@ export const TextContent = styled.div`
 
 //CommunityBodySection
 export const CommunityBodyContainer = styled.div`
-  width: 830px;
+  width: 860px;
   height: 79%;
   margin: 0 auto;
   overflow-y: scroll;
@@ -459,10 +460,10 @@ export const UserDataSpan = styled.span`
   &:nth-child(2){
     color: #606060;
   }
-  &:last-child{
+  &:nth-child(3) {
     font-weight: 400;
-    &::after{
-      content: '';
+    &::after {
+      content: ''; /* 가상 요소의 content를 비워줌 */
     }
   }
 `;
@@ -542,8 +543,8 @@ export const TextBox = styled.div`
 
 export const Textarea = styled.textarea`
   width: 760px;
-  min-height: 40px; 
-  line-height: 40px;
+  max-height: 4.2em; 
+  line-height: 1.5em;
   font-size: 18px;
   padding-left: 10px;
   outline: none;
@@ -551,6 +552,11 @@ export const Textarea = styled.textarea`
   border-radius: 10px;
   border: none;
   overflow-y: auto;
+  resize: none;
+  -ms-overflow-style:none;
+  &::-webkit-scrollbar{
+    display:none;
+  }
 `;
 
 export const TextImg = styled.button`
