@@ -1,10 +1,16 @@
 //style
 import {
-  MyPageHeaer,
+  MyPageHeader,
   TopEmptyBox,
+  MypageHeader,
   UserInfoContainer,
   UserContainer,
+  UserInfo,
+  UserLevelBox,
+  DepartGradeBox,
+  UsernickBox,
   MyPageImg,
+  UserNick,
   ImgText,
   MyPageList,
   ListBtn,
@@ -14,7 +20,7 @@ import {
 import { useState } from 'react';
 import axios from 'axios';
 import axiosInstance from '../../utils/axiosInterceptor/axiosInterceptor';
-import { Link } from 'react-router-dom';
+
 import TextInput from '../../components/TextInput';
 import { getCookie } from '../../utils/Cookies/Cookies';
 //img
@@ -50,26 +56,30 @@ const Mypage = () => {
     }
   };
   return (
-    <>
-      <MyPageHeaer>My Page</MyPageHeaer>
+    <MypageHeader>
+      <MyPageHeader>My Page</MyPageHeader>
       <TopEmptyBox/>
         <UserInfoContainer>
-            <div>
+            <UserContainer>
               <MyPageImg>
                 <img src={userInfo} alt="" />
               </MyPageImg>
-              <div>
-                <div>
-                  <img src="" alt="" />
-                </div>
-                <div>
-                  감흥없는 김밥
-                </div>
-              </div>
-              <div>
-                의료IT공학과 3학년
-              </div>
-            </div>
+                <UserInfo>
+                  <UsernickBox>
+                  <UserLevelBox>
+                    <img src={userInfo} alt="" width="25"/>
+                  </UserLevelBox>
+                  <UserNick>
+                    감흥없는 김밥
+                  </UserNick>
+                  </UsernickBox>  
+                  <DepartGradeBox>
+                  <div>
+                    의료IT공학과 3학년
+                  </div>
+                  </DepartGradeBox>
+                </UserInfo> 
+            </UserContainer>
         </UserInfoContainer>
       <Ul>
         <MyPageList>
@@ -107,7 +117,7 @@ const Mypage = () => {
         onClick={handleChangeNickName}>
         변경
       </button>
-    </>
+    </MypageHeader>
   );
 }
 
