@@ -4,7 +4,7 @@ import closeeye from '../assets/closeEye.png';
 import fillStar from '../assets/FillStar.png';
 import camera from '../assets/camera.png'
 import picture from '../assets/picture.png';
-import Send from '../assets/send.png';
+import Send from '../assets/send.svg';
 
 //Bottom
 export const BottomFix = styled.div`
@@ -172,6 +172,15 @@ export const LikeContainer = styled.div`
   gap: 5px;
 `;
 
+export const CommunityLikeContainer = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 20px;
+  line-height: 20px;
+  gap: 5px;
+`;
+
 export const LikeImg = styled.img`
   width: 14px;
   height: 14px;
@@ -197,6 +206,15 @@ export const ChatContainer = styled.div`
   gap: 5px;
 `;
 
+export const CommunityChatContainer = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 20px;
+  line-height: 20px;
+  gap: 5px;
+`;
+
 export const CommunityDateContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -207,8 +225,6 @@ export const CommunityDateContainer = styled.div`
   line-height: 20px;
   gap: 5px;
 `
-
-
 
 //BodySection
 export const CameraButtonContainer = styled.div`
@@ -384,6 +400,8 @@ export const CommunityBodyContainer = styled.div`
   width: 830px;
   height: 79%;
   margin: 0 auto;
+  overflow-y: scroll;
+  overflow-x: hidden;
 `;
 
 export const CommunityContent = styled.div`
@@ -502,8 +520,7 @@ export const TextBox = styled.div`
 
 export const Textarea = styled.textarea`
   width: 760px;
-  max-height: 120px; /* 3 lines * 40px per line */
-  height: 40px;
+  min-height: 40px; 
   line-height: 40px;
   font-size: 18px;
   padding-left: 10px;
@@ -513,7 +530,6 @@ export const Textarea = styled.textarea`
   border: none;
   overflow-y: auto;
 `;
-
 
 export const TextImg = styled.button`
   display: inline-block;
@@ -525,4 +541,11 @@ export const TextImg = styled.button`
   background-repeat: no-repeat;
   background-position: center center;
   background-color: #fff;
+`;
+
+export const CommentContainer = styled.div`
+  width: 760px;
+  border-radius: 10px;
+  background-color: #D9D9D9;
+  padding: 15px;
 `;

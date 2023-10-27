@@ -15,13 +15,20 @@ import {
   CommentBox,
   TextBox,
   TextImg,
+  CommunityLikeContainer,
+  LikeImg,
+  LikeContent,
+  ChatImg,
+  CommunityChatContainer,
+  ChatContent,
+  CommentContainer,
 } from './style'
 import React from "react";
 import { useRef } from 'react';
 //img
 import Like from '../assets/like.png';
 import Star from '../assets/FillStar.png';
-import Send from '../assets/send.png';
+import Chat from '../assets/chat.png';
 
 const CommunityBodySection = (props) => {
 
@@ -65,12 +72,26 @@ const CommunityBodySection = (props) => {
           </LikeChatBox>
           <InputChatBox>
             <CommentBox>
-              <div>좋아요 1개</div>
+              <CommunityLikeContainer>
+                <LikeImg src={Like} alt="좋아요 버튼"/>
+                <LikeContent>
+                    좋아요 {props.like}개
+                </LikeContent>
+              </CommunityLikeContainer>  
               <TextBox>
-                <Textarea ref={textarea} onChange={handleResizeHeight} rows="1" placeholder='댓글을 작성해 주세요'></Textarea>
+                <Textarea ref={textarea} onChange={handleResizeHeight} placeholder='댓글을 작성해 주세요'></Textarea>
                 <TextImg alt="댓글 보내는 버튼">
                 </TextImg>
               </TextBox>
+              <CommunityChatContainer>
+                <ChatImg src={Chat} alt="댓글 버튼" width="14"/>
+                <ChatContent>
+                  전체 댓글 {props.chat}개
+                </ChatContent>
+              </CommunityChatContainer>
+              <CommentContainer>
+                스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 
+              </CommentContainer>
             </CommentBox>
           </InputChatBox>
         </CommunityBodyContainer>
