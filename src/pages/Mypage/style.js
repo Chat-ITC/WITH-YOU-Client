@@ -1,5 +1,17 @@
 import styled from 'styled-components';
 
+export const MypageContainer = styled.div`
+  height: 100%;
+  overscroll-behavior-y: none;
+  position: fixed;
+  top:0; bottom: 0;
+  left:0; right:0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const MyPageHeader = styled.div`
   display: flex;
   justify-content: center;
@@ -19,12 +31,6 @@ export const TopEmptyBox = styled.div`
   height: 65px;
 `;
 
-//MyPage
-export const MypageHeader = styled.div`
-  width: 600px;
-  margin: 0 auto;
-`;
-
 //UserInfo
 export const UserInfoContainer = styled.div`
   display: flex;
@@ -32,6 +38,21 @@ export const UserInfoContainer = styled.div`
   justify-Content: center;
   align-Items: center;
   margin-top: 50px;
+  `;
+
+export const UserContainer = styled.div`
+  display: flex;
+  width: 225px;
+  gap: 15px;
+  `;
+
+export const MyPageImg = styled.div`
+  width: 55px;
+  height: 55px;
+  display: flex;
+  flex-Direction: column;
+  justify-Content: center;
+  align-Items: center;
 `;
 
 export const UserInfo = styled.div`
@@ -41,21 +62,15 @@ export const UserInfo = styled.div`
   padding: 5px 0;
 `;
 
-export const UserContainer = styled.div`
-  display: flex;
-  width: 225px;
-  gap: 15px;
-`;
-
 export const UsernickBox = styled.div`
   display: flex;
   gap: 10px;
 `;
 
-export const MajorGrade = styled.div`
-  font-size: 14px;
+export const UserNick = styled.span`
+  font-size: 16px;
+  line-height: 24px;
   font-weight: bold;
-  color: #898989;
 `;
 
 export const UserCrownBox = styled.div`
@@ -64,10 +79,10 @@ export const UserCrownBox = styled.div`
   height: 20px;
 `;
 
-export const UserNick = styled.span`
-  font-size: 16px;
-  line-height: 24px;
+export const MajorGrade = styled.div`
+  font-size: 14px;
   font-weight: bold;
+  color: #898989;
 `;
 
 export const UserLevelBox = styled.div`
@@ -84,6 +99,7 @@ export const UserLevel = styled.span`
   color: #8D8D8D;
 `;
 
+//UL
 export const Ul = styled.ul`
   display: flex;
   flex-Direction: column;
@@ -96,15 +112,6 @@ export const MyPageList = styled.li`
   display: flex;
   gap: 20px;
   margin: 20px 0;
-`;
-
-export const MyPageImg = styled.div`
-  width: 55px;
-  height: 55px;
-  display: flex;
-  flex-Direction: column;
-  justify-Content: center;
-  align-Items: center;
 `;
 
 export const ImgText = styled.div`
