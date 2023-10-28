@@ -521,7 +521,7 @@ export const CommunityBody = styled.div`
 
 export const LikeChatBox = styled.div`
   width: 790px;
-  padding: 0 20px;
+  padding: 40px 20px 0;
   height: 40px;
   display: flex;
   justify-content: center;

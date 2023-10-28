@@ -64,7 +64,9 @@ const Writing = () => {
       </WritingHeaderTop>
       <TitleInput type="text" placeholder='제목'/>
       <ContentInput type="text" placeholder='내용을 입력해 주세요' rows="10"/>
-      <ImgFileBox>
+      <ImgFileBox style={{
+        backgroundColor: fileURL.length === 0 ? '#fff' : '#EBEBEB'
+      }}>
         {fileURL.map((image, id) => (
         <div key={id} style={{display: 'flex'}}>
           <ImgItem src={image} alt={`${image}-${id}`} />
