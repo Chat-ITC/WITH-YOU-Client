@@ -9,11 +9,9 @@ import {
 } from './style';
 
 //library
-import React, { useState } from 'react';
+import React from 'react';
 
 const CameraItem = (props) => {
-    const [scrapState, setScrapState] = useState(props.$scrap);
-
     return (
         <>
             {(props.title.includes(props.searchWord) || props.body.includes(props.searchWord)) && (
@@ -26,7 +24,7 @@ const CameraItem = (props) => {
                     </CameraItemBody>
                     <CameraItemBottom>
                         <CameraDateContainer>
-                            <CameraItemScrap $done={scrapState} />
+                            <CameraItemScrap $done={props.$scrap} />
                             {props.date}
                         </CameraDateContainer>
                     </CameraItemBottom>

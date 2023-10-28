@@ -15,12 +15,12 @@ const RequestCheckBox = ({content, id}) => {
     setIsCheck(!isCheck);
   }
   return(
-    <ItemContainer>
+    <ItemContainer
+    onClick={imgHandler} >
       <TextContent>{content}</TextContent>
       <img 
       src={isCheck ? checkBoxImg : UnCheckBoxImg} 
       alt="체크 버튼" 
-      onClick={imgHandler} 
       width="25px"
       height="25px"/>
     </ItemContainer>

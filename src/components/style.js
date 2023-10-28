@@ -75,7 +75,7 @@ export const CameraItemScrap = styled.div`
   background-repeat: no-repeat;
   background-size: contain;
   background-image: none;
-  ${props => props.$done && css`
+  ${props => props.$done === "YES" && css`
         background-image: url(${fillStar});
         width: 16px;
         height: 16px;
@@ -453,7 +453,9 @@ export const Search = styled.img`
 export const ItemContainer = styled.div`
   display: flex;
   align-items: center;
-  padding: 16px 20px 16px 10px;
+  text-indent: 10px;
+  margin-left: -10px;
+  padding: 16px 20px 16px 0px;
   justify-content: space-between;
   border-bottom: 1px solid rgba(0, 0, 0, 0.20);
 `;
