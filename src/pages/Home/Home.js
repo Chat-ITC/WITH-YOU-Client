@@ -8,7 +8,7 @@ import {
   FromBox,
 } from './style';
 //library
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 //components
 import CameraHeader from '../../components/CameraHeader';
