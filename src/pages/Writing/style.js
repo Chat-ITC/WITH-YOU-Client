@@ -91,8 +91,32 @@ export const ContentInput = styled.textarea`
   line-height: 24px;
   color: #000;
   width: 97%;
-  height: 68%;
   vertical-align: top;
   border: none;
   outline: none;
+`;
+
+export const ImgFileBox = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 20px;
+  gap: 10px;
+  background-color: #EBEBEB;
+  overflow-x: scroll;
+`;
+
+export const ImgItem = styled.img`
+  width: 200px;
+  height: 200px;
+  border-radius: 10px;
+`;
+
+export const ImgDelete = styled.img`
+  width: 15px;
+  height: 15px;
+  position: relative;
+  top: 5px;
+  right: 22px;
+  opacity: 0.8;
 `;

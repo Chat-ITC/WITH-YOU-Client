@@ -67,7 +67,6 @@ const CameraHeader = () => {
         <div>
             <img src={setting} alt="세팅 버튼" width="35"/>
             <Setting>
-              <Option value=""></Option>
               <Option value="titleChange">이름 변경하기</Option>
               <Option value="copy">본문 복사하기</Option>
               <Option value="delete">삭제하기</Option>

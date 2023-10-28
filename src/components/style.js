@@ -6,6 +6,7 @@ import camera from '../assets/camera.png'
 import picture from '../assets/picture.png';
 import Send from '../assets/send.svg';
 
+
 //Bottom
 export const BottomFix = styled.div`
   position: fixed;
