@@ -81,13 +81,6 @@ export const CameraItemScrap = styled.div`
     `}
 `
 
-export const DateContainer = styled.div`
-  color: grey;
-  font-size: 12px;
-  height: 12px;
-  margin: 2px 0px 1px 0px;
-`
-
 //CommunityItem
 export const CommunityItemContainer = styled.div`
   width: 300px;
@@ -217,6 +210,17 @@ export const CommunityChatContainer = styled.div`
 `;
 
 export const CommunityDateContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: grey;
+  font-size: 12px;
+  height: 20px;
+  line-height: 20px;
+  gap: 5px;
+`
+
+export const CameraDateContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
