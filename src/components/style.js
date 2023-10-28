@@ -167,6 +167,7 @@ export const LikeContainer = styled.div`
 `;
 
 export const CommunityLikeContainer = styled.div`
+  margin-left: 15px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -532,6 +533,8 @@ export const LikeChatBox = styled.div`
 export const LikeBtn = styled.button`
   width: 120px;
   height: 40px;
+  display: flex;
+  justify-content: center;
   font-size: 20px;
   font-weight: bold;
   border: none;
@@ -570,8 +573,6 @@ export const InputChatBox = styled.div`
 `;
 
 export const CommentBox = styled.div`
-  padding: 10px;
-  margin: 0 auto;
   width: 780px;
   display: flex;
   flex-direction: column;
@@ -579,6 +580,7 @@ export const CommentBox = styled.div`
 `;
 
 export const TextBox = styled.div`
+  margin-left: 15px;
   width: 800px;
   height: 45px;
   border-radius: 10px;
@@ -629,7 +631,7 @@ export const ChatUser = styled.span`
   padding: 0 5px;
 `;
 
-export const ChatUserGrade = styled.span`
+export const ChatUserMajor = styled.span`
   font-size: 16px;
   font-weight: bold;
   padding: 0 5px;
@@ -639,8 +641,10 @@ export const ChatUserGrade = styled.span`
 export const ChatBody = styled.div`
   font-size: 16px;
   padding: 3px 0;
+  margin: 3px 0;
 `;
 
 export const ChatDate = styled.div`
   font-size: 14px;
+  color: #606060;
 `;

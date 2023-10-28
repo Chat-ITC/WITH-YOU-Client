@@ -23,7 +23,7 @@ import {
   ChatContent,
   CommentContainer,
   ChatUser,
-  ChatUserGrade,
+  ChatUserMajor,
   ChatBody,
   ChatDate,
 } from './style'
@@ -48,7 +48,7 @@ const CommunityBodySection = (props) => {
             <CommunityTitle>{props.title}</CommunityTitle>
             <UserData>
               <UserDataSpan>{props.nickname}</UserDataSpan>
-              <UserDataSpan>{props.department}</UserDataSpan>
+              <UserDataSpan>{props.major}</UserDataSpan>
               <UserDataSpan>{props.date}</UserDataSpan>
               <CommunityBody>
                 {props.body}
@@ -90,7 +90,7 @@ const CommunityBodySection = (props) => {
               </CommunityChatContainer>
               <CommentContainer>
                 <ChatUser>{props.nickname}</ChatUser>
-                <ChatUserGrade>{props.department}</ChatUserGrade>
+                <ChatUserMajor>{props.major}</ChatUserMajor>
                 <ChatBody>
                   프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 
                 </ChatBody>
@@ -98,7 +98,7 @@ const CommunityBodySection = (props) => {
               </CommentContainer>
               <CommentContainer>
                 <ChatUser>{props.nickname}</ChatUser>
-                <ChatUserGrade>{props.department}</ChatUserGrade>
+                <ChatUserMajor>{props.major}</ChatUserMajor>
                 <ChatBody>
                   프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 
                 </ChatBody>

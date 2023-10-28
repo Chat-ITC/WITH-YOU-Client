@@ -16,19 +16,22 @@ import React, { useState, useRef } from 'react';
 import Cropper from "react-cropper";
 import 'cropperjs/dist/cropper.css';
 import { useLocation, useNavigate } from "react-router-dom";
+import axiosInstance from '../../utils/axiosInterceptor/axiosInterceptor';
+
 //components
 import TopRightHeader from '../../components/Capture';
 import RequestCheckBox from '../../components/RequestCheckBox';
 
 const Capture = () => {
   const { state } = useLocation();
-  console.log('첨부된 파일 잘 받았다:', state);
 
   const [imagePath, setImagePath] = useState(state);
   const [croppedImage, setCroppedImage] = useState(""); // 추가: 크롭된 이미지 저장 상태
   const cropperRef = useRef(null);
   const calculatedHeight = window.innerHeight - 145;
 
+  //요구사항
+  const [question, setQuestion] = useState('이해하기 쉽게 설명해줘');
   //다시찍기 핸들러
   const fileInputRef = useRef(null);
   const captureAgainHandler = () => {
@@ -36,11 +39,36 @@ const Capture = () => {
       fileInputRef.current.click();
     }
   };
-  const handleFileChange= (e) => {
+  const handleFileChange = (e) => {
     const fileURL = URL.createObjectURL(e.target.files[0]);
     setImagePath(fileURL);
   }
 
+  //크롭한 이미지 저장
+  const formData = new FormData();
+  const getCropData = async () => {
+    if (cropperRef.current && cropperRef.current.cropper) {
+      setCroppedImage(cropperRef.current.cropper.getCroppedCanvas().toDataURL());
+
+      const croppedCanvas = cropperRef.current.cropper.getCroppedCanvas();
+      await croppedCanvas.toBlob((blob) => { 
+        // Blob을 파일로 변환하여 FormData에 추가
+        const croppedFile = new File([blob], 'croppedImage.png', { type: 'image/png' });
+        formData.append('imageFile', croppedFile);
+        formData.append('question', question);
+        sendFormDataRequest()
+      }, 'image/png');
+    }
+  };
+
+  const sendFormDataRequest = async () => {
+    try {
+      const response = await axiosInstance.post('/ai/question', formData);
+      console.log("전송 성공: ", response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -58,14 +86,15 @@ const Capture = () => {
           <input
             type="file"
             accept="image/*; capture=camera"
-            style={{ display: "none" }} 
-            ref={fileInputRef} 
+            style={{ display: "none" }}
+            ref={fileInputRef}
             onChange={handleFileChange}
           />
           <CameraAgainBtn onClick={captureAgainHandler}>다시 찍기</CameraAgainBtn>
         </div>
-        <CameraBtn>사진 분석</CameraBtn>
-
+        <CameraBtn
+          onClick={getCropData}
+        >사진 분석</CameraBtn>
         <BottomEmptyBox />
       </Aside>
       <Main>

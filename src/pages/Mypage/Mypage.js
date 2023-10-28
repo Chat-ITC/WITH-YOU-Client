@@ -21,6 +21,7 @@ import {
 import { useState } from 'react';
 import axios from 'axios';
 import axiosInstance from '../../utils/axiosInterceptor/axiosInterceptor';
+import { useNavigate } from "react-router-dom";
 
 import TextInput from '../../components/TextInput';
 import { getCookie } from '../../utils/Cookies/Cookies';
@@ -31,12 +32,12 @@ import inquiry from '../../assets/inquiry.png';
 import logout from '../../assets/logout.png';
 
 const Mypage = () => {
-
+  const navigate = useNavigate();
   const sampleJson = [
     {
       id: "1",
       nickname: "감흥없는 김밥",
-      department: "의료IT공학과",
+      major: "의료IT공학과",
       grade: 3,
       level: 36,
       levelgage: 80,
@@ -52,11 +53,12 @@ const Mypage = () => {
   const handleChangeNickName = async () => {
     const name = { nickName: nickName };
     try {
-      const response = await axiosInstance.patch('/member/update', name);
-      console.log('닉네임 변경 성공:', response.data);
+      await axiosInstance.patch('/member/update', name);
+      alert("닉네임이 성공적으로 변경되었습니다.");
 
     } catch (error) {
-      console.error('닉네임 변경 실패:', error);
+      alert("세션이 만료되었습니다. 다시 로그인해 주세요");
+      navigate("/");      
     }
   };
   return (
