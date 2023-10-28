@@ -81,13 +81,6 @@ export const CameraItemScrap = styled.div`
     `}
 `
 
-export const DateContainer = styled.div`
-  color: grey;
-  font-size: 12px;
-  height: 12px;
-  margin: 2px 0px 1px 0px;
-`
-
 //CommunityItem
 export const CommunityItemContainer = styled.div`
   width: 300px;
@@ -213,9 +206,21 @@ export const CommunityChatContainer = styled.div`
   height: 20px;
   line-height: 20px;
   gap: 5px;
+  margin-top: 25px;
 `;
 
 export const CommunityDateContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: grey;
+  font-size: 12px;
+  height: 20px;
+  line-height: 20px;
+  gap: 5px;
+`
+
+export const CameraDateContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -239,8 +244,8 @@ export const CameraButtonContainer = styled.div`
 export const CameraInput = styled.input`
   display: block;
   position: absolute;
-  width: 200px;
-  height: 200px;
+  width: 50px;
+  height: 65px;
   opacity: 0;
 `;
 
@@ -269,6 +274,20 @@ export const CameraHeaderTop = styled.div`
   height: 65px;
   padding: 0 20px;
   background-color: #FFC1C1;
+  transition: all 350ms;
+`;
+
+export const ScrapHeaderTop = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top:0;
+  right:0;
+  left: 300px;
+  height: 65px;
+  padding: 0 20px;
+  background-color: #FFE2AB;
   transition: all 350ms;
 `;
 
@@ -316,6 +335,23 @@ export const Setting = styled.select`
   opacity: 0;
 `;
 
+export const Option = styled.option`
+  display: none;
+`;
+
+export const SelectOptions = styled.ul`
+  position: absolute;
+  list-style: none;
+  top: -10px;
+  right: 0;
+  width: 35px;
+  height: 60px;
+  max-height: ${(props) => (props.show ? "none" : "0")};
+  padding: 0;
+  border-radius: 8px;
+  background-color: #222222;
+  color: #fefefe;
+`;
 
 //TextInput
 export const InputIdContainer = styled.div`
@@ -419,7 +455,7 @@ export const TextContent = styled.div`
 
 //CommunityBodySection
 export const CommunityBodyContainer = styled.div`
-  width: 830px;
+  width: 860px;
   height: 79%;
   margin: 0 auto;
   overflow-y: scroll;
@@ -459,10 +495,10 @@ export const UserDataSpan = styled.span`
   &:nth-child(2){
     color: #606060;
   }
-  &:last-child{
+  &:nth-child(3) {
     font-weight: 400;
-    &::after{
-      content: '';
+    &::after {
+      content: ''; /* 가상 요소의 content를 비워줌 */
     }
   }
 `;
@@ -542,15 +578,20 @@ export const TextBox = styled.div`
 
 export const Textarea = styled.textarea`
   width: 760px;
-  min-height: 40px; 
-  line-height: 40px;
-  font-size: 18px;
+  max-height: 5em; 
+  line-height: 1.8em;
+  font-size: 14px;
   padding-left: 10px;
   outline: none;
   background-color: #D9D9D9;
   border-radius: 10px;
   border: none;
   overflow-y: auto;
+  resize: none;
+  -ms-overflow-style:none;
+  &::-webkit-scrollbar{
+    display:none;
+  }
 `;
 
 export const TextImg = styled.button`

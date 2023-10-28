@@ -5,7 +5,7 @@ import {
     CameraItemScrap,
     CameraItemBody,
     CameraItemBottom,
-    DateContainer,
+    CameraDateContainer,
 } from './style';
 
 //library
@@ -25,10 +25,10 @@ const CameraItem = (props) => {
                     {props.body}
                 </CameraItemBody>
                 <CameraItemBottom>
-                    <CameraItemScrap $done={scrapState} />
-                    <DateContainer>
+                    <CameraDateContainer>
+                        <CameraItemScrap $done={scrapState} />
                         {props.date}
-                    </DateContainer>
+                    </CameraDateContainer>
                 </CameraItemBottom>
 
             </CameraItemContainer>

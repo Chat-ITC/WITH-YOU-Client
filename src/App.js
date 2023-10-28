@@ -12,6 +12,7 @@ import Login from './pages/Login/Login';
 import Mypage from './pages/Mypage/Mypage';
 import Scrap from './pages/Scrap/Scrap';
 import Capture from './pages/Capture/Capture';
+import Writing from './pages/Writing/Writing';
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
           <Route path="/join" element={<Join/>} />
           <Route path="/mypage" element={<Mypage/>} />
           <Route path="/scrap" element={<Scrap/>} />
+          <Route path="/writing" element={<Writing/>} />
         </Routes>
         <Bottom/>
       </Router>

@@ -26,9 +26,17 @@ const CommunityItem = (props) => {
     const [picture, setPicture] = useState(props.$picture);
     const [scrap, setScrap] = useState(props.$scrap);
 
+    const [bodyData, setBodyData] = useState("camera");
+
+    const bodySectionHandler = (props) => {
+        //목록에서 아이템 누를 시 서버로 id 전송후 데이터 받아오기 props: 아이디.
+        setBodyData(`아이템 아이디: ${props}`)
+    }
 
     return (
-        <div>
+        <div onClick={() => {
+            bodySectionHandler(props.id)
+            }}>
             <CommunityItemContainer>
                 <CommunityItemTopContainer>
                     <CommunityItemTitle>

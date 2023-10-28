@@ -1,17 +1,15 @@
 //style
 import { 
-  CameraHeaderTop,
   HeaderImgBox,
   Setting,
   ImgBtn,
-  CameraInput,
-  Option,
+  ScrapHeaderTop,
 } from './style';
 //library
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useState } from 'react';
 //library
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 //store.js에서 'toggleAsideVisibility'라는 액션을 import
 import { toggleAsideVisibility } from '../store';
 //img
@@ -21,18 +19,7 @@ import camera from '../assets/camera.png';
 import setting from '../assets/setting.png';
 
 
-const CameraHeader = () => {
-  const navigate = useNavigate();
-    //카메라
-    const handleFileChange = (e) => {
-    const fileURL = URL.createObjectURL(e.target.files[0]);
-    
-    if (fileURL) {
-        console.log("선택한 파일(홈페이지):", fileURL);
-        // 파일을 전달하고 다른 페이지로 이동
-        navigate("/capture", { state: fileURL });
-        }
-    };
+const ScrapHeader = () => {
   //화면 크기 전환
   const [fullScreen, setFullScreen] = useState(false);
   function ScreenHandler(){
@@ -49,33 +36,31 @@ const CameraHeader = () => {
   };
 
   return (
-    <CameraHeaderTop style={{ left: isAsideVisible ? '0' : '300px' }}>
+    <ScrapHeaderTop style={{ left: isAsideVisible ? '0' : '300px' }}>
       <img src={fullScreen ? screenSplit : zoom} alt="화면 전환 버튼"  onClick={()=>{
         AsideHandler();
         ScreenHandler();
       }}/>
       <HeaderImgBox>
-        <CameraInput 
-          type="file"
-          accept="image/*; capture=camera"
-          onChange={handleFileChange}/>
+        <Link to="/capture">
           <ImgBtn
             src={camera}
             alt="홈"
             style={{ opacity: 1 }}
+            color="1"
           />
+        </Link>
         <div>
             <img src={setting} alt="세팅 버튼" width="35"/>
             <Setting>
-              <Option value="" selected></Option>
-              <Option value="titleChange">이름 변경하기</Option>
-              <Option value="copy">본문 복사하기</Option>
-              <Option value="delete">삭제하기</Option>
+              <option value="titleChange">이름 변경하기</option>
+              <option value="copy">본문 복사하기</option>
+              <option value="delete">삭제하기</option>
             </Setting>
         </div>
       </HeaderImgBox>
-    </CameraHeaderTop>
+    </ScrapHeaderTop>
   );
 };
 
-export default CameraHeader;
+export default ScrapHeader;

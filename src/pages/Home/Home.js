@@ -108,17 +108,15 @@ const Home = () => {
             />
           </div>
         ))}
-        <BottomEmptyBox>
-        </BottomEmptyBox>
+        <BottomEmptyBox/>
       </Aside>
       <Main style={{ left: isAsideVisible ? '0' : '300px' }}>
-        <CameraHeader></CameraHeader>
+        <CameraHeader/>
         <TopEmptyBox />
         <CameraBodySection
           bodyData={bodyData}
         />
-        <BottomEmptyBox>
-        </BottomEmptyBox>
+        <BottomEmptyBox/>
       </Main>
     </>
   );
