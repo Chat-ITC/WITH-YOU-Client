@@ -530,11 +530,12 @@ export const LikeChatBox = styled.div`
   gap: 40px;
 `;
 
-export const LikeBtn = styled.button`
-  width: 120px;
-  height: 40px;
+export const LikeBtn = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 40px;
   font-size: 20px;
   font-weight: bold;
   border: none;
@@ -543,7 +544,10 @@ export const LikeBtn = styled.button`
   color: #D7443E;
 `;
 
-export const ScrapBtn = styled.button`
+export const ScrapBtn = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 120px;
   height: 40px;
   font-size: 20px;
@@ -555,10 +559,10 @@ export const ScrapBtn = styled.button`
 `;
 
 export const BtnImg = styled.img`
-  display: inline-block;
   width: 20px;
   height: 20px;
-  margin-right: 5px;
+ 
+  margin-right: 8px;
 `;
 
 export const BtnText = styled.div`
