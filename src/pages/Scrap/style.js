@@ -65,3 +65,33 @@ export const Main = styled.div`
   transition: all 350ms;
 `;
 
+export const BtnBox = styled.div`
+  width: 300px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+`;
+
+export const ActiveBtn = styled.button`
+  display: block;
+  width: 120px;
+  height: 50px;
+  border-radius: 20px;
+  background-color: #FDC674;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+`;
+
+export const UnActiveBtn = styled.button`
+  display: block;
+  width: 119px;
+  height: 49px;
+  border: 1px solid #FDC674;
+  border-radius: 20px;
+  background-color: #fff;
+  color: #FDC674;
+  font-size: 16px;
+  font-weight: bold;
+`;

@@ -6,6 +6,9 @@ import {
   TopEmptyBox,
   TopLeftHeader,
   FromBox,
+  BtnBox,
+  ActiveBtn,
+  UnActiveBtn,
 } from './style';
 //library
 import React, { useState } from 'react';
@@ -67,6 +70,10 @@ const Home = () => {
         <TopEmptyBox></TopEmptyBox>
         <TopLeftHeader>Scrap</TopLeftHeader>
         <FromBox><Search/></FromBox>
+        <BtnBox>
+          <ActiveBtn>히스토리</ActiveBtn>
+          <UnActiveBtn>커뮤니티</UnActiveBtn>
+        </BtnBox>
         {cameraListData.map((sample, index) => (
           <div
             onClick={() => {
