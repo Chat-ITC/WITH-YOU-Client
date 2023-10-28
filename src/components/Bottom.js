@@ -16,6 +16,7 @@ const Bottom = () => {
   //현재 경로 가져오기
   const location = useLocation();
   const isActive = (path) => {
+    //`location.pathname`은 ReactRouter 라이브러리에서 제공되는 특별한 변수로 웹 페이지의 경로를 나타냄
     return location.pathname === path;
   };
   return (
