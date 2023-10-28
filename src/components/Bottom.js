@@ -29,7 +29,10 @@ const Bottom = () => {
                 src={Home}
                 alt="홈"
                 /*isActive가 true이면 1 false이면 0.3*/
-                style={{ opacity: isActive("/home") || isActive("/capture") ? 1 : 0.3 }}
+                style={{ 
+                  opacity: isActive("/home") || isActive("/capture") ? 1 : 0.3,
+                  color: isActive("/home") || isActive("/capture") ? '#F07878' : '#000',
+                }}
               />
             </li>
         </NavLink>

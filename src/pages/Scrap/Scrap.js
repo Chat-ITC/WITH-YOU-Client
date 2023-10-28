@@ -19,7 +19,8 @@ import { useSelector } from 'react-redux';
 import ScrapHeader from '../../components/ScrapHeader';
 import CameraItem from '../../components/CameraItem';
 import Search from '../../components/SearchInput';
-import CameraBodySection from '../../components/CameraBodySection';
+import LogoBody from '../../components/LogoBody';
+import CommunityItem from '../../components/CommunityItem';
 
 const Home = () => {
   const isAsideVisible = useSelector((state) => state.visibility.isAsideVisible);
@@ -46,7 +47,7 @@ const Home = () => {
   const communityRadio = () => {
     setHistoryToggle(false);
     setCommunityToggle(true);
-    setCameraListData(sampleJsonCommunity);
+    setCommunityListData(sampleJsonCommunity);
   };
 
 
@@ -104,10 +105,9 @@ const Home = () => {
       major: "의료IT공학과",
       title: "운영체제 스레드 부분 궁금한 거 있어요",
       picture: true,
-      body: "대양 대순환 해류의 1만년 주기적인 변화는 여러 자연적인 요인과 연관되어 있습니다. 이러한 주기적인 변화는 미소록 주기라고도 불리며, 기후 시스템에서 중요한 역할을 합니다.",
+      body: "대양 대순환 해류의 1만년 주기적인 변화는 여러 자연적인 요인과 연관되어 있습니다. 이러한 주기적인 변화는 미소록 주기라고도 불리며, 기후 시스템에서 중요한 역할을 합니다.대양 대순환 해류의 1만년 주기적인 변화는 여러 자연적인 요인과 연관되어 있습니다. 이러한 주기적인 변화는 미소록 주기라고도 불리며, 기후 시스템에서 중요한 역할을 합니다.대양 대순환 해류의 1만년 주기적인 변화는 여러 자연적인 요인과 연관되어 있습니다. 이러한 주기적인 변화는 미소록 주기라고도 불리며, 기후 시스템에서 중요한 역할을 합니다.",
       like: 3,
-      chat: 1
-      ,
+      chat: 1,
       scrap: true,
       date: "10/25",
     },
@@ -119,14 +119,14 @@ const Home = () => {
       picture: true,
       body: "머신러닝 이번주 수업 안 들어서 하나도 모르는 데 경사하강법 부분 진짜 무슨 말인지 하나도 이해가 안되네요.. 혹시 친절하게 설명해주실 수 있는 분 계신가요..?",
       like: 5,
-      chat: 1
-      ,
+      chat: 1,
       scrap: true,
       date: "10/28",
     },
   ];
 
   const [cameraListData, setCameraListData] = useState(sampleJsonHistory);
+  const [communityListData, setCommunityListData] = useState(sampleJsonCommunity);
 
   return (
     <>
@@ -151,7 +151,7 @@ const Home = () => {
             </RadioText>
           </CommunityBtn>
         </BtnBox>
-        {cameraListData.map((sample, index) => (
+        {historyToggle ? cameraListData.map((sample, index) => (
           <div
             onClick={() => {
               bodySectionHandler(sample.id)
@@ -166,14 +166,32 @@ const Home = () => {
               $scrap={sample.scrap}
             />
           </div>
-        ))}
-        <BottomEmptyBox>
-        </BottomEmptyBox>
+        )) : communityListData.map((sample, index) => (
+          <div
+            onClick={() => {
+              bodySectionHandler(sample.id)
+            }}
+            key={index}>
+            <CommunityItem
+              searchWord={searchWord}
+              key={index}
+              title={sample.title}
+              $picture={sample.picture}
+              body={sample.body}
+              like={sample.like}
+              chat={sample.chat}
+              $scrap={sample.scrap}
+              date={sample.date}
+            />
+          </div>
+        ))
+      };
+        <BottomEmptyBox/>
       </Aside>
       <Main style={{ left: isAsideVisible ? '0' : '300px' }}>
         <ScrapHeader />
         <TopEmptyBox />
-        <CameraBodySection
+        <LogoBody
           bodyData={bodyData}
         />
         <BottomEmptyBox />
