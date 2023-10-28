@@ -557,9 +557,9 @@ export const TextBox = styled.div`
 
 export const Textarea = styled.textarea`
   width: 760px;
-  max-height: 4.2em; 
-  line-height: 1.5em;
-  font-size: 18px;
+  max-height: 5em; 
+  line-height: 1.8em;
+  font-size: 14px;
   padding-left: 10px;
   outline: none;
   background-color: #D9D9D9;
