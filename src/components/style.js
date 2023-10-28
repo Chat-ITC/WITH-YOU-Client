@@ -369,6 +369,7 @@ export const InputIdContainer = styled.div`
   height: 43px;
   border: 1px solid #bababa;
   border-radius: 5px;
+  margin-bottom: 7px;
 `;
 
 export const InputId = styled.input`
