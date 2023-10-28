@@ -43,6 +43,19 @@ export const WritingHeaderTop = styled.div`
   border-bottom: 1px solid #bababa;
 `;
 
+export const WritingSet = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+`;
+
+export const FileImg = styled.img`
+  margin-top: 5px;
+  width: 25px;
+  height: 25px;
+`;
+
 export const WritingBtn = styled.div`
   background-color: #fff;
   padding: 12px;
@@ -50,6 +63,11 @@ export const WritingBtn = styled.div`
   border-radius: 20px;
   font-size: 16px;
   font-weight: bold;
+`;
+
+export const File = styled.input`
+  background-image: url({file});
+  background-color: yellow;
 `;
 
 //input
