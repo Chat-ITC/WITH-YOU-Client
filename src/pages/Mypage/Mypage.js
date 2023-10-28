@@ -21,6 +21,8 @@ import {
 //library
 import { useState } from 'react';
 import { getCookie } from '../../utils/Cookies/Cookies';
+import { useNavigate } from "react-router";
+import axiosInstance from '../../utils/axiosInterceptor/axiosInterceptor';
 //img
 import userInfo from '../../assets/userInfo.png';
 import nameChange from '../../assets/nameChange.png';
@@ -34,6 +36,7 @@ import Crown4 from '../../assets/crown4.png';
 import MyModal from './MyModal';
 
 const Mypage = () => {
+  const navigate = useNavigate();
 
   const sampleJson = [
     {
@@ -47,9 +50,18 @@ const Mypage = () => {
   ];
 
   //logout
-  function Logout(){
+  const Logout = async () => {
     console.log("로그아웃");
-  }
+    try{
+      await axiosInstance.post('', null);
+      alert("로그아웃 완료");
+      navigate("/");
+    }catch (error){
+      alert("로그아웃 실패. 로그인 화면으로 돌아갑니다.");
+      navigate("/");
+    }
+  };
+  
   //modal
     const [isOpen, setIsOpen] = useState(false);
   function handleOpenModal(){
