@@ -1,4 +1,8 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+
+//img
+import scrapRadioOn from '../../assets/scrapRadioON.svg'
+import scrapRadioOFF from '../../assets/scrapRadioOFF.svg'
 
 export const Aside = styled.div`
   overscroll-behavior-y: none;
@@ -68,30 +72,45 @@ export const Main = styled.div`
 export const BtnBox = styled.div`
   width: 300px;
   height: 50px;
+  margin-top: 5px;
+  margin-bottom: -15px;
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 30px;
 `;
 
-export const ActiveBtn = styled.button`
-  display: block;
-  width: 120px;
-  height: 50px;
-  border-radius: 20px;
-  background-color: #FDC674;
-  color: #fff;
-  font-size: 16px;
-  font-weight: bold;
-`;
-
-export const UnActiveBtn = styled.button`
-  display: block;
-  width: 119px;
-  height: 49px;
-  border: 1px solid #FDC674;
-  border-radius: 20px;
-  background-color: #fff;
+export const HistoryBtn = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 111px;
+  height: 37px;
   color: #FDC674;
-  font-size: 16px;
-  font-weight: bold;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image:  url(${scrapRadioOFF});
+  ${props => props.$done && css`
+    color: white;
+    background-image: url(${scrapRadioOn});
+  `}
 `;
+
+export const CommunityBtn = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 111px;
+  height: 37px;
+  color: #FDC674;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image:  url(${scrapRadioOFF});
+  ${props => props.$done && css`
+    color: white;
+    background-image:  url(${scrapRadioOn});
+  `}
+`;
+
+export const RadioText = styled.span`
+  text-indent: 14px;
+  margin: 8px 0 3px 0;
+  font-size: 16px;
+`

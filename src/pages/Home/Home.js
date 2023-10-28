@@ -78,14 +78,9 @@ const Home = () => {
       date: "10/26",
       scrap: false
     },
-
   ];
   
   const [cameraListData,setCameraListData] = useState(sampleJson);
-
-  
-
-
 
   return (
     <>
