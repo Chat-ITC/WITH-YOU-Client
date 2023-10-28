@@ -89,20 +89,12 @@ const CommunityBodySection = (props) => {
                 </ChatContent>
               </CommunityChatContainer>
               <CommentContainer>
-                <ChatUser>{props.nickname}</ChatUser>
-                <ChatUserMajor>{props.major}</ChatUserMajor>
+                <ChatUser>{props.commentnickname}</ChatUser>
+                <ChatUserMajor>{props.commentmajor}</ChatUserMajor>
                 <ChatBody>
-                  프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 
+                  {props.commentbody}
                 </ChatBody>
-                <ChatDate>{props.date}</ChatDate>
-              </CommentContainer>
-              <CommentContainer>
-                <ChatUser>{props.nickname}</ChatUser>
-                <ChatUserMajor>{props.major}</ChatUserMajor>
-                <ChatBody>
-                  프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 프로세스의스레드는 
-                </ChatBody>
-                <ChatDate>{props.date}</ChatDate>
+                <ChatDate>{props.commentdate}</ChatDate>
               </CommentContainer>
             </CommentBox>
           </InputChatBox>
