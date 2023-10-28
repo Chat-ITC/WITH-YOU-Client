@@ -621,7 +621,7 @@ export const Textarea = styled.textarea`
   }
 `;
 
-export const TextImg = styled.button`
+export const TextImg = styled.div`
   display: inline-block;
   width: 35px;
   height: 35px;

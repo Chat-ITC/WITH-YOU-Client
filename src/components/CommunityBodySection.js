@@ -33,6 +33,7 @@ import { useRef, useState } from 'react';
 import Like from '../assets/like.png';
 import Star from '../assets/FillStar.svg';
 import Chat from '../assets/chat.png';
+import axiosInstance from '../utils/axiosInterceptor/axiosInterceptor';
 
 const CommunityBodySection = (props) => {
   //댓글 입력
@@ -41,13 +42,21 @@ const CommunityBodySection = (props) => {
   //useRef를 이용해 높이를 조절하고자 하는 textarea 엘리먼트에 ref를 지정해 style 조절
   const textarea = useRef();
 
-  const handleResizeHeight = (ref) => {
-    console.log(`댓글 확인: ${ref.target.value}`);
+  const handleSend = async () => {
+    try{
+      const response = await axiosInstance.post('', comment);
+      console.log('댓글 확인: ', response);
+    }catch (error) {
+      console.log(error);
+    }
+  }
 
+  const handleResizeHeight =  (e) => {
+    setComment(e.target.value);
 
     textarea.current.style.height = 'auto';//height 초기화
     textarea.current.style.height = textarea.current.scrollHeight + 'px';
-  }
+  };
     return (
         <CommunityBodyContainer>
           <CommunityContent>
@@ -84,9 +93,10 @@ const CommunityBodySection = (props) => {
                 </LikeContent>
               </CommunityLikeContainer>  
               <TextBox>
-                <Textarea ref={textarea} onChange={handleResizeHeight} placeholder='댓글을 작성해 주세요'></Textarea>
-                <TextImg alt="댓글 보내는 버튼">
-                </TextImg>
+                <Textarea ref={textarea} onChange={(e) => {
+                  handleResizeHeight(e)
+                }} placeholder='댓글을 작성해 주세요' value={comment}></Textarea>
+                <TextImg alt="댓글 보내는 버튼" onClick={handleSend}/>
               </TextBox>
               <CommunityChatContainer>
                 <ChatImg src={Chat} alt="댓글 버튼" width="14"/>
