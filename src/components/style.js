@@ -244,6 +244,14 @@ export const CameraButtonContainer = styled.div`
 export const CameraInput = styled.input`
   display: block;
   position: absolute;
+  width: 200px;
+  height: 200px;
+  opacity: 0;
+`;
+
+export const CameraTopInput = styled.input`
+  display: block;
+  position: absolute;
   width: 50px;
   height: 65px;
   opacity: 0;

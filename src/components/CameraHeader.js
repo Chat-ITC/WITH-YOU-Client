@@ -4,7 +4,7 @@ import {
   HeaderImgBox,
   Setting,
   ImgBtn,
-  CameraInput,
+  CameraTopInput,
   Option,
 } from './style';
 //library
@@ -55,7 +55,7 @@ const CameraHeader = () => {
         ScreenHandler();
       }}/>
       <HeaderImgBox>
-        <CameraInput 
+        <CameraTopInput 
           type="file"
           accept="image/*; capture=camera"
           onChange={handleFileChange}/>

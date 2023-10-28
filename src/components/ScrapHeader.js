@@ -2,20 +2,17 @@
 import { 
   HeaderImgBox,
   Setting,
-  ImgBtn,
   ScrapHeaderTop,
 } from './style';
 //library
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useState } from 'react';
 //library
-import { Link } from "react-router-dom";
 //store.js에서 'toggleAsideVisibility'라는 액션을 import
 import { toggleAsideVisibility } from '../store';
 //img
 import screenSplit from '../assets/screen-split.svg';
 import zoom from '../assets/zoom.svg';
-import camera from '../assets/camera.png';
 import setting from '../assets/setting.png';
 
 
@@ -42,14 +39,6 @@ const ScrapHeader = () => {
         ScreenHandler();
       }}/>
       <HeaderImgBox>
-        <Link to="/capture">
-          <ImgBtn
-            src={camera}
-            alt="홈"
-            style={{ opacity: 1 }}
-            color="1"
-          />
-        </Link>
         <div>
             <img src={setting} alt="세팅 버튼" width="35"/>
             <Setting>
