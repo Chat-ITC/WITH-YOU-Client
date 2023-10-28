@@ -244,8 +244,8 @@ export const CameraButtonContainer = styled.div`
 export const CameraInput = styled.input`
   display: block;
   position: absolute;
-  width: 200px;
-  height: 200px;
+  width: 50px;
+  height: 65px;
   opacity: 0;
 `;
 
@@ -335,6 +335,23 @@ export const Setting = styled.select`
   opacity: 0;
 `;
 
+export const Option = styled.option`
+  display: none;
+`;
+
+export const SelectOptions = styled.ul`
+  position: absolute;
+  list-style: none;
+  top: -10px;
+  right: 0;
+  width: 35px;
+  height: 60px;
+  max-height: ${(props) => (props.show ? "none" : "0")};
+  padding: 0;
+  border-radius: 8px;
+  background-color: #222222;
+  color: #fefefe;
+`;
 
 //TextInput
 export const InputIdContainer = styled.div`

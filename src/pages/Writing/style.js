@@ -9,6 +9,7 @@ export const WritingContainer = styled.div`
   height: 100%;
   right: 0;
   background-color:white;
+  z-index: 50;
   overflow-y: scroll;
   overflow-x: hidden;
   -ms-overflow-style:none;
