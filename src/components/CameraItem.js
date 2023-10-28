@@ -14,25 +14,26 @@ import React, { useState } from 'react';
 const CameraItem = (props) => {
     const [scrapState, setScrapState] = useState(props.$scrap);
 
-    
     return (
-        <div>
-            <CameraItemContainer>
-                <CameraItemTitle>
-                    {props.title}
-                </CameraItemTitle>
-                <CameraItemBody>
-                    {props.body}
-                </CameraItemBody>
-                <CameraItemBottom>
-                    <CameraDateContainer>
-                        <CameraItemScrap $done={scrapState} />
-                        {props.date}
-                    </CameraDateContainer>
-                </CameraItemBottom>
+        <>
+            {(props.title.includes(props.searchWord) || props.body.includes(props.searchWord)) && (
+                <CameraItemContainer>
+                    <CameraItemTitle>
+                        {props.title}
+                    </CameraItemTitle>
+                    <CameraItemBody>
+                        {props.body}
+                    </CameraItemBody>
+                    <CameraItemBottom>
+                        <CameraDateContainer>
+                            <CameraItemScrap $done={scrapState} />
+                            {props.date}
+                        </CameraDateContainer>
+                    </CameraItemBottom>
 
-            </CameraItemContainer>
-        </div>
+                </CameraItemContainer>
+            )}
+        </>
     );
 }
 

@@ -20,6 +20,8 @@ import Search from '../../components/SearchInput';
 const Community = () => {
   const isAsideVisible = useSelector((state) => state.visibility.isAsideVisible);
 
+  const [searchWord, setSearchWord] = useState('');
+
   const [bodyData, setBodyData] = useState("camera");
 
   const bodySectionHandler = (props) => {
@@ -61,7 +63,8 @@ const Community = () => {
       <Aside>
         <TopEmptyBox/>
         <TopLeftHeader>Community</TopLeftHeader>
-        <FromBox><Search/></FromBox>
+        <FromBox><Search
+         onDataSearch={(getData) => setSearchWord(getData)}/></FromBox>
         {sampleJson.map((sample, index) => (
           <div
             onClick={() => {
@@ -69,6 +72,7 @@ const Community = () => {
             }}
             key={index}>
             <CommunityItem
+              searchWord={searchWord}
               key={index}
               title={sample.title}
               $picture={sample.picture}
@@ -85,21 +89,18 @@ const Community = () => {
       <Main style={{ left: isAsideVisible ? '0' : '300px' }}>
         <CommunityHeader/>
         <TopEmptyBox />
-        {sampleJson.map((sample, index) => (
             <CommunityBodySection
-              key={index}
-              id={sample.id}
-              nickname={sample.nickname}
-              department={sample.department}
-              title={sample.title}
-              $picture={sample.picture}
-              body={sample.body}
-              like={sample.like}
-              chat={sample.chat}
-              $scrap={sample.scrap}
-              date={sample.date}
+              id={sampleJson[0].id}
+              nickname={sampleJson[0].nickname}
+              department={sampleJson[0].department}
+              title={sampleJson[0].title}
+              $picture={sampleJson[0].picture}
+              body={sampleJson[0].body}
+              like={sampleJson[0].like}
+              chat={sampleJson[0].chat}
+              $scrap={sampleJson[0].scrap}
+              date={sampleJson[0].date}
             />
-        ))}
         {/* <CommunityBodySection
           bodyData={bodyData}
         /> */}

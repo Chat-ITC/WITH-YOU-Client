@@ -7,21 +7,25 @@ import {
   TopLeftHeader,
   FromBox,
   BtnBox,
-  ActiveBtn,
-  UnActiveBtn,
+  HistoryBtn,
+  CommunityBtn,
+  RadioText,
 } from './style';
 //library
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-//components
-import ScrapHeader from '../../components/ScrapHeader';
 
 //components
+import ScrapHeader from '../../components/ScrapHeader';
 import CameraItem from '../../components/CameraItem';
 import Search from '../../components/SearchInput';
+import CameraBodySection from '../../components/CameraBodySection';
 
 const Home = () => {
   const isAsideVisible = useSelector((state) => state.visibility.isAsideVisible);
+
+  //검색한데이터
+  const [searchWord, setSearchWord] = useState('');
 
   const [bodyData, setBodyData] = useState("camera");
 
@@ -30,7 +34,24 @@ const Home = () => {
     setBodyData(`아이템 아이디: ${props}`)
   }
 
-  const sampleJson = [
+  //히스토리 - 커뮤니티 라디오버튼 
+  const [historyToggle, setHistoryToggle] = useState(true);
+  const [communityToggle, setCommunityToggle] = useState(false);
+  const historyRadio = () => {
+    setHistoryToggle(true);
+    setCommunityToggle(false);
+    setCameraListData(sampleJsonHistory);
+  };
+
+  const communityRadio = () => {
+    setHistoryToggle(false);
+    setCommunityToggle(true);
+    setCameraListData(sampleJsonCommunity);
+  };
+
+
+
+  const sampleJsonHistory = [
     {
       id: "1",
       title: "대양 대순환 해류의 주기",
@@ -59,20 +80,76 @@ const Home = () => {
       date: "10/26",
       scrap: false
     },
+    {
+      id: "5",
+      title: "야성이가 지성해요",
+      body: "빙하 시대와 간대기 기후 변화: 미소록 주기는 지구의 기후 시스템에서 중요한 변화를 가져옵니다. 빙하 시대와 간대기 온난 기간 사이의 빠른 기후 변화와 연관되어 있습니다. 이 주기는 지구의 태양 복사량, 지구의 궤도 움직임, 그리고 바다와 대기의 상호 작용과 같은 여러 복잡한 요인들에 의해 조절됩니다",
+      date: "10/26",
+      scrap: false
+    },
+    {
+      id: "6",
+      title: "야준이가 멍청해요",
+      body: "빙하 시대와 간대기 기후 변화: 미소록 주기는 지구의 기후 시스템에서 중요한 변화를 가져옵니다. 빙하 시대와 간대기 온난 기간 사이의 빠른 기후 변화와 연관되어 있습니다. 이 주기는 지구의 태양 복사량, 지구의 궤도 움직임, 그리고 바다와 대기의 상호 작용과 같은 여러 복잡한 요인들에 의해 조절됩니다",
+      date: "10/26",
+      scrap: false
+    },
 
   ];
-  
-  const [cameraListData,setCameraListData] = useState(sampleJson);
+
+  const sampleJsonCommunity = [
+    {
+      id: "1",
+      nickname: "감흥없는 김밥",
+      department: "의료IT공학과",
+      title: "운영체제 스레드 부분 궁금한 거 있어요",
+      picture: true,
+      body: "대양 대순환 해류의 1만년 주기적인 변화는 여러 자연적인 요인과 연관되어 있습니다. 이러한 주기적인 변화는 미소록 주기라고도 불리며, 기후 시스템에서 중요한 역할을 합니다.",
+      like: 3,
+      chat: 1
+      ,
+      scrap: true,
+      date: "10/25",
+    },
+    {
+      id: "2",
+      nickname: "감흥없는 치킨",
+      department: "건축학과",
+      title: "머신러닝 이번주 수업 내용 질문입니다.",
+      picture: true,
+      body: "머신러닝 이번주 수업 안 들어서 하나도 모르는 데 경사하강법 부분 진짜 무슨 말인지 하나도 이해가 안되네요.. 혹시 친절하게 설명해주실 수 있는 분 계신가요..?",
+      like: 5,
+      chat: 1
+      ,
+      scrap: true,
+      date: "10/28",
+    },
+  ];
+
+  const [cameraListData, setCameraListData] = useState(sampleJsonHistory);
 
   return (
     <>
       <Aside>
         <TopEmptyBox></TopEmptyBox>
         <TopLeftHeader>Scrap</TopLeftHeader>
-        <FromBox><Search/></FromBox>
+        <FromBox><Search
+        onDataSearch={(getData) => setSearchWord(getData)}/></FromBox>
         <BtnBox>
-          <ActiveBtn>히스토리</ActiveBtn>
-          <UnActiveBtn>커뮤니티</UnActiveBtn>
+          <HistoryBtn
+            onClick={historyRadio}
+            $done={historyToggle}>
+            <RadioText>
+              히스토리
+            </RadioText>
+          </HistoryBtn>
+          <CommunityBtn
+            onClick={communityRadio}
+            $done={communityToggle}>
+            <RadioText>
+              커뮤니티
+            </RadioText>
+          </CommunityBtn>
         </BtnBox>
         {cameraListData.map((sample, index) => (
           <div
@@ -81,6 +158,7 @@ const Home = () => {
             }}
             key={index}>
             <CameraItem
+              searchWord={searchWord}
               key={index}
               title={sample.title}
               body={sample.body}
@@ -93,9 +171,12 @@ const Home = () => {
         </BottomEmptyBox>
       </Aside>
       <Main style={{ left: isAsideVisible ? '0' : '300px' }}>
-        <ScrapHeader/>
+        <ScrapHeader />
         <TopEmptyBox />
-        <BottomEmptyBox/>
+        <CameraBodySection
+          bodyData={bodyData}
+        />
+        <BottomEmptyBox />
       </Main>
     </>
   );

@@ -1,3 +1,5 @@
+import {useState} from 'react'
+
 import { 
   SearchBox,
   SearchForm, 
@@ -6,11 +8,22 @@ import {
 
   import SearchImg from '../assets/search.png';
 
-const SearchInput = () => {
+const SearchInput = ({onDataSearch}) => {
+  const [searchValue, setSearchValue] = useState('');
   return (
     <SearchBox>
-      <SearchForm/>
-      <Search src={SearchImg} alt="검색 버튼" />
+      <SearchForm
+      placeholder="검색어를 입력하세요."
+      value={searchValue}
+      onChange={(e) => {
+        setSearchValue(e.target.value)
+        onDataSearch(e.target.value);
+      }
+      }
+      />
+      <Search 
+      src={SearchImg}
+      alt="검색 버튼"/>
     </SearchBox>
   );
 }

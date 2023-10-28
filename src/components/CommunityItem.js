@@ -34,43 +34,47 @@ const CommunityItem = (props) => {
     }
 
     return (
-        <div onClick={() => {
-            bodySectionHandler(props.id)
-            }}>
-            <CommunityItemContainer>
-                <CommunityItemTopContainer>
-                    <CommunityItemTitle>
-                        {props.title}
-                    </CommunityItemTitle>
-                    <CommunityItemPicture $picture={picture}/>
-                </CommunityItemTopContainer>
-                <CommunityItemBody>
-                    {props.body}
-                </CommunityItemBody>
-                <CommunityItemBottom>
-                    {props.like > 0 && (
-                        <LikeContainer>
-                            <LikeImg src={Like} alt="좋아요 버튼"/>
-                            <LikeContent>
-                                {props.like}
-                            </LikeContent>
-                        </LikeContainer>
-                    )}
-                    {props.chat > 0 && (
-                        <ChatContainer>
-                            <ChatImg src={Chat} alt="댓글 버튼" width="14"/>
-                            <ChatContent>
-                                {props.chat}
-                            </ChatContent> 
-                        </ChatContainer>
-                    )}
-                    <CommunityDateContainer>
-                        <CommunityItemScrap $scrap={scrap}/>
-                        {props.date}
-                    </CommunityDateContainer>
-                </CommunityItemBottom>
-            </CommunityItemContainer>
-        </div>
+        <>
+            {(props.title.includes(props.searchWord) || props.body.includes(props.searchWord)) && (
+                <div onClick={() => {
+                    bodySectionHandler(props.id)
+                }}>
+                    <CommunityItemContainer>
+                        <CommunityItemTopContainer>
+                            <CommunityItemTitle>
+                                {props.title}
+                            </CommunityItemTitle>
+                            <CommunityItemPicture $picture={picture} />
+                        </CommunityItemTopContainer>
+                        <CommunityItemBody>
+                            {props.body}
+                        </CommunityItemBody>
+                        <CommunityItemBottom>
+                            {props.like > 0 && (
+                                <LikeContainer>
+                                    <LikeImg src={Like} alt="좋아요 버튼" />
+                                    <LikeContent>
+                                        {props.like}
+                                    </LikeContent>
+                                </LikeContainer>
+                            )}
+                            {props.chat > 0 && (
+                                <ChatContainer>
+                                    <ChatImg src={Chat} alt="댓글 버튼" width="14" />
+                                    <ChatContent>
+                                        {props.chat}
+                                    </ChatContent>
+                                </ChatContainer>
+                            )}
+                            <CommunityDateContainer>
+                                <CommunityItemScrap $scrap={scrap} />
+                                {props.date}
+                            </CommunityDateContainer>
+                        </CommunityItemBottom>
+                    </CommunityItemContainer>
+                </div>
+            )}
+        </>
     );
 }
 
