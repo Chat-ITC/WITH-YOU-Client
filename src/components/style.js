@@ -430,6 +430,7 @@ export const SearchForm = styled.input`
   border-radius: 9px;
   padding-left: 40px;
   outline: none;
+  font-size: 15px;
 `;
 
 export const Search = styled.img`

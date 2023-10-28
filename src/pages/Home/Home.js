@@ -8,7 +8,7 @@ import {
   FromBox,
 } from './style';
 //library
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 //components
 import CameraHeader from '../../components/CameraHeader';
@@ -20,6 +20,8 @@ import Search from '../../components/SearchInput';
 
 const Home = () => {
   const isAsideVisible = useSelector((state) => state.visibility.isAsideVisible);
+  //검색한데이터
+  const [searchWord, setSearchWord] = useState('');
 
   const [bodyData, setBodyData] = useState("camera");
 
@@ -79,15 +81,18 @@ const Home = () => {
       scrap: false
     },
   ];
-  
+
+
   const [cameraListData,setCameraListData] = useState(sampleJson);
 
+  
   return (
     <>
       <Aside>
         <TopEmptyBox></TopEmptyBox>
         <TopLeftHeader>History</TopLeftHeader>
-        <FromBox><Search/></FromBox>
+        <FromBox><Search
+        onDataSearch={(getData) => setSearchWord(getData)}/></FromBox>
         {cameraListData.map((sample, index) => (
           <div
             onClick={() => {
@@ -95,6 +100,7 @@ const Home = () => {
             }}
             key={index}>
             <CameraItem
+              searchWord={searchWord}
               key={index}
               title={sample.title}
               body={sample.body}
