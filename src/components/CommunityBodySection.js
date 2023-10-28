@@ -31,7 +31,7 @@ import React from "react";
 import { useRef, useEffect, useState } from 'react';
 //img
 import Like from '../assets/like.png';
-import Star from '../assets/FillStar.png';
+import Star from '../assets/FillStar.svg';
 import Chat from '../assets/chat.png';
 
 const CommunityBodySection = (props) => {

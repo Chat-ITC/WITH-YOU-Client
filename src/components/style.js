@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import openeye from '../assets/openEye.png';
 import closeeye from '../assets/closeEye.png';
-import fillStar from '../assets/FillStar.png';
+import fillStar from '../assets/FillStar.svg';
 import camera from '../assets/camera.png'
 import picture from '../assets/picture.png';
 import Send from '../assets/send.svg';
