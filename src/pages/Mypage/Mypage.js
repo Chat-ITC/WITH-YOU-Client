@@ -1,5 +1,6 @@
 //style
 import {
+  MypageContainer,
   MyPageHeader,
   TopEmptyBox,
   MypageHeader,
@@ -21,7 +22,6 @@ import {
 //library
 import { useState } from 'react';
 import axios from 'axios';
-import TextInput from '../../components/TextInput';
 import { getCookie } from '../../utils/Cookies/Cookies';
 import { useNavigate } from "react-router";
 import axiosInstance from '../../utils/axiosInterceptor/axiosInterceptor';
@@ -87,33 +87,34 @@ const Mypage = () => {
   }
   
   return (
-    <MypageHeader>
+    <>
       <MyPageHeader>My Page</MyPageHeader>
       <TopEmptyBox/>
+      <MypageContainer>
         <UserInfoContainer>
-            <UserContainer>
-              <MyPageImg>
-                <img src={userInfo} alt="" width="55"/>
-              </MyPageImg>
-                <UserInfo>
-                  <UsernickBox>
-                  <UserCrownBox>
-                    {getLevelCrown(sampleJson[0].level)}
-                  </UserCrownBox>
-                  <UserNick>
-                    {sampleJson[0].nickname}
-                  </UserNick>
-                  </UsernickBox>  
-                  <MajorGrade>
-                    {sampleJson[0].major} {sampleJson[0].grade}학년
-                  </MajorGrade>
-                </UserInfo> 
-            </UserContainer>
-            <UserLevelBox>
-              <UserLevel>Lv.{sampleJson[0].level}</UserLevel>
-              <progress value={sampleJson[0].levelgage} min="0" max="100"></progress>
-            </UserLevelBox>
-        </UserInfoContainer>
+          <UserContainer>
+            <MyPageImg>
+              <img src={userInfo} alt="" width="55"/>
+            </MyPageImg>
+            <UserInfo>
+              <UsernickBox>
+              <UserCrownBox>
+                {getLevelCrown(sampleJson[0].level)}
+              </UserCrownBox>
+              <UserNick>
+                {sampleJson[0].nickname}
+              </UserNick>
+              </UsernickBox>  
+              <MajorGrade>
+                {sampleJson[0].major} {sampleJson[0].grade}학년
+              </MajorGrade>
+            </UserInfo> 
+          </UserContainer>
+          <UserLevelBox>
+            <UserLevel>Lv.{sampleJson[0].level}</UserLevel>
+            <progress value={sampleJson[0].levelgage} min="0" max="100"></progress>
+          </UserLevelBox>
+      </UserInfoContainer>
       <Ul>
         <MyPageList onClick={handleOpenModal}>
           <MyPageImg>
@@ -143,7 +144,8 @@ const Mypage = () => {
           </ListBtn>
         </MyPageList>
       </Ul>
-    </MypageHeader>
+      </MypageContainer>
+    </>
   );
 }
 

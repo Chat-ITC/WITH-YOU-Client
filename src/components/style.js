@@ -243,6 +243,17 @@ export const CameraButtonContainer = styled.div`
   margin-top: 160px;
 `;
 
+export const LogoContainer = styled.div`
+  display:flex;
+  height: 80%;
+  justify-content: center;
+  align-items: center;
+  font-size: 100px;
+  font-weight: bold;
+  opacity: 0.1;
+  transform: translate(-2%, -2%);
+`;
+
 export const CameraInput = styled.input`
   display: block;
   position: absolute;
@@ -612,7 +623,7 @@ export const Textarea = styled.textarea`
   }
 `;
 
-export const TextImg = styled.button`
+export const TextImg = styled.div`
   display: inline-block;
   width: 35px;
   height: 35px;
