@@ -11,6 +11,7 @@ import {
   UsernickBox,
   MyPageImg,
   UserNick,
+  MajorGrade,
   UserLevel,
   ImgText,
   MyPageList,
@@ -20,16 +21,21 @@ import {
 //library
 import { useState } from 'react';
 import axios from 'axios';
-import axiosInstance from '../../utils/axiosInterceptor/axiosInterceptor';
-import { useNavigate } from "react-router-dom";
-
 import TextInput from '../../components/TextInput';
 import { getCookie } from '../../utils/Cookies/Cookies';
+import { useNavigate } from "react-router";
+import axiosInstance from '../../utils/axiosInterceptor/axiosInterceptor';
 //img
 import userInfo from '../../assets/userInfo.png';
 import nameChange from '../../assets/nameChange.png';
 import inquiry from '../../assets/inquiry.png';
 import logout from '../../assets/logout.png';
+import Crown1 from '../../assets/crown1.png';
+import Crown2 from '../../assets/crown2.png';
+import Crown3 from '../../assets/crown3.png';
+import Crown4 from '../../assets/crown4.png';
+//modal
+import MyModal from './MyModal';
 
 const Mypage = () => {
   const navigate = useNavigate();
@@ -39,28 +45,47 @@ const Mypage = () => {
       nickname: "감흥없는 김밥",
       major: "의료IT공학과",
       grade: 3,
-      level: 36,
+      level: 78,
       levelgage: 80,
     },
   ];
-  const [nickName, setNickName] = useState('');
 
   //logout
-  function Logout(){
+  const Logout = async () => {
     console.log("로그아웃");
-  }
-
-  const handleChangeNickName = async () => {
-    const name = { nickName: nickName };
-    try {
-      await axiosInstance.patch('/member/update', name);
-      alert("닉네임이 성공적으로 변경되었습니다.");
-
-    } catch (error) {
-      alert("세션이 만료되었습니다. 다시 로그인해 주세요");
-      navigate("/");      
+    try{
+      await axiosInstance.post('', null);
+      alert("로그아웃 완료");
+      navigate("/");
+    }catch (error){
+      alert("로그아웃 실패. 로그인 화면으로 돌아갑니다.");
+      navigate("/");
     }
   };
+  
+  //modal
+    const [isOpen, setIsOpen] = useState(false);
+  function handleOpenModal(){
+    setIsOpen(true);
+  }
+  function handleCloseModal(){
+    setIsOpen(false);
+  }
+
+  //레벨에 따라 왕관 이미지 변경
+  function getLevelCrown(level) {
+    if (level <= 25) {
+      return <img src={Crown1} alt="Crown1" width="25" />;
+    } else if (level <= 50) {
+      return <img src={Crown2} alt="Crown2" width="25" />;
+    } else if (level <= 76) {
+      return <img src={Crown3} alt="Crown3" width="25" />;
+    } else {
+      return <img src={Crown4} alt="Crown4" width="25" />;
+    }
+    return null; // 다른 경우에는 null을 반환하여 아무 왕관도 표시하지 않음
+  }
+  
   return (
     <MypageHeader>
       <MyPageHeader>My Page</MyPageHeader>
@@ -68,39 +93,42 @@ const Mypage = () => {
         <UserInfoContainer>
             <UserContainer>
               <MyPageImg>
-                <img src={userInfo} alt="" />
+                <img src={userInfo} alt="" width="55"/>
               </MyPageImg>
                 <UserInfo>
                   <UsernickBox>
                   <UserCrownBox>
-                    <img src={userInfo} alt="" width="25"/>
+                    {getLevelCrown(sampleJson[0].level)}
                   </UserCrownBox>
                   <UserNick>
-                    감흥없는 김밥
+                    {sampleJson[0].nickname}
                   </UserNick>
                   </UsernickBox>  
-                  <div>
-                    의료IT공학과 3학년
-                  </div>
+                  <MajorGrade>
+                    {sampleJson[0].major} {sampleJson[0].grade}학년
+                  </MajorGrade>
                 </UserInfo> 
             </UserContainer>
             <UserLevelBox>
-              <UserLevel>Lv.35</UserLevel>
-              <progress value="70" min="0" max="100"></progress>
+              <UserLevel>Lv.{sampleJson[0].level}</UserLevel>
+              <progress value={sampleJson[0].levelgage} min="0" max="100"></progress>
             </UserLevelBox>
         </UserInfoContainer>
       <Ul>
-        <MyPageList>
+        <MyPageList onClick={handleOpenModal}>
           <MyPageImg>
-            <img src={nameChange} alt="닉네임 설정" />
+            <img src={nameChange} alt="닉네임 설정" width="35"/>
           </MyPageImg>
           <ListBtn>
             <ImgText>닉네임 설정</ImgText>
           </ListBtn>
         </MyPageList>
+        {isOpen && (
+            <MyModal onClose={handleCloseModal} />
+          )}
         <MyPageList>
           <MyPageImg>
-            <img src={inquiry} alt="문의하기" />
+            <img src={inquiry} alt="문의하기" width="35"/>
           </MyPageImg>
           <ListBtn>
             <ImgText>문의하기</ImgText>
@@ -108,23 +136,13 @@ const Mypage = () => {
         </MyPageList>
         <MyPageList onClick={Logout}>
           <MyPageImg>
-            <img src={logout} alt="로그아웃" />
+            <img src={logout} alt="로그아웃" width="35"/>
           </MyPageImg>
           <ListBtn>
             <ImgText>로그아웃</ImgText>
           </ListBtn>
         </MyPageList>
       </Ul>
-      <TextInput
-        placeholder={"닉네임"}
-        value={nickName}
-        onChange={(e) => setNickName(e.target.value)}
-      />
-
-      <button
-        onClick={handleChangeNickName}>
-        변경
-      </button>
     </MypageHeader>
   );
 }
