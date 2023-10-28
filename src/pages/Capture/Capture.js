@@ -23,15 +23,15 @@ import TopRightHeader from '../../components/Capture';
 import RequestCheckBox from '../../components/RequestCheckBox';
 
 const Capture = () => {
+  const navigate = useNavigate();
   const { state } = useLocation();
 
   const [imagePath, setImagePath] = useState(state);
-  const [croppedImage, setCroppedImage] = useState(""); // 추가: 크롭된 이미지 저장 상태
   const cropperRef = useRef(null);
   const calculatedHeight = window.innerHeight - 145;
 
-  //요구사항
-  const [question, setQuestion] = useState('이해하기 쉽게 설명해줘');
+
+
   //다시찍기 핸들러
   const fileInputRef = useRef(null);
   const captureAgainHandler = () => {
@@ -48,10 +48,8 @@ const Capture = () => {
   const formData = new FormData();
   const getCropData = async () => {
     if (cropperRef.current && cropperRef.current.cropper) {
-      setCroppedImage(cropperRef.current.cropper.getCroppedCanvas().toDataURL());
-
       const croppedCanvas = cropperRef.current.cropper.getCroppedCanvas();
-      await croppedCanvas.toBlob((blob) => { 
+      await croppedCanvas.toBlob((blob) => {
         // Blob을 파일로 변환하여 FormData에 추가
         const croppedFile = new File([blob], 'croppedImage.png', { type: 'image/png' });
         formData.append('imageFile', croppedFile);
@@ -60,28 +58,62 @@ const Capture = () => {
       }, 'image/png');
     }
   };
-
   const sendFormDataRequest = async () => {
     try {
       const response = await axiosInstance.post('/ai/question', formData);
+      if(response.data === "저장 완료") {
+        alert("사진 분석 완료! 홈 화면으로 이동합니다.")
+        navigate('/home');
+      }
       console.log("전송 성공: ", response);
     } catch (error) {
       console.log(error);
     }
   };
 
+  //요구사항
+  const [question, setQuestion] = useState('');
+
+  const requestJson = [
+    {
+      id: 0,
+      content: "이해하기 쉬운 설명"
+    },
+    {
+      id: 1,
+      content: "자세한 설명"
+    },
+    {
+      id: 2,
+      content: "간단한 요약"
+    },
+    {
+      id: 3,
+      content: "이해를 위한 예시"
+    },
+    {
+      id: 4,
+      content: "비슷한 내용의 퀴즈"
+    },
+
+  ]
+
   return (
     <>
       <Aside>
         <TopEmptyBox></TopEmptyBox>
         <TopLeftHeader>요구사항</TopLeftHeader>
-        <RequestCheckBox content="이해하기 쉽게 설명해줘" id="0" />
-        <RequestCheckBox content="이해하기 쉽게 요약해줘" id="1" />
-        <RequestCheckBox content="이해하기 쉽게 정리해줘" id="2" />
-        <RequestCheckBox content="이해하기 쉽게 해설해줘" id="3" />
-        <RequestCheckBox content="이해하기 쉽게 풀어줘" id="4" />
-        <RequestCheckBox content="이해하기 쉽게 졸리다" id="5" />
-
+    {requestJson.map((requestjson,index) => (
+      <RequestCheckBox
+      key={index}
+      onClick={() => { 
+        setQuestion() 
+      }}
+      content={requestjson.content}
+      id={requestjson.id}
+    />
+    ))}
+       
         <div>
           <input
             type="file"

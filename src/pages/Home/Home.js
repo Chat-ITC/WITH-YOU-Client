@@ -13,6 +13,7 @@ import { useSelector } from 'react-redux';
 //components
 import CameraHeader from '../../components/CameraHeader';
 import CameraBodySection from '../../components/CameraBodySection';
+import axiosInstance from '../../utils/axiosInterceptor/axiosInterceptor';
 
 //components
 import CameraItem from '../../components/CameraItem';
@@ -24,10 +25,34 @@ const Home = () => {
   const [searchWord, setSearchWord] = useState('');
 
   const [bodyData, setBodyData] = useState("camera");
+  const [scrapId, setScrapId] = useState('');
+  const requestHistory = async () => {
+    try {
+      const response = await axiosInstance.get('/question/list');
+      setCameraListData(response.data);
+    }
+    catch(error) {
+      console.log(error);
+    }
+  }
 
-  const bodySectionHandler = (props) => {
-    //목록에서 아이템 누를 시 서버로 id 전송후 데이터 받아오기 props: 아이디.
-    setBodyData(`아이템 아이디: ${props}`)
+  useEffect(() => {
+    requestHistory();
+  }, [])
+
+
+  const bodySectionHandler = async(props) => {
+    try{
+      const response = await axiosInstance.get('/question',
+      {params:{id:props}});
+      console.log(response);
+      setBodyData(response.data)
+    }
+    catch(error){
+      console.log(error);
+    }
+    
+    setScrapId(props)
   }
 
   const sampleJson = [
@@ -103,7 +128,7 @@ const Home = () => {
               searchWord={searchWord}
               key={index}
               title={sample.title}
-              body={sample.body}
+              body={sample.content}
               date={sample.date}
               $scrap={sample.scrap}
             />
@@ -115,7 +140,8 @@ const Home = () => {
         <CameraHeader/>
         <TopEmptyBox />
         <CameraBodySection
-          bodyData={bodyData}
+          bodyData={bodyData.content}
+          id={scrapId}
         />
         <BottomEmptyBox/>
       </Main>

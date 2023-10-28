@@ -62,7 +62,7 @@ const Join = () => {
   const handleNext = async () => {
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_LOCAL_URL}/member/signup/userId`,null,
+        `${process.env.REACT_APP_LOCAL_URL}/member/signup/userId`,
         {params: {userId: userId}});
   
       console.log('아이디 중복 없음:', response.data);
