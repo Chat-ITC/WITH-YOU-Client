@@ -64,7 +64,7 @@ const Community = () => {
         <TopEmptyBox/>
         <TopLeftHeader>Community</TopLeftHeader>
         <FromBox><Search
-         onDataSearch={(getData) => setSearchWord(getData)}/></FromBox>
+          onDataSearch={(getData) => setSearchWord(getData)}/></FromBox>
         {sampleJson.map((sample, index) => (
           <div
             onClick={() => {

@@ -38,17 +38,24 @@ export const UserInfo = styled.div`
   display: flex;
   flex-direction: column;
   gap: 5px;
+  padding: 5px 0;
 `;
 
 export const UserContainer = styled.div`
   display: flex;
-  width: 240px;
-  gap: 20px;
+  width: 225px;
+  gap: 15px;
 `;
 
 export const UsernickBox = styled.div`
   display: flex;
   gap: 10px;
+`;
+
+export const MajorGrade = styled.div`
+  font-size: 14px;
+  font-weight: bold;
+  color: #898989;
 `;
 
 export const UserCrownBox = styled.div`
@@ -67,6 +74,7 @@ export const UserLevelBox = styled.div`
   display:flex;
   justify-content: center;
   align-items: center;
+  font-weight: bold;
   gap: 10px;
   width: 240px;
 `;
@@ -113,4 +121,66 @@ export const ImgText = styled.div`
 export const ListBtn = styled.button`
   border: 0;
   background-color: #fff;
+`;
+
+//modal
+export const Mask = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index:10;
+  `;
+
+export const ModalBody = styled.div` 
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 11;
+`;
+export const Content = styled.div`
+  background: white;
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  border-radius: 10px;
+  width: 380px;
+  height: 200px;
+`;
+
+export const ModalTItle = styled.div`
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 30px;
+`;
+
+export const NickBtnBox = styled.div`
+  display: flex;
+  gap: 20px;
+`;
+
+export const ModalSetBtn = styled.button`
+  background-color: #3DA5F5;
+  padding: 10px;
+  width: 100px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 10px; 
+  color: white;
+`;
+
+export const ModalCloseBtn = styled.button`
+  background-color: #fff;
+  padding: 10px;
+  width: 100px;
+  font-size: 16px;
+  font-weight: bold;
+  border: 1px solid #3DA5F5;
+  border-radius: 10px; 
+  color: #3DA5F5;
 `;
