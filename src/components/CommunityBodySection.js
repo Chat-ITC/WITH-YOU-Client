@@ -26,19 +26,25 @@ import {
   ChatUserMajor,
   ChatBody,
   ChatDate,
-} from './style'
+} from './style';
 import React from "react";
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useState } from 'react';
 //img
 import Like from '../assets/like.png';
 import Star from '../assets/FillStar.svg';
 import Chat from '../assets/chat.png';
 
 const CommunityBodySection = (props) => {
+  //댓글 입력
+  const [comment, setComment] = useState('');
+
   //useRef를 이용해 높이를 조절하고자 하는 textarea 엘리먼트에 ref를 지정해 style 조절
   const textarea = useRef();
 
-  const handleResizeHeight = () => {
+  const handleResizeHeight = (ref) => {
+    console.log(`댓글 확인: ${ref.target.value}`);
+
+
     textarea.current.style.height = 'auto';//height 초기화
     textarea.current.style.height = textarea.current.scrollHeight + 'px';
   }

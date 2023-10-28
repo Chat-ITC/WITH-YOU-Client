@@ -123,9 +123,7 @@ const Community = () => {
               commentbody={commentJson[0].body}
               commentdate={commentJson[0].date}
             />
-        {/* <CommunityBodySection
-          bodyData={bodyData}
-        /> */}
+    
         <BottomEmptyBox/>
       </Main>
     </>

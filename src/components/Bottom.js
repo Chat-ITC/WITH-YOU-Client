@@ -10,7 +10,9 @@ import { NavLink, useLocation } from "react-router-dom";
 import Home from '../assets/emptyHome.png';
 import Star from '../assets/star.png';
 import Community from '../assets/Community.png';
-import UserIcon from '../assets/userIcon2.png';
+import Community2 from '../assets/Community2.svg';
+import Star2 from '../assets/star2.svg';
+import UserIcon3 from '../assets/userIcon3.svg';
 
 const Bottom = () => {
   //현재 경로 가져오기
@@ -31,7 +33,6 @@ const Bottom = () => {
                 /*isActive가 true이면 1 false이면 0.3*/
                 style={{ 
                   opacity: isActive("/home") || isActive("/capture") ? 1 : 0.3,
-                  color: isActive("/home") || isActive("/capture") ? '#F07878' : '#000',
                 }}
               />
             </li>
@@ -39,16 +40,19 @@ const Bottom = () => {
           <NavLink to="/scrap">
           <li>
             <ImgBtn
-              src={Star}
+              src={isActive("/scrap") ? Star2 : Star}
+
               alt="스크랩"
-              style={{ opacity: isActive("/scrap") ? 1 : 0.3 }}
+              style={{ 
+                opacity: isActive("/scrap") ? 1 : 0.3,
+              }}
             />
           </li>
         </NavLink>
         <NavLink to="/community">
           <li>
             <ImgBtn
-              src={Community}
+              src={isActive("/community") ? Community2 : Community}
               alt="커뮤니티"
               style={{ opacity: isActive("/community") ? 1 : 0.3 }}
             />
@@ -57,7 +61,7 @@ const Bottom = () => {
         <NavLink to="/mypage">
           <li>
             <ImgBtn
-              src={UserIcon}
+              src={UserIcon3}
               alt="내 정보"
               style={{ opacity: isActive("/mypage") ? 1 : 0.3 }}
             />
