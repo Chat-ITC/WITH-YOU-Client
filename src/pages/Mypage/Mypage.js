@@ -5,12 +5,13 @@ import {
   MypageHeader,
   UserInfoContainer,
   UserContainer,
-  UserInfo,
   UserLevelBox,
-  DepartGradeBox,
+  UserInfo,
+  UserCrownBox,
   UsernickBox,
   MyPageImg,
   UserNick,
+  UserLevel,
   ImgText,
   MyPageList,
   ListBtn,
@@ -43,7 +44,10 @@ const Mypage = () => {
   ];
   const [nickName, setNickName] = useState('');
 
-
+  //logout
+  function Logout(){
+    console.log("로그아웃");
+  }
 
   const handleChangeNickName = async () => {
     const name = { nickName: nickName };
@@ -66,20 +70,22 @@ const Mypage = () => {
               </MyPageImg>
                 <UserInfo>
                   <UsernickBox>
-                  <UserLevelBox>
+                  <UserCrownBox>
                     <img src={userInfo} alt="" width="25"/>
-                  </UserLevelBox>
+                  </UserCrownBox>
                   <UserNick>
                     감흥없는 김밥
                   </UserNick>
                   </UsernickBox>  
-                  <DepartGradeBox>
                   <div>
                     의료IT공학과 3학년
                   </div>
-                  </DepartGradeBox>
                 </UserInfo> 
             </UserContainer>
+            <UserLevelBox>
+              <UserLevel>Lv.35</UserLevel>
+              <progress value="70" min="0" max="100"></progress>
+            </UserLevelBox>
         </UserInfoContainer>
       <Ul>
         <MyPageList>
@@ -98,7 +104,7 @@ const Mypage = () => {
             <ImgText>문의하기</ImgText>
           </ListBtn>
         </MyPageList>
-        <MyPageList>
+        <MyPageList onClick={Logout}>
           <MyPageImg>
             <img src={logout} alt="로그아웃" />
           </MyPageImg>

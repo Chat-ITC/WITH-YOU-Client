@@ -51,7 +51,7 @@ export const UsernickBox = styled.div`
   gap: 10px;
 `;
 
-export const UserLevelBox = styled.div`
+export const UserCrownBox = styled.div`
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -63,8 +63,17 @@ export const UserNick = styled.span`
   font-weight: bold;
 `;
 
-export const DepartGradeBox = styled.div`
+export const UserLevelBox = styled.div`
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 240px;
+`;
 
+export const UserLevel = styled.span`
+  font-size: 14px;
+  color: #8D8D8D;
 `;
 
 export const Ul = styled.ul`
