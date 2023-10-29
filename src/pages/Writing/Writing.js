@@ -31,10 +31,11 @@ const Writing = () => {
   const [content, setContent] = useState('');
   //파일 첨부
   const [fileURL, setFileURL] = useState([]);
-  //이지미 파일 배열
+  //이미지 파일 배열
   const [imageFiles, setImgaeFiles] = useState([]);
   
   const handleTitle = async () => {
+     console.log(`사진 테스트: `, imageFiles);
     //폼데이터 생성
     const formData = new FormData();
     formData.append('title', title);
@@ -42,6 +43,7 @@ const Writing = () => {
     //이미지 파일을 formData에 추가
     for(let i = 0; i < imageFiles.length; i++){
       formData.append('images', imageFiles[i]);
+      console.log(`사진 테스트2: `, imageFiles[i]);
     }
     const textTitle = { title: title };
     const textContent = { content: content};
@@ -49,9 +51,13 @@ const Writing = () => {
     console.log(`제목 Json:`, textTitle);
     console.log(`내용: `, textContent);
     console.log(`내용 Json: ${content}`);
-    console.log(`사진: ${fileURL}`);
+    console.log(`사진: ${imageFiles}`);
+    for (const value of formData.values()) {
+      console.log(value);
+    };
 
     try{
+      await axiosInstance.post('', textTitle);
       await axiosInstance.post('', formData);
       alert("제목을 성공적으로 작성하였습니다.");
       navigate("/community");
@@ -64,24 +70,35 @@ const Writing = () => {
   const handleFileChange = (e) => {
     //선택한 이미지 파일 목록을 'imageList'라는 변수에 할당
     const imageLists = e.target.files;
-
+    setImgaeFiles(imageLists);
     //이미지 파일 자체를 저장하기 위한 배열
+    let imageUrlLists = [...fileURL];
     let imageFileLists = [...imageFiles];
 
     for (let i = 0; i < imageLists.length; i++){
+      //임시 URL 생성, 이미지를 표시하거나 저장하는 데 사용
+      const currentImageUrl = URL.createObjectURL(imageLists[i]);
+      //생성된 이미지 배열에 추가
+      imageUrlLists.push(currentImageUrl);
       //이미지 파일을 추가
       imageFileLists.push(imageLists[i]);
+     
     }
-
-    //이미지 파일을 FormData에 직접 추가
-    setImgaeFiles(imageFileLists);
+    if (imageUrlLists.length > 10){
+      //이미지 10개를 넘어가면 배열을 잘라냄
+      imageUrlLists = imageUrlLists.slice(0, 10);
+    }
+    //업데이트된 배열을 저장하고 렌더링 후 이미지 URL 목록 업데이트
+    setFileURL(imageUrlLists);
+    
   };
    //X버튼 클릭 시 이미지 삭제
   const handleDeleteImage = (id) => {
+    setFileURL(fileURL.filter((_, index) => index !== id));
     //id에 해당하는 인덱스를 제외한 나머지 이미지URL을 선택하여, 새로운 배열에 저장
     const updatedImageFileLists = imageFiles.filter((_, index) => index !== id);
     //이미지 파일 배열 상태 업데이트
-    setImgaeFiles(updatedImageFileLists);
+    imageFiles.splice(id);
   };
 
   return (
