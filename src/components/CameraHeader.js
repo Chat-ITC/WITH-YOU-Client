@@ -2,10 +2,8 @@
 import {
   CameraHeaderTop,
   HeaderImgBox,
-  Setting,
   ImgBtn,
   CameraTopInput,
-  Option,
 } from './style';
 //library
 import { useSelector, useDispatch } from 'react-redux';
@@ -53,8 +51,9 @@ const CameraHeader = () => {
   const selectDeleteId = useSelector((state) => state.CameraItemId.id);
   const deleteListRequestTest = async (props) => {
     try {
-      const response = await axiosInstance.delete('/question/delete', { params: { id: props } });
-      console.log(response);
+      await axiosInstance.delete('/question/delete', { params: { id: props } });
+      alert("삭제가 완료되었습니다!");
+      window.location.replace("/home");
     }
     catch (error) {
       console.log(error);
@@ -72,9 +71,8 @@ const CameraHeader = () => {
         console.log("본문 복사 로직");
         break;
       case "삭제하기":
-        deleteListRequestTest(selectDeleteId);
         dispatch(deleteId('0'));
-        window.location.replace("/home")
+        deleteListRequestTest(selectDeleteId);
         break;
       default:
         break;

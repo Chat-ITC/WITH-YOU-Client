@@ -10,19 +10,20 @@ import {
 
 //library
 import React from 'react';
-import { historyBody, scrapId } from '../store';
+import { selectId, historyBody, scrapId } from '../store';
 import { useDispatch } from 'react-redux';
 import axiosInstance from '../utils/axiosInterceptor/axiosInterceptor';
 
 const CameraItem = (props) => {
 
     const dispatch = useDispatch();
-    const bodySectionHandler = async (props) => {
-        if (props !== '0') {
+    const bodySectionHandler = async (propsId) => {
+        if (propsId !== '0') {
             try {
                 const response = await axiosInstance.get('/question',
-                    { params: { id: props } });
+                    { params: { id: propsId } });
                 console.log(response);
+                dispatch(selectId(propsId))
                 dispatch(historyBody(response.data))
                 dispatch(scrapId(response.data.isScrap));   
             }
