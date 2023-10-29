@@ -2,15 +2,25 @@ import {
     CameraBigButton,
     CameraButtonContainer,
     CameraPhrases,
-    CameraInput
+    CameraInput,
+    CameraBodyContainer,
+    HistoryScrapBtn,
+    BodyDataContainer
 } from './style'
 
+import { scrapId } from '../store';
 import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux';
 import React from "react";
 import axiosInstance from '../utils/axiosInterceptor/axiosInterceptor'
 
 
-const CameraBodySection = (props) => {
+
+const CameraBodySection = () => {
+    const selectorBodyData = useSelector((state) => state.CameraItemId.bodyData);
+    const onlyScrapState = useSelector((state) => state.CameraItemId.scrap);
+    // const [scrapStateToggle, setScrapStateToggle] = useState(selectorBodyData.isScrap);
+
     const navigate = useNavigate();
     //카메라
     const handleFileChange = (e) => {
@@ -23,41 +33,27 @@ const CameraBodySection = (props) => {
         }
     };
 
-    //스크랩
-    const scrapRequest = async() => {
-        try{
-            const response = await axiosInstance.patch(`/scrap/${props.id}`);
-            console.log(response);
-        }
-        catch(error) {
-            console.log(error);
-        }
-    }
 
-    //스크랩 리스트 테스트
-    const scrapListRequestTest = async() => {
-        try{
-            const response = await axiosInstance.get('/scrap/list');
-            console.log(response);
-        }
-        catch(error) {
-            console.log(error);
-        }
-    }
-
-    //삭제 테스트
-    const deleteListRequestTest = async() => {
+    const dispatch = useDispatch();
+    const scrapBtnHandler = async () => {
         try {
-            const response = await axiosInstance.delete('/question/delete', {params:{id:props.id}});
+            const response = await axiosInstance.patch(`/scrap/${selectorBodyData.id}`);
             console.log(response);
-        } 
-        catch(error) {
+        }
+        catch (error) {
             console.log(error);
         }
+        if (onlyScrapState === 'YES') {
+            dispatch(scrapId('NO'));
+        }
+        else {
+            dispatch(scrapId('YES'));
+        }
     }
+
     return (
         <>
-            {props.bodyData === "camera" ?
+            {selectorBodyData.content === "camera" ?
                 <CameraButtonContainer>
                     <CameraInput
                         type="file"
@@ -68,19 +64,16 @@ const CameraBodySection = (props) => {
                         사진을 찍어보세요!
                     </CameraPhrases>
                 </CameraButtonContainer>
-                :          
-                <div>
-                    <p>{props.bodyData}</p>
-                    <button onClick={scrapRequest}>
-                        스크랩? 
-                    </button>
-                    <button onClick={scrapListRequestTest}>
-                        스크랩 목록
-                    </button>
-                    <button onClick={deleteListRequestTest}>
-                        삭제
-                    </button>
-                </div>
+                :
+                <CameraBodyContainer>
+
+                    <HistoryScrapBtn
+                        onClick={scrapBtnHandler}
+                        $scrapState={onlyScrapState} />
+
+                    <BodyDataContainer>{selectorBodyData.content}</BodyDataContainer>
+
+                </CameraBodyContainer>
             }
         </>
     );

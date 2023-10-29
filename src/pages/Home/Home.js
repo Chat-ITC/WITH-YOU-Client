@@ -10,6 +10,7 @@ import {
 //library
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+
 //components
 import CameraHeader from '../../components/CameraHeader';
 import CameraBodySection from '../../components/CameraBodySection';
@@ -21,22 +22,22 @@ import Search from '../../components/SearchInput';
 
 const Home = () => {
   const isAsideVisible = useSelector((state) => state.visibility.isAsideVisible);
+
+  const stateChange = useSelector((state) => state.CameraItemId.scrap);
+
   //검색한데이터
   const [searchWord, setSearchWord] = useState('');
 
-  const [bodyData, setBodyData] = useState({content:"camera"});
-  const [scrapId, setScrapId] = useState('');
   const requestHistory = async () => {
     try {
       const response = await axiosInstance.get('/question/list');
-      console.log(response.data.length);
+      console.log(response.data);
       if(response.data.length === 0){
         console.log("마")
       }
       else{
         setCameraListData(response.data);
       }
-
       
     }
     catch(error) {
@@ -46,24 +47,9 @@ const Home = () => {
 
   useEffect(() => {
     requestHistory();
-  }, [])
+  }, [stateChange])
 
 
-  const bodySectionHandler = async(props) => {
-    console.log(props);
-    if(props!=='0'){
-      try{
-        const response = await axiosInstance.get('/question',
-        {params:{id:props}});
-        console.log(response);
-        setBodyData(response.data)
-      }
-      catch(error){
-        console.log(error);
-      }
-      setScrapId(props)
-    }
-  }
 
   const sampleJson = [
     {
@@ -88,13 +74,11 @@ const Home = () => {
         onDataSearch={(getData) => setSearchWord(getData)}/></FromBox>
         {cameraListData.map((sample, index) => (
           <div
-            onClick={() => {
-              bodySectionHandler(sample.id)
-            }}
             key={index}>
             <CameraItem
               searchWord={searchWord}
               key={index}
+              id={sample.id}
               title={sample.title}
               body={sample.content}
               date={sample.date}
@@ -108,8 +92,6 @@ const Home = () => {
         <CameraHeader/>
         <TopEmptyBox />
         <CameraBodySection
-          bodyData={bodyData.content}
-          id={scrapId}
         />
         <BottomEmptyBox/>
       </Main>

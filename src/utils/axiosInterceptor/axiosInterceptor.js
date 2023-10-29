@@ -16,7 +16,7 @@ axiosInstance.interceptors.request.use((req) => {
 
   if (req.data instanceof FormData) {
     req.headers['Content-Type'] = 'multipart/form-data';
-    req.timeout = 60000;
+    req.timeout = 600000;
   } else {
     req.headers['Content-Type'] = 'application/json';
   }

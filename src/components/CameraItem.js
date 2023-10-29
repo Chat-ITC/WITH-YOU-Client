@@ -10,12 +10,34 @@ import {
 
 //library
 import React from 'react';
+import { historyBody, scrapId } from '../store';
+import { useDispatch } from 'react-redux';
+import axiosInstance from '../utils/axiosInterceptor/axiosInterceptor';
 
 const CameraItem = (props) => {
+
+    const dispatch = useDispatch();
+    const bodySectionHandler = async (props) => {
+        if (props !== '0') {
+            try {
+                const response = await axiosInstance.get('/question',
+                    { params: { id: props } });
+                console.log(response);
+                dispatch(historyBody(response.data))
+                dispatch(scrapId(response.data.isScrap));   
+            }
+            catch (error) {
+                console.log(error);
+            }
+        }
+    }
     return (
         <>
             {(props.title.includes(props.searchWord) || props.body.includes(props.searchWord)) && (
-                <CameraItemContainer>
+                <CameraItemContainer
+                    onClick={() => {
+                        bodySectionHandler(props.id)
+                    }}>
                     <CameraItemTitle>
                         {props.title}
                     </CameraItemTitle>
