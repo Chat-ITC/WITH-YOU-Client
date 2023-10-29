@@ -64,7 +64,7 @@ function CameraItemSetting({onDataSetting}) {
   const settingList = ["제목 변경하기", "본문 복사하기", "삭제하기"];
 
   return (
-    <SelectBox onClick={() => setShowOptions((prev) => !prev)}>
+    <SettingSelectBox onClick={() => setShowOptions((prev) => !prev)}>
         <SelectOptionsLeft $show={showOptions}>
             {settingList.map((major, index) => (
                 <Option 
@@ -73,7 +73,7 @@ function CameraItemSetting({onDataSetting}) {
                 onClick={handleOnChangeSelectValue}>{major}</Option>
             ))}   
         </SelectOptionsLeft>
-    </SelectBox>
+    </SettingSelectBox>
 )
 
 
@@ -81,9 +81,32 @@ function CameraItemSetting({onDataSetting}) {
 export {MajorSelect, GradeSelect, CameraItemSetting};
 
 const SelectBox = styled.div`
+  position: relative;
+  width: 244px;
+  height: 27px;
+  padding: 8px;
+  margin-bottom: 8px;
+  background-color: #ffffff;
+  align-self: center;
+  border: 1px solid #bababa;
+  border-radius: 5px;
+  font-size: 20px;
+  
+  cursor: pointer;
+  &::before {
+    content: "⌵";
+    position: absolute;
+    top: 5px;
+    right: 14px;
+    color: #49c181;
+    font-size: 20px;
+  }
+
+`;
+
+const SettingSelectBox = styled.div`
   width: 35px;
   height: 35px;
-  margin-bottom: 8px;
   background-image: url(${setting});
   background-size: contain;
   border-radius: 5px;

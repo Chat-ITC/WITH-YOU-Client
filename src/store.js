@@ -18,6 +18,14 @@ const visibilitySlice = createSlice({
   },
 });
 
+const deleteStateSlice = createSlice({ 
+  name: 'deleteCameraItem',
+  initialState: {
+    
+  }
+  
+})
+
 
 
 // 슬라이스의 액션을 외부로 내보냄
