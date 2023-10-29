@@ -24,50 +24,80 @@ import React, { useState, useRef } from 'react';
 import axiosInstance from '../../utils/axiosInterceptor/axiosInterceptor';
 
 const Writing = () => {
-
+  const navigate = useNavigate();
   //제목 작성
   const [title, setTitle] = useState('');
+  //내용 작성
+  const [content, setContent] = useState('');
+  //파일 첨부
+  const [fileURL, setFileURL] = useState([]);
+  //이지미 파일 배열
+  const [imageFiles, setImgaeFiles] = useState([]);
+  
   const handleTitle = async () => {
+    //폼데이터 생성
+    const formData = new FormData();
+    formData.append('title', title);
+    formData.append('content', content);
+    //이미지 파일을 formData에 추가
+    for(let i = 0; i < imageFiles.length; i++){
+      formData.append('images', imageFiles[i]);
+    }
     const textTitle = { title: title };
+    const textContent = { content: content};
+    const textFile = {fileURL: fileURL};
     console.log(`제목: ${title}`);
     console.log(`제목 Json:`, textTitle);
+    console.log(`내용: `, textContent);
+    console.log(`내용 Json: ${content}`);
+    console.log(`사진: ${fileURL}`);
+    console.log(`사진 Json: `, textFile);
+
     try{
-      await axiosInstance.post('', textTitle);
+      await axiosInstance.post('', formData);
       alert("제목을 성공적으로 작성하였습니다.");
+      navigate("/community");
     } catch (error) {
       alert("글 작성을 실패하였습니다.");
     }
   };
   
-  //내용 작성
-  const [content, setContent] = useState('');
-  
-  
   //이미지 선택 후, 임시 URL로 변환한 다음 상태 업데이트
-  const [fileURL, setFileURL] = useState([]);
-
   const handleFileChange = (e) => {
+    //선택한 이미지 파일 목록을 'imageList'라는 변수에 할당
     const imageLists = e.target.files;
+    //이미지 파일의 임시 URL을 저장
     let imageUrlLists = [...fileURL];
+    //이미지 파일 자체를 저장
+    let imageFileLists = [...imageFiles];
 
     for (let i = 0; i < imageLists.length; i++){
       //임시 URL 생성, 이미지를 표시하거나 저장하는 데 사용
       const currentImageUrl = URL.createObjectURL(imageLists[i]);
       //생성된 이미지 배열에 추가
       imageUrlLists.push(currentImageUrl);
+      if (imageUrlLists.length > 10){
+        //이미지 10개를 넘어가면 배열을 잘라냄
+        imageUrlLists = imageUrlLists.slice(0, 10);
+      }
+      //이미지 파일을 추가
+      imageFileLists.push(imageLists[i]);
     }
 
-    if (imageUrlLists.length > 10){
-      //이미지 10개를 넘어가면 배열을 잘라냄
-      imageUrlLists = imageUrlLists.slice(0, 10);
-    }
     //업데이트된 배열을 저장하고 렌더링 후 이미지 URL 목록 업데이트
     setFileURL(imageUrlLists);
+    setImgaeFiles(imageFileLists);
   };
-   // X버튼 클릭 시 이미지 삭제
+   //X버튼 클릭 시 이미지 삭제
   const handleDeleteImage = (id) => {
-    setFileURL(fileURL.filter((_, index) => index !== id));
+    //id에 해당하는 인덱스를 제외한 나머지 이미지URL을 선택하여, 새로운 배열에 저장
+    const updatedImageUrlLists = fileURL.filter((_, index) => index !== id);
+    const updatedImageFileLists = imageFiles.filter((_, index) => index !== id);
+
+    setFileURL(updatedImageUrlLists);
+    setImgaeFiles(updatedImageFileLists);
   };
+
   return (
     <WritingContainer>
       <TopEmptyBox/>
@@ -88,7 +118,7 @@ const Writing = () => {
         </WritingSet>
       </WritingHeaderTop>
       <TitleInput type="text" placeholder='제목' onChange={(e)=> setTitle(e.target.value)}/>
-      <ContentInput type="text" placeholder='내용을 입력해 주세요' rows="10"/>
+      <ContentInput type="text" placeholder='내용을 입력해 주세요' onChange={(e) => setContent(e.target.value)} rows="10"/>
       <ImgFileBox style={{
         backgroundColor: fileURL.length === 0 ? '#fff' : '#EBEBEB'
       }}>
