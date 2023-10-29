@@ -14,8 +14,6 @@ import { useSelector } from 'react-redux';
 import CameraHeader from '../../components/CameraHeader';
 import CameraBodySection from '../../components/CameraBodySection';
 import axiosInstance from '../../utils/axiosInterceptor/axiosInterceptor';
-
-//components
 import CameraItem from '../../components/CameraItem';
 import Search from '../../components/SearchInput';
 
@@ -30,14 +28,9 @@ const Home = () => {
     try {
       const response = await axiosInstance.get('/question/list');
       console.log(response.data.length);
-      if(response.data.length === 0){
-        console.log("마")
-      }
-      else{
+      if(response.data.length !== 0){
         setCameraListData(response.data);
       }
-
-      
     }
     catch(error) {
       console.log(error);
@@ -75,10 +68,8 @@ const Home = () => {
     },
   ];
 
-
   const [cameraListData,setCameraListData] = useState(sampleJson);
 
-  
   return (
     <>
       <Aside>
