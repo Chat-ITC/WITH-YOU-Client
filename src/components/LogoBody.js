@@ -13,7 +13,7 @@ const LogoBody = (props) => {
                   WITH
                 </LogoContainer>
                 :
-                props.bodyData
+                <p>{props.bodyData}</p>
             }
         </>
     );
