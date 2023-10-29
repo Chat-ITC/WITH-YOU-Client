@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled, { css } from 'styled-components';
+import setting from '../assets/setting.png';
 
 function MajorSelect ({onDataMajor}) {
     const [currentValue, setCurrentValue] = useState("학과를 선택해주세요");
@@ -15,14 +16,14 @@ function MajorSelect ({onDataMajor}) {
     return (
         <SelectBox onClick={() => setShowOptions((prev) => !prev)}>
             <Label value={currentValue}>{currentValue}</Label>
-            <SelectOptions $show={showOptions}>
+            <SelectOptionsCenter $show={showOptions}>
                 {major.map((major, index) => (
                     <Option 
                     key={index}
                     value={major}
                     onClick={handleOnChangeSelectValue}>{major}</Option>
                 ))}   
-            </SelectOptions>
+            </SelectOptionsCenter>
         </SelectBox>
     )
 };
@@ -41,41 +42,52 @@ function GradeSelect ({onDataGrade}) {
     return (
         <SelectBox onClick={() => setShowOptions((prev) => !prev)}>
             <Label value={currentValue}>{currentValue}</Label>
-            <SelectOptions $show={showOptions}>
+            <SelectOptionsCenter $show={showOptions}>
                 {major.map((major, index) => (
                     <Option 
                     key={index}
                     value={major}
                     onClick={handleOnChangeSelectValue}>{major}</Option>
                 ))}   
-            </SelectOptions>
+            </SelectOptionsCenter>
         </SelectBox>
     )
 };
-export {MajorSelect, GradeSelect};
+
+
+function CameraItemSetting({onDataSetting}) {
+  const [showOptions, setShowOptions] = useState(false);
+  const handleOnChangeSelectValue = (e) => {
+      const { innerText } = e.target;
+      onDataSetting(innerText);
+  };
+  const settingList = ["제목 변경하기", "본문 복사하기", "삭제하기"];
+
+  return (
+    <SelectBox onClick={() => setShowOptions((prev) => !prev)}>
+        <SelectOptionsLeft $show={showOptions}>
+            {settingList.map((major, index) => (
+                <Option 
+                key={index}
+                value={major}
+                onClick={handleOnChangeSelectValue}>{major}</Option>
+            ))}   
+        </SelectOptionsLeft>
+    </SelectBox>
+)
+
+
+};
+export {MajorSelect, GradeSelect, CameraItemSetting};
 
 const SelectBox = styled.div`
-  position: relative;
-  width: 244px;
-  height: 27px;
-  padding: 8px;
+  width: 35px;
+  height: 35px;
   margin-bottom: 8px;
-  background-color: #ffffff;
-  align-self: center;
-  border: 1px solid #bababa;
+  background-image: url(${setting});
+  background-size: contain;
   border-radius: 5px;
   font-size: 20px;
-  
-  cursor: pointer;
-  &::before {
-    content: "⌵";
-    position: absolute;
-    top: 5px;
-    right: 14px;
-    color: #49c181;
-    font-size: 20px;
-  }
-
 `;
 
 const Label = styled.label`
@@ -90,7 +102,7 @@ const Label = styled.label`
   `}
 `;
 
-const SelectOptions = styled.ul`
+const SelectOptionsCenter = styled.ul`
   position: absolute;
   z-index: 3;
   list-style: none;
@@ -107,12 +119,35 @@ const SelectOptions = styled.ul`
   transition: max-height 0.3s ease;
 `;
 
+const SelectOptionsLeft = styled.ul`
+  position: absolute;
+  z-index: 3;
+  list-style: none;
+  top: 33px;
+  right: 0px;
+  width: 150px;
+  overflow: hidden;
+  transform:  ${(props) => (props.$show ? "scale(1)" : "scale(0)")};
+  transform-origin: top right;
+  transition: transform 0.3s ease;
+  padding: 0;
+  border: 0px;
+  border-radius: 8px;
+  background-color: #F1F1F1;
+
+  box-shadow: 0px 0px 100px 15px rgba(0, 0, 0, 0.2);
+`;
+
 const Option = styled.li`
   color: black;
-  font-size: 16px;
-  padding: 10px 10px;
+  font-size: 17px;
+  padding: 10px 10px 10px 20px;
   transition: background-color 0.2s ease-in;
   &:hover {
     background-color: #595959;
+  }
+  &:nth-child(even) {
+    border-top: 0.5px solid #BABABA;
+    border-bottom: 0.5px  solid #BABABA;
   }
 `;

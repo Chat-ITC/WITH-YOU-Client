@@ -1,5 +1,4 @@
 //library
-import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
 import axios from 'axios';
@@ -10,7 +9,7 @@ import BackButtonImg from "../../assets/right.png";
 //components
 import TextInput from '../../components/TextInput';
 import PWInpit from '../../components/PWInput';
-import { MajorSelect, GradeSelect } from './CustomSelect';
+import { MajorSelect, GradeSelect } from '../../components/CustomSelect';
 
 //style
 import {
@@ -62,7 +61,7 @@ const Join = () => {
   const handleNext = async () => {
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_LOCAL_URL}/member/signup/userId`,
+        `${process.env.REACT_APP_LOCAL_URL}/member/signup/userId`,null,
         {params: {userId: userId}});
   
       console.log('아이디 중복 없음:', response.data);

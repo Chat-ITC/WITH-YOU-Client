@@ -68,7 +68,7 @@ const CameraBodySection = (props) => {
                         사진을 찍어보세요!
                     </CameraPhrases>
                 </CameraButtonContainer>
-                :
+                :          
                 <div>
                     <p>{props.bodyData}</p>
                     <button onClick={scrapRequest}>
@@ -81,7 +81,6 @@ const CameraBodySection = (props) => {
                         삭제
                     </button>
                 </div>
-               
             }
         </>
     );

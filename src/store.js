@@ -18,27 +18,14 @@ const visibilitySlice = createSlice({
   },
 });
 
-// contentSlice 슬라이스
-const contentSlice = createSlice({
-  name: 'content',
-  initialState: {
-    isContent: '',
-  },
-  reducers: {
-    sendContent: (state, action) => {
-      state.isContent = action.payload.isContent;
-    },
-  },
-});
+
 
 // 슬라이스의 액션을 외부로 내보냄
 export const { toggleAsideVisibility } = visibilitySlice.actions;
-export const { sendContent } = contentSlice.actions;
 
 // 슬라이스 리듀서를 생성
 const rootReducer = {
   visibility: visibilitySlice.reducer,
-  content: contentSlice.reducer, // 여러 슬라이스를 추가
 };
 
 // configureStore 함수를 사용하여 리덕스 스토어 생성하여

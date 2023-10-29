@@ -10,6 +10,8 @@ import {
 //library
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useState } from 'react';
+//components
+import {CameraItemSetting} from './CustomSelect'
 //library
 import { Link, useNavigate } from "react-router-dom";
 //store.js에서 'toggleAsideVisibility'라는 액션을 import
@@ -19,6 +21,7 @@ import screenSplit from '../assets/screen-split.svg';
 import zoom from '../assets/zoom.svg';
 import camera from '../assets/camera.png';
 import setting from '../assets/setting.png';
+
 
 
 const CameraHeader = () => {
@@ -48,6 +51,23 @@ const CameraHeader = () => {
     dispatch(toggleAsideVisibility());
   };
 
+  //자식에게 설정 데이터 받기
+  const getSetting = (getSetteingData) => {
+    switch(getSetteingData) {
+      case "제목 변경하기":
+        console.log("제목 변경하는 로직");
+        break;
+      case "본문 복사하기":
+        console.log("본문 복사 로직");
+        break;
+      case "삭제하기":
+        console.log("삭제하기");
+        //본문으로 아이디 전송?
+        break;
+      default:
+          break;
+    }
+  };
   return (
     <CameraHeaderTop style={{ left: isAsideVisible ? '0' : '300px' }}>
       <img src={fullScreen ? screenSplit : zoom} alt="화면 전환 버튼"  onClick={()=>{
@@ -65,12 +85,9 @@ const CameraHeader = () => {
             style={{ opacity: 1 }}
           />
         <div>
-            <img src={setting} alt="세팅 버튼" width="35"/>
-            <Setting>
-              <Option value="titleChange">이름 변경하기</Option>
-              <Option value="copy">본문 복사하기</Option>
-              <Option value="delete">삭제하기</Option>
-            </Setting>
+            <CameraItemSetting
+            onDataSetting={getSetting}
+            />
         </div>
       </HeaderImgBox>
     </CameraHeaderTop>
