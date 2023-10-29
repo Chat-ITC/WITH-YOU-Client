@@ -45,13 +45,11 @@ const Writing = () => {
     }
     const textTitle = { title: title };
     const textContent = { content: content};
-    const textFile = {fileURL: fileURL};
     console.log(`제목: ${title}`);
     console.log(`제목 Json:`, textTitle);
     console.log(`내용: `, textContent);
     console.log(`내용 Json: ${content}`);
     console.log(`사진: ${fileURL}`);
-    console.log(`사진 Json: `, textFile);
 
     try{
       await axiosInstance.post('', formData);
@@ -62,39 +60,27 @@ const Writing = () => {
     }
   };
   
-  //이미지 선택 후, 임시 URL로 변환한 다음 상태 업데이트
+  //이미지 선택 후, 임시 URL 대신 파일 그대로 FormData에 추가
   const handleFileChange = (e) => {
     //선택한 이미지 파일 목록을 'imageList'라는 변수에 할당
     const imageLists = e.target.files;
-    //이미지 파일의 임시 URL을 저장
-    let imageUrlLists = [...fileURL];
-    //이미지 파일 자체를 저장
+
+    //이미지 파일 자체를 저장하기 위한 배열
     let imageFileLists = [...imageFiles];
 
     for (let i = 0; i < imageLists.length; i++){
-      //임시 URL 생성, 이미지를 표시하거나 저장하는 데 사용
-      const currentImageUrl = URL.createObjectURL(imageLists[i]);
-      //생성된 이미지 배열에 추가
-      imageUrlLists.push(currentImageUrl);
-      if (imageUrlLists.length > 10){
-        //이미지 10개를 넘어가면 배열을 잘라냄
-        imageUrlLists = imageUrlLists.slice(0, 10);
-      }
       //이미지 파일을 추가
       imageFileLists.push(imageLists[i]);
     }
 
-    //업데이트된 배열을 저장하고 렌더링 후 이미지 URL 목록 업데이트
-    setFileURL(imageUrlLists);
+    //이미지 파일을 FormData에 직접 추가
     setImgaeFiles(imageFileLists);
   };
    //X버튼 클릭 시 이미지 삭제
   const handleDeleteImage = (id) => {
     //id에 해당하는 인덱스를 제외한 나머지 이미지URL을 선택하여, 새로운 배열에 저장
-    const updatedImageUrlLists = fileURL.filter((_, index) => index !== id);
     const updatedImageFileLists = imageFiles.filter((_, index) => index !== id);
-
-    setFileURL(updatedImageUrlLists);
+    //이미지 파일 배열 상태 업데이트
     setImgaeFiles(updatedImageFileLists);
   };
 
