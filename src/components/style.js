@@ -32,7 +32,7 @@ export const ImgBtn = styled.img`
 
 //CameraItem
 export const CameraItemContainer = styled.div`
-  width: 300px;
+  width: 275px;
   height: 100px;
   padding: 10px 10px 10px 15px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.20);
@@ -41,6 +41,7 @@ export const CameraItemContainer = styled.div`
 export const CameraItemTitle = styled.div` 
   font-weight: bold;
   font-size: 17px; 
+  width: 265px;
   height: 19px;
   overflow: hidden;
   margin-top: 5px;
@@ -65,8 +66,9 @@ export const CameraItemBottom = styled.div`
   display: flex;
   width: 280px;
   height: 20px;
+  justify-content: flex-start;
   align-content: center;
-  
+  gap: 5px;
 `;
 
 export const CameraItemScrap = styled.div`
@@ -174,6 +176,15 @@ export const CommunityLikeContainer = styled.div`
   height: 20px;
   line-height: 20px;
   gap: 5px;
+`;
+
+export const ScrapImg = styled.img`
+  width: 14px;
+  height: 14px;
+`;
+
+export const ScrapContent = styled.span`
+  font-size: 12px;
 `;
 
 export const LikeImg = styled.img`
