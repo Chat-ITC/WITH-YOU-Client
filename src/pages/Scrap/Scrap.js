@@ -24,7 +24,7 @@ import CommunityItem from '../../components/CommunityItem';
 import axiosInstance from '../../utils/axiosInterceptor/axiosInterceptor';
 
 const Scrap = () => {
-  //모달창
+  //화면 변환
   const isAsideVisible = useSelector((state) => state.visibility.isAsideVisible);
   
   //검색한데이터
