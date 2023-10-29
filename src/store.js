@@ -1,6 +1,5 @@
 // store.js - 리덕스 툴킷을 사용하여 store를 설정하고 구성하는 역할
 import { configureStore, createSlice } from '@reduxjs/toolkit';
-import { composeWithDevTools } from 'redux-devtools-extension';
 // Redux Toolkit을 사용하여 슬라이스(객체)를 생성
 //슬라이스는 상태와 상태 변경을 다루는데 필요한 여러 정보를 묶어주는 역할
 //슬라이스(객체)를 생성하고 visibilitySlice.reducers로 상태와 액션을 얻을 수 있다.
