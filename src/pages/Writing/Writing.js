@@ -20,11 +20,29 @@ import imgDelete from '../../assets/imgDelete.svg';
 
 //library
 import { Link, useNavigate } from 'react-router-dom';
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import axiosInstance from '../../utils/axiosInterceptor/axiosInterceptor';
 
 const Writing = () => {
 
+  //제목 작성
+  const [title, setTitle] = useState('');
+  const handleTitle = async () => {
+    const textTitle = { title: title };
+    console.log(`제목: ${title}`);
+    console.log(`제목 Json:`, textTitle);
+    try{
+      await axiosInstance.post('', textTitle);
+      alert("제목을 성공적으로 작성하였습니다.");
+    } catch (error) {
+      alert("글 작성을 실패하였습니다.");
+    }
+  };
+  
+  //내용 작성
+  const [content, setContent] = useState('');
+  
+  
   //이미지 선택 후, 임시 URL로 변환한 다음 상태 업데이트
   const [fileURL, setFileURL] = useState([]);
 
@@ -64,12 +82,12 @@ const Writing = () => {
           <File type="file" id="fileinput" multiple style={{display: 'none'}}
           accept='image/*; capture=camera'
           onChange={handleFileChange}/>
-          <WritingBtn>
+          <WritingBtn onClick={handleTitle}>
             글 작성
           </WritingBtn>
         </WritingSet>
       </WritingHeaderTop>
-      <TitleInput type="text" placeholder='제목'/>
+      <TitleInput type="text" placeholder='제목' onChange={(e)=> setTitle(e.target.value)}/>
       <ContentInput type="text" placeholder='내용을 입력해 주세요' rows="10"/>
       <ImgFileBox style={{
         backgroundColor: fileURL.length === 0 ? '#fff' : '#EBEBEB'

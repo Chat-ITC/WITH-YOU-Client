@@ -9,20 +9,17 @@ import React, { useState } from 'react';
 import checkBoxImg from '../assets/checkbox.png';
 import UnCheckBoxImg from '../assets/uncheckbox.png';
 
-const RequestCheckBox = ({content, id}) => {
-  const [isCheck, setIsCheck] = useState(false);
-  function imgHandler(){
-    setIsCheck(!isCheck);
-  }
+const RequestCheckBox = ({content, id, $done, onClick}) => {
+  const imgRadio = $done ? checkBoxImg : UnCheckBoxImg;
+  console.log("상태확인: ", $done);
+  console.log("아이디 확인: ", id);  
+  const handleCheckBoxClick = () => {
+    onClick(id); // 클릭 시 해당 아이디를 사용하여 onClick함수 호출
+  };
   return(
-    <ItemContainer
-    onClick={imgHandler} >
+    <ItemContainer onClick={handleCheckBoxClick}>
       <TextContent>{content}</TextContent>
-      <img 
-      src={isCheck ? checkBoxImg : UnCheckBoxImg} 
-      alt="체크 버튼" 
-      width="25px"
-      height="25px"/>
+      <img src={imgRadio} alt={imgRadio} width="25px" height="25px" />
     </ItemContainer>
   );
 }
