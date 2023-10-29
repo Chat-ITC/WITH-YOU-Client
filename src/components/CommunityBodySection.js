@@ -26,6 +26,7 @@ import {
   ChatUserMajor,
   ChatBody,
   ChatDate,
+  LogoContainer,
 } from './style';
 import React from "react";
 import { useRef, useState } from 'react';
@@ -58,8 +59,14 @@ const CommunityBodySection = (props) => {
     textarea.current.style.height = textarea.current.scrollHeight + 'px';
   };
     return (
+      <>
+        {props.bodyData === "camera" ? 
+          <LogoContainer>
+            WITH
+          </LogoContainer> 
+        :
         <CommunityBodyContainer>
-          <CommunityContent>
+        <CommunityContent>
             <CommunityTitle>{props.title}</CommunityTitle>
             <UserData>
               <UserDataSpan>{props.nickname}</UserDataSpan>
@@ -114,7 +121,9 @@ const CommunityBodySection = (props) => {
               </CommentContainer>
             </CommentBox>
           </InputChatBox>
-        </CommunityBodyContainer>
+          </CommunityBodyContainer>        
+      }       
+      </>
     );
 }
 
