@@ -73,6 +73,20 @@ const Capture = () => {
 
   //요구사항
   const [question, setQuestion] = useState('');
+  const [selectedId, setSelectedId] = useState(null);
+  const [checked, setChecked] = useState(false);
+
+  const handleCheckBoxClick = (id) => {
+    if (selectedId === id) {
+      // 이미 선택한 요구사항의 체크박스를 클릭한 경우, 선택 해제
+      setSelectedId(null);
+      setChecked(false);
+    } else {
+      // 선택한 요구사항의 체크박스를 클릭한 경우, 선택
+      setSelectedId(id);
+      setChecked(true);
+    }
+  };
 
   const requestJson = [
     {
@@ -107,13 +121,16 @@ const Capture = () => {
       <RequestCheckBox
       key={index}
       onClick={() => { 
-        setQuestion() 
+        setQuestion(requestjson.content);
+        handleCheckBoxClick(requestjson.id);
       }}
       content={requestjson.content}
       id={requestjson.id}
+      
+      $done={selectedId === requestjson.id && checked}
     />
     ))}
-       
+
         <div>
           <input
             type="file"

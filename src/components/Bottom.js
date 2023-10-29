@@ -7,7 +7,8 @@ import {
 //library
 import { NavLink, useLocation } from "react-router-dom";
 //img
-import Home from '../assets/emptyHome.png';
+import UnHome from '../assets/emptyHome.png';
+import Home from '../assets/emptyHome2.svg';
 import Star from '../assets/star.png';
 import Community from '../assets/Community.png';
 import Community2 from '../assets/Community2.svg';
@@ -28,7 +29,7 @@ const Bottom = () => {
             {/*NavLink를 사용하면 활성화된 페이지의 isActive값이 true가 된다.*/}
             <li>
               <ImgBtn
-                src={Home}
+                src={isActive("/home") || isActive("/capture") ? Home : UnHome}
                 alt="홈"
                 /*isActive가 true이면 1 false이면 0.3*/
                 style={{ 

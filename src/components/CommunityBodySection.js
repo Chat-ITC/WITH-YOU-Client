@@ -39,9 +39,6 @@ const CommunityBodySection = (props) => {
   //댓글 입력
   const [comment, setComment] = useState('');
 
-  //useRef를 이용해 높이를 조절하고자 하는 textarea 엘리먼트에 ref를 지정해 style 조절
-  const textarea = useRef();
-
   const handleSend = async () => {
     try{
       const response = await axiosInstance.post('', comment);
@@ -50,6 +47,9 @@ const CommunityBodySection = (props) => {
       console.log(error);
     }
   }
+  
+  //useRef를 이용해 높이를 조절하고자 하는 textarea 엘리먼트에 ref를 지정해 style 조절
+  const textarea = useRef();
 
   const handleResizeHeight =  (e) => {
     setComment(e.target.value);
