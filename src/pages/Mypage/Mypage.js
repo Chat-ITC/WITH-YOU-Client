@@ -38,6 +38,9 @@ import Crown4 from '../../assets/crown4.png';
 import MyModal from './MyModal';
 
 const Mypage = () => {
+  //문의하기
+  const inquiryURL = "";
+
   const navigate = useNavigate();
   const sampleJson = [
     {
@@ -85,6 +88,23 @@ const Mypage = () => {
     }
     return null; // 다른 경우에는 null을 반환하여 아무 왕관도 표시하지 않음
   }
+
+  //문의하기
+    const inquiryButton = () => {
+    window.location.href = inquiryURL;
+  };
+
+  //로그아웃
+  const logOutButton = async () => {
+    try{
+      await axiosInstance.post('', null);
+      alert("로그아웃 완료");
+      navigate("/");
+    } catch (error) {
+      alert("오류 발생. 로그인 화면으로 돌아갑니다.");
+      navigate("/");
+    };
+  };
   
   return (
     <>
@@ -128,7 +148,7 @@ const Mypage = () => {
             <MyModal onClose={handleCloseModal} />
           )}
         <MyPageList>
-          <MyPageImg>
+          <MyPageImg onClick={inquiryButton}>
             <img src={inquiry} alt="문의하기" width="35"/>
           </MyPageImg>
           <ListBtn>
@@ -136,7 +156,7 @@ const Mypage = () => {
           </ListBtn>
         </MyPageList>
         <MyPageList onClick={Logout}>
-          <MyPageImg>
+          <MyPageImg onClick={logOutButton}>
             <img src={logout} alt="로그아웃" width="35"/>
           </MyPageImg>
           <ListBtn>
