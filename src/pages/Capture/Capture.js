@@ -117,19 +117,19 @@ const Capture = () => {
       <Aside>
         <TopEmptyBox></TopEmptyBox>
         <TopLeftHeader>요구사항</TopLeftHeader>
-    {requestJson.map((requestjson,index) => (
-      <RequestCheckBox
-      key={index}
-      onClick={() => { 
-        setQuestion(requestjson.content);
-        handleCheckBoxClick(requestjson.id);
-      }}
-      content={requestjson.content}
-      id={requestjson.id}
-      
-      $done={selectedId === requestjson.id && checked}
-    />
-    ))}
+        {requestJson.map((requestjson,index) => (
+          <RequestCheckBox
+          key={index}
+          onClick={() => { 
+            setQuestion(requestjson.content);
+            handleCheckBoxClick(requestjson.id);
+          }}
+          content={requestjson.content}
+          id={requestjson.id}
+          
+          $done={selectedId === requestjson.id && checked}
+        />
+        ))}
 
         <div>
           <input

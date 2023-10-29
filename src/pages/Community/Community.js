@@ -8,55 +8,57 @@ import {
   FromBox,
 } from './style';
 //library
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 //components
 import CommunityHeader from '../../components/CommunityHeader';
-//components
 import CommunityItem from '../../components/CommunityItem';
 import CommunityBodySection from '../../components/CommunityBodySection';
 import Search from '../../components/SearchInput';
+import axiosInstance from '../../utils/axiosInterceptor/axiosInterceptor';
+import LogoBody from '../../components/LogoBody';
 
 const Community = () => {
+  //화면 변환
   const isAsideVisible = useSelector((state) => state.visibility.isAsideVisible);
 
+  //검색한 데이터
   const [searchWord, setSearchWord] = useState('');
+  const [bodyData, setBodyData] = useState({content:"camera"});
+  const [scrapId, setScrapId] = useState('');
 
-  const [bodyData, setBodyData] = useState("camera");
-
-  const bodySectionHandler = (props) => {
-    //목록에서 아이템 누를 시 서버로 id 전송후 데이터 받아오기 props: 아이디.
-    setBodyData(`아이템 아이디: ${props}`)
+  const requestCommunity = async () => {
+    try {
+      const response = await axiosInstance.get('/question/list');
+      console.log(response.data.length);
+      if(response.data.length !== 0){
+        setCameraListData(response.data);
+      }
+    }
+    catch(error) {
+      console.log(error);
+    }
   }
 
-  const sampleJson = [
-    {
-      id: "1",
-      nickname: "감흥없는 김밥",
-      major: "의료IT공학과",
-      title: "운영체제 스레드 부분 궁금한 거 있어요",
-      picture: true,
-      body: "대양 대순환 해류의 1만년 주기적인 변화는 여러 자연적인 요인과 연관되어 있습니다. 이러한 주기적인 변화는 미소록 주기라고도 불리며, 기후 시스템에서 중요한 역할을 합니다.대양 대순환 해류의 1만년 주기적인 변화는 여러 자연적인 요인과 연관되어 있습니다. 이러한 주기적인 변화는 미소록 주기라고도 불리며, 기후 시스템에서 중요한 역할을 합니다.대양 대순환 해류의 1만년 주기적인 변화는 여러 자연적인 요인과 연관되어 있습니다. 이러한 주기적인 변화는 미소록 주기라고도 불리며, 기후 시스템에서 중요한 역할을 합니다.",
-      like: 3,
-      chat: 1
-      ,
-      scrap: true,
-      date: "10/25",
-    },
-    {
-      id: "2",
-      nickname: "감흥없는 치킨",
-      major: "건축학과",
-      title: "머신러닝 이번주 수업 내용 질문입니다.",
-      picture: true,
-      body: "머신러닝 이번주 수업 안 들어서 하나도 모르는 데 경사하강법 부분 진짜 무슨 말인지 하나도 이해가 안되네요.. 혹시 친절하게 설명해주실 수 있는 분 계신가요..?",
-      like: 5,
-      chat: 1
-      ,
-      scrap: true,
-      date: "10/28",
-    },
-  ];
+  useEffect(() => {
+    requestCommunity();
+  }, [])
+
+  const bodySectionHandler = async (props) => {
+    console.log(props);
+    if(props!=='0'){
+      try{
+        const response = await axiosInstance.get('/question',
+        {params:{id:props}});
+        console.log(response);
+        setBodyData(response.data)
+      }
+      catch(error){
+        console.log(error);
+      }
+      setScrapId(props)
+    }
+  }
 
   const commentJson = [
     {
@@ -75,6 +77,8 @@ const Community = () => {
     },
   ];
 
+  const [cameraListData,setCameraListData] = useState([]);
+
   return (
     <>
       <Aside>
@@ -82,8 +86,8 @@ const Community = () => {
         <TopLeftHeader>Community</TopLeftHeader>
         <FromBox><Search
           onDataSearch={(getData) => setSearchWord(getData)}/></FromBox>
-        {sampleJson.map((sample, index) => (
-          <div
+        {cameraListData.map((sample, index) => (
+            <div
             onClick={() => {
               bodySectionHandler(sample.id)
             }}
@@ -93,10 +97,10 @@ const Community = () => {
               key={index}
               title={sample.title}
               $picture={sample.picture}
-              body={sample.body}
+              body={sample.content}
               like={sample.like}
               chat={sample.chat}
-              $scrap={sample.scrap}
+              $scrap={sample.isScrap}
               date={sample.date}
             />
           </div>
@@ -107,23 +111,22 @@ const Community = () => {
         <CommunityHeader/>
         <TopEmptyBox />
             <CommunityBodySection
-              id={sampleJson[0].id}
-              nickname={sampleJson[0].nickname}
-              major={sampleJson[0].major}
-              title={sampleJson[0].title}
-              $picture={sampleJson[0].picture}
-              body={sampleJson[0].body}
-              like={sampleJson[0].like}
-              chat={sampleJson[0].chat}
-              $scrap={sampleJson[0].scrap}
-              date={sampleJson[0].date}
+              id={bodyData.id}
+              nickname={bodyData.nickname}
+              major={bodyData.major}
+              title={bodyData.title}
+              $picture={bodyData.picture}
+              bodyData={bodyData.content}
+              like={bodyData.like}
+              chat={bodyData.chat}
+              $scrap={bodyData.isScrap}
+              date={bodyData.date}
               commentid={commentJson[0].id}
               commentnickname={commentJson[0].nickname}
               commentmajor={commentJson[0].major}
               commentbody={commentJson[0].body}
               commentdate={commentJson[0].date}
             />
-    
         <BottomEmptyBox/>
       </Main>
     </>

@@ -3,7 +3,6 @@ import {
   MypageContainer,
   MyPageHeader,
   TopEmptyBox,
-  MypageHeader,
   UserInfoContainer,
   UserContainer,
   UserLevelBox,
@@ -38,10 +37,8 @@ import Crown4 from '../../assets/crown4.png';
 import MyModal from './MyModal';
 
 const Mypage = () => {
-  //문의하기
-  const inquiryURL = "";
-
   const navigate = useNavigate();
+
   const sampleJson = [
     {
       id: "1",
@@ -67,7 +64,7 @@ const Mypage = () => {
   };
   
   //modal
-    const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   function handleOpenModal(){
     setIsOpen(true);
   }
@@ -90,8 +87,9 @@ const Mypage = () => {
   }
 
   //문의하기
-    const inquiryButton = () => {
-    window.location.href = inquiryURL;
+  const inquiryURL = "";
+  const inquiryButton = () => {
+  window.location.href = inquiryURL;
   };
 
   //로그아웃

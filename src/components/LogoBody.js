@@ -4,7 +4,7 @@ import {
 
 import React from "react";
 
-const CameraBodySection = (props) => {
+const LogoBody = (props) => {
     
     return (
         <>
@@ -13,10 +13,10 @@ const CameraBodySection = (props) => {
                   WITH
                 </LogoContainer>
                 :
-                props.bodyData
+                <p>{props.bodyData}</p>
             }
         </>
     );
 }
 
-export default CameraBodySection;
+export default LogoBody;
