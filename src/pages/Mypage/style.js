@@ -152,6 +152,7 @@ export const ModalBody = styled.div`
   transform: translate(-50%, -50%);
   z-index: 11;
 `;
+
 export const Content = styled.div`
   background: white;
   display: flex;

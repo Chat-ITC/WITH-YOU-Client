@@ -38,6 +38,7 @@ import MyModal from './MyModal';
 
 const Mypage = () => {
   const navigate = useNavigate();
+
   const sampleJson = [
     {
       id: "1",
