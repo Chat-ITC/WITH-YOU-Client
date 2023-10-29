@@ -1,17 +1,6 @@
 import styled from 'styled-components';
 
-export const MypageContainer = styled.div`
-  height: 100%;
-  overscroll-behavior-y: none;
-  position: fixed;
-  top:0; bottom: 0;
-  left:0; right:0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
+//마이페이지 헤더
 export const MyPageHeader = styled.div`
   display: flex;
   justify-content: center;
@@ -29,6 +18,18 @@ export const MyPageHeader = styled.div`
 export const TopEmptyBox = styled.div`
   width: 300px;
   height: 65px;
+`;
+//Mypage 메인
+export const MypageContainer = styled.div`
+  height: 100%;
+  overscroll-behavior-y: none;
+  position: fixed;
+  top:0; bottom: 0;
+  left:0; right:0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 //UserInfo
@@ -85,6 +86,7 @@ export const MajorGrade = styled.div`
   color: #898989;
 `;
 
+//유저 레벨 박스
 export const UserLevelBox = styled.div`
   display:flex;
   justify-content: center;
@@ -114,6 +116,11 @@ export const MyPageList = styled.li`
   margin: 20px 0;
 `;
 
+export const ListBtn = styled.button`
+  border: 0;
+  background-color: #fff;
+`;
+
 export const ImgText = styled.div`
   width: 160px;
   height: 55px;
@@ -125,10 +132,7 @@ export const ImgText = styled.div`
   text-align: left;
 `;
 
-export const ListBtn = styled.button`
-  border: 0;
-  background-color: #fff;
-`;
+
 
 //modal
 export const Mask = styled.div`
