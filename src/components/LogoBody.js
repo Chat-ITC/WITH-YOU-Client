@@ -4,7 +4,7 @@ import {
 
 import React from "react";
 
-const CameraBodySection = (props) => {
+const LogoBody = (props) => {
     
     return (
         <>
@@ -19,4 +19,4 @@ const CameraBodySection = (props) => {
     );
 }
 
-export default CameraBodySection;
+export default LogoBody;
