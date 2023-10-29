@@ -14,14 +14,13 @@ import {
 //library
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-
+import axiosInstance from '../../utils/axiosInterceptor/axiosInterceptor';
 //components
 import ScrapHeader from '../../components/ScrapHeader';
 import CameraItem from '../../components/CameraItem';
 import Search from '../../components/SearchInput';
 import LogoBody from '../../components/LogoBody';
 import CommunityItem from '../../components/CommunityItem';
-import axiosInstance from '../../utils/axiosInterceptor/axiosInterceptor';
 
 const Scrap = () => {
   //화면 변환
@@ -32,6 +31,7 @@ const Scrap = () => {
   const [bodyData, setBodyData] = useState({content:"camera"});
   const [scrapId, setScrapId] = useState('');
   
+  //히스토리 리스트
   const historyBodySectionHandler = async(props) => {
     console.log(props);
     if(props!=='0'){
@@ -79,6 +79,9 @@ const Scrap = () => {
     }
   } 
     
+  const [cameraListData, setCameraListData] = useState([]);
+  const [communityListData, setCommunityListData] = useState([]);
+
   //히스토리 - 커뮤니티 라디오버튼 
   const [historyToggle, setHistoryToggle] = useState(true);
   const [communityToggle, setCommunityToggle] = useState(false);
@@ -94,9 +97,6 @@ const Scrap = () => {
     setCommunityListData(communityListData);
   };
 
-  const [cameraListData, setCameraListData] = useState([]);
-  const [communityListData, setCommunityListData] = useState([]);
-
   useEffect(() => {
     RequestCommunity();
   }, [historyToggle])
@@ -104,7 +104,7 @@ const Scrap = () => {
   return (
     <>
       <Aside>
-        <TopEmptyBox></TopEmptyBox>
+        <TopEmptyBox/>
         <TopLeftHeader>Scrap</TopLeftHeader>
         <FromBox><Search
         onDataSearch={(getData) => setSearchWord(getData)}/></FromBox>
