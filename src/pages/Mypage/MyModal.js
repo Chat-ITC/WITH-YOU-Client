@@ -1,5 +1,4 @@
-//MyModal.js
-import React from "react";
+//style
 import {
   ModalBody,
   Mask,
@@ -8,16 +7,18 @@ import {
   ModalSetBtn,
   ModalCloseBtn,
   NickBtnBox,
-  } from "./style";
-
-  import TextInput from '../../components/TextInput';
-  import { useState } from 'react';
-  import { useNavigate } from "react-router";
+} from "./style";
+//library
+import React, {useState} from "react";
+import { useNavigate } from "react-router";
 import axiosInstance from '../../utils/axiosInterceptor/axiosInterceptor';
+//components
+import TextInput from '../../components/TextInput';
 
 const MyModal = ({onClose}) => {
-    const [nickName, setNickName] = useState('');
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+  //닉네임 설정
+  const [nickName, setNickName] = useState('');
 
   const handleChangeNickName = async () => {
     const name = { nickName: nickName };
