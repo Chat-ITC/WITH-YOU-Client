@@ -29,7 +29,7 @@ const Scrap = () => {
   
   //검색한데이터
   const [searchWord, setSearchWord] = useState('');
-  const [bodyData, setBodyData] = useState("camera");
+  const [bodyData, setBodyData] = useState({content:"camera"});
   const [scrapId, setScrapId] = useState('');
   
   const historyBodySectionHandler = async(props) => {
