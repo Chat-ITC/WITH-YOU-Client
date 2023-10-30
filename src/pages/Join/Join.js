@@ -101,8 +101,6 @@ const Join = () => {
       });
       // 서버에서 반환한 데이터를 기반으로 로그인 상태를 처리할 수 있습니다.
       console.log('로그인 성공:', response.data);
-      //로컬스토리지에 userId 저장
-      localStorage.setItem("userId", userId);
       //회원가입 성공
       navigate('/');
     } catch (error) {

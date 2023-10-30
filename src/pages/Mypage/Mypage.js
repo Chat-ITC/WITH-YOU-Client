@@ -49,9 +49,8 @@ const Mypage = () => {
     },
   ];
   const [userInfoData, setUserInfoData] = useState(sampleJson);
-
   //유저 정보 받아오기
-  const requestUserInfo = async (userId) => {
+  const requestUserInfo = async () => {
     try{
       const response = await axiosInstance.get('');
       console.log(response.data);
@@ -63,8 +62,7 @@ const Mypage = () => {
   }
   console.log("유저 닉네임: ", userInfoData[0].nickname);
   useEffect(() => {
-    const userId = localStorage.getItem("userId");
-    requestUserInfo(userId);
+    requestUserInfo();
   }, [])
   
   //modal
