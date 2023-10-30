@@ -57,16 +57,20 @@ const Writing = () => {
       title: title, 
       content: content
     };
+
+    formData.append('sendJson', sendJson);
     //for...of 루프를 사용하여 'formData' 객체의 모든 값들을 순회하고, 각 값에 대해 console.log 출력
     for (const value of formData.values()) {
       console.log(value);
     };
 
     try{
-      await axiosInstance.post('/post/regist', sendJson);
+      const response = await axiosInstance.post('/post/regist', formData);
+      console.log("폼 데이터 성공 확인: ", response);
       alert("제목을 성공적으로 작성하였습니다.");
       navigate("/community");
     } catch (error) {
+      console.log("폼 데이터 실패 확인: ", error);
       alert("글 작성을 실패하였습니다.");
     }
   };
