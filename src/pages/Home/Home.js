@@ -18,7 +18,7 @@ import CameraBodySection from '../../components/CameraBodySection';
 import axiosInstance from '../../utils/axiosInterceptor/axiosInterceptor';
 import CameraItem from '../../components/CameraItem';
 import Search from '../../components/SearchInput';
-import MyModal from '../../components/MyModal';
+import MyModal from '../../components/HomeMyModal';
 
 const Home = () => {
 
@@ -61,13 +61,7 @@ const Home = () => {
   const [cameraListData,setCameraListData] = useState(sampleJson);
   const isOpen = useSelector((state) => state.modal.isOpen);
   console.log("모달 상태 확인: ", isOpen);
-  //modal
-  const [isModal, setIsModal] = useState(isOpen);
-  console.log("모달창 확인: ", isModal);
-  function handleCloseModal(){
-    setIsModal(false);
-    
-  }
+
   const dispatch = useDispatch();
   const Modal = () => {
     dispatch(openModal())

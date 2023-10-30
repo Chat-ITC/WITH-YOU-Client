@@ -15,18 +15,18 @@ import axiosInstance from '../utils/axiosInterceptor/axiosInterceptor';
 //components
 import TextInput from './TextInput';
 
-const MyModal = ({onClose}) => {
+const HomeMyModal = ({onClose}) => {
   const navigate = useNavigate();
-  //닉네임 설정
-  const [nickName, setNickName] = useState('');
+  //제목 설정
+  const [content, setContent] = useState('');
 
-  const handleChangeNickName = async () => {
-    const name = { nickName: nickName };
-    console.log(`닉네임: ${nickName}`);
-    console.log(`닉네임 Json: `, name)
+  const handleChangeContent = async () => {
+    const title = { content: content };
+    console.log(`제목: ${content}`);
+    console.log(`제목 Json: `, title)
     try {
-      await axiosInstance.patch('/member/update', name);
-      alert("닉네임이 성공적으로 변경되었습니다.");
+      await axiosInstance.patch('/member/update', title);
+      alert("제목이 성공적으로 변경되었습니다.");
 
     } catch (error) {
       alert("세션이 만료되었습니다. 다시 로그인해 주세요");
@@ -45,12 +45,12 @@ const MyModal = ({onClose}) => {
             <ModalTItle>제목을 변경하세요</ModalTItle>
             <TextInput
               placeholder={"제목을 변경하세요"}
-              value={nickName}
-              onChange={(e) => setNickName(e.target.value)}
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
             />
             <NickBtnBox>
               <ModalSetBtn
-                onClick={handleChangeNickName}>
+                onClick={handleChangeContent}>
                 설정
               </ModalSetBtn>
               <ModalCloseBtn 
@@ -66,4 +66,4 @@ const MyModal = ({onClose}) => {
   );
 };
 
-export default MyModal;
+export default HomeMyModal;
