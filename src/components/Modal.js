@@ -15,7 +15,7 @@ import axiosInstance from '../utils/axiosInterceptor/axiosInterceptor';
 //components
 import TextInput from './TextInput';
 
-const HomeMyModal = ({onClose}) => {
+const Modal = ({onClose}) => {
   const navigate = useNavigate();
   //제목 설정
   const [content, setContent] = useState('');
@@ -66,4 +66,4 @@ const HomeMyModal = ({onClose}) => {
   );
 };
 
-export default HomeMyModal;
+export default Modal;

@@ -6,7 +6,6 @@ import {
   TopEmptyBox,
   TopLeftHeader,
   FromBox,
-  ModalClose,
 } from './style';
 //library
 import React, { useState, useEffect } from 'react';
@@ -18,7 +17,7 @@ import CameraBodySection from '../../components/CameraBodySection';
 import axiosInstance from '../../utils/axiosInterceptor/axiosInterceptor';
 import CameraItem from '../../components/CameraItem';
 import Search from '../../components/SearchInput';
-import MyModal from '../../components/HomeMyModal';
+import MyModal from '../../components/Modal';
 
 const Home = () => {
 

@@ -8,15 +8,13 @@ import {
 //library
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useState } from 'react';
-//components
-import { openModal } from '../store';
-import { CameraItemSetting } from './CustomSelect'
 import axiosInstance from '../utils/axiosInterceptor/axiosInterceptor';
-
-//library
 import { Link, useNavigate } from "react-router-dom";
+//components
+import { CameraItemSetting } from './CustomSelect'
+
 //store.js에서 'toggleAsideVisibility'라는 액션을 import
-import { deleteId, toggleAsideVisibility } from '../store';
+import { openModal, deleteId, toggleAsideVisibility } from '../store';
 //img
 import screenSplit from '../assets/screen-split.svg';
 import zoom from '../assets/zoom.svg';
@@ -93,9 +91,7 @@ const CameraHeader = () => {
         <CameraTopInput
           type="file"
           accept="image/*; capture=camera"
-          onChange={()=>{
-            handleFileChange();
-          }} />
+          onChange={handleFileChange} />
         <ImgBtn
           src={camera}
           alt="홈"
