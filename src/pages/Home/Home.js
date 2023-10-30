@@ -40,7 +40,7 @@ const Home = () => {
   }
 
   useEffect(() => {
-    requestHistory();
+      requestHistory();
   }, [stateChange])
 
 
