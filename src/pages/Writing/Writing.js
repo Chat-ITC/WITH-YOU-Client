@@ -35,11 +35,11 @@ const Writing = () => {
   const [imageFiles, setImgaeFiles] = useState([]);
   
   const handleTitle = async () => {
-     console.log(`사진 테스트: `, imageFiles);
+    console.log(`사진 테스트: `, imageFiles);
     //폼데이터 생성
     const formData = new FormData();
-    formData.append('title', title);
-    formData.append('content', content);
+    //formData.append('title', title);
+    //formData.append('content', content);
     //이미지 파일을 formData에 추가
     for(let i = 0; i < imageFiles.length; i++){
       formData.append('images', imageFiles[i]);
@@ -52,13 +52,18 @@ const Writing = () => {
     console.log(`내용: `, textContent);
     console.log(`내용 Json: ${content}`);
     console.log(`사진: ${imageFiles}`);
+    //Json 하나로 묶어줌
+    const sendJson = {
+      title: title, 
+      content: content
+    };
+    //for...of 루프를 사용하여 'formData' 객체의 모든 값들을 순회하고, 각 값에 대해 console.log 출력
     for (const value of formData.values()) {
       console.log(value);
     };
 
     try{
-      await axiosInstance.post('', textTitle);
-      await axiosInstance.post('', formData);
+      await axiosInstance.post('/post/regist', sendJson);
       alert("제목을 성공적으로 작성하였습니다.");
       navigate("/community");
     } catch (error) {
@@ -82,7 +87,7 @@ const Writing = () => {
       imageUrlLists.push(currentImageUrl);
       //이미지 파일을 추가
       imageFileLists.push(imageLists[i]);
-     
+
     }
     if (imageUrlLists.length > 10){
       //이미지 10개를 넘어가면 배열을 잘라냄
@@ -126,7 +131,7 @@ const Writing = () => {
       }}>
         {fileURL.map((image, id) => (
         <div key={id} style={{display: 'flex'}}>
-          <ImgItem src={image} alt={`${image}-${id}`} />
+          <ImgItem src={image} alt="배열 이미지" />
           <ImgDelete src={imgDelete} onClick={()=> handleDeleteImage(id)}/>
         </div>
       ))}
