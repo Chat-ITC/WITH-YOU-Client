@@ -26,12 +26,13 @@ const Community = () => {
   const [bodyData, setBodyData] = useState({content:"community"});
   const [scrapId, setScrapId] = useState('');
 
+  //커뮤니티 리스트 데이터 불러오기
   const requestCommunity = async () => {
     try {
       const response = await axiosInstance.get('/question/list');
       console.log(response.data.length);
-      if(response.data.length !== 0){
-        setCameraListData(response.data);
+      if(response.data){
+        setCommunityListData(response.data);
       }
     }
     catch(error) {
@@ -42,21 +43,19 @@ const Community = () => {
   useEffect(() => {
     requestCommunity();
   }, [])
-
+  //커뮤니티 리스트 눌렀을 때 'bodyData'에 데이터 저장
   const bodySectionHandler = async (props) => {
     console.log(props);
-    if(props!=='0'){
-      try{
-        const response = await axiosInstance.get('/question',
-        {params:{id:props}});
-        console.log(response);
-        setBodyData(response.data)
-      }
-      catch(error){
-        console.log(error);
-      }
-      setScrapId(props)
+    try{
+      const response = await axiosInstance.get('/question',
+      {params:{id:props}});
+      console.log(response);
+      setBodyData(response.data)
     }
+    catch(error){
+      console.log(error);
+    }
+    setScrapId(props)
   }
 
   const commentJson = [
@@ -76,7 +75,7 @@ const Community = () => {
     },
   ];
 
-  const [cameraListData,setCameraListData] = useState([]);
+  const [communityListData, setCommunityListData] = useState([]);
 
   return (
     <>
@@ -85,7 +84,7 @@ const Community = () => {
         <TopLeftHeader>Community</TopLeftHeader>
         <FromBox><Search
           onDataSearch={(getData) => setSearchWord(getData)}/></FromBox>
-        {cameraListData.map((sample, index) => (
+        {communityListData.map((sample, index) => (
             <div
             onClick={() => {
               bodySectionHandler(sample.id)

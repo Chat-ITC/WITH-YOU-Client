@@ -33,17 +33,17 @@ import {
 import React, { useRef, useState } from 'react';
 import { scrapId } from '../store';
 import { useSelector, useDispatch } from 'react-redux';
+import axiosInstance from '../utils/axiosInterceptor/axiosInterceptor';
 //img
 import Like from '../assets/like.png';
 import Star from '../assets/FillStar.svg';
 import Chat from '../assets/chat.png';
-import axiosInstance from '../utils/axiosInterceptor/axiosInterceptor';
 
 const CommunityBodySection = (props) => {
 
   const selectorBodyData = useSelector((state) => state.CameraItemId.bodyData);
-    const onlyScrapState = useSelector((state) => state.CameraItemId.scrap);
-  //스크랩
+  const onlyScrapState = useSelector((state) => state.CameraItemId.scrap);
+  //스크랩 버튼 핸들러
   const dispatch = useDispatch();
     const scrapBtnHandler = async () => {
         try {
@@ -78,7 +78,6 @@ const CommunityBodySection = (props) => {
 
   const handleResizeHeight =  (e) => {
     setComment(e.target.value);
-
     textarea.current.style.height = 'auto';//height 초기화
     textarea.current.style.height = textarea.current.scrollHeight + 'px';
   };
@@ -99,9 +98,7 @@ const CommunityBodySection = (props) => {
               <UserDataSpan>{props.nickname}</UserDataSpan>
               <UserDataSpan>{props.major}</UserDataSpan>
               <UserDataSpan>{props.date}</UserDataSpan>
-              <CommunityBody>
-                {props.body}
-              </CommunityBody>
+              <CommunityBody>{props.body}</CommunityBody>
             </UserData>
           </CommunityContent>
           <LikeChatBox>
