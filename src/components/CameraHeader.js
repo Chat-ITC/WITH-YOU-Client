@@ -47,6 +47,9 @@ const CameraHeader = () => {
     dispatch(toggleAsideVisibility());
   };
 
+  //복사
+  const copyBodyData = useSelector((state) => state.CameraItemId.bodyData);
+
   //삭제한 뒤 리덕스 값을 0으로 지정
   const selectDeleteId = useSelector((state) => state.CameraItemId.id);
   const deleteListRequestTest = async (props) => {
