@@ -95,10 +95,10 @@ const CommunityBodySection = (props) => {
         <CommunityContent>
             <CommunityTitle>{props.title}</CommunityTitle>
             <UserData>
-              <UserDataSpan>{props.nickname}</UserDataSpan>
-              <UserDataSpan>{props.major}</UserDataSpan>
+              <UserDataSpan>{props.userNickName}</UserDataSpan>
+              <UserDataSpan>{props.userMajor}</UserDataSpan>
               <UserDataSpan>{props.date}</UserDataSpan>
-              <CommunityBody>{props.body}</CommunityBody>
+              <CommunityBody>{props.content}</CommunityBody>
             </UserData>
           </CommunityContent>
           <LikeChatBox>
