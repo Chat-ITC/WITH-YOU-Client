@@ -9,8 +9,10 @@ import {
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useState } from 'react';
 //components
+import { openModal } from '../store';
 import { CameraItemSetting } from './CustomSelect'
 import axiosInstance from '../utils/axiosInterceptor/axiosInterceptor';
+
 //library
 import { Link, useNavigate } from "react-router-dom";
 //store.js에서 'toggleAsideVisibility'라는 액션을 import
@@ -63,12 +65,12 @@ const CameraHeader = () => {
     }
   }
 
-
   //자식에게 설정 데이터 받기
   const getSetting = (getSetteingData) => {
     switch (getSetteingData) {
       case "제목 변경하기":
         console.log("제목 변경하는 로직");
+        dispatch(openModal());
         break;
       case "본문 복사하기":
         console.log("본문 복사 로직");
@@ -91,7 +93,9 @@ const CameraHeader = () => {
         <CameraTopInput
           type="file"
           accept="image/*; capture=camera"
-          onChange={handleFileChange} />
+          onChange={()=>{
+            handleFileChange();
+          }} />
         <ImgBtn
           src={camera}
           alt="홈"

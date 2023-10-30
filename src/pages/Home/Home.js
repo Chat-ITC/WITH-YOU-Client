@@ -6,19 +6,22 @@ import {
   TopEmptyBox,
   TopLeftHeader,
   FromBox,
+  ModalClose,
 } from './style';
 //library
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-
+import { useSelector, useDispatch } from 'react-redux';
+import { openModal } from '../../store';
 //components
 import CameraHeader from '../../components/CameraHeader';
 import CameraBodySection from '../../components/CameraBodySection';
 import axiosInstance from '../../utils/axiosInterceptor/axiosInterceptor';
 import CameraItem from '../../components/CameraItem';
 import Search from '../../components/SearchInput';
+import MyModal from '../../components/MyModal';
 
 const Home = () => {
+
   const isAsideVisible = useSelector((state) => state.visibility.isAsideVisible);
 
   const stateChange = useSelector((state) => state.CameraItemId.scrap);
@@ -56,7 +59,19 @@ const Home = () => {
   ];
 
   const [cameraListData,setCameraListData] = useState(sampleJson);
-
+  const isOpen = useSelector((state) => state.modal.isOpen);
+  console.log("모달 상태 확인: ", isOpen);
+  //modal
+  const [isModal, setIsModal] = useState(isOpen);
+  console.log("모달창 확인: ", isModal);
+  function handleCloseModal(){
+    setIsModal(false);
+    
+  }
+  const dispatch = useDispatch();
+  const Modal = () => {
+    dispatch(openModal())
+  }
   return (
     <>
       <Aside>
@@ -83,8 +98,10 @@ const Home = () => {
       <Main style={{ left: isAsideVisible ? '0' : '300px' }}>
         <CameraHeader/>
         <TopEmptyBox />
-        <CameraBodySection
-        />
+        <CameraBodySection/>
+        {isOpen && (
+          <MyModal onClose={Modal}/>
+        )}
         <BottomEmptyBox/>
       </Main>
     </>

@@ -420,6 +420,7 @@ export const HeaderImgBox = styled.div`
   align-items: center;
   gap:20px;
   position: relative;
+  position: 0;
 `;
 
 export const Setting = styled.select`
@@ -744,3 +745,66 @@ export const ChatDate = styled.div`
   font-size: 14px;
   color: #606060;
 `;
+
+//modal
+export const ModalBody = styled.div` 
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 11;
+`;
+
+export const Content = styled.div`
+  background: white;
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  border-radius: 10px;
+  width: 380px;
+  height: 200px;
+`;
+
+export const ModalTItle = styled.div`
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 30px;
+`;
+
+export const NickBtnBox = styled.div`
+  display: flex;
+  gap: 20px;
+`;
+
+export const ModalSetBtn = styled.button`
+  background-color: #3DA5F5;
+  padding: 10px;
+  width: 100px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 10px; 
+  color: white;
+`;
+
+export const ModalCloseBtn = styled.button`
+  background-color: #fff;
+  padding: 10px;
+  width: 100px;
+  font-size: 16px;
+  font-weight: bold;
+  border: 1px solid #3DA5F5;
+  border-radius: 10px; 
+  color: #3DA5F5;
+`;
+
+export const Mask = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index:10;
+  `;

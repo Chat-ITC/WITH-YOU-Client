@@ -37,17 +37,17 @@ function GradeSelect ({onDataGrade}) {
         setCurrentValue(innerText+"학년");
     };
 
-    const major = [1, 2, 3, 4, 5]
+    const grade = [1, 2, 3, 4, 5]
 
     return (
         <SelectBox onClick={() => setShowOptions((prev) => !prev)}>
             <Label value={currentValue}>{currentValue}</Label>
             <SelectOptionsCenter $show={showOptions}>
-                {major.map((major, index) => (
+                {grade.map((grade, index) => (
                     <Option 
                     key={index}
-                    value={major}
-                    onClick={handleOnChangeSelectValue}>{major}</Option>
+                    value={grade}
+                    onClick={handleOnChangeSelectValue}>{grade}</Option>
                 ))}   
             </SelectOptionsCenter>
         </SelectBox>
@@ -56,6 +56,7 @@ function GradeSelect ({onDataGrade}) {
 
 
 function CameraItemSetting({onDataSetting}) {
+
   const [showOptions, setShowOptions] = useState(false);
   const handleOnChangeSelectValue = (e) => {
       const { innerText } = e.target;
@@ -64,16 +65,18 @@ function CameraItemSetting({onDataSetting}) {
   const settingList = ["제목 변경하기", "본문 복사하기", "삭제하기"];
 
   return (
+    <>
     <SettingSelectBox onClick={() => setShowOptions((prev) => !prev)}>
         <SelectOptionsLeft $show={showOptions}>
-            {settingList.map((major, index) => (
-                <Option 
-                key={index}
-                value={major}
-                onClick={handleOnChangeSelectValue}>{major}</Option>
-            ))}   
+            {settingList.map((settingList, index) => (
+              <Option 
+              key={index}
+              value={settingList}
+              onClick={handleOnChangeSelectValue}>{settingList}</Option>
+            ))}
         </SelectOptionsLeft>
     </SettingSelectBox>
+    </>
 )
 
 
