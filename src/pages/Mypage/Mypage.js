@@ -19,7 +19,7 @@ import {
   Ul,
 } from './style';
 //library
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { getCookie } from '../../utils/Cookies/Cookies';
 import { useNavigate } from "react-router";
@@ -38,7 +38,6 @@ import MyModal from './MyModal';
 
 const Mypage = () => {
   const navigate = useNavigate();
-
   const sampleJson = [
     {
       id: "1",
@@ -49,19 +48,24 @@ const Mypage = () => {
       levelgage: 80,
     },
   ];
+  const [userInfoData, setUserInfoData] = useState(sampleJson);
 
-  //logout
-  const Logout = async () => {
-    console.log("로그아웃");
+  //유저 정보 받아오기
+  const requestUserInfo = async (userId) => {
     try{
-      await axiosInstance.post('', null);
-      alert("로그아웃 완료");
-      navigate("/");
-    }catch (error){
-      alert("로그아웃 실패. 로그인 화면으로 돌아갑니다.");
-      navigate("/");
+      const response = await axiosInstance.get('');
+      console.log(response.data);
+      const userData = response.data;
+      setUserInfoData(userData);
+    } catch (error){
+      console.log(error);
     }
-  };
+  }
+  console.log("유저 닉네임: ", userInfoData[0].nickname);
+  useEffect(() => {
+    const userId = localStorage.getItem("userId");
+    requestUserInfo(userId);
+  }, [])
   
   //modal
   const [isOpen, setIsOpen] = useState(false);
@@ -93,15 +97,16 @@ const Mypage = () => {
   };
 
   //로그아웃
-  const logOutButton = async () => {
+  const Logout = async () => {
+    console.log("로그아웃");
     try{
       await axiosInstance.post('', null);
       alert("로그아웃 완료");
       navigate("/");
-    } catch (error) {
-      alert("오류 발생. 로그인 화면으로 돌아갑니다.");
+    }catch (error){
+      alert("로그아웃 실패. 로그인 화면으로 돌아갑니다.");
       navigate("/");
-    };
+    }
   };
   
   return (
@@ -117,20 +122,20 @@ const Mypage = () => {
             <UserInfo>
               <UsernickBox>
               <UserCrownBox>
-                {getLevelCrown(sampleJson[0].level)}
+                {getLevelCrown(userInfoData[0].level)}
               </UserCrownBox>
               <UserNick>
-                {sampleJson[0].nickname}
+                {userInfoData[0].nickname}
               </UserNick>
               </UsernickBox>  
               <MajorGrade>
-                {sampleJson[0].major} {sampleJson[0].grade}학년
+                {userInfoData[0].major} {userInfoData[0].grade}학년
               </MajorGrade>
             </UserInfo> 
           </UserContainer>
           <UserLevelBox>
-            <UserLevel>Lv.{sampleJson[0].level}</UserLevel>
-            <progress value={sampleJson[0].levelgage} min="0" max="100"></progress>
+            <UserLevel>Lv.{userInfoData[0].level}</UserLevel>
+            <progress value={userInfoData[0].levelgage} min="0" max="100"></progress>
           </UserLevelBox>
       </UserInfoContainer>
       <Ul>
@@ -154,7 +159,7 @@ const Mypage = () => {
           </ListBtn>
         </MyPageList>
         <MyPageList onClick={Logout}>
-          <MyPageImg onClick={logOutButton}>
+          <MyPageImg>
             <img src={logout} alt="로그아웃" width="35"/>
           </MyPageImg>
           <ListBtn>
