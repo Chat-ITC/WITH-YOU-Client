@@ -1,22 +1,22 @@
 //style
 import { 
   HeaderImgBox,
-  Setting,
   ScrapHeaderTop,
 } from './style';
 //library
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useState } from 'react';
-//library
+import axiosInstance from '../utils/axiosInterceptor/axiosInterceptor';
 //store.js에서 'toggleAsideVisibility'라는 액션을 import
-import { toggleAsideVisibility } from '../store';
+import { openModal, deleteId,toggleAsideVisibility } from '../store';
 //img
 import screenSplit from '../assets/screen-split.svg';
 import zoom from '../assets/zoom.svg';
-import setting from '../assets/setting.png';
-
+//components
+import { CameraItemSetting } from './CustomSelect';
 
 const ScrapHeader = () => {
+  
   //화면 크기 전환
   const [fullScreen, setFullScreen] = useState(false);
   function ScreenHandler(){
@@ -31,6 +31,40 @@ const ScrapHeader = () => {
     dispatch(toggleAsideVisibility());
   };
 
+  //복사
+  const copyBodyData = useSelector((state) => state.CameraItemId.bodyData);
+
+   //삭제한 뒤 리덕스 값을 0으로 지정
+  const selectDeleteId = useSelector((state) => state.CameraItemId.id);
+  const deleteListRequestTest = async (props) => {
+    try {
+      await axiosInstance.delete('/question/delete', { params: { id: props } });
+      alert("삭제가 완료되었습니다!");
+      window.location.replace("/home");
+    }
+    catch (error) {
+      console.log(error);
+    }
+  }
+  //자식에게 설정 데이터 받기
+  const getSetting = (getSetteingData) => {
+    switch (getSetteingData) {
+      case "제목 변경하기":
+        console.log("제목 변경하는 로직");
+        dispatch(openModal());
+        break;
+      case "본문 복사하기":
+        console.log("본문 복사 로직");
+        break;
+      case "삭제하기":
+        dispatch(deleteId('0'));
+        deleteListRequestTest(selectDeleteId);
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
     <ScrapHeaderTop style={{ left: isAsideVisible ? '0' : '300px' }}>
       <img src={fullScreen ? screenSplit : zoom} alt="화면 전환 버튼"  onClick={()=>{
@@ -39,12 +73,9 @@ const ScrapHeader = () => {
       }}/>
       <HeaderImgBox>
         <div>
-            <img src={setting} alt="세팅 버튼" width="35"/>
-            <Setting>
-              <option value="titleChange">이름 변경하기</option>
-              <option value="copy">본문 복사하기</option>
-              <option value="delete">삭제하기</option>
-            </Setting>
+          <CameraItemSetting
+            onDataSetting={getSetting}
+          />
         </div>
       </HeaderImgBox>
     </ScrapHeaderTop>

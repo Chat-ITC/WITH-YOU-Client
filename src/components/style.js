@@ -257,6 +257,8 @@ export const CameraButtonContainer = styled.div`
 
 export const LogoContainer = styled.div`
   display:flex;
+  margin: 0 auto;
+  width: 400px;
   height: 80%;
   justify-content: center;
   align-items: center;

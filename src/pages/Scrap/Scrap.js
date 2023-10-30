@@ -13,7 +13,8 @@ import {
 } from './style';
 //library
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { openModal } from '../../store';
 import axiosInstance from '../../utils/axiosInterceptor/axiosInterceptor';
 //components
 import ScrapHeader from '../../components/ScrapHeader';
@@ -21,6 +22,7 @@ import CameraItem from '../../components/CameraItem';
 import Search from '../../components/SearchInput';
 import LogoBody from '../../components/LogoBody';
 import CommunityItem from '../../components/CommunityItem';
+import MyModal from '../../components/Modal';
 
 const Scrap = () => {
   //화면 변환
@@ -101,6 +103,14 @@ const Scrap = () => {
     RequestCommunity();
   }, [historyToggle])
 
+  const isOpen = useSelector((state) => state.modal.isOpen);
+  console.log("모달 상태 확인: ", isOpen);
+  
+  const dispatch = useDispatch();
+  const Modal = () => {
+    dispatch(openModal())
+  }
+
   return (
     <>
       <Aside>
@@ -169,6 +179,9 @@ const Scrap = () => {
         <LogoBody
           bodyData={bodyData.content}
         />
+        {isOpen && (
+          <MyModal onClose={Modal}/>
+        )}
         <BottomEmptyBox />
       </Main>
     </>
