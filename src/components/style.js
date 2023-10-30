@@ -2,7 +2,8 @@ import styled, { css } from 'styled-components';
 import openeye from '../assets/openEye.png';
 import closeeye from '../assets/closeEye.png';
 import fillStar from '../assets/FillStar.svg';
-import camera from '../assets/camera.png'
+import emptyStar from '../assets/star.svg';
+import camera from '../assets/camera.png';
 import picture from '../assets/picture.png';
 import Send from '../assets/send.svg';
 
@@ -284,16 +285,42 @@ export const CameraTopInput = styled.input`
 export const CameraBigButton = styled.div`
   background-repeat: no-repeat;
   background-size: contain;
-  background-image: none;
   background-image: url(${camera});
   width: 200px;
   height: 200px;
 `;
+
 export const CameraPhrases = styled.div`
   position: relative;
   top: -14px;
   font-size: 20px;
 `
+
+export const CameraBodyContainer = styled.div`
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+`
+export const HistoryScrapBtn = styled.div`
+  margin: 20px;
+  margin-bottom: 10px;
+  width: 40px;
+  height: 40px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url(${emptyStar});
+  ${props => props.$scrapState === "YES" && css`
+        background-image: url(${fillStar});
+    `}
+`
+
+export const BodyDataContainer = styled.div`
+  padding: 0px 45px 40px 40px;
+  font-size: 19px;
+  white-space: pre-wrap;
+  line-height: 30px;
+`
+
 //CameraHeader
 export const CameraHeaderTop = styled.div`
   display: flex;

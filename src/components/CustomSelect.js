@@ -109,8 +109,6 @@ const SettingSelectBox = styled.div`
   height: 35px;
   background-image: url(${setting});
   background-size: contain;
-  border-radius: 5px;
-  font-size: 20px;
 `;
 
 const Label = styled.label`
@@ -157,7 +155,6 @@ const SelectOptionsLeft = styled.ul`
   border: 0px;
   border-radius: 8px;
   background-color: #F1F1F1;
-
   box-shadow: 0px 0px 100px 15px rgba(0, 0, 0, 0.2);
 `;
 

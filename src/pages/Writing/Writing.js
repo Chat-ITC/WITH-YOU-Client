@@ -35,6 +35,7 @@ const Writing = () => {
   const [imageFiles, setImgaeFiles] = useState([]);
   
   const handleTitle = async () => {
+     console.log(`사진 테스트: `, imageFiles);
     //폼데이터 생성
     const formData = new FormData();
     formData.append('title', title);
@@ -50,7 +51,11 @@ const Writing = () => {
     console.log(`제목 Json:`, textTitle);
     console.log(`내용: `, textContent);
     console.log(`내용 Json: ${content}`);
-    console.log(`사진: `, imageFiles);
+    console.log(`사진: ${imageFiles}`);
+    for (const value of formData.values()) {
+      console.log(value);
+    };
+
     try{
       await axiosInstance.post('', textTitle);
       await axiosInstance.post('', formData);
@@ -65,9 +70,9 @@ const Writing = () => {
   const handleFileChange = (e) => {
     //선택한 이미지 파일 목록을 'imageList'라는 변수에 할당
     const imageLists = e.target.files;
-    //이미지 파일의 임시 URL을 저장
+    setImgaeFiles(imageLists);
+    //이미지 파일 자체를 저장하기 위한 배열
     let imageUrlLists = [...fileURL];
-    //이미지 파일 자체를 저장
     let imageFileLists = [...imageFiles];
 
     for (let i = 0; i < imageLists.length; i++){
@@ -75,25 +80,26 @@ const Writing = () => {
       const currentImageUrl = URL.createObjectURL(imageLists[i]);
       //생성된 이미지 배열에 추가
       imageUrlLists.push(currentImageUrl);
-      if (imageUrlLists.length > 10){
-        //이미지 10개를 넘어가면 배열을 잘라냄
-        imageUrlLists = imageUrlLists.slice(0, 10);
-      }
-      setFileURL(imageUrlLists);
+      //이미지 파일을 추가
       imageFileLists.push(imageLists[i]);
+     
+    }
+    if (imageUrlLists.length > 10){
+      //이미지 10개를 넘어가면 배열을 잘라냄
+      imageUrlLists = imageUrlLists.slice(0, 10);
     }
     //업데이트된 배열을 저장하고 렌더링 후 이미지 URL 목록 업데이트
     setFileURL(imageUrlLists);
-    setImgaeFiles(imageFileLists);
+    
   };
    //X버튼 클릭 시 이미지 삭제
   const handleDeleteImage = (id) => {
+    setFileURL(fileURL.filter((_, index) => index !== id));
     //id에 해당하는 인덱스를 제외한 나머지 이미지URL을 선택하여, 새로운 배열에 저장
     const updatedImageUrlLists = fileURL.filter((_, index) => index !== id);
     const updatedImageFileLists = imageFiles.filter((_, index) => index !== id);
-
-    setFileURL(updatedImageUrlLists);
-    setImgaeFiles(updatedImageFileLists);
+    //이미지 파일 배열 상태 업데이트
+    imageFiles.splice(id);
   };
 
   return (
