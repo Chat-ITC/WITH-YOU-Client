@@ -95,11 +95,9 @@ const Writing = () => {
    //X버튼 클릭 시 이미지 삭제
   const handleDeleteImage = (id) => {
     setFileURL(fileURL.filter((_, index) => index !== id));
-    //id에 해당하는 인덱스를 제외한 나머지 이미지URL을 선택하여, 새로운 배열에 저장
-    const updatedImageUrlLists = fileURL.filter((_, index) => index !== id);
-    const updatedImageFileLists = imageFiles.filter((_, index) => index !== id);
-    //이미지 파일 배열 상태 업데이트
-    imageFiles.splice(id);
+    const updatedImageFileLists = [...imageFiles]; // imageFiles 배열의 복사본을 생성
+  updatedImageFileLists.splice(id, 1); // 지정된 인덱스의 이미지를 제거
+  setImgaeFiles(updatedImageFileLists); // 수정된 배열로 상태를 업데이트합니다.
   };
 
   return (
