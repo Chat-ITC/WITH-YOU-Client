@@ -10,13 +10,12 @@ import {
 //library
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import axiosInstance from '../../utils/axiosInterceptor/axiosInterceptor';
 //components
 import CommunityHeader from '../../components/CommunityHeader';
 import CommunityItem from '../../components/CommunityItem';
 import CommunityBodySection from '../../components/CommunityBodySection';
 import Search from '../../components/SearchInput';
-import axiosInstance from '../../utils/axiosInterceptor/axiosInterceptor';
-import LogoBody from '../../components/LogoBody';
 
 const Community = () => {
   //화면 변환
@@ -24,7 +23,7 @@ const Community = () => {
 
   //검색한 데이터
   const [searchWord, setSearchWord] = useState('');
-  const [bodyData, setBodyData] = useState({content:"camera"});
+  const [bodyData, setBodyData] = useState({content:"community"});
   const [scrapId, setScrapId] = useState('');
 
   const requestCommunity = async () => {

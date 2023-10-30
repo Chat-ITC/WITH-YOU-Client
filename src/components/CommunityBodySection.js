@@ -84,7 +84,7 @@ const CommunityBodySection = (props) => {
   };
     return (
       <>
-        {props.bodyData === "camera" ? 
+        {props.bodyData === "community" ? 
           <LogoContainer>
             WITH
           </LogoContainer> 
