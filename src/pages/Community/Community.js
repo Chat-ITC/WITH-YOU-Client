@@ -23,14 +23,15 @@ const Community = () => {
 
   //검색한 데이터
   const [searchWord, setSearchWord] = useState('');
-  const [bodyData, setBodyData] = useState({content:"community"});
+  const [bodyData, setBodyData] = useState({content: "community"});
+  const [commentData, setCommentData] = useState({comment: "comment"});
   const [scrapId, setScrapId] = useState('');
 
   //커뮤니티 리스트 데이터 불러오기
   const requestCommunity = async () => {
     try {
-      const response = await axiosInstance.get('/question/list');
-      console.log(response.data.length);
+      const response = await axiosInstance.get('/post/lookup');
+      console.log(response);
       if(response.data){
         setCommunityListData(response.data);
       }
@@ -47,10 +48,11 @@ const Community = () => {
   const bodySectionHandler = async (props) => {
     console.log(props);
     try{
-      const response = await axiosInstance.get('/question',
+      const response = await axiosInstance.get('/post',
       {params:{id:props}});
-      console.log(response);
-      setBodyData(response.data)
+      console.log("본문:", response.data.postLookupDto);
+      console.log("댓글: ", response.data.commentResponseDto);
+      setBodyData(response.data.postLookupDto)
     }
     catch(error){
       console.log(error);
@@ -110,11 +112,11 @@ const Community = () => {
         <TopEmptyBox />
             <CommunityBodySection
               id={bodyData.id}
-              nickname={bodyData.nickname}
-              major={bodyData.major}
+              userNickName={bodyData.userNickName}
+              userMajor={bodyData.userMajor}
               title={bodyData.title}
               $picture={bodyData.picture}
-              bodyData={bodyData.content}
+              content={bodyData.content}
               like={bodyData.like}
               chat={bodyData.chat}
               $scrap={bodyData.isScrap}
