@@ -27,9 +27,12 @@ import {
   ChatBody,
   ChatDate,
   LogoContainer,
+  CommunityScrapBtn,
 } from './style';
-import React from "react";
-import { useRef, useState } from 'react';
+//library
+import React, { useRef, useState } from 'react';
+import { scrapId } from '../store';
+import { useSelector, useDispatch } from 'react-redux';
 //img
 import Like from '../assets/like.png';
 import Star from '../assets/FillStar.svg';
@@ -37,6 +40,27 @@ import Chat from '../assets/chat.png';
 import axiosInstance from '../utils/axiosInterceptor/axiosInterceptor';
 
 const CommunityBodySection = (props) => {
+
+  const selectorBodyData = useSelector((state) => state.CameraItemId.bodyData);
+    const onlyScrapState = useSelector((state) => state.CameraItemId.scrap);
+  //스크랩
+  const dispatch = useDispatch();
+    const scrapBtnHandler = async () => {
+        try {
+            const response = await axiosInstance.patch(`/scrap/${selectorBodyData.id}`);
+            console.log(response);
+        }
+        catch (error) {
+            console.log(error);
+        }
+        if (onlyScrapState === 'YES') {
+            dispatch(scrapId('NO'));
+        }
+        else {
+            dispatch(scrapId('YES'));
+        }
+    }
+
   //댓글 입력
   const [comment, setComment] = useState('');
 
@@ -66,6 +90,9 @@ const CommunityBodySection = (props) => {
           </LogoContainer> 
         :
         <CommunityBodyContainer>
+          <CommunityScrapBtn
+                        onClick={scrapBtnHandler}
+                        $scrapState={onlyScrapState} />
         <CommunityContent>
             <CommunityTitle>{props.title}</CommunityTitle>
             <UserData>
