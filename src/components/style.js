@@ -300,8 +300,33 @@ export const CameraBodyContainer = styled.div`
   display: flex;
   align-items: flex-end;
   flex-direction: column;
+  width: 860px;
+  height: 79%;
+  margin: 0 auto;
+  overflow-y: scroll;
+  overflow-x: hidden;
 `
+
+export const ScrapBtnBox = styled.div`
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+`
+
 export const HistoryScrapBtn = styled.div`
+  margin: 20px;
+  margin-bottom: 10px;
+  width: 40px;
+  height: 40px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url(${emptyStar});
+  ${props => props.$scrapState === "YES" && css`
+        background-image: url(${fillStar});
+    `}
+`
+
+export const CommunityScrapBtn = styled.div`
   margin: 20px;
   margin-bottom: 10px;
   width: 40px;
@@ -319,6 +344,18 @@ export const BodyDataContainer = styled.div`
   font-size: 19px;
   white-space: pre-wrap;
   line-height: 30px;
+`
+
+export const ScrapBodyDataContainer = styled.div`
+  padding: 20px 40px 40px 40px;
+  font-size: 19px;
+  white-space: pre-wrap;
+  line-height: 30px;
+  width: 770px;
+  height: 79%;
+  margin: 0 auto;
+  overflow-y: scroll;
+  overflow-x: hidden;
 `
 
 //CameraHeader
@@ -517,6 +554,9 @@ export const TextContent = styled.div`
 
 //CommunityBodySection
 export const CommunityBodyContainer = styled.div`
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
   width: 860px;
   height: 79%;
   margin: 0 auto;
@@ -573,8 +613,9 @@ export const CommunityBody = styled.div`
 `;
 
 export const LikeChatBox = styled.div`
-  width: 790px;
+  width: 785px;
   padding: 40px 20px 0;
+  margin-right: 40px;
   height: 40px;
   display: flex;
   justify-content: center;

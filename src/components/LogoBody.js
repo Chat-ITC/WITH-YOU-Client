@@ -1,5 +1,6 @@
 import { 
-  LogoContainer
+  LogoContainer,
+  ScrapBodyDataContainer
 } from './style'
 
 import React from "react";
@@ -13,7 +14,7 @@ const LogoBody = (props) => {
                   WITH
                 </LogoContainer>
                 :
-                <p>{props.bodyData}</p>
+                <ScrapBodyDataContainer>{props.bodyData}</ScrapBodyDataContainer>
             }
         </>
     );
