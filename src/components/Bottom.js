@@ -59,6 +59,7 @@ const Bottom = () => {
         <NavLink to="/community">
           <li>
             <ImgBtn
+              onClick={() => { dispatch(historyBody({ content: "camera" })); }}
               src={isActive("/community") ? Community2 : Community}
               alt="커뮤니티"
               style={{ opacity: isActive("/community") ? 1 : 0.3 }}
