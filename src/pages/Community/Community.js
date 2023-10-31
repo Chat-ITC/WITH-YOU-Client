@@ -10,13 +10,12 @@ import {
 //library
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import axiosInstance from '../../utils/axiosInterceptor/axiosInterceptor';
 //components
 import CommunityHeader from '../../components/CommunityHeader';
 import CommunityItem from '../../components/CommunityItem';
 import CommunityBodySection from '../../components/CommunityBodySection';
 import Search from '../../components/SearchInput';
-import axiosInstance from '../../utils/axiosInterceptor/axiosInterceptor';
-import LogoBody from '../../components/LogoBody';
 
 const Community = () => {
   //화면 변환
@@ -24,15 +23,18 @@ const Community = () => {
 
   //검색한 데이터
   const [searchWord, setSearchWord] = useState('');
-  const [bodyData, setBodyData] = useState({content:"camera"});
+  const [bodyData, setBodyData] = useState({content: "community"});
   const [scrapId, setScrapId] = useState('');
+  const [communityListData, setCommunityListData] = useState([]);
 
+  //커뮤니티 리스트 데이터 불러오기
   const requestCommunity = async () => {
     try {
-      const response = await axiosInstance.get('/question/list');
-      console.log(response.data.length);
-      if(response.data.length !== 0){
-        setCameraListData(response.data);
+      const response = await axiosInstance.get('/post/lookup');
+      // console.log("커뮤니티 리스트 확인: ", response);
+      if(response.data){
+        setCommunityListData(response.data);
+        // console.log("받아온 커뮤니티 리스트 확인: ", response.data);
       }
     }
     catch(error) {
@@ -43,20 +45,22 @@ const Community = () => {
   useEffect(() => {
     requestCommunity();
   }, [])
-
+  //커뮤니티 리스트 눌렀을 때 'bodyData'에 데이터 저장
   const bodySectionHandler = async (props) => {
-    console.log(props);
-    if(props!=='0'){
-      try{
-        const response = await axiosInstance.get('/question',
-        {params:{id:props}});
-        console.log(response);
-        setBodyData(response.data)
-      }
-      catch(error){
-        console.log(error);
-      }
+    console.log('커뮤', props);
+    try{
+      const response = await axiosInstance.get('/post',
+      {params:{id:props}});
+      console.log("본문:", response.data.postLookupDto);
+      console.log("댓글: ", response.data.commentResponseDto);
+      setBodyData(response.data.postLookupDto);
+      console.log("리스폰스 확인: ", response);
       setScrapId(props)
+      console.log("커뮤니티 리스트 id: ", bodyData);
+      // console.log("리스폰스: ", bodyData);
+    }
+    catch(error){
+      console.log(error);
     }
   }
 
@@ -77,7 +81,6 @@ const Community = () => {
     },
   ];
 
-  const [cameraListData,setCameraListData] = useState([]);
 
   return (
     <>
@@ -86,22 +89,24 @@ const Community = () => {
         <TopLeftHeader>Community</TopLeftHeader>
         <FromBox><Search
           onDataSearch={(getData) => setSearchWord(getData)}/></FromBox>
-        {cameraListData.map((sample, index) => (
+        {communityListData.map((sample, index) => (
             <div
             onClick={() => {
               bodySectionHandler(sample.id)
+              console.log("문제를 찾았어: ", sample.id);
             }}
             key={index}>
             <CommunityItem
+              id={sample.id}
               searchWord={searchWord}
               key={index}
               title={sample.title}
-              $picture={sample.picture}
-              body={sample.content}
-              like={sample.like}
-              chat={sample.chat}
+              commentCount={sample.commentCount}
+              // $picture={sample.picture}
+              content={sample.content}
+              // like={sample.like}
               $scrap={sample.isScrap}
-              date={sample.date}
+              date={sample.createdDate}
             />
           </div>
         ))}
@@ -112,20 +117,20 @@ const Community = () => {
         <TopEmptyBox />
             <CommunityBodySection
               id={bodyData.id}
-              nickname={bodyData.nickname}
-              major={bodyData.major}
+              userNickName={bodyData.userNickName}
+              userMajor={bodyData.userMajor}
               title={bodyData.title}
-              $picture={bodyData.picture}
-              bodyData={bodyData.content}
-              like={bodyData.like}
-              chat={bodyData.chat}
+              // $picture={bodyData.picture}
+              content={bodyData.content}
+              // like={bodyData.like}
+              commentCount={bodyData.commentCount}
               $scrap={bodyData.isScrap}
-              date={bodyData.date}
-              commentid={commentJson[0].id}
-              commentnickname={commentJson[0].nickname}
-              commentmajor={commentJson[0].major}
-              commentbody={commentJson[0].body}
-              commentdate={commentJson[0].date}
+              date={bodyData.createdDate}
+              // commentid={commentJson[0].id}
+              // commentnickname={commentJson[0].nickname}
+              // commentmajor={commentJson[0].major}
+              // commentbody={commentJson[0].body}
+              // commentdate={commentJson[0].date}
             />
         <BottomEmptyBox/>
       </Main>

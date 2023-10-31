@@ -33,17 +33,16 @@ import {
 import React, { useRef, useState } from 'react';
 import { scrapId } from '../store';
 import { useSelector, useDispatch } from 'react-redux';
+import axiosInstance from '../utils/axiosInterceptor/axiosInterceptor';
 //img
 import Like from '../assets/like.png';
 import Star from '../assets/FillStar.svg';
 import Chat from '../assets/chat.png';
-import axiosInstance from '../utils/axiosInterceptor/axiosInterceptor';
 
 const CommunityBodySection = (props) => {
-
   const selectorBodyData = useSelector((state) => state.CameraItemId.bodyData);
-    const onlyScrapState = useSelector((state) => state.CameraItemId.scrap);
-  //스크랩
+  const onlyScrapState = useSelector((state) => state.CameraItemId.scrap);
+  //스크랩 버튼 핸들러
   const dispatch = useDispatch();
     const scrapBtnHandler = async () => {
         try {
@@ -63,28 +62,27 @@ const CommunityBodySection = (props) => {
 
   //댓글 입력
   const [comment, setComment] = useState('');
-
+    console.log("아이디: ", props.id);
   const handleSend = async () => {
     try{
-      const response = await axiosInstance.post('', comment);
-      console.log('댓글 확인: ', response);
+      const response = await axiosInstance.post(`/comment/regist/${props.id}`, { content: comment });
+
+        console.log("댓글: ", response);
     }catch (error) {
-      console.log(error);
+      console.log("오류", error);
     }
   }
-  
   //useRef를 이용해 높이를 조절하고자 하는 textarea 엘리먼트에 ref를 지정해 style 조절
   const textarea = useRef();
 
   const handleResizeHeight =  (e) => {
     setComment(e.target.value);
-
     textarea.current.style.height = 'auto';//height 초기화
     textarea.current.style.height = textarea.current.scrollHeight + 'px';
   };
     return (
       <>
-        {props.bodyData === "camera" ? 
+        {selectorBodyData.content === "camera" ? 
           <LogoContainer>
             WITH
           </LogoContainer> 
@@ -96,12 +94,10 @@ const CommunityBodySection = (props) => {
         <CommunityContent>
             <CommunityTitle>{props.title}</CommunityTitle>
             <UserData>
-              <UserDataSpan>{props.nickname}</UserDataSpan>
-              <UserDataSpan>{props.major}</UserDataSpan>
-              <UserDataSpan>{props.date}</UserDataSpan>
-              <CommunityBody>
-                {props.body}
-              </CommunityBody>
+              <UserDataSpan>{props.userNickName}</UserDataSpan>
+              <UserDataSpan>{props.userMajor}</UserDataSpan>
+              <UserDataSpan>{props.createdDate}</UserDataSpan>
+              <CommunityBody>{props.content}</CommunityBody>
             </UserData>
           </CommunityContent>
           <LikeChatBox>

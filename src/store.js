@@ -4,6 +4,18 @@ import { configureStore, createSlice } from '@reduxjs/toolkit';
 //슬라이스는 상태와 상태 변경을 다루는데 필요한 여러 정보를 묶어주는 역할
 //슬라이스(객체)를 생성하고 visibilitySlice.reducers로 상태와 액션을 얻을 수 있다.
 
+const visibilityModal = createSlice({
+  name: 'modal',
+  initialState: {
+    isOpen: false,
+  },
+  reducers: {
+    openModal: (state) => {
+      state.isOpen = !state.isOpen;
+      console.log("상태 전달 확인: ", state.isOpen);
+    },
+  },
+});
 
 const visibilitySlice = createSlice({
   //'visibility': 해당 슬라이스의 이름
@@ -55,10 +67,13 @@ export const { toggleAsideVisibility } = visibilitySlice.actions;
 
 export const { selectId, scrapId, historyBody, deleteId } = selectStateSlice.actions;
 
+export const { openModal } = visibilityModal.actions;
+
 // 슬라이스 리듀서를 생성
 const rootReducer = {
   visibility: visibilitySlice.reducer,
-  CameraItemId: selectStateSlice.reducer
+  CameraItemId: selectStateSlice.reducer,
+  modal: visibilityModal.reducer
 };
 
 // configureStore 함수를 사용하여 리덕스 스토어 생성하여
