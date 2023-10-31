@@ -62,7 +62,6 @@ const CommunityBodySection = (props) => {
 
   //댓글 입력
   const [comment, setComment] = useState('');
-    console.log("아이디: ", props.id);
   const handleSend = async () => {
     try{
       const response = await axiosInstance.post(`/comment/regist/${props.id}`, { content: comment });
