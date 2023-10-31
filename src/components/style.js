@@ -155,8 +155,8 @@ export const CommunityItemScrap = styled.div`
   background-image: none;
   ${props => props.$scrap && css`
         background-image: url(${fillStar});
-        width: 14px;
-        height: 14px;
+        width: 16px;
+        height: 16px;
     `}
 `
 
@@ -557,6 +557,7 @@ export const TextContent = styled.div`
 
 //CommunityBodySection
 export const CommunityBodyContainer = styled.div`
+  padding-top: 20px;
   display: flex;
   align-items: flex-end;
   flex-direction: column;
