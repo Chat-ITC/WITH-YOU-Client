@@ -64,4 +64,3 @@ export const Main = styled.div`
   }
   transition: all 350ms;
 `;
-

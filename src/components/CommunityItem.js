@@ -21,21 +21,32 @@ import Chat from '../assets/chat.png';
 
 //library
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import axiosInstance from '../utils/axiosInterceptor/axiosInterceptor';
+import { selectId, historyBody, scrapId } from '../store';
 
 const CommunityItem = (props) => {
-    const [picture, setPicture] = useState(props.$picture);
+    const dispatch = useDispatch();
+    // const [picture, setPicture] = useState(props.$picture);
     const [scrap, setScrap] = useState(props.$scrap);
 
-    const [bodyData, setBodyData] = useState("camera");
-
-    const bodySectionHandler = (props) => {
-        //목록에서 아이템 누를 시 서버로 id 전송후 데이터 받아오기 props: 아이디.
-        setBodyData(`아이템 아이디: ${props}`)
+    const bodySectionHandler = async (propsId) => {
+        console.log("id: ", propsId);
+        if (propsId !== '0') {
+            try{
+                const response = await axiosInstance.get('/post',
+                { params: { id: propsId } });
+                dispatch(selectId(propsId))
+                dispatch(historyBody(response.data))
+                dispatch(scrapId(response.data.isScrap)); 
+            } catch (error) {
+                console.log(error);
+            }
+        }
     }
-
     return (
         <>
-            {(props.title.includes(props.searchWord) || props.body.includes(props.searchWord)) && (
+            {(props.title.includes(props.searchWord) || props.content.includes(props.searchWord)) && (
                 <div onClick={() => {
                     bodySectionHandler(props.id)
                 }}>
@@ -44,10 +55,10 @@ const CommunityItem = (props) => {
                             <CommunityItemTitle>
                                 {props.title}
                             </CommunityItemTitle>
-                            <CommunityItemPicture $picture={picture} />
+                            {/* <CommunityItemPicture $picture={picture} /> */}
                         </CommunityItemTopContainer>
                         <CommunityItemBody>
-                            {props.body}
+                            {props.content}
                         </CommunityItemBody>
                         <CommunityItemBottom>
                             {props.like > 0 && (
@@ -58,17 +69,17 @@ const CommunityItem = (props) => {
                                     </LikeContent>
                                 </LikeContainer>
                             )}
-                            {props.chat > 0 && (
+                            {props.commentCount > 0 && (
                                 <ChatContainer>
                                     <ChatImg src={Chat} alt="댓글 버튼" width="14" />
                                     <ChatContent>
-                                        {props.chat}
+                                        {props.commentCount}
                                     </ChatContent>
                                 </ChatContainer>
                             )}
                             <CommunityDateContainer>
                                 <CommunityItemScrap $scrap={scrap} />
-                                {props.date}
+                                {props.createdDate}
                             </CommunityDateContainer>
                         </CommunityItemBottom>
                     </CommunityItemContainer>

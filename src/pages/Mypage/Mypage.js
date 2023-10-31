@@ -44,7 +44,7 @@ const Mypage = () => {
       nickname: "감흥없는 김밥",
       major: "의료IT공학과",
       grade: 3,
-      level: 78,
+      level: 35,
       levelgage: 80,
     },
   ];
