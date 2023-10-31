@@ -63,16 +63,14 @@ const CommunityBodySection = (props) => {
 
   //댓글 입력
   const [comment, setComment] = useState('');
-
   const handleSend = async () => {
     try{
-      const response = await axiosInstance.post('', comment);
-      console.log('댓글 확인: ', response);
+      const response = await axiosInstance.post('/comment/regist',
+        {params: {id: props.id}});
     }catch (error) {
       console.log(error);
     }
   }
-  
   //useRef를 이용해 높이를 조절하고자 하는 textarea 엘리먼트에 ref를 지정해 style 조절
   const textarea = useRef();
 
@@ -83,7 +81,7 @@ const CommunityBodySection = (props) => {
   };
     return (
       <>
-        {props.bodyData === "community" ? 
+        {selectorBodyData.content === "camera" ? 
           <LogoContainer>
             WITH
           </LogoContainer> 
@@ -97,7 +95,7 @@ const CommunityBodySection = (props) => {
             <UserData>
               <UserDataSpan>{props.userNickName}</UserDataSpan>
               <UserDataSpan>{props.userMajor}</UserDataSpan>
-              <UserDataSpan>{props.date}</UserDataSpan>
+              <UserDataSpan>{props.createdDate}</UserDataSpan>
               <CommunityBody>{props.content}</CommunityBody>
             </UserData>
           </CommunityContent>
