@@ -56,7 +56,7 @@ const Community = () => {
       setBodyData(response.data.postLookupDto);
       console.log("리스폰스 확인: ", response);
       setScrapId(props)
-      console.log("커뮤니티 리스트 id: ", scrapId);
+      console.log("커뮤니티 리스트 id: ", bodyData);
       // console.log("리스폰스: ", bodyData);
     }
     catch(error){
