@@ -18,7 +18,7 @@ import { openModal } from '../../store';
 import axiosInstance from '../../utils/axiosInterceptor/axiosInterceptor';
 //components
 import ScrapHeader from '../../components/ScrapHeader';
-import CameraItem from '../../components/CameraItem';
+import HistoryItemBody from '../../components/HistoryItemBody';
 import Search from '../../components/SearchInput';
 import LogoBody from '../../components/LogoBody';
 import CommunityItem from '../../components/CommunityItem';
@@ -34,45 +34,54 @@ const Scrap = () => {
   const [bodyData, setBodyData] = useState({content:"camera"});
   const [scrapId, setScrapId] = useState('');
   
-  //히스토리 리스트
-  const historyBodySectionHandler = async(props) => {
-    console.log(props);
-    if(props!=='0'){
+  //히스토리 클릭했을 때 리스트
+  const historyBodySectionHandler = async (props) => {
+    if(props !== '0'){
       try{
         const response = await axiosInstance.get('/question',
         {params:{id:props}});
-        console.log(response);
-        setBodyData(response.data)
+        console.log("확인3: ", response.data);
+        setBodyData(response.data);
+      } catch (error) {
+        console.log("에러1: ", error);
       }
-      catch(error){
-        console.log(error);
-      }
-      setScrapId(props)
     }
   }
 
-  //커뮤니티 리스트 
+  //히스토리 리스트 
   const RequestCommunity = async() => {
     try{
       const response = await axiosInstance.get('/scrap/list');
-      console.log(response);
+      
       if(response.data.length !== 0){
       setCameraListData(response.data);
+      console.log('히스토리', response.data);
       }
     }
     catch(error) {
       console.log(error);
     }
   }
+
   
-  //커뮤니티
-  const communityBodySectionHandler = async(props) => {
-    console.log(props);
+  //커뮤니티 리스트  스크랩된 내용이 없어서 500에러 뜸
+  const RequestHistory = async() => {
+      try{
+        const response = await axiosInstance.get('/scrap/post/list');
+        console.log("커뮤니티", response.data);
+        setCommunityListData(response.data)
+      }
+      catch(error){
+        console.log(error);
+      }
+  } 
+  //커뮤니티 클릭했을 때 리스트
+    const communityBodySectionHandler = async(props) => {
     if(props!=='0'){
       try{
-        const response = await axiosInstance.patch('/scrap',
+        const response = await axiosInstance.get('/scrap/post',
         {params:{id:props}});
-        console.log(response);
+        console.log("커뮤1: ", response.data);
         setBodyData(response.data)
       }
       catch(error){
@@ -80,11 +89,10 @@ const Scrap = () => {
       }
       setScrapId(props)
     }
-  } 
+  }
     
   const [cameraListData, setCameraListData] = useState([]);
   const [communityListData, setCommunityListData] = useState([]);
-
   //히스토리 - 커뮤니티 라디오버튼 
   const [historyToggle, setHistoryToggle] = useState(true);
   const [communityToggle, setCommunityToggle] = useState(false);
@@ -121,14 +129,20 @@ const Scrap = () => {
         onDataSearch={(getData) => setSearchWord(getData)}/></FromBox>
         <BtnBox>
           <HistoryBtn
-            onClick={historyRadio}
+            onClick={()=>{
+              historyRadio();
+              RequestCommunity();
+            }}
             $done={historyToggle}>
             <RadioText>
               히스토리
             </RadioText>
           </HistoryBtn>
           <CommunityBtn
-            onClick={communityRadio}
+            onClick={()=>{
+              communityRadio();
+              RequestHistory();
+            }}
             $done={communityToggle}>
             <RadioText>
               커뮤니티
@@ -137,11 +151,12 @@ const Scrap = () => {
         </BtnBox>
         {historyToggle ? cameraListData.map((sample, index) => (
             <div
-            onClick={() => {
+            key={index}
+            onClick={()=>{
               historyBodySectionHandler(sample.id)
-            }}
-            key={index}>
-            <CameraItem
+            }}>
+            <HistoryItemBody
+              id={sample.id}
               searchWord={searchWord}
               key={index}
               title={sample.title}
@@ -150,7 +165,6 @@ const Scrap = () => {
               $scrap={sample.isScrap}
             />
           </div>
-          
         )) : communityListData.map((sample, index) => (
             <div
             onClick={() => {
