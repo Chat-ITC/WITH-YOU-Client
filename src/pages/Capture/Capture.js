@@ -6,10 +6,9 @@ import {
   TopEmptyBox,
   TopLeftHeader,
   CameraAgainBtn,
-  RequestCheckBoxContainer,
   CameraBtn,
   ImgContainer,
-  CameraInput,
+  TopRightHeader
 } from './style';
 //library
 import React, { useState, useRef } from 'react';
@@ -19,7 +18,6 @@ import { useLocation, useNavigate } from "react-router-dom";
 import axiosInstance from '../../utils/axiosInterceptor/axiosInterceptor';
 
 //components
-import TopRightHeader from '../../components/Capture';
 import RequestCheckBox from '../../components/RequestCheckBox';
 
 const Capture = () => {
@@ -59,9 +57,12 @@ const Capture = () => {
     }
   };
   const sendFormDataRequest = async () => {
+    alert('AI가 열심히 답변중입니다. 답변 완료까지 약간의 시간이 소요됩니다.')
+    navigate('/home');
     try {
       const response = await axiosInstance.post('/ai/question', formData);
-      if(response.data === "저장 완료") {
+
+      if (response.data === "저장 완료") {
         alert("사진 분석 완료! 홈 화면으로 이동합니다.")
         navigate('/home');
       }
@@ -70,11 +71,11 @@ const Capture = () => {
       console.log(error);
     }
   };
-
+ 
   //요구사항
-  const [question, setQuestion] = useState('');
-  const [selectedId, setSelectedId] = useState(null);
-  const [checked, setChecked] = useState(false);
+  const [question, setQuestion] = useState("이해하기 쉬운 설명");
+  const [selectedId, setSelectedId] = useState(0);
+  const [checked, setChecked] = useState(true);
 
   const handleCheckBoxClick = (id) => {
     if (selectedId === id) {
@@ -117,18 +118,17 @@ const Capture = () => {
       <Aside>
         <TopEmptyBox></TopEmptyBox>
         <TopLeftHeader>요구사항</TopLeftHeader>
-        {requestJson.map((requestjson,index) => (
+        {requestJson.map((requestjson, index) => (
           <RequestCheckBox
-          key={index}
-          onClick={() => { 
-            setQuestion(requestjson.content);
-            handleCheckBoxClick(requestjson.id);
-          }}
-          content={requestjson.content}
-          id={requestjson.id}
-          
-          $done={selectedId === requestjson.id && checked}
-        />
+            key={index}
+            onClick={() => {
+              setQuestion(requestjson.content);
+              handleCheckBoxClick(requestjson.id);
+            }}
+            content={requestjson.content}
+            id={requestjson.id}
+            $done={selectedId === requestjson.id && checked}
+          />
         ))}
 
         <div>
@@ -147,7 +147,7 @@ const Capture = () => {
         <BottomEmptyBox />
       </Aside>
       <Main>
-        <TopRightHeader />
+        <TopRightHeader>분석할 내용을 드래그하세요</TopRightHeader>
         <TopEmptyBox />
         <ImgContainer>
           <div className="canvas" id="canvas">
@@ -157,6 +157,8 @@ const Capture = () => {
               ref={cropperRef}
               style={{ height: `${calculatedHeight}px` }}
               guides={true}
+              toggleDragModeOnDblclick={false}
+              autoCrop={false}
             />
           </div>
         </ImgContainer>

@@ -30,17 +30,17 @@ const Home = () => {
     try {
       const response = await axiosInstance.get('/question/list');
       console.log(response.data.length);
-      if(response.data.length !== 0){
+      if (response.data.length !== 0) {
         setCameraListData(response.data);
       }
     }
-    catch(error) {
+    catch (error) {
       console.log(error);
     }
   }
 
   useEffect(() => {
-      requestHistory();
+    requestHistory();
   }, [stateChange])
 
 
@@ -55,7 +55,7 @@ const Home = () => {
     },
   ];
 
-  const [cameraListData,setCameraListData] = useState(sampleJson);
+  const [cameraListData, setCameraListData] = useState(sampleJson);
 
   return (
     <>
@@ -63,7 +63,7 @@ const Home = () => {
         <TopEmptyBox></TopEmptyBox>
         <TopLeftHeader>History</TopLeftHeader>
         <FromBox><Search
-        onDataSearch={(getData) => setSearchWord(getData)}/></FromBox>
+          onDataSearch={(getData) => setSearchWord(getData)} /></FromBox>
         {cameraListData.map((sample, index) => (
           <div
             key={index}>
@@ -78,14 +78,14 @@ const Home = () => {
             />
           </div>
         ))}
-        <BottomEmptyBox/>
+        <BottomEmptyBox />
       </Aside>
       <Main style={{ left: isAsideVisible ? '0' : '300px' }}>
-        <CameraHeader/>
+        <CameraHeader />
         <TopEmptyBox />
         <CameraBodySection
         />
-        <BottomEmptyBox/>
+        <BottomEmptyBox />
       </Main>
     </>
   );

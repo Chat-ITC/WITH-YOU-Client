@@ -13,6 +13,7 @@ import React from 'react';
 import { selectId, historyBody, scrapId } from '../store';
 import { useDispatch } from 'react-redux';
 import axiosInstance from '../utils/axiosInterceptor/axiosInterceptor';
+import ReactMarkdown from 'react-markdown';
 
 const CameraItem = (props) => {
 
@@ -48,6 +49,9 @@ const CameraItem = (props) => {
                     <CameraItemBottom>
                         <CameraDateContainer>
                             <CameraItemScrap $done={props.$scrap} />
+                            <ReactMarkdown>
+                                
+                            </ReactMarkdown>
                             {props.date}
                         </CameraDateContainer>
                     </CameraItemBottom>

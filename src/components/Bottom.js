@@ -6,6 +6,9 @@ import {
 } from './style';
 //library
 import { NavLink, useLocation } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { historyBody } from '../store';
+
 //img
 import UnHome from '../assets/emptyHome.png';
 import Home from '../assets/emptyHome2.svg';
@@ -16,6 +19,8 @@ import Star2 from '../assets/star2.svg';
 import UserIcon3 from '../assets/userIcon3.svg';
 
 const Bottom = () => {
+  const dispatch = useDispatch();
+
   //현재 경로 가져오기
   const location = useLocation();
   const isActive = (path) => {
@@ -23,28 +28,29 @@ const Bottom = () => {
     return location.pathname === path;
   };
   return (
-      <BottomFix>
-        <Ul>
-          <NavLink to="/home">
-            {/*NavLink를 사용하면 활성화된 페이지의 isActive값이 true가 된다.*/}
-            <li>
-              <ImgBtn
-                src={isActive("/home") || isActive("/capture") ? Home : UnHome}
-                alt="홈"
-                /*isActive가 true이면 1 false이면 0.3*/
-                style={{ 
-                  opacity: isActive("/home") || isActive("/capture") ? 1 : 0.3,
-                }}
-              />
-            </li>
+    <BottomFix>
+      <Ul>
+        <NavLink to="/home">
+          {/*NavLink를 사용하면 활성화된 페이지의 isActive값이 true가 된다.*/}
+          <li>
+            <ImgBtn
+              onClick={() => { dispatch(historyBody({ content: "camera" })); }}
+              src={isActive("/home") || isActive("/capture") ? Home : UnHome}
+              alt="홈"
+              /*isActive가 true이면 1 false이면 0.3*/
+              style={{
+                opacity: isActive("/home") || isActive("/capture") ? 1 : 0.3,
+              }}
+            />
+          </li>
         </NavLink>
-          <NavLink to="/scrap">
+        <NavLink to="/scrap">
           <li>
             <ImgBtn
               src={isActive("/scrap") ? Star2 : Star}
 
               alt="스크랩"
-              style={{ 
+              style={{
                 opacity: isActive("/scrap") ? 1 : 0.3,
               }}
             />
@@ -68,8 +74,8 @@ const Bottom = () => {
             />
           </li>
         </NavLink>
-        </Ul>
-      </BottomFix>
+      </Ul>
+    </BottomFix>
   );
 }
 

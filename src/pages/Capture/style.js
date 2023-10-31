@@ -41,6 +41,22 @@ export const TopLeftHeader = styled.div`
   font-weight: bold;
 `;
 
+export const TopRightHeader = styled.div`
+  display: flex;
+  position: fixed;
+  top:0;
+  right:0;
+  left:300px;
+  justify-content: flex-start;
+  align-items: center;
+  height: 65px;
+  padding: 0 20px;
+  background-color: #FFC1C1;
+  font-size: 22px;
+  font-weight: bold;
+  color: #E35E5E;
+`
+
 export const Main = styled.div`
   overscroll-behavior-y: none;
   position: fixed;

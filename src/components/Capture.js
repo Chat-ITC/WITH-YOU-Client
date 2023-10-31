@@ -8,7 +8,6 @@ import {
 import setting from '../assets/setting.png';
 
 const Capture = () => {
-
   return (
     <CaptureHeaderTop>
       <HeaderImgBox>
