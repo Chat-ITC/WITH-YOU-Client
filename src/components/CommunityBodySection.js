@@ -40,7 +40,6 @@ import Star from '../assets/FillStar.svg';
 import Chat from '../assets/chat.png';
 
 const CommunityBodySection = (props) => {
-
   const selectorBodyData = useSelector((state) => state.CameraItemId.bodyData);
   const onlyScrapState = useSelector((state) => state.CameraItemId.scrap);
   //스크랩 버튼 핸들러
@@ -63,12 +62,14 @@ const CommunityBodySection = (props) => {
 
   //댓글 입력
   const [comment, setComment] = useState('');
+    console.log("아이디: ", props.id);
   const handleSend = async () => {
     try{
-      const response = await axiosInstance.post('/comment/regist',
-        {params: {id: props.id}});
+      const response = await axiosInstance.post(`/comment/regist/${props.id}`, { content: comment });
+
+        console.log("댓글: ", response);
     }catch (error) {
-      console.log(error);
+      console.log("오류", error);
     }
   }
   //useRef를 이용해 높이를 조절하고자 하는 textarea 엘리먼트에 ref를 지정해 style 조절
