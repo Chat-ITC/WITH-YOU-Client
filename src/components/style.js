@@ -3,7 +3,7 @@ import openeye from '../assets/openEye.png';
 import closeeye from '../assets/closeEye.png';
 import fillStar from '../assets/FillStar.svg';
 import emptyStar from '../assets/star.svg';
-import camera from '../assets/camera.png';
+import camera from '../assets/camera.svg';
 import picture from '../assets/picture.png';
 import Send from '../assets/send.svg';
 
@@ -288,12 +288,15 @@ export const CameraBigButton = styled.div`
   background-image: url(${camera});
   width: 200px;
   height: 200px;
+  filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.4));
 `;
 
 export const CameraPhrases = styled.div`
   position: relative;
-  top: -14px;
-  font-size: 20px;
+  top: 0px;
+  font-size: 24px;
+  color: #F07878;
+  font-weight: bold;
 `
 
 export const CameraBodyContainer = styled.div`
@@ -397,7 +400,7 @@ export const CommunityHeaderTop = styled.div`
   left: 300px;
   height: 65px;
   padding: 0 20px;
-  background-color: #D8FFB9;
+  background-color: #94E5FF;
   transition: all 350ms;
 `;
 
@@ -710,6 +713,7 @@ export const TextImg = styled.div`
   margin-right: 15px;
   background-image: url(${Send});
   background-repeat: no-repeat;
+  background-size: contain;
   background-position: center center;
   background-color: #fff;
 `;

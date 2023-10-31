@@ -13,7 +13,7 @@ import { toggleAsideVisibility } from '../store';
 //img
 import screenSplit from '../assets/screen-split.svg';
 import zoom from '../assets/zoom.svg';
-import setting from '../assets/setting.png';
+import setting from '../assets/setting.svg';
 
 
 const ScrapHeader = () => {
@@ -37,16 +37,8 @@ const ScrapHeader = () => {
         AsideHandler();
         ScreenHandler();
       }}/>
-      <HeaderImgBox>
-        <div>
-            <img src={setting} alt="세팅 버튼" width="35"/>
-            <Setting>
-              <option value="titleChange">이름 변경하기</option>
-              <option value="copy">본문 복사하기</option>
-              <option value="delete">삭제하기</option>
-            </Setting>
-        </div>
-      </HeaderImgBox>
+      <HeaderImgBox/>
+     
     </ScrapHeaderTop>
   );
 };

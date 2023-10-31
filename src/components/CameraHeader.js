@@ -18,7 +18,7 @@ import { deleteId, toggleAsideVisibility } from '../store';
 //img
 import screenSplit from '../assets/screen-split.svg';
 import zoom from '../assets/zoom.svg';
-import camera from '../assets/camera.png';
+import camera from '../assets/camera.svg';
 
 const CameraHeader = () => {
   const navigate = useNavigate();
