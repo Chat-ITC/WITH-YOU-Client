@@ -64,7 +64,8 @@ const Capture = () => {
 
       if (response.data === "저장 완료") {
         alert("사진 분석 완료! 홈 화면으로 이동합니다.")
-        navigate('/home');
+        window.location.replace("/home");
+
       }
       console.log("전송 성공: ", response);
     } catch (error) {
