@@ -31,7 +31,6 @@ const CommunityItem = (props) => {
     // const [picture, setPicture] = useState(props.$picture);
 
     const bodySectionHandler = async (propsId) => {
-        console.log("id: ", propsId);
         if (propsId !== '0') {
             try{
                 const response = await axiosInstance.get('/post',
