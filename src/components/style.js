@@ -312,7 +312,7 @@ export const CameraBodyContainer = styled.div`
 `
 
 export const ScrapBtnBox = styled.div`
-  width: 90%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
