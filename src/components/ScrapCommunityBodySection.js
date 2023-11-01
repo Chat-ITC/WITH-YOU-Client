@@ -33,7 +33,7 @@ import Star from '../assets/FillStar.svg';
 import Chat from '../assets/chat.png';
 
 const ScrapCommunityBodySection = (props) => {
-
+  console.log("날짜 받음", props);
   const onlyScrapState = useSelector((state) => state.CameraItemId.scrap);
   
   const sendScrapHandler = async () => {
@@ -81,7 +81,7 @@ const ScrapCommunityBodySection = (props) => {
             <UserData>
               <UserDataSpan>{props.userNickName}</UserDataSpan>
               <UserDataSpan>{props.userMajor}</UserDataSpan>
-              <UserDataSpan>{props.createdDateMonth}/{props.createdDateDay}</UserDataSpan>
+              <UserDataSpan>{props.createdDateMonth[1]}/{props.createdDateMonth[2]}</UserDataSpan>
               <CommunityBody>{props.content}</CommunityBody>
             </UserData>
           </CommunityContent>
@@ -123,7 +123,7 @@ const ScrapCommunityBodySection = (props) => {
                     <ChatUser>{comment.userNickName}</ChatUser>
                     <ChatUserMajor>{comment.userMajor}</ChatUserMajor>
                     <ChatBody>{comment.content}</ChatBody>
-                    <ChatDate>{comment.createdDateMonth}/{comment.createdDateDay}</ChatDate>
+                    <ChatDate>{props.createdDateMonth[1]}/{props.createdDateMonth[2]}</ChatDate>
                   </CommentContainer>
                 </div>
               ))}

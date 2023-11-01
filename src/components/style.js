@@ -87,8 +87,8 @@ export const CameraItemScrap = styled.div`
 
 //CommunityItem
 export const CommunityItemContainer = styled.div`
-  width: 300px;
-  height: 100px;
+  width: 275px;
+  height: 70px;
   padding: 10px 10px 10px 15px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.20);
 `;
@@ -128,7 +128,6 @@ export const CommunityItemPicture = styled.div`
 export const CommunityItemBody = styled.div`
   margin-top: 8px;
   width: 265px;
-  height: 50px;
   line-height: 23px;
   font-size: 15px;
   overflow: hidden;
@@ -225,13 +224,13 @@ export const CommunityChatContainer = styled.div`
 
 export const CommunityDateContainer = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   color: grey;
   font-size: 12px;
   height: 20px;
   line-height: 20px;
-  gap: 5px;
+  gap: 3px;
 `
 
 export const CameraDateContainer = styled.div`
@@ -303,26 +302,26 @@ export const CameraPhrases = styled.div`
 
 export const CameraBodyContainer = styled.div`
   display: flex;
-  align-items: flex-end;
   flex-direction: column;
-  width: 860px;
   height: 79%;
   margin: 0 auto;
   overflow-y: scroll;
   overflow-x: hidden;
+  padding: 0px 45px 40px 40px;
+  white-space: pre-wrap;
 `
 
 export const ScrapBtnBox = styled.div`
-  width: 890px;
+  width: 100%;
   display: flex;
-  margin: 25px 0;
   justify-content: space-between;
+  margin: 0 auto;
+  margin: 10px 0;
 `
 
 export const HistoryScrapBtn = styled.div`
   width: 40px;
   height: 40px;
-  margin-right: 10px;
   background-repeat: no-repeat;
   background-size: contain;
   background-image: url(${emptyStar});
@@ -330,6 +329,10 @@ export const HistoryScrapBtn = styled.div`
         background-image: url(${fillStar});
     `}
 `
+
+export const HiddenBox = styled.div`
+  width: 40px;
+`;
 
 export const CommunityScrapBtn = styled.div`
   margin: 20px;
@@ -351,11 +354,10 @@ export const BodyDataContainer = styled.div`
 `
 
 export const BodyTitleContainer = styled.span`
-  flex-shrink: 1;
-  font-size: 24px;
+  font-size: 26px;
   font-weight: bold;
   text-align: center;
-  width: 760px;
+  margin: 0 auto;
 `;
 
 export const ScrapBodyDataContainer = styled.div`
@@ -575,9 +577,9 @@ export const TextContent = styled.div`
 export const CommunityBodyContainer = styled.div`
   padding-top: 20px;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   flex-direction: column;
-  width: 860px;
+  width: 100%;
   margin: 0 auto;
   overflow-y: scroll;
   overflow-x: hidden;

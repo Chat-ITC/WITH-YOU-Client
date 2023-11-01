@@ -7,7 +7,8 @@ import {
     HistoryScrapBtn,
     BodyDataContainer,
     ScrapBtnBox,
-    BodyTitleContainer
+    BodyTitleContainer,
+    HiddenBox
 } from './style'
 
 import { scrapId } from '../store';
@@ -68,6 +69,7 @@ const CameraBodySection = () => {
                 :
                 <CameraBodyContainer>
                     <ScrapBtnBox>
+                        <HiddenBox></HiddenBox>
                         <BodyTitleContainer>
                             {selectorBodyData.title}
                         </BodyTitleContainer>

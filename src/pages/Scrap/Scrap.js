@@ -30,9 +30,9 @@ const Scrap = () => {
   //검색한데이터
   const [searchWord, setSearchWord] = useState('');
   //스크랩 페이지 메인에 출력할 데이터를 저장
-  const [bodyData, setBodyData] = useState({content:"0", createdDate:[1,1,1,1], localDateTime:[1, 1, 1, 1]});
+  const [bodyData, setBodyData] = useState({content:"0", createdDate:[1,1,1,1]});
+
   const [comment, setComment] = useState([])
-  
   //히스토리 클릭했을 때 리스트
   const historyBodySectionHandler = async (props) => {
     if(props !== '0'){
@@ -98,19 +98,18 @@ const Scrap = () => {
     setHistoryToggle(true);
     setCommunityToggle(false);
     setBodyData({content:"0"});
-    setCameraListData(cameraListData);
   };
 
   const communityRadio = () => {
     setHistoryToggle(false);
     setCommunityToggle(true);
     setBodyData({content:"0"});
-    setCommunityListData(communityListData);
   };
 
   useEffect(() => {
     RequestCommunity();
   }, [historyToggle])
+
   return (
     <>
       <Aside>
