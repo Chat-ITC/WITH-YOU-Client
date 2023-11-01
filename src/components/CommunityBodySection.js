@@ -105,11 +105,7 @@ const CommunityBodySection = (props) => {
               </BtnText>
             </LikeBtn> */}
             <ScrapBtn
-              onClick={()=>{
-                
-                sendScrapHandler();
-                scrapState();
-              }}
+            onClick={sendScrapHandler}
               $scrapState={onlyScrapState}>
                 <BtnImg src={Star} alt="스크랩 버튼"/>
               <BtnText>
