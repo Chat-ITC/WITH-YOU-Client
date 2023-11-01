@@ -6,7 +6,7 @@ import {
 import React from "react";
 
 const LogoBody = (props) => {
-    
+    console.log("바디데이터 입니다.", props);
     return (
         <>
             {props.bodyData === "camera" ?
