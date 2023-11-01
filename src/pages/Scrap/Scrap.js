@@ -152,8 +152,8 @@ const Scrap = () => {
               key={index}
               title={sample.title}
               body={sample.content}
-              createdDateMonth={sample.createdDate}
-              createdDateDay={sample.createdDate}
+              createdDateMonth={sample.createdDate[1]}
+              createdDateDay={sample.createdDate[2]}
               $scrap={sample.isScrap}
             />
           </div>
@@ -172,8 +172,8 @@ const Scrap = () => {
               // like={sample.like}
               commentCount={sample.commentCount}
               $scrap={sample.isScrap}
-              createdDateMonth={sample.localDateTime}
-              createdDateDay={sample.localDateTime}
+              createdDateMonth={sample.localDateTime[1]}
+              createdDateDay={sample.localDateTime[2]}
             />
           </div>
           
