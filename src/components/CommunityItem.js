@@ -26,9 +26,9 @@ import axiosInstance from '../utils/axiosInterceptor/axiosInterceptor';
 import { selectId, historyBody, scrapId } from '../store';
 
 const CommunityItem = (props) => {
+    
     const dispatch = useDispatch();
     // const [picture, setPicture] = useState(props.$picture);
-    const [scrap, setScrap] = useState(props.$scrap);
 
     const bodySectionHandler = async (propsId) => {
         console.log("id: ", propsId);
@@ -39,11 +39,13 @@ const CommunityItem = (props) => {
                 dispatch(selectId(propsId))
                 dispatch(historyBody(response.data))
                 dispatch(scrapId(response.data.isScrap)); 
+                console.log("스크랩2: ", response);
             } catch (error) {
                 console.log(error);
             }
         }
     }
+    
     return (
         <>
             {(props.title.includes(props.searchWord) || props.content.includes(props.searchWord)) && (
@@ -78,7 +80,7 @@ const CommunityItem = (props) => {
                                 </ChatContainer>
                             )}
                             <CommunityDateContainer>
-                                <CommunityItemScrap $scrap={scrap} />
+                                <CommunityItemScrap $done={props.$scrap} />{/*isScrap인지 확인 */}
                                 {props.createdDate}
                             </CommunityDateContainer>
                         </CommunityItemBottom>
