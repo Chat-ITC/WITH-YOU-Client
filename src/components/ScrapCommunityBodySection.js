@@ -56,7 +56,7 @@ const ScrapCommunityBodySection = (props) => {
       window.location.replace("/scrap");
       console.log("댓글: ", response);
     }catch (error) {
-      console.log("오류", error);
+      console.log(error);
     }
   }
   //useRef를 이용해 높이를 조절하고자 하는 textarea 엘리먼트에 ref를 지정해 style 조절
