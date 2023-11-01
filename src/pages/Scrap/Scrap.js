@@ -111,7 +111,6 @@ const Scrap = () => {
   useEffect(() => {
     RequestCommunity();
   }, [historyToggle])
-
   return (
     <>
       <Aside>
@@ -171,7 +170,7 @@ const Scrap = () => {
               // $picture={sample.picture}
               content={sample.content}
               // like={sample.like}
-              commentCount={bodyData.commentCount}
+              commentCount={sample.commentCount}
               $scrap={sample.isScrap}//유효한 값인지 확인
               localDateTime={sample.localDateTime}
             />
