@@ -69,6 +69,7 @@ const Capture = () => {
       }
       console.log("전송 성공: ", response);
     } catch (error) {
+      alert("사진 분석 실패. 홈 화면으로 이동합니다.")
       console.log(error);
     }
   };
