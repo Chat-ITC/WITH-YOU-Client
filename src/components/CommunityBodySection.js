@@ -46,30 +46,11 @@ const CommunityBodySection = (props) => {
   const sendScrapHandler = async () => {
     try{
       const response = await axiosInstance.post(`/scrap/post/${props.id}`);
-      console.log("눌렀을 때 잘 갔나 확인: ", response);
-      console.log("프롭", props.id);
     } catch (error) {
       console.log(error);
     }
   }
   
-  //스크랩 버튼 핸들러
-  const dispatch = useDispatch();
-    const scrapBtnHandler = async () => {
-        try {
-            const response = await axiosInstance.patch(`/scrap/${props.id}`);
-            console.log("스크랩 데이터", response);
-        }
-        catch (error) {
-            console.log(error);
-        }
-        if (onlyScrapState === 'YES') {
-            dispatch(scrapId('NO'));
-        }
-        else {
-            dispatch(scrapId('YES'));
-        }
-    }
 
   //댓글 입력
   const [comment, setComment] = useState('');
@@ -122,7 +103,7 @@ const CommunityBodySection = (props) => {
             </LikeBtn> */}
             <ScrapBtn
               onClick={()=>{
-                scrapBtnHandler();
+                
                 sendScrapHandler();
                 scrapState();
               }}
