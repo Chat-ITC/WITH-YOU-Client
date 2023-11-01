@@ -46,8 +46,11 @@ const CommunityBodySection = (props) => {
   const sendScrapHandler = async () => {
     try{
       const response = await axiosInstance.post(`/scrap/post/${props.id}`);
+      alert("스크랩이 완료되었습니다!");
     } catch (error) {
-      console.log(error);
+      if(error.response.status === 400){
+        alert("이미 스크랩 된 글입니다");
+      }
     }
   }
   
@@ -57,8 +60,8 @@ const CommunityBodySection = (props) => {
   const handleSend = async () => {
     try{
       const response = await axiosInstance.post(`/comment/regist/${props.id}`, { content: comment });
-
-        console.log("댓글: ", response);
+      window.location.replace("/community");
+      console.log("댓글: ", response);
     }catch (error) {
       console.log("오류", error);
     }
