@@ -162,7 +162,6 @@ const Scrap = () => {
             <div
             onClick={() => {
               communityBodySectionHandler(sample.postId)
-              console.log("sample", sample);
             }}
             key={index}>
             <ScrapCommunityItem
