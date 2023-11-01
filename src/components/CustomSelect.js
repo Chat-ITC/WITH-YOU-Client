@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled, { css } from 'styled-components';
-import setting from '../assets/setting.png';
+import setting from '../assets/setting.svg';
 
 function MajorSelect ({onDataMajor}) {
     const [currentValue, setCurrentValue] = useState("학과를 선택해주세요");

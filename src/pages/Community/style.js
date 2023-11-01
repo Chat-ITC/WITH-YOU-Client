@@ -32,7 +32,7 @@ export const TopLeftHeader = styled.div`
   left: 0;
   width: 300px;
   height: 65px;
-  background-color: #91FF8E;
+  background-color: #2CC1F1;
   display: flex;
   justify-content: center;
   align-items: center;

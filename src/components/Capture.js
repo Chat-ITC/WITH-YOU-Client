@@ -5,7 +5,7 @@ import {
   Setting,
 } from './style';
 //img
-import setting from '../assets/setting.png';
+import setting from '../assets/setting.svg';
 
 const Capture = () => {
   return (

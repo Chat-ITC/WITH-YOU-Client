@@ -12,8 +12,6 @@ import { openModal, deleteId,toggleAsideVisibility } from '../store';
 //img
 import screenSplit from '../assets/screen-split.svg';
 import zoom from '../assets/zoom.svg';
-//components
-import { CameraItemSetting } from './CustomSelect';
 
 const ScrapHeader = () => {
   
@@ -71,13 +69,8 @@ const ScrapHeader = () => {
         AsideHandler();
         ScreenHandler();
       }}/>
-      <HeaderImgBox>
-        <div>
-          <CameraItemSetting
-            onDataSetting={getSetting}
-          />
-        </div>
-      </HeaderImgBox>
+      <HeaderImgBox/>
+     
     </ScrapHeaderTop>
   );
 };

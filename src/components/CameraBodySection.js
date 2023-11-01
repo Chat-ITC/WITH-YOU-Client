@@ -55,11 +55,11 @@ const CameraBodySection = () => {
         <>
             {selectorBodyData.content === "camera" ?
                 <CameraButtonContainer>
+                    <CameraBigButton />
                     <CameraInput
                         type="file"
                         accept="image/*; capture=camera"
                         onChange={handleFileChange} />
-                    <CameraBigButton />
                     <CameraPhrases>
                         사진을 찍어보세요!
                     </CameraPhrases>
@@ -68,8 +68,8 @@ const CameraBodySection = () => {
                 <CameraBodyContainer>
                     <ScrapBtnBox>
                         <HistoryScrapBtn
-                        onClick={scrapBtnHandler}
-                        $scrapState={onlyScrapState} />
+                            onClick={scrapBtnHandler}
+                            $scrapState={onlyScrapState} />
                     </ScrapBtnBox>
 
                     <BodyDataContainer>{selectorBodyData.content}</BodyDataContainer>
