@@ -302,26 +302,26 @@ export const CameraPhrases = styled.div`
 
 export const CameraBodyContainer = styled.div`
   display: flex;
-  align-items: flex-end;
   flex-direction: column;
-  width: 860px;
   height: 79%;
   margin: 0 auto;
   overflow-y: scroll;
   overflow-x: hidden;
+  padding: 0px 45px 40px 40px;
+  white-space: pre-wrap;
 `
 
 export const ScrapBtnBox = styled.div`
-  width: 890px;
+  width: 90%;
   display: flex;
-  margin: 25px 0;
   justify-content: space-between;
+  margin: 0 auto;
+  margin: 10px 0;
 `
 
 export const HistoryScrapBtn = styled.div`
   width: 40px;
   height: 40px;
-  margin-right: 10px;
   background-repeat: no-repeat;
   background-size: contain;
   background-image: url(${emptyStar});
@@ -329,6 +329,10 @@ export const HistoryScrapBtn = styled.div`
         background-image: url(${fillStar});
     `}
 `
+
+export const HiddenBox = styled.div`
+  width: 40px;
+`;
 
 export const CommunityScrapBtn = styled.div`
   margin: 20px;
@@ -350,11 +354,10 @@ export const BodyDataContainer = styled.div`
 `
 
 export const BodyTitleContainer = styled.span`
-  flex-shrink: 1;
-  font-size: 24px;
+  font-size: 26px;
   font-weight: bold;
   text-align: center;
-  width: 760px;
+  margin: 0 auto;
 `;
 
 export const ScrapBodyDataContainer = styled.div`
