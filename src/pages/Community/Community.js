@@ -70,7 +70,6 @@ const Community = () => {
         {communityListData.map((sample, index) => (
             <div
             onClick={() => {
-              console.log("번호 확인: ",sample.id);
               bodySectionHandler(sample.id);
             }}
             key={index}>
