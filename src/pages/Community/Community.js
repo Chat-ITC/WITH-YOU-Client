@@ -30,10 +30,8 @@ const Community = () => {
   const requestCommunity = async () => {
     try {
       const response = await axiosInstance.get('/post/lookup');
-      // console.log("커뮤니티 리스트 확인: ", response);
       if(response.data){
         setCommunityListData(response.data);
-        // console.log("받아온 커뮤니티 리스트 확인: ", response.data);
       }
     }
     catch(error) {
@@ -46,12 +44,10 @@ const Community = () => {
   }, [])
   //커뮤니티 리스트 눌렀을 때 'bodyData'에 데이터 저장
   const bodySectionHandler = async (props) => {
-    console.log("커뮤니티 누른 리스트 번호: ", props);
+
     try{
       const response = await axiosInstance.get('/post',
       {params:{id:props}});
-      console.log("본문:", response.data.postLookupDto);
-      console.log("댓글: ", response.data.commentResponseDto);
       setBodyData(response.data.postLookupDto);
       setComment(response.data.commentResponseDto);
     }
