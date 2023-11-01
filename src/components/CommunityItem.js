@@ -38,7 +38,6 @@ const CommunityItem = (props) => {
                 dispatch(selectId(propsId))
                 dispatch(historyBody(response.data))
                 dispatch(scrapId(response.data.isScrap)); 
-                console.log("스크랩2: ", response);
             } catch (error) {
                 console.log(error);
             }
