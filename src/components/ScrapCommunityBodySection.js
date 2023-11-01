@@ -81,7 +81,7 @@ const ScrapCommunityBodySection = (props) => {
             <UserData>
               <UserDataSpan>{props.userNickName}</UserDataSpan>
               <UserDataSpan>{props.userMajor}</UserDataSpan>
-              <UserDataSpan>{props.createdDate}</UserDataSpan>
+              <UserDataSpan>{props.createdDateMonth}/{props.createdDateDay}</UserDataSpan>
               <CommunityBody>{props.content}</CommunityBody>
             </UserData>
           </CommunityContent>
@@ -123,7 +123,7 @@ const ScrapCommunityBodySection = (props) => {
                     <ChatUser>{comment.userNickName}</ChatUser>
                     <ChatUserMajor>{comment.userMajor}</ChatUserMajor>
                     <ChatBody>{comment.content}</ChatBody>
-                    <ChatDate>{comment.createdDate}</ChatDate>
+                    <ChatDate>{comment.createdDateMonth}/{comment.createdDateDay}</ChatDate>
                   </CommentContainer>
                 </div>
               ))}

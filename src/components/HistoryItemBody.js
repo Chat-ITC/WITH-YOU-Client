@@ -32,7 +32,7 @@ const HistoryItemBody = (props) => {
                             <CameraItemScrap $done={props.$scrap} />
                             <ReactMarkdown>
                             </ReactMarkdown>
-                            {props.createdDate}
+                            {props.createdDateMonth}/{props.createdDateDay}
                         </CameraDateContainer>
                     </CameraItemBottom>
 

@@ -53,7 +53,7 @@ const ScrapCommunityItem = (props) => {
                             )}
                             <CommunityDateContainer>
                                 <CommunityItemScrap $done={props.$scrap} />{/*isScrap인지 확인 */}
-                                {props.localDateTime}
+                                {props.localDateTimeMonth}/{props.localDateTimeDay}
                             </CommunityDateContainer>
                         </CommunityItemBottom>
                     </CommunityItemContainer>

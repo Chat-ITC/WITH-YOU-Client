@@ -6,7 +6,8 @@ import {
     CameraBodyContainer,
     HistoryScrapBtn,
     BodyDataContainer,
-    ScrapBtnBox
+    ScrapBtnBox,
+    BodyTitleContainer
 } from './style'
 
 import { scrapId } from '../store';
@@ -67,12 +68,18 @@ const CameraBodySection = () => {
                 :
                 <CameraBodyContainer>
                     <ScrapBtnBox>
+                        <BodyTitleContainer>
+                            {selectorBodyData.title}
+                        </BodyTitleContainer>
+
                         <HistoryScrapBtn
                             onClick={scrapBtnHandler}
                             $scrapState={onlyScrapState} />
                     </ScrapBtnBox>
 
-                    <BodyDataContainer>{selectorBodyData.content}</BodyDataContainer>
+                    <BodyDataContainer>
+                        {selectorBodyData.content}
+                    </BodyDataContainer>
 
                 </CameraBodyContainer>
             }

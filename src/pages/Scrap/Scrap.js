@@ -30,7 +30,7 @@ const Scrap = () => {
   //검색한데이터
   const [searchWord, setSearchWord] = useState('');
   //스크랩 페이지 메인에 출력할 데이터를 저장
-  const [bodyData, setBodyData] = useState({content:"0", createdDate:[1,1,1,1]});
+  const [bodyData, setBodyData] = useState({content:"0", createdDate:[1,1,1,1], localDateTime:[1, 1, 1, 1]});
   const [comment, setComment] = useState([])
   
   //히스토리 클릭했을 때 리스트
@@ -88,7 +88,7 @@ const Scrap = () => {
       }
     }
   }
-    
+  
   const [cameraListData, setCameraListData] = useState([]);
   const [communityListData, setCommunityListData] = useState([]);
   //히스토리 - 커뮤니티 라디오버튼 
@@ -153,7 +153,8 @@ const Scrap = () => {
               key={index}
               title={sample.title}
               body={sample.content}
-              createdDate={sample.createdDate}
+              createdDateMonth={sample.createdDate[1]}
+              createdDateDay={sample.createdDate[2]}
               $scrap={sample.isScrap}
             />
           </div>
@@ -172,7 +173,8 @@ const Scrap = () => {
               // like={sample.like}
               commentCount={sample.commentCount}
               $scrap={sample.isScrap}//유효한 값인지 확인
-              localDateTime={sample.localDateTime}
+              localDateTimeMonth={sample.localDateTime[1]}
+              localDateTimeDay={sample.localDateTime[2]}
             />
           </div>
           
@@ -195,7 +197,8 @@ const Scrap = () => {
           userMajor={bodyData.userMajor}
           content={bodyData.content}
           commentCount={bodyData.commentCount}
-          createdDate={bodyData.createdDate}
+          createdDateMonth={bodyData.createdDate[1]}
+          createdDateDay={bodyData.createdDate[2]}
           comments={comment}
           />
         )}
