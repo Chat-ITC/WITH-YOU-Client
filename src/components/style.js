@@ -88,7 +88,7 @@ export const CameraItemScrap = styled.div`
 //CommunityItem
 export const CommunityItemContainer = styled.div`
   width: 275px;
-  height: 70px;
+  height: 90px;
   padding: 10px 10px 10px 15px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.20);
 `;
