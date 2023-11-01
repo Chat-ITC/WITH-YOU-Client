@@ -75,10 +75,6 @@ const CommunityBodySection = (props) => {
     textarea.current.style.height = textarea.current.scrollHeight + 'px';
   };
 
-  const [isScrap, setIsScrap] = useState(false);
-  const scrapState = () => {
-    setIsScrap(!isScrap);
-  }
     return (
       <>
         {selectorBodyData.content === "camera" ? 
