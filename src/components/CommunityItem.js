@@ -20,24 +20,23 @@ import Like from '../assets/like.png';
 import Chat from '../assets/chat.png';
 
 //library
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React from 'react';
+import { useDispatch} from 'react-redux';
 import axiosInstance from '../utils/axiosInterceptor/axiosInterceptor';
-import { selectId, historyBody, scrapId } from '../store';
+import { selectId, historyBody, commentBody } from '../store';
 
 const CommunityItem = (props) => {
-    
     const dispatch = useDispatch();
     // const [picture, setPicture] = useState(props.$picture);
-
+ 
     const bodySectionHandler = async (propsId) => {
         if (propsId !== '0') {
             try{
                 const response = await axiosInstance.get('/post',
                 { params: { id: propsId } });
                 dispatch(selectId(propsId))
-                dispatch(historyBody(response.data))
-                dispatch(scrapId(response.data.isScrap)); 
+                dispatch(historyBody(response.data.postLookupDto))
+                dispatch((commentBody(response.data.commentResponseDto)))
                 console.log("스크랩2: ", response);
             } catch (error) {
                 console.log(error);
@@ -80,7 +79,7 @@ const CommunityItem = (props) => {
                             )}
                             <CommunityDateContainer>
                                 <CommunityItemScrap $done={props.$scrap} />{/*isScrap인지 확인 */}
-                                {props.createdDate}
+                                {props.date[1]}/{props.date[2]}
                             </CommunityDateContainer>
                         </CommunityItemBottom>
                     </CommunityItemContainer>

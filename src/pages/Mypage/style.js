@@ -45,6 +45,7 @@ export const UserContainer = styled.div`
   display: flex;
   width: 240px;
   gap: 15px;
+  margin-bottom: 10px;
   `;
 
 export const MyPageImg = styled.div`
