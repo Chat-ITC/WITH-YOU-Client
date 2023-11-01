@@ -18,6 +18,7 @@ import Chat from '../assets/chat.png';
 import React, { useState } from 'react';
 
 const ScrapCommunityItem = (props) => {
+    console.log("날짜", props);
     return (
         <>
             {(props.title.includes(props.searchWord) || props.content.includes(props.searchWord)) && (
@@ -53,7 +54,7 @@ const ScrapCommunityItem = (props) => {
                             )}
                             <CommunityDateContainer>
                                 <CommunityItemScrap $done={props.$scrap} />{/*isScrap인지 확인 */}
-                                {props.localDateTimeMonth}/{props.localDateTimeDay}
+                                {props.createdDateMonth}/{props.createdDateDay}
                             </CommunityDateContainer>
                         </CommunityItemBottom>
                     </CommunityItemContainer>

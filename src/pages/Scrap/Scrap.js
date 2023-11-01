@@ -90,7 +90,7 @@ const Scrap = () => {
   }
   
   const [cameraListData, setCameraListData] = useState([]);
-  const [communityListData, setCommunityListData] = useState([]);
+  const [communityListData, setCommunityListData] = useState({localDateTime:[1,1,1,1]});
   //히스토리 - 커뮤니티 라디오버튼 
   const [historyToggle, setHistoryToggle] = useState(true);
   const [communityToggle, setCommunityToggle] = useState(false);
@@ -172,9 +172,9 @@ const Scrap = () => {
               content={sample.content}
               // like={sample.like}
               commentCount={sample.commentCount}
-              $scrap={sample.isScrap}//유효한 값인지 확인
-              localDateTimeMonth={sample.localDateTime[1]}
-              localDateTimeDay={sample.localDateTime[2]}
+              $scrap={sample.isScrap}
+              createdDateMonth={sample.localDateTime[1]}
+              createdDateDay={sample.localDateTime[2]}
             />
           </div>
           
