@@ -9,14 +9,12 @@ import {
   NickBtnBox,
 } from "./style";
 //library
-import React, {useState} from "react";
-import { useNavigate } from "react-router";
+import React, { useState } from "react";
 import axiosInstance from '../../utils/axiosInterceptor/axiosInterceptor';
 //components
 import TextInput from '../../components/TextInput';
 
-const MyModal = ({onClose}) => {
-  const navigate = useNavigate();
+const MyModal = ({ onClose }) => {
   //닉네임 설정
   const [nickName, setNickName] = useState('');
 
@@ -27,36 +25,40 @@ const MyModal = ({onClose}) => {
     try {
       await axiosInstance.patch('/member/update', name);
       alert("닉네임이 성공적으로 변경되었습니다.");
+      window.location.replace("/mypage");
 
     } catch (error) {
-      alert("세션이 만료되었습니다. 다시 로그인해 주세요");
-      navigate("/");      
+      alert("이미 존재하는 닉네임입니다.");
     }
   };
 
-  
+
   return (
     <div>
       <Mask onClick={onClose}></Mask>
       <ModalBody>
-          <Content>
-            <ModalTItle>닉네임 설정</ModalTItle>
-            <TextInput
-              placeholder={"닉네임"}
-              value={nickName}
-              onChange={(e) => setNickName(e.target.value)}
-            />
-            <NickBtnBox>
-              <ModalSetBtn
-                onClick={handleChangeNickName}>
-                설정
-              </ModalSetBtn>
-              <ModalCloseBtn 
-                onClick={onClose}>
-                닫기
-              </ModalCloseBtn>
-            </NickBtnBox>
-          </Content>
+        <Content>
+          <ModalTItle>닉네임 설정</ModalTItle>
+          <TextInput
+            placeholder={"닉네임"}
+            value={nickName}
+            onChange={(e) => setNickName(e.target.value)}
+          />
+          <NickBtnBox>
+            <ModalSetBtn
+              onClick={() => {
+                handleChangeNickName()
+                onClose()
+              }}>
+              설정
+
+            </ModalSetBtn>
+            <ModalCloseBtn
+              onClick={onClose}>
+              닫기
+            </ModalCloseBtn>
+          </NickBtnBox>
+        </Content>
       </ModalBody>
     </div>
   );

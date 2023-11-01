@@ -102,7 +102,6 @@ const Mypage = () => {
       navigate("/");
     }
   };
-
   return (
     <>
       <MyPageHeader>My Page</MyPageHeader>
@@ -123,13 +122,13 @@ const Mypage = () => {
                 </UserNick>
               </UsernickBox>
               <MajorGrade>
-                {/* {userInfoData[0].major} {userInfoData[0].grade}학년 */}
+                {userInfoData.major} {userInfoData.grade}학년
               </MajorGrade>
             </UserInfo>
           </UserContainer>
           <UserLevelBox>
-            <UserLevel>Lv.{userInfoData.level}</UserLevel>
-            <progress value={userInfoData.levelgage} min="0" max="100"></progress>
+            <UserLevel>Lv.{Math.floor(userInfoData.level)}</UserLevel>
+            <progress value={(userInfoData.level - Math.floor(userInfoData.level)) * 100} min="0" max="100"></progress>
           </UserLevelBox>
         </UserInfoContainer>
         <Ul>
