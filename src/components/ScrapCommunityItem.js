@@ -6,17 +6,12 @@ import {
     CommunityItemBottom,
     CommunityDateContainer,
     CommunityItemTopContainer,
-    CommunityItemPicture,
     CommunityItemScrap,
-    LikeContainer,
-    LikeImg,
-    LikeContent,
     ChatImg,
     ChatContent,
     ChatContainer,
 } from './style';
 //img
-import Like from '../assets/like.png';
 import Chat from '../assets/chat.png';
 
 //library
