@@ -42,12 +42,23 @@ import Chat from '../assets/chat.png';
 const CommunityBodySection = (props) => {
   const selectorBodyData = useSelector((state) => state.CameraItemId.bodyData);
   const onlyScrapState = useSelector((state) => state.CameraItemId.scrap);
+  
+  const sendScrapHandler = async () => {
+    try{
+      const response = await axiosInstance.post(`/scrap/post/${props.id}`);
+      console.log("눌렀을 때 잘 갔나 확인: ", response);
+      console.log("프롭", props.id);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  
   //스크랩 버튼 핸들러
   const dispatch = useDispatch();
     const scrapBtnHandler = async () => {
         try {
-            const response = await axiosInstance.patch(`/scrap/${selectorBodyData.id}`);
-            console.log(response);
+            const response = await axiosInstance.patch(`/scrap/${props.id}`);
+            console.log("스크랩 데이터", response);
         }
         catch (error) {
             console.log(error);
@@ -79,6 +90,11 @@ const CommunityBodySection = (props) => {
     textarea.current.style.height = 'auto';//height 초기화
     textarea.current.style.height = textarea.current.scrollHeight + 'px';
   };
+
+  const [isScrap, setIsScrap] = useState(false);
+  const scrapState = () => {
+    setIsScrap(!isScrap);
+  }
     return (
       <>
         {selectorBodyData.content === "camera" ? 
@@ -87,10 +103,6 @@ const CommunityBodySection = (props) => {
           </LogoContainer> 
         :
         <CommunityBodyContainer>
-
-          <CommunityScrapBtn
-                        onClick={scrapBtnHandler}
-                        $scrapState={onlyScrapState} />
         <CommunityContent>
             <CommunityTitle>{props.title}</CommunityTitle>
             <UserData>
@@ -108,7 +120,13 @@ const CommunityBodySection = (props) => {
                 좋아요
               </BtnText>
             </LikeBtn> */}
-            <ScrapBtn>
+            <ScrapBtn
+              onClick={()=>{
+                scrapBtnHandler();
+                sendScrapHandler();
+                scrapState();
+              }}
+              $scrapState={onlyScrapState}>
                 <BtnImg src={Star} alt="스크랩 버튼"/>
               <BtnText>
                 스크랩
