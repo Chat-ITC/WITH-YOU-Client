@@ -40,13 +40,16 @@ import Star from '../assets/FillStar.svg';
 import Chat from '../assets/chat.png';
 
 const CommunityBodySection = (props) => {
+  const idState = useSelector((state) => state.CameraItemId.id);
   const selectorBodyData = useSelector((state) => state.CameraItemId.bodyData);
+  const selectorCommentData = useSelector((state) => state.CameraItemId.commentData);
   const onlyScrapState = useSelector((state) => state.CameraItemId.scrap);
   
   const sendScrapHandler = async () => {
     try{
-      const response = await axiosInstance.post(`/scrap/post/${props.id}`);
+      const response = await axiosInstance.post(`/scrap/post/${idState}`);
       alert("스크랩이 완료되었습니다!");
+      
     } catch (error) {
       if(error.response.status === 400){
         alert("이미 스크랩 된 글입니다.");
@@ -60,7 +63,7 @@ const CommunityBodySection = (props) => {
   const [comment, setComment] = useState('');
   const handleSend = async () => {
     try{
-      const response = await axiosInstance.post(`/comment/regist/${props.id}`, { content: comment });
+      const response = await axiosInstance.post(`/comment/regist/${idState}`, { content: comment });
       window.location.replace("/community");
       console.log("댓글: ", response);
     }catch (error) {
@@ -85,12 +88,12 @@ const CommunityBodySection = (props) => {
         :
         <CommunityBodyContainer>
         <CommunityContent>
-            <CommunityTitle>{props.title}</CommunityTitle>
+            <CommunityTitle>{selectorBodyData.title}</CommunityTitle>
             <UserData>
-              <UserDataSpan>{props.userNickName}</UserDataSpan>
-              <UserDataSpan>{props.userMajor}</UserDataSpan>
-              <UserDataSpan>{props.createdDate}</UserDataSpan>
-              <CommunityBody>{props.content}</CommunityBody>
+              <UserDataSpan>{selectorBodyData.userNickName}</UserDataSpan>
+              <UserDataSpan>{selectorBodyData.userMajor}</UserDataSpan>
+              <UserDataSpan>{selectorBodyData.createdDate[1]}/{selectorBodyData.createdDate[2]}</UserDataSpan>
+              <CommunityBody>{selectorBodyData.content}</CommunityBody>
             </UserData>
           </CommunityContent>
           
@@ -122,10 +125,10 @@ const CommunityBodySection = (props) => {
               <CommunityChatContainer>
                 <ChatImg src={Chat} alt="댓글 버튼" width="14"/>
                 <ChatContent>
-                  전체 댓글 {props.commentCount}개
+                  전체 댓글 {selectorBodyData.commentCount}개
                 </ChatContent>
               </CommunityChatContainer>
-              {props.comments && props.comments.map((comment, index) => (
+              {selectorCommentData && selectorCommentData.map((comment, index) => (
                 <div key={index}>
                   <CommentContainer>
                     <ChatUser>{comment.userNickName}</ChatUser>

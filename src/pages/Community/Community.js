@@ -21,6 +21,8 @@ const Community = () => {
   //화면 변환
   const isAsideVisible = useSelector((state) => state.visibility.isAsideVisible);
 
+
+
   //검색한 데이터
   const [searchWord, setSearchWord] = useState('');
   const [bodyData, setBodyData] = useState({content: "community"});
@@ -42,19 +44,6 @@ const Community = () => {
   useEffect(() => {
     requestCommunity();
   }, [])
-  //커뮤니티 리스트 눌렀을 때 'bodyData'에 데이터 저장
-  const bodySectionHandler = async (props) => {
-
-    try{
-      const response = await axiosInstance.get('/post',
-      {params:{id:props}});
-      setBodyData(response.data.postLookupDto);
-      setComment(response.data.commentResponseDto);
-    }
-    catch(error){
-      console.log(error);
-    }
-  }
 
   return (
     <>
@@ -65,9 +54,6 @@ const Community = () => {
           onDataSearch={(getData) => setSearchWord(getData)}/></FromBox>
         {communityListData.map((sample, index) => (
             <div
-            onClick={() => {
-              bodySectionHandler(sample.id);
-            }}
             key={index}>
             <CommunityItem
               id={sample.id}

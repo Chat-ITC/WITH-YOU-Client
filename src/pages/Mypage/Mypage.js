@@ -20,8 +20,6 @@ import {
 } from './style';
 //library
 import { useState, useEffect } from 'react';
-import axios from 'axios';
-import { getCookie } from '../../utils/Cookies/Cookies';
 import { useNavigate } from "react-router";
 import axiosInstance from '../../utils/axiosInterceptor/axiosInterceptor';
 //img
@@ -53,15 +51,13 @@ const Mypage = () => {
   //유저 정보 받아오기
   const requestUserInfo = async () => {
     try {
-      const response = await axiosInstance.get('');
+      const response = await axiosInstance.get('/member/mypage');
       console.log(response.data);
-      const userData = response.data;
-      setUserInfoData(userData);
+      setUserInfoData(response.data);
     } catch (error) {
       console.log(error);
     }
   }
-  console.log("유저 닉네임: ", userInfoData[0].nickname);
   useEffect(() => {
     requestUserInfo();
   }, [])
@@ -120,20 +116,20 @@ const Mypage = () => {
             <UserInfo>
               <UsernickBox>
                 <UserCrownBox>
-                  {getLevelCrown(userInfoData[0].level)}
+                  {getLevelCrown(userInfoData.level)}
                 </UserCrownBox>
                 <UserNick>
-                  {userInfoData[0].nickname}
+                  {userInfoData.nickName}
                 </UserNick>
               </UsernickBox>
               <MajorGrade>
-                {userInfoData[0].major} {userInfoData[0].grade}학년
+                {/* {userInfoData[0].major} {userInfoData[0].grade}학년 */}
               </MajorGrade>
             </UserInfo>
           </UserContainer>
           <UserLevelBox>
-            <UserLevel>Lv.{userInfoData[0].level}</UserLevel>
-            <progress value={userInfoData[0].levelgage} min="0" max="100"></progress>
+            <UserLevel>Lv.{userInfoData.level}</UserLevel>
+            <progress value={userInfoData.levelgage} min="0" max="100"></progress>
           </UserLevelBox>
         </UserInfoContainer>
         <Ul>
