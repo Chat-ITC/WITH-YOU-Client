@@ -28,6 +28,7 @@ import {
   ChatDate,
   LogoContainer,
   CommunityScrapBtn,
+  CommunityImg
 } from './style';
 //library
 import React, { useRef, useState } from 'react';
@@ -44,6 +45,7 @@ const CommunityBodySection = (props) => {
   const selectorBodyData = useSelector((state) => state.CameraItemId.bodyData);
   const selectorCommentData = useSelector((state) => state.CameraItemId.commentData);
   const onlyScrapState = useSelector((state) => state.CameraItemId.scrap);
+  const imgURL = useSelector((state) => state.CameraItemId.imgURL);
   
   const sendScrapHandler = async () => {
     try{
@@ -94,6 +96,7 @@ const CommunityBodySection = (props) => {
               <UserDataSpan>{selectorBodyData.userMajor}</UserDataSpan>
               <UserDataSpan>{selectorBodyData.createdDate[1]}/{selectorBodyData.createdDate[2]}</UserDataSpan>
               <CommunityBody>{selectorBodyData.content}</CommunityBody>
+              {imgURL === null ? <div></div> : <CommunityImg src={imgURL} alt='받은 사진'/>}
             </UserData>
           </CommunityContent>
           

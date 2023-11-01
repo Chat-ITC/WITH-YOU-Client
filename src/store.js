@@ -37,7 +37,8 @@ const selectStateSlice = createSlice({
     id: '0',
     scrap: 'basic',
     bodyData: { content: "camera" },
-    commentData: { content: "" }
+    commentData: { content: "" },
+    imgURL: null
   },
   reducers: {
     selectId:(state, action) => {
@@ -57,6 +58,10 @@ const selectStateSlice = createSlice({
       state.commentData = action.payload;
       console.log("댓글데이터 action: ", action.payload);
     },
+    img:(state, action) => {
+      state.imgURL = action.payload;
+      console.log("URL데이터 action: ", action.payload);
+    },
     deleteId:(state, action) => {
       state.id = action.payload;
       console.log("삭제 action: ", action.payload);
@@ -70,7 +75,7 @@ const selectStateSlice = createSlice({
 // 슬라이스의 액션을 외부로 내보냄
 export const { toggleAsideVisibility } = visibilitySlice.actions;
 
-export const { selectId, scrapId, historyBody, commentBody, deleteId } = selectStateSlice.actions;
+export const { selectId, scrapId, historyBody, commentBody, img, deleteId } = selectStateSlice.actions;
 
 export const { openModal } = visibilityModal.actions;
 

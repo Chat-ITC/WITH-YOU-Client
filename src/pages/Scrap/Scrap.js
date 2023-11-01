@@ -196,8 +196,9 @@ const Scrap = () => {
           userMajor={bodyData.userMajor}
           content={bodyData.content}
           commentCount={bodyData.commentCount}
-          comments={comment}
           createdDateMonth={bodyData.createdDate}
+          createdDateDay={bodyData.createdDate}
+          comments={comment}
           />
         )}
         <BottomEmptyBox />

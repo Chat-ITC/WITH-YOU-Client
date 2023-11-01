@@ -54,7 +54,7 @@ const Home = () => {
       content: "AI가 사진속 글을 인식하고, 요구사항에 맞는 최적의 답변을 해드립니다",
       date: "WITH-YOU",
       isScrap: "YES",
-      createdDate:[1,1,1,1]
+      createdDate:[1,"WITH","YOU",1]
     },
   ];
 
