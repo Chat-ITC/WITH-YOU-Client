@@ -131,7 +131,7 @@ const CommunityBodySection = (props) => {
                     <ChatUser>{comment.userNickName}</ChatUser>
                     <ChatUserMajor>{comment.userMajor}</ChatUserMajor>
                     <ChatBody>{comment.content}</ChatBody>
-                    <ChatDate>{comment.createdDate}</ChatDate>
+                    <ChatDate>{comment.createdDate[1]}/{comment.createdDate[2]}</ChatDate>
                   </CommentContainer>
                 </div>
               ))}

@@ -53,7 +53,8 @@ const Home = () => {
       title: "사진을 찍어보세요!",
       content: "AI가 사진속 글을 인식하고, 요구사항에 맞는 최적의 답변을 해드립니다",
       date: "WITH-YOU",
-      isScrap: "YES"
+      isScrap: "YES",
+      createdDate:[1,1,1,1]
     },
   ];
 
@@ -81,7 +82,8 @@ const Home = () => {
               id={sample.id}
               title={sample.title}
               body={sample.content}
-              date={sample.date}
+              createdDateMonth={sample.createdDate[1]}
+              createdDateDay={sample.createdDate[2]}
               $scrap={sample.isScrap}
             />
           </div>

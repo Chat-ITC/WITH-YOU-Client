@@ -16,6 +16,7 @@ import axiosInstance from '../utils/axiosInterceptor/axiosInterceptor';
 import ReactMarkdown from 'react-markdown';
 
 const HistoryItemBody = (props) => {
+    console.log("날짜", props);
     return (
         <>
             {(props.title.includes(props.searchWord) || props.body.includes(props.searchWord)) && (
@@ -31,7 +32,7 @@ const HistoryItemBody = (props) => {
                             <CameraItemScrap $done={props.$scrap} />
                             <ReactMarkdown>
                             </ReactMarkdown>
-                            {props.date}
+                            {props.createdDate}
                         </CameraDateContainer>
                     </CameraItemBottom>
 

@@ -51,9 +51,8 @@ const CameraItem = (props) => {
                         <CameraDateContainer>
                             <CameraItemScrap $done={props.$scrap} />
                             <ReactMarkdown>
-                                
                             </ReactMarkdown>
-                            {props.date}
+                            {props.createdDateMonth}/{props.createdDateDay}
                         </CameraDateContainer>
                     </CameraItemBottom>
 

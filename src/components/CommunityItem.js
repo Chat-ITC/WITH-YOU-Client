@@ -43,7 +43,7 @@ const CommunityItem = (props) => {
             }
         }
     }
-    
+
     return (
         <>
             {(props.title.includes(props.searchWord) || props.content.includes(props.searchWord)) && (
@@ -79,7 +79,7 @@ const CommunityItem = (props) => {
                             )}
                             <CommunityDateContainer>
                                 <CommunityItemScrap $done={props.$scrap} />{/*isScrap인지 확인 */}
-                                {props.createdDate}
+                                {props.date}
                             </CommunityDateContainer>
                         </CommunityItemBottom>
                     </CommunityItemContainer>
