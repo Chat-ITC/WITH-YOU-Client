@@ -90,7 +90,7 @@ const Scrap = () => {
   }
   
   const [cameraListData, setCameraListData] = useState([]);
-  const [communityListData, setCommunityListData] = useState({localDateTime:[1,1,1,1]});
+  const [communityListData, setCommunityListData] = useState([]);
   //히스토리 - 커뮤니티 라디오버튼 
   const [historyToggle, setHistoryToggle] = useState(true);
   const [communityToggle, setCommunityToggle] = useState(false);
@@ -153,8 +153,8 @@ const Scrap = () => {
               key={index}
               title={sample.title}
               body={sample.content}
-              createdDateMonth={sample.createdDate[1]}
-              createdDateDay={sample.createdDate[2]}
+              createdDateMonth={sample.createdDate}
+              createdDateDay={sample.createdDate}
               $scrap={sample.isScrap}
             />
           </div>
@@ -173,8 +173,8 @@ const Scrap = () => {
               // like={sample.like}
               commentCount={sample.commentCount}
               $scrap={sample.isScrap}
-              createdDateMonth={sample.localDateTime[1]}
-              createdDateDay={sample.localDateTime[2]}
+              createdDateMonth={sample.localDateTime}
+              createdDateDay={sample.localDateTime}
             />
           </div>
           
@@ -197,8 +197,8 @@ const Scrap = () => {
           userMajor={bodyData.userMajor}
           content={bodyData.content}
           commentCount={bodyData.commentCount}
-          createdDateMonth={bodyData.createdDate[1]}
-          createdDateDay={bodyData.createdDate[2]}
+          createdDateMonth={bodyData.createdDate}
+          createdDateDay={bodyData.createdDate}
           comments={comment}
           />
         )}

@@ -75,7 +75,7 @@ const Capture = () => {
   };
  
   //요구사항
-  const [question, setQuestion] = useState("이해하기 쉬운 설명");
+  const [question, setQuestion] = useState("이해하기 쉬운 설명해줘");
   const [selectedId, setSelectedId] = useState(0);
   const [checked, setChecked] = useState(true);
 
@@ -94,23 +94,29 @@ const Capture = () => {
   const requestJson = [
     {
       id: 0,
-      content: "이해하기 쉬운 설명"
+      content: "이해하기 쉬운 설명",
+      sendData: "이해하기 쉽게 설명해줘"
     },
     {
       id: 1,
-      content: "자세한 설명"
+      content: "자세한 설명",
+      sendData: "자세하게 설명해줘"
+      
     },
     {
       id: 2,
-      content: "간단한 요약"
+      content: "간단한 요약",
+      sendData: "간단하게 요약해줘"
     },
     {
       id: 3,
-      content: "이해를 위한 예시"
+      content: "이해를 위한 예시",
+      sendData: "이해하기 쉽도록 예시 들어서 설명해줘"
     },
     {
       id: 4,
-      content: "비슷한 내용의 퀴즈"
+      content: "비슷한 내용의 퀴즈",
+      sendData: "이해했는지 테스트 할 만한 퀴즈 만들어줘"
     },
 
   ]
@@ -124,7 +130,7 @@ const Capture = () => {
           <RequestCheckBox
             key={index}
             onClick={() => {
-              setQuestion(requestjson.content);
+              setQuestion(requestjson.sendData);
               handleCheckBoxClick(requestjson.id);
             }}
             content={requestjson.content}

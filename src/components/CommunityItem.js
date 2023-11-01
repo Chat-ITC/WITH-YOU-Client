@@ -23,7 +23,7 @@ import Chat from '../assets/chat.png';
 import React from 'react';
 import { useDispatch} from 'react-redux';
 import axiosInstance from '../utils/axiosInterceptor/axiosInterceptor';
-import { selectId, historyBody, commentBody } from '../store';
+import { selectId, historyBody, commentBody, img } from '../store';
 
 const CommunityItem = (props) => {
     const dispatch = useDispatch();
@@ -36,6 +36,7 @@ const CommunityItem = (props) => {
                 { params: { id: propsId } });
                 dispatch(selectId(propsId))
                 dispatch(historyBody(response.data.postLookupDto))
+                dispatch(img(response.data.imageUrl))
                 dispatch((commentBody(response.data.commentResponseDto)))
                 console.log("스크랩2: ", response);
             } catch (error) {

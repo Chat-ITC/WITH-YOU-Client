@@ -631,6 +631,12 @@ export const CommunityBody = styled.div`
   padding: 15px 0;
 `;
 
+export const CommunityImg = styled.img`
+  width: 790px;
+  height: 600px;
+  object-fit: contain;
+`
+
 export const LikeChatBox = styled.div`
   width: 785px;
   padding: 40px 20px 0;
