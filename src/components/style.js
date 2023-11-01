@@ -633,6 +633,7 @@ export const CommunityBody = styled.div`
   padding: 15px 0;
 `;
 
+
 export const CommunityImg = styled.img`
   width: 790px;
   height: 600px;

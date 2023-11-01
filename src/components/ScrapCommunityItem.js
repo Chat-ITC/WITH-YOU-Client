@@ -10,10 +10,13 @@ import {
     ChatImg,
     ChatContent,
     ChatContainer,
+    CommunityItemPicture
 } from './style';
 //img
 import Chat from '../assets/chat.png';
 import star from '../assets/FillStar.svg';
+import picture from '../assets/picture.png';
+
 
 //library
 import React, { useState } from 'react';
@@ -28,7 +31,7 @@ const ScrapCommunityItem = (props) => {
                             <CommunityItemTitle>
                                 {props.title}
                             </CommunityItemTitle>
-                            {/* <CommunityItemPicture $picture={picture} /> */}
+                            {props.img === 'nothing' ? <></> : <CommunityItemPicture $picture={picture} />}
                         </CommunityItemTopContainer>
                         <CommunityItemBody>
                             {props.content}

@@ -38,7 +38,7 @@ const selectStateSlice = createSlice({
     scrap: 'basic',
     bodyData: { content: "camera" },
     commentData: { content: "" },
-    imgURL: null
+    imgURL: 'nothing'
   },
   reducers: {
     selectId:(state, action) => {

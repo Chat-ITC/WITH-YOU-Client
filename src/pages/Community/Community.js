@@ -34,6 +34,7 @@ const Community = () => {
       const response = await axiosInstance.get('/post/lookup');
       if(response.data){
         setCommunityListData(response.data);
+        console.log('response.data',response.data);
       }
     }
     catch(error) {
@@ -65,6 +66,7 @@ const Community = () => {
               content={sample.content}
               // like={sample.like}
               date={sample.createdDate}
+              img={sample.imageUrl}
             />
           </div>
         ))}

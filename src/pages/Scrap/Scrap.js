@@ -13,7 +13,7 @@ import {
 } from './style';
 //library
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import axiosInstance from '../../utils/axiosInterceptor/axiosInterceptor';
 //components
 import ScrapHeader from '../../components/ScrapHeader';
@@ -22,6 +22,7 @@ import Search from '../../components/SearchInput';
 import LogoBody from '../../components/LogoBody';
 import ScrapCommunityItem from '../../components/ScrapCommunityItem';
 import ScrapCommunityBodySection from '../../components/ScrapCommunityBodySection';
+import { img } from '../../store';
 
 const Scrap = () => {
   //화면 변환
@@ -33,19 +34,7 @@ const Scrap = () => {
   const [bodyData, setBodyData] = useState({content:"0", createdDate:[1,1,1,1]});
 
   const [comment, setComment] = useState([])
-  //히스토리 클릭했을 때 리스트
-  const historyBodySectionHandler = async (props) => {
-    if(props !== '0'){
-      try{
-        const response = await axiosInstance.get('/question',
-        {params:{id:props}});
-        setBodyData(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-  }
-
+ 
   //히스토리 리스트 
   const RequestCommunity = async() => {
     try{
@@ -60,8 +49,21 @@ const Scrap = () => {
       console.log(error);
     }
   }
-
   
+ //히스토리 클릭했을 때 리스트
+  const historyBodySectionHandler = async (props) => {
+    if(props !== '0'){
+      try{
+        const response = await axiosInstance.get('/question',
+        {params:{id:props}});
+        setBodyData(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }
+
+  //커뮤니티 출력 리스트
   const RequestHistory = async() => {
       try{
         const response = await axiosInstance.get('/scrap/post/list');
@@ -72,9 +74,10 @@ const Scrap = () => {
         console.log(error);
       }
   } 
-  //커뮤니티 클릭했을 때 리스트
-    const communityBodySectionHandler = async(props) => {
 
+  //커뮤니티 클릭했을 때 리스트
+    const dispatch = useDispatch();
+    const communityBodySectionHandler = async(props) => {
     if(props!=='0'){
       try{
         const response = await axiosInstance.get('/post',
@@ -82,6 +85,8 @@ const Scrap = () => {
         console.log("props", response.data);
         setBodyData(response.data.postLookupDto);
         setComment(response.data.commentResponseDto);
+        dispatch(img(response.data.postLookupDto.imageUrl))
+
       }
       catch(error){
         console.log(error);
@@ -174,6 +179,7 @@ const Scrap = () => {
               $scrap={sample.isScrap}
               createdDateMonth={sample.localDateTime[1]}
               createdDateDay={sample.localDateTime[2]}
+              img={sample.imageUrl}
             />
           </div>
           

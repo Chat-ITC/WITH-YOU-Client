@@ -96,7 +96,7 @@ const CommunityBodySection = (props) => {
               <UserDataSpan>{selectorBodyData.userMajor}</UserDataSpan>
               <UserDataSpan>{selectorBodyData.createdDate[1]}/{selectorBodyData.createdDate[2]}</UserDataSpan>
               <CommunityBody>{selectorBodyData.content}</CommunityBody>
-              {imgURL === null ? <div></div> : <CommunityImg src={imgURL} alt='받은 사진'/>}
+              {imgURL === 'nothing' ? <div></div> : <CommunityImg src={imgURL} alt='받은 사진'/>}
             </UserData>
           </CommunityContent>
           

@@ -18,25 +18,27 @@ import {
 //img
 import Like from '../assets/like.png';
 import Chat from '../assets/chat.png';
+import picture from '../assets/picture.png'
 
 //library
 import React from 'react';
-import { useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 import axiosInstance from '../utils/axiosInterceptor/axiosInterceptor';
 import { selectId, historyBody, commentBody, img } from '../store';
 
 const CommunityItem = (props) => {
     const dispatch = useDispatch();
     // const [picture, setPicture] = useState(props.$picture);
- 
+
     const bodySectionHandler = async (propsId) => {
         if (propsId !== '0') {
-            try{
+            try {
                 const response = await axiosInstance.get('/post',
-                { params: { id: propsId } });
+                    { params: { id: propsId } });
+                console.log('props.imageUrl', props.img);
                 dispatch(selectId(propsId))
                 dispatch(historyBody(response.data.postLookupDto))
-                dispatch(img(response.data.imageUrl))
+                dispatch(img(response.data.postLookupDto.imageUrl))
                 dispatch((commentBody(response.data.commentResponseDto)))
                 console.log("스크랩2: ", response);
             } catch (error) {
@@ -56,7 +58,8 @@ const CommunityItem = (props) => {
                             <CommunityItemTitle>
                                 {props.title}
                             </CommunityItemTitle>
-                            {/* <CommunityItemPicture $picture={picture} /> */}
+                            {props.img === 'nothing' ? <></> : <CommunityItemPicture $picture={picture} />}
+
                         </CommunityItemTopContainer>
                         <CommunityItemBody>
                             {props.content}

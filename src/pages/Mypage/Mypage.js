@@ -33,6 +33,7 @@ import Crown3 from '../../assets/crown3.png';
 import Crown4 from '../../assets/crown4.png';
 //modal
 import MyModal from './MyModal';
+import { removeCookie } from '../../utils/Cookies/Cookies';
 
 const Mypage = () => {
 
@@ -92,14 +93,13 @@ const Mypage = () => {
 
   //로그아웃
   const Logout = async () => {
-    console.log("로그아웃");
     try {
-      await axiosInstance.post('', null);
+      await axiosInstance.post('/member/logout');
+      removeCookie('accesstoken', {path : '/'},1000)
       alert("로그아웃 완료");
       navigate("/");
     } catch (error) {
-      alert("로그아웃 실패. 로그인 화면으로 돌아갑니다.");
-      navigate("/");
+      alert("로그아웃 실패");
     }
   };
   return (

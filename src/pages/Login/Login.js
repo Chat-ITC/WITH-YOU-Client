@@ -45,7 +45,7 @@ const Login = () => {
       const accesstoken = response.headers['accesstoken'];
       //로그인 성공시 화면 전환
       setCookie("accesstoken", accesstoken, {
-        path: '/',
+        path: '*',
         secure: false
     })
       navigate('/home');
