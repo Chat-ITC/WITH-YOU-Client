@@ -30,8 +30,9 @@ const Scrap = () => {
   
   //검색한데이터
   const [searchWord, setSearchWord] = useState('');
-  
+  //스크랩 페이지 메인에 출력할 데이터를 저장
   const [bodyData, setBodyData] = useState({content:"camera"});
+  //스크랩 눌렀을 때의 값 설정
   const [scrapId, setScrapId] = useState('');
   
   //히스토리 클릭했을 때 리스트
@@ -87,7 +88,6 @@ const Scrap = () => {
       catch(error){
         console.log(error);
       }
-      setScrapId(props)
     }
   }
     
@@ -140,8 +140,9 @@ const Scrap = () => {
           </HistoryBtn>
           <CommunityBtn
             onClick={()=>{
-              communityRadio();
+              //ReuestHistory가 수행된 후 CommunityRradio가 수행?
               RequestHistory();
+              communityRadio();
             }}
             $done={communityToggle}>
             <RadioText>
@@ -175,12 +176,12 @@ const Scrap = () => {
               searchWord={searchWord}
               key={index}
               title={sample.title}
-              $picture={sample.picture}
-              body={sample.content}
-              like={sample.like}
-              chat={sample.chat}
-              $scrap={sample.isScrap}
-              date={sample.date}
+              // $picture={sample.picture}
+              content={sample.content}
+              // like={sample.like}
+              commentCount={sample.commentCount}
+              $scrap={sample.isScrap}//유효한 값인지 확인
+              createdCount={sample.createdCount}
             />
           </div>
           
