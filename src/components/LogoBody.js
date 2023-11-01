@@ -1,7 +1,8 @@
 import { 
   LogoContainer,
   ScrapBodyDataContainer,
-  BodyTitle
+  BodyTitle,
+  LogoBodyContent
 } from './style'
 
 import React from "react";
@@ -17,7 +18,9 @@ const LogoBody = (props) => {
                 :
                 <ScrapBodyDataContainer>
                   <BodyTitle>{props.title}</BodyTitle>
-                  {props.bodyData}
+                  <LogoBodyContent>
+                    {props.bodyData}
+                  </LogoBodyContent>
                 </ScrapBodyDataContainer>
             }
         </>

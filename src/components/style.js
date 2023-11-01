@@ -365,12 +365,16 @@ export const ScrapBodyDataContainer = styled.div`
   font-size: 19px;
   white-space: pre-wrap;
   line-height: 30px;
-  width: 770px;
+  text-align: center;
   height: 79%;
   margin: 0 auto;
   overflow-y: scroll;
   overflow-x: hidden;
 `
+
+export const LogoBodyContent = styled.div`
+  text-align: left;
+`;
 
 export const BodyTitle = styled.div`
   font-size: 24px;

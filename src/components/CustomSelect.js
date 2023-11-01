@@ -62,7 +62,7 @@ function CameraItemSetting({onDataSetting}) {
       const { innerText } = e.target;
       onDataSetting(innerText);
   };
-  const settingList = ["제목 변경하기", "본문 복사하기", "삭제하기"];
+  const settingList = ["삭제하기"];
 
   return (
     <>
