@@ -13,8 +13,7 @@ import {
 } from './style';
 //library
 import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { openModal } from '../../store';
+import { useSelector } from 'react-redux';
 import axiosInstance from '../../utils/axiosInterceptor/axiosInterceptor';
 //components
 import ScrapHeader from '../../components/ScrapHeader';
@@ -22,7 +21,7 @@ import HistoryItemBody from '../../components/HistoryItemBody';
 import Search from '../../components/SearchInput';
 import LogoBody from '../../components/LogoBody';
 import ScrapCommunityItem from '../../components/ScrapCommunityItem';
-import MyModal from '../../components/Modal';
+import ScrapCommunityBodySection from '../../components/ScrapCommunityBodySection';
 
 const Scrap = () => {
   //화면 변환
@@ -31,7 +30,8 @@ const Scrap = () => {
   //검색한데이터
   const [searchWord, setSearchWord] = useState('');
   //스크랩 페이지 메인에 출력할 데이터를 저장
-  const [bodyData, setBodyData] = useState({content:"camera"});
+  const [bodyData, setBodyData] = useState({content:"0"});
+  const [comment, setComment] = useState([])
   
   //히스토리 클릭했을 때 리스트
   const historyBodySectionHandler = async (props) => {
@@ -41,7 +41,7 @@ const Scrap = () => {
         {params:{id:props}});
         setBodyData(response.data);
       } catch (error) {
-        console.log("에러1: ", error);
+        console.log(error);
       }
     }
   }
@@ -74,13 +74,14 @@ const Scrap = () => {
   } 
   //커뮤니티 클릭했을 때 리스트
     const communityBodySectionHandler = async(props) => {
-      
+
     if(props!=='0'){
-      try{console.log("id확인", props);
+      try{
         const response = await axiosInstance.get('/post',
         {params:{id:props}});
-        setBodyData(response.data.postLookupDto)
-        console.log("스크랩 커뮤니티: ", response.data);
+        console.log("props", response.data);
+        setBodyData(response.data.postLookupDto);
+        setComment(response.data.commentResponseDto);
       }
       catch(error){
         console.log(error);
@@ -96,26 +97,20 @@ const Scrap = () => {
   const historyRadio = () => {
     setHistoryToggle(true);
     setCommunityToggle(false);
+    setBodyData({content:"0"});
     setCameraListData(cameraListData);
   };
 
   const communityRadio = () => {
     setHistoryToggle(false);
     setCommunityToggle(true);
+    setBodyData({content:"0"});
     setCommunityListData(communityListData);
   };
 
   useEffect(() => {
     RequestCommunity();
   }, [historyToggle])
-
-  const isOpen = useSelector((state) => state.modal.isOpen);
-  console.log("모달 상태 확인: ", isOpen);
-  
-  const dispatch = useDispatch();
-  const Modal = () => {
-    dispatch(openModal())
-  }
 
   return (
     <>
@@ -166,8 +161,8 @@ const Scrap = () => {
         )) : communityListData.map((sample, index) => (
             <div
             onClick={() => {
-              console.log("스크랩 눌렀을 때 번호 확인: ", sample.postId);
               communityBodySectionHandler(sample.postId)
+              console.log("sample", sample);
             }}
             key={index}>
             <ScrapCommunityItem
@@ -177,9 +172,9 @@ const Scrap = () => {
               // $picture={sample.picture}
               content={sample.content}
               // like={sample.like}
-              commentCount={sample.commentCount}
+              commentCount={bodyData.commentCount}
               $scrap={sample.isScrap}//유효한 값인지 확인
-              createdCount={sample.createdCount}
+              localDateTime={sample.localDateTime}
             />
           </div>
           
@@ -190,11 +185,21 @@ const Scrap = () => {
       <Main style={{ left: isAsideVisible ? '0' : '300px' }}>
         <ScrapHeader />
         <TopEmptyBox />
-        <LogoBody
+        {historyToggle ? (
+          <LogoBody
           bodyData={bodyData.content}
-        />
-        {isOpen && (
-          <MyModal onClose={Modal}/>
+          title={bodyData.title}/>
+        ) : (
+          <ScrapCommunityBodySection
+          id={bodyData.id}
+          title={bodyData.title}
+          userNickName={bodyData.userNickName}
+          userMajor={bodyData.userMajor}
+          content={bodyData.content}
+          commentCount={bodyData.commentCount}
+          createdDate={bodyData.createdDate}
+          comments={comment}
+          />
         )}
         <BottomEmptyBox />
       </Main>
