@@ -87,8 +87,8 @@ export const CameraItemScrap = styled.div`
 
 //CommunityItem
 export const CommunityItemContainer = styled.div`
-  width: 300px;
-  height: 100px;
+  width: 275px;
+  height: 70px;
   padding: 10px 10px 10px 15px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.20);
 `;
@@ -128,7 +128,6 @@ export const CommunityItemPicture = styled.div`
 export const CommunityItemBody = styled.div`
   margin-top: 8px;
   width: 265px;
-  height: 50px;
   line-height: 23px;
   font-size: 15px;
   overflow: hidden;
@@ -225,13 +224,13 @@ export const CommunityChatContainer = styled.div`
 
 export const CommunityDateContainer = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   color: grey;
   font-size: 12px;
   height: 20px;
   line-height: 20px;
-  gap: 5px;
+  gap: 3px;
 `
 
 export const CameraDateContainer = styled.div`
