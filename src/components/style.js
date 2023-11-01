@@ -577,9 +577,9 @@ export const TextContent = styled.div`
 export const CommunityBodyContainer = styled.div`
   padding-top: 20px;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   flex-direction: column;
-  width: 860px;
+  width: 100%;
   margin: 0 auto;
   overflow-y: scroll;
   overflow-x: hidden;
