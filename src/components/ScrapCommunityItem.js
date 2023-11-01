@@ -18,7 +18,6 @@ import Chat from '../assets/chat.png';
 import React, { useState } from 'react';
 
 const ScrapCommunityItem = (props) => {
-    console.log("콘솔: ", props);
     return (
         <>
             {(props.title.includes(props.searchWord) || props.content.includes(props.searchWord)) && (
