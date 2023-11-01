@@ -1,20 +1,24 @@
 import { 
   LogoContainer,
-  ScrapBodyDataContainer
+  ScrapBodyDataContainer,
+  BodyTitle
 } from './style'
 
 import React from "react";
 
 const LogoBody = (props) => {
-    console.log("바디데이터 입니다.", props);
+
     return (
         <>
-            {props.bodyData === "camera" ?
+            {props.bodyData === "0" ?
                 <LogoContainer>
                   WITH
                 </LogoContainer>
                 :
-                <ScrapBodyDataContainer>{props.bodyData}</ScrapBodyDataContainer>
+                <ScrapBodyDataContainer>
+                  <BodyTitle>{props.title}</BodyTitle>
+                  {props.bodyData}
+                </ScrapBodyDataContainer>
             }
         </>
     );
