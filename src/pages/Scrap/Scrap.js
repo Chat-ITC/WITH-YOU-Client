@@ -21,7 +21,7 @@ import ScrapHeader from '../../components/ScrapHeader';
 import HistoryItemBody from '../../components/HistoryItemBody';
 import Search from '../../components/SearchInput';
 import LogoBody from '../../components/LogoBody';
-import CommunityItem from '../../components/CommunityItem';
+import ScrapCommunityItem from '../../components/ScrapCommunityItem';
 import MyModal from '../../components/Modal';
 
 const Scrap = () => {
@@ -32,8 +32,6 @@ const Scrap = () => {
   const [searchWord, setSearchWord] = useState('');
   //스크랩 페이지 메인에 출력할 데이터를 저장
   const [bodyData, setBodyData] = useState({content:"camera"});
-  //스크랩 눌렀을 때의 값 설정
-  const [scrapId, setScrapId] = useState('');
   
   //히스토리 클릭했을 때 리스트
   const historyBodySectionHandler = async (props) => {
@@ -41,7 +39,6 @@ const Scrap = () => {
       try{
         const response = await axiosInstance.get('/question',
         {params:{id:props}});
-        console.log("확인3: ", response.data);
         setBodyData(response.data);
       } catch (error) {
         console.log("에러1: ", error);
@@ -65,7 +62,6 @@ const Scrap = () => {
   }
 
   
-  //커뮤니티 리스트  스크랩된 내용이 없어서 500에러 뜸
   const RequestHistory = async() => {
       try{
         const response = await axiosInstance.get('/scrap/post/list');
@@ -78,12 +74,13 @@ const Scrap = () => {
   } 
   //커뮤니티 클릭했을 때 리스트
     const communityBodySectionHandler = async(props) => {
+      
     if(props!=='0'){
-      try{
-        const response = await axiosInstance.get('/scrap/post',
+      try{console.log("id확인", props);
+        const response = await axiosInstance.get('/post',
         {params:{id:props}});
-        console.log("커뮤1: ", response.data);
-        setBodyData(response.data)
+        setBodyData(response.data.postLookupDto)
+        console.log("스크랩 커뮤니티: ", response.data);
       }
       catch(error){
         console.log(error);
@@ -169,10 +166,11 @@ const Scrap = () => {
         )) : communityListData.map((sample, index) => (
             <div
             onClick={() => {
-              communityBodySectionHandler(sample.id)
+              console.log("스크랩 눌렀을 때 번호 확인: ", sample.postId);
+              communityBodySectionHandler(sample.postId)
             }}
             key={index}>
-            <CommunityItem
+            <ScrapCommunityItem
               searchWord={searchWord}
               key={index}
               title={sample.title}
