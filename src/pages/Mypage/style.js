@@ -43,7 +43,7 @@ export const UserInfoContainer = styled.div`
 
 export const UserContainer = styled.div`
   display: flex;
-  width: 225px;
+  width: 240px;
   gap: 15px;
   `;
 
@@ -69,7 +69,7 @@ export const UsernickBox = styled.div`
 `;
 
 export const UserNick = styled.span`
-  font-size: 16px;
+  font-size: 20px;
   line-height: 24px;
   font-weight: bold;
 `;
@@ -81,15 +81,16 @@ export const UserCrownBox = styled.div`
 `;
 
 export const MajorGrade = styled.div`
-  font-size: 14px;
+  font-size: 16px;
   font-weight: bold;
   color: #898989;
+  text-indent: 7px;
 `;
 
 //유저 레벨 박스
 export const UserLevelBox = styled.div`
   display:flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   font-weight: bold;
   gap: 10px;
@@ -97,7 +98,7 @@ export const UserLevelBox = styled.div`
 `;
 
 export const UserLevel = styled.span`
-  font-size: 14px;
+  font-size: 16px;
   color: #8D8D8D;
 `;
 

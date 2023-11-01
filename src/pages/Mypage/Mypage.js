@@ -37,6 +37,7 @@ import Crown4 from '../../assets/crown4.png';
 import MyModal from './MyModal';
 
 const Mypage = () => {
+
   const navigate = useNavigate();
   const sampleJson = [
     {
@@ -51,12 +52,12 @@ const Mypage = () => {
   const [userInfoData, setUserInfoData] = useState(sampleJson);
   //유저 정보 받아오기
   const requestUserInfo = async () => {
-    try{
+    try {
       const response = await axiosInstance.get('');
       console.log(response.data);
       const userData = response.data;
       setUserInfoData(userData);
-    } catch (error){
+    } catch (error) {
       console.log(error);
     }
   }
@@ -64,13 +65,13 @@ const Mypage = () => {
   useEffect(() => {
     requestUserInfo();
   }, [])
-  
+
   //modal
   const [isOpen, setIsOpen] = useState(false);
-  function handleOpenModal(){
+  function handleOpenModal() {
     setIsOpen(true);
   }
-  function handleCloseModal(){
+  function handleCloseModal() {
     setIsOpen(false);
   }
 
@@ -89,82 +90,81 @@ const Mypage = () => {
   }
 
   //문의하기
-  const inquiryURL = "";
   const inquiryButton = () => {
-  window.location.href = inquiryURL;
+    window.open('https://open.kakao.com/o/sOJwcqIf', '_blank');
   };
 
   //로그아웃
   const Logout = async () => {
     console.log("로그아웃");
-    try{
+    try {
       await axiosInstance.post('', null);
       alert("로그아웃 완료");
       navigate("/");
-    }catch (error){
+    } catch (error) {
       alert("로그아웃 실패. 로그인 화면으로 돌아갑니다.");
       navigate("/");
     }
   };
-  
+
   return (
     <>
       <MyPageHeader>My Page</MyPageHeader>
-      <TopEmptyBox/>
+      <TopEmptyBox />
       <MypageContainer>
         <UserInfoContainer>
           <UserContainer>
             <MyPageImg>
-              <img src={userInfo} alt="" width="55"/>
+              <img src={userInfo} alt="" width="75" />
             </MyPageImg>
             <UserInfo>
               <UsernickBox>
-              <UserCrownBox>
-                {getLevelCrown(userInfoData[0].level)}
-              </UserCrownBox>
-              <UserNick>
-                {userInfoData[0].nickname}
-              </UserNick>
-              </UsernickBox>  
+                <UserCrownBox>
+                  {getLevelCrown(userInfoData[0].level)}
+                </UserCrownBox>
+                <UserNick>
+                  {userInfoData[0].nickname}
+                </UserNick>
+              </UsernickBox>
               <MajorGrade>
                 {userInfoData[0].major} {userInfoData[0].grade}학년
               </MajorGrade>
-            </UserInfo> 
+            </UserInfo>
           </UserContainer>
           <UserLevelBox>
             <UserLevel>Lv.{userInfoData[0].level}</UserLevel>
             <progress value={userInfoData[0].levelgage} min="0" max="100"></progress>
           </UserLevelBox>
-      </UserInfoContainer>
-      <Ul>
-        <MyPageList onClick={handleOpenModal}>
-          <MyPageImg>
-            <img src={nameChange} alt="닉네임 설정" width="35"/>
-          </MyPageImg>
-          <ListBtn>
-            <ImgText>닉네임 설정</ImgText>
-          </ListBtn>
-        </MyPageList>
-        {isOpen && (
+        </UserInfoContainer>
+        <Ul>
+          <MyPageList onClick={handleOpenModal}>
+            <MyPageImg>
+              <img src={nameChange} alt="닉네임 설정" width="35" />
+            </MyPageImg>
+            <ListBtn>
+              <ImgText>닉네임 설정</ImgText>
+            </ListBtn>
+          </MyPageList>
+          {isOpen && (
             <MyModal onClose={handleCloseModal} />
           )}
-        <MyPageList>
-          <MyPageImg onClick={inquiryButton}>
-            <img src={inquiry} alt="문의하기" width="35"/>
-          </MyPageImg>
-          <ListBtn>
-            <ImgText>문의하기</ImgText>
-          </ListBtn>
-        </MyPageList>
-        <MyPageList onClick={Logout}>
-          <MyPageImg>
-            <img src={logout} alt="로그아웃" width="35"/>
-          </MyPageImg>
-          <ListBtn>
-            <ImgText>로그아웃</ImgText>
-          </ListBtn>
-        </MyPageList>
-      </Ul>
+          <MyPageList onClick={inquiryButton}>
+            <MyPageImg >
+              <img src={inquiry} alt="문의하기" width="35" />
+            </MyPageImg>
+            <ListBtn>
+              <ImgText>문의하기</ImgText>
+            </ListBtn>
+          </MyPageList>
+          <MyPageList onClick={Logout}>
+            <MyPageImg>
+              <img src={logout} alt="로그아웃" width="35" />
+            </MyPageImg>
+            <ListBtn>
+              <ImgText>로그아웃</ImgText>
+            </ListBtn>
+          </MyPageList>
+        </Ul>
       </MypageContainer>
     </>
   );
