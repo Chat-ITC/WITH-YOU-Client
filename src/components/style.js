@@ -363,6 +363,12 @@ export const ScrapBodyDataContainer = styled.div`
   overflow-x: hidden;
 `
 
+export const BodyTitle = styled.div`
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+`;
+
 //CameraHeader
 export const CameraHeaderTop = styled.div`
   display: flex;
