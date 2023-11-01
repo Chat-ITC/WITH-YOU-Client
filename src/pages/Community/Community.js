@@ -102,7 +102,7 @@ const Community = () => {
               // like={bodyData.like}
               commentCount={bodyData.commentCount}
               $scrap={bodyData.isScrap}
-              date={bodyData.createdDate}
+              createdDate={bodyData.createdDate}
               comments={Comment}
             />
         <BottomEmptyBox/>
