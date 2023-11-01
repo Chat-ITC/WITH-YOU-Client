@@ -27,7 +27,6 @@ const Community = () => {
   const [scrapId, setScrapId] = useState('');
   const [communityListData, setCommunityListData] = useState([]);
   const [Comment, setComment] = useState([]);
-
   //커뮤니티 리스트 데이터 불러오기
   const requestCommunity = async () => {
     try {
@@ -48,6 +47,7 @@ const Community = () => {
   }, [])
   //커뮤니티 리스트 눌렀을 때 'bodyData'에 데이터 저장
   const bodySectionHandler = async (props) => {
+    console.log("커뮤니티 누른 리스트 번호: ", props);
     try{
       const response = await axiosInstance.get('/post',
       {params:{id:props}});
@@ -61,7 +61,7 @@ const Community = () => {
       console.log(error);
     }
   }
-  console.log("body: ", bodyData);
+
   return (
     <>
       <Aside>
@@ -72,7 +72,8 @@ const Community = () => {
         {communityListData.map((sample, index) => (
             <div
             onClick={() => {
-              bodySectionHandler(sample.id)
+              console.log("번호 확인: ",sample.id);
+              bodySectionHandler(sample.id);
             }}
             key={index}>
             <CommunityItem
@@ -84,7 +85,6 @@ const Community = () => {
               // $picture={sample.picture}
               content={sample.content}
               // like={sample.like}
-              $scrap={sample.isScrap}
               date={sample.createdDate}
             />
           </div>
