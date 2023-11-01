@@ -49,8 +49,9 @@ const CommunityBodySection = (props) => {
       alert("스크랩이 완료되었습니다!");
     } catch (error) {
       if(error.response.status === 400){
-        alert("이미 스크랩 된 글입니다");
+        alert("이미 스크랩 된 글입니다.");
       }
+      console.log('스크랩 실패: ', error.response.data.message);
     }
   }
   

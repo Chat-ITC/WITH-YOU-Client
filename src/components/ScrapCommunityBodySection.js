@@ -44,9 +44,9 @@ const ScrapCommunityBodySection = (props) => {
       if(error.response.status === 400){
         alert("이미 스크랩 된 글입니다");
       }
+      console.log('스크랩 실패: ', error.response.data.message);
     }
   }
-  console.log("date", props);
 
   //댓글 입력
   const [comment, setComment] = useState('');
