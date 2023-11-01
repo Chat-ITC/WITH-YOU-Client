@@ -24,7 +24,6 @@ const Community = () => {
   //검색한 데이터
   const [searchWord, setSearchWord] = useState('');
   const [bodyData, setBodyData] = useState({content: "community"});
-  const [scrapId, setScrapId] = useState('');
   const [communityListData, setCommunityListData] = useState([]);
   const [Comment, setComment] = useState([]);
   //커뮤니티 리스트 데이터 불러오기
@@ -55,7 +54,6 @@ const Community = () => {
       console.log("댓글: ", response.data.commentResponseDto);
       setBodyData(response.data.postLookupDto);
       setComment(response.data.commentResponseDto);
-      setScrapId(props)
     }
     catch(error){
       console.log(error);
