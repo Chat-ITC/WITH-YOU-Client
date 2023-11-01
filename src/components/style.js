@@ -155,8 +155,8 @@ export const CommunityItemScrap = styled.div`
   background-image: none;
   ${props => props.$scrap && css`
         background-image: url(${fillStar});
-        width: 14px;
-        height: 14px;
+        width: 16px;
+        height: 16px;
     `}
 `
 
@@ -560,18 +560,18 @@ export const TextContent = styled.div`
 
 //CommunityBodySection
 export const CommunityBodyContainer = styled.div`
+  padding-top: 20px;
   display: flex;
   align-items: flex-end;
   flex-direction: column;
   width: 860px;
-  height: 79%;
   margin: 0 auto;
   overflow-y: scroll;
   overflow-x: hidden;
 `;
 
 export const CommunityContent = styled.div`
-  overflow-y: scroll;
+  overflow: none;
 `;
 
 export const CommunityTitle = styled.div`
@@ -625,7 +625,7 @@ export const LikeChatBox = styled.div`
   height: 40px;
   display: flex;
   justify-content: center;
-  gap: 40px;
+  margin-bottom: 20px;
 `;
 
 export const LikeBtn = styled.div`

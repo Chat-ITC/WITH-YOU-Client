@@ -18,10 +18,10 @@ import { openModal } from '../../store';
 import axiosInstance from '../../utils/axiosInterceptor/axiosInterceptor';
 //components
 import ScrapHeader from '../../components/ScrapHeader';
-import CameraItem from '../../components/CameraItem';
+import HistoryItemBody from '../../components/HistoryItemBody';
 import Search from '../../components/SearchInput';
 import LogoBody from '../../components/LogoBody';
-import CommunityItem from '../../components/CommunityItem';
+import ScrapCommunityItem from '../../components/ScrapCommunityItem';
 import MyModal from '../../components/Modal';
 
 const Scrap = () => {
@@ -30,61 +30,66 @@ const Scrap = () => {
   
   //검색한데이터
   const [searchWord, setSearchWord] = useState('');
-  
+  //스크랩 페이지 메인에 출력할 데이터를 저장
   const [bodyData, setBodyData] = useState({content:"camera"});
-  const [scrapId, setScrapId] = useState('');
   
-  //히스토리 리스트
-  const historyBodySectionHandler = async(props) => {
-    console.log(props);
-    if(props!=='0'){
+  //히스토리 클릭했을 때 리스트
+  const historyBodySectionHandler = async (props) => {
+    if(props !== '0'){
       try{
         const response = await axiosInstance.get('/question',
         {params:{id:props}});
-        console.log(response);
-        setBodyData(response.data)
+        setBodyData(response.data);
+      } catch (error) {
+        console.log("에러1: ", error);
       }
-      catch(error){
-        console.log(error);
-      }
-      setScrapId(props)
     }
   }
 
-  //커뮤니티 리스트 
+  //히스토리 리스트 
   const RequestCommunity = async() => {
     try{
       const response = await axiosInstance.get('/scrap/list');
-      console.log(response);
+      
       if(response.data.length !== 0){
       setCameraListData(response.data);
+      console.log('히스토리', response.data);
       }
     }
     catch(error) {
       console.log(error);
     }
   }
+
   
-  //커뮤니티
-  const communityBodySectionHandler = async(props) => {
-    console.log(props);
-    if(props!=='0'){
+  const RequestHistory = async() => {
       try{
-        const response = await axiosInstance.patch('/scrap',
-        {params:{id:props}});
-        console.log(response);
-        setBodyData(response.data)
+        const response = await axiosInstance.get('/scrap/post/list');
+        console.log("커뮤니티", response.data);
+        setCommunityListData(response.data)
       }
       catch(error){
         console.log(error);
       }
-      setScrapId(props)
-    }
   } 
+  //커뮤니티 클릭했을 때 리스트
+    const communityBodySectionHandler = async(props) => {
+      
+    if(props!=='0'){
+      try{console.log("id확인", props);
+        const response = await axiosInstance.get('/post',
+        {params:{id:props}});
+        setBodyData(response.data.postLookupDto)
+        console.log("스크랩 커뮤니티: ", response.data);
+      }
+      catch(error){
+        console.log(error);
+      }
+    }
+  }
     
   const [cameraListData, setCameraListData] = useState([]);
   const [communityListData, setCommunityListData] = useState([]);
-
   //히스토리 - 커뮤니티 라디오버튼 
   const [historyToggle, setHistoryToggle] = useState(true);
   const [communityToggle, setCommunityToggle] = useState(false);
@@ -121,14 +126,21 @@ const Scrap = () => {
         onDataSearch={(getData) => setSearchWord(getData)}/></FromBox>
         <BtnBox>
           <HistoryBtn
-            onClick={historyRadio}
+            onClick={()=>{
+              historyRadio();
+              RequestCommunity();
+            }}
             $done={historyToggle}>
             <RadioText>
               히스토리
             </RadioText>
           </HistoryBtn>
           <CommunityBtn
-            onClick={communityRadio}
+            onClick={()=>{
+              //ReuestHistory가 수행된 후 CommunityRradio가 수행?
+              RequestHistory();
+              communityRadio();
+            }}
             $done={communityToggle}>
             <RadioText>
               커뮤니티
@@ -137,11 +149,12 @@ const Scrap = () => {
         </BtnBox>
         {historyToggle ? cameraListData.map((sample, index) => (
             <div
-            onClick={() => {
+            key={index}
+            onClick={()=>{
               historyBodySectionHandler(sample.id)
-            }}
-            key={index}>
-            <CameraItem
+            }}>
+            <HistoryItemBody
+              id={sample.id}
               searchWord={searchWord}
               key={index}
               title={sample.title}
@@ -150,23 +163,23 @@ const Scrap = () => {
               $scrap={sample.isScrap}
             />
           </div>
-          
         )) : communityListData.map((sample, index) => (
             <div
             onClick={() => {
-              communityBodySectionHandler(sample.id)
+              console.log("스크랩 눌렀을 때 번호 확인: ", sample.postId);
+              communityBodySectionHandler(sample.postId)
             }}
             key={index}>
-            <CommunityItem
+            <ScrapCommunityItem
               searchWord={searchWord}
               key={index}
               title={sample.title}
-              $picture={sample.picture}
-              body={sample.content}
-              like={sample.like}
-              chat={sample.chat}
-              $scrap={sample.isScrap}
-              date={sample.date}
+              // $picture={sample.picture}
+              content={sample.content}
+              // like={sample.like}
+              commentCount={sample.commentCount}
+              $scrap={sample.isScrap}//유효한 값인지 확인
+              createdCount={sample.createdCount}
             />
           </div>
           

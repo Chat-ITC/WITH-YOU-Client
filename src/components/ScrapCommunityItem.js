@@ -25,31 +25,18 @@ import { useDispatch } from 'react-redux';
 import axiosInstance from '../utils/axiosInterceptor/axiosInterceptor';
 import { selectId, historyBody, scrapId } from '../store';
 
-const CommunityItem = (props) => {
-    
+const ScrapCommunityItem = (props) => {
+    console.log("로그 확이", props);
     const dispatch = useDispatch();
     // const [picture, setPicture] = useState(props.$picture);
 
-    const bodySectionHandler = async (propsId) => {
-        if (propsId !== '0') {
-            try{
-                const response = await axiosInstance.get('/post',
-                { params: { id: propsId } });
-                dispatch(selectId(propsId))
-                dispatch(historyBody(response.data))
-                dispatch(scrapId(response.data.isScrap)); 
-                console.log("스크랩2: ", response);
-            } catch (error) {
-                console.log(error);
-            }
-        }
-    }
+    
     
     return (
         <>
             {(props.title.includes(props.searchWord) || props.content.includes(props.searchWord)) && (
                 <div onClick={() => {
-                    bodySectionHandler(props.id)
+
                 }}>
                     <CommunityItemContainer>
                         <CommunityItemTopContainer>
@@ -90,4 +77,4 @@ const CommunityItem = (props) => {
     );
 }
 
-export default CommunityItem;
+export default ScrapCommunityItem;

@@ -24,9 +24,8 @@ const Community = () => {
   //검색한 데이터
   const [searchWord, setSearchWord] = useState('');
   const [bodyData, setBodyData] = useState({content: "community"});
-  const [scrapId, setScrapId] = useState('');
   const [communityListData, setCommunityListData] = useState([]);
-
+  const [Comment, setComment] = useState([]);
   //커뮤니티 리스트 데이터 불러오기
   const requestCommunity = async () => {
     try {
@@ -47,40 +46,19 @@ const Community = () => {
   }, [])
   //커뮤니티 리스트 눌렀을 때 'bodyData'에 데이터 저장
   const bodySectionHandler = async (props) => {
-    console.log('커뮤', props);
+    console.log("커뮤니티 누른 리스트 번호: ", props);
     try{
       const response = await axiosInstance.get('/post',
       {params:{id:props}});
       console.log("본문:", response.data.postLookupDto);
       console.log("댓글: ", response.data.commentResponseDto);
       setBodyData(response.data.postLookupDto);
-      console.log("리스폰스 확인: ", response);
-      setScrapId(props)
-      console.log("커뮤니티 리스트 id: ", bodyData);
-      // console.log("리스폰스: ", bodyData);
+      setComment(response.data.commentResponseDto);
     }
     catch(error){
       console.log(error);
     }
   }
-
-  const commentJson = [
-    {
-      id: "1",
-      nickname: "맛있는 라면",
-      major: "작업치료학과",
-      body: "이번주 머신러닝 수업 때 경사하강법에 대해서 배웠습니다. 경사하강법에서 가장 중요한 것은 잔차이고 잔차제곱합을 이용해서 여러가지 문제들을 해결할 수 있습니다",
-      date: "10/25",
-    },
-    {
-      id: "2",
-      nickname: "야식은 족발이지",
-      major: "건축학과",
-      body: "저는 수업을 나갔는 데 자서 하나도 모르겠네요..",
-      date: "10/28",
-    },
-  ];
-
 
   return (
     <>
@@ -92,8 +70,7 @@ const Community = () => {
         {communityListData.map((sample, index) => (
             <div
             onClick={() => {
-              bodySectionHandler(sample.id)
-              console.log("문제를 찾았어: ", sample.id);
+              bodySectionHandler(sample.id);
             }}
             key={index}>
             <CommunityItem
@@ -105,7 +82,6 @@ const Community = () => {
               // $picture={sample.picture}
               content={sample.content}
               // like={sample.like}
-              $scrap={sample.isScrap}
               date={sample.createdDate}
             />
           </div>
@@ -125,12 +101,8 @@ const Community = () => {
               // like={bodyData.like}
               commentCount={bodyData.commentCount}
               $scrap={bodyData.isScrap}
-              date={bodyData.createdDate}
-              // commentid={commentJson[0].id}
-              // commentnickname={commentJson[0].nickname}
-              // commentmajor={commentJson[0].major}
-              // commentbody={commentJson[0].body}
-              // commentdate={commentJson[0].date}
+              createdDate={bodyData.createdDate}
+              comments={Comment}
             />
         <BottomEmptyBox/>
       </Main>

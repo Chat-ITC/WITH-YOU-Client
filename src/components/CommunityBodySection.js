@@ -42,27 +42,18 @@ import Chat from '../assets/chat.png';
 const CommunityBodySection = (props) => {
   const selectorBodyData = useSelector((state) => state.CameraItemId.bodyData);
   const onlyScrapState = useSelector((state) => state.CameraItemId.scrap);
-  //스크랩 버튼 핸들러
-  const dispatch = useDispatch();
-    const scrapBtnHandler = async () => {
-        try {
-            const response = await axiosInstance.patch(`/scrap/${selectorBodyData.id}`);
-            console.log(response);
-        }
-        catch (error) {
-            console.log(error);
-        }
-        if (onlyScrapState === 'YES') {
-            dispatch(scrapId('NO'));
-        }
-        else {
-            dispatch(scrapId('YES'));
-        }
+  
+  const sendScrapHandler = async () => {
+    try{
+      const response = await axiosInstance.post(`/scrap/post/${props.id}`);
+    } catch (error) {
+      console.log(error);
     }
+  }
+  
 
   //댓글 입력
   const [comment, setComment] = useState('');
-    console.log("아이디: ", props.id);
   const handleSend = async () => {
     try{
       const response = await axiosInstance.post(`/comment/regist/${props.id}`, { content: comment });
@@ -80,6 +71,11 @@ const CommunityBodySection = (props) => {
     textarea.current.style.height = 'auto';//height 초기화
     textarea.current.style.height = textarea.current.scrollHeight + 'px';
   };
+
+  const [isScrap, setIsScrap] = useState(false);
+  const scrapState = () => {
+    setIsScrap(!isScrap);
+  }
     return (
       <>
         {selectorBodyData.content === "camera" ? 
@@ -88,9 +84,6 @@ const CommunityBodySection = (props) => {
           </LogoContainer> 
         :
         <CommunityBodyContainer>
-          <CommunityScrapBtn
-                        onClick={scrapBtnHandler}
-                        $scrapState={onlyScrapState} />
         <CommunityContent>
             <CommunityTitle>{props.title}</CommunityTitle>
             <UserData>
@@ -100,14 +93,21 @@ const CommunityBodySection = (props) => {
               <CommunityBody>{props.content}</CommunityBody>
             </UserData>
           </CommunityContent>
+          
           <LikeChatBox>
-            <LikeBtn>
+            {/* <LikeBtn>
               <BtnImg src={Like} alt="좋아요 버튼" />
               <BtnText>
                 좋아요
               </BtnText>
-            </LikeBtn>
-            <ScrapBtn>
+            </LikeBtn> */}
+            <ScrapBtn
+              onClick={()=>{
+                
+                sendScrapHandler();
+                scrapState();
+              }}
+              $scrapState={onlyScrapState}>
                 <BtnImg src={Star} alt="스크랩 버튼"/>
               <BtnText>
                 스크랩
@@ -116,32 +116,29 @@ const CommunityBodySection = (props) => {
           </LikeChatBox>
           <InputChatBox>
             <CommentBox>
-              <CommunityLikeContainer>
-                <LikeImg src={Like} alt="좋아요 버튼"/>
-                <LikeContent>
-                    좋아요 {props.like}개
-                </LikeContent>
-              </CommunityLikeContainer>  
               <TextBox>
                 <Textarea ref={textarea} onChange={(e) => {
                   handleResizeHeight(e)
                 }} placeholder='댓글을 작성해 주세요' value={comment}></Textarea>
                 <TextImg alt="댓글 보내는 버튼" onClick={handleSend}/>
               </TextBox>
+              
               <CommunityChatContainer>
                 <ChatImg src={Chat} alt="댓글 버튼" width="14"/>
                 <ChatContent>
-                  전체 댓글 {props.chat}개
+                  전체 댓글 {props.commentCount}개
                 </ChatContent>
               </CommunityChatContainer>
-              <CommentContainer>
-                <ChatUser>{props.commentnickname}</ChatUser>
-                <ChatUserMajor>{props.commentmajor}</ChatUserMajor>
-                <ChatBody>
-                  {props.commentbody}
-                </ChatBody>
-                <ChatDate>{props.commentdate}</ChatDate>
-              </CommentContainer>
+              {props.comments && props.comments.map((comment, index) => (
+                <div key={index}>
+                  <CommentContainer>
+                    <ChatUser>{comment.userNickName}</ChatUser>
+                    <ChatUserMajor>{comment.userMajor}</ChatUserMajor>
+                    <ChatBody>{comment.content}</ChatBody>
+                    <ChatDate>{comment.createdDate}</ChatDate>
+                  </CommentContainer>
+                </div>
+              ))}
             </CommentBox>
           </InputChatBox>
           </CommunityBodyContainer>        

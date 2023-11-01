@@ -39,7 +39,6 @@ const CameraBodySection = () => {
     const scrapBtnHandler = async () => {
         try {
             const response = await axiosInstance.patch(`/scrap/${selectorBodyData.id}`);
-            console.log(response);
         }
         catch (error) {
             console.log(error);
