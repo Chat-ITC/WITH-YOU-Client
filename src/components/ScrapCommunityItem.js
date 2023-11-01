@@ -13,18 +13,16 @@ import {
 } from './style';
 //img
 import Chat from '../assets/chat.png';
+import star from '../assets/FillStar.svg';
 
 //library
 import React, { useState } from 'react';
 
 const ScrapCommunityItem = (props) => {
-    console.log("날짜", props);
     return (
         <>
             {(props.title.includes(props.searchWord) || props.content.includes(props.searchWord)) && (
-                <div onClick={() => {
-
-                }}>
+                <div>
                     <CommunityItemContainer>
                         <CommunityItemTopContainer>
                             <CommunityItemTitle>
@@ -54,6 +52,7 @@ const ScrapCommunityItem = (props) => {
                             )}
                             <CommunityDateContainer>
                                 <CommunityItemScrap $done={props.$scrap} />{/*isScrap인지 확인 */}
+                                <img src={star} alt="스크랩" width="13"/>
                                 {props.createdDateMonth}/{props.createdDateDay}
                             </CommunityDateContainer>
                         </CommunityItemBottom>
