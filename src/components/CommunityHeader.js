@@ -2,6 +2,7 @@
 import { 
   CommunityHeaderTop,
   HeaderImgBox,
+  LoadingText,
 } from './style';
 //library
 import { useSelector, useDispatch } from 'react-redux';
@@ -15,6 +16,9 @@ import zoom from '../assets/zoom.svg';
 import write from '../assets/write.png';
 
 const CommunityHeader = () => {
+  //로딩
+  const loading = useSelector((state) => state.loading.isLoading);
+
   const [fullScreen, setFullScreen] = useState(false);
   function ScreenHandler(){
     setFullScreen(!fullScreen);
@@ -34,6 +38,7 @@ const CommunityHeader = () => {
         AsideHandler();
         ScreenHandler();
       }}/>
+      {loading ? (<LoadingText>분석중...</LoadingText>) : (null)}
       <HeaderImgBox>
         <Link to="/writing">
           <img src={write} alt="글쓰기 버튼" width="35"/>
