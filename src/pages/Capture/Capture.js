@@ -23,6 +23,7 @@ import { openModal } from '../../store';
 import RequestCheckBox from '../../components/RequestCheckBox';
 import MyModal from '../../components/Modal';
 import { useDispatch, useSelector } from 'react-redux';
+import { FieldSelect } from '../../components/CustomSelect';
 //img
 import AddBtn from '../../assets/AddBtn.png';
 
@@ -79,7 +80,7 @@ const Capture = () => {
       console.log(error);
     }
   };
- 
+
   //요구사항
   const [question, setQuestion] = useState("이해하기 쉬운 설명해줘");
   const [selectedId, setSelectedId] = useState(0);
@@ -142,19 +143,25 @@ const handleContentChange = (newContent) => {
   setRequestJson([...requestJson, newRequestItem]);
 };
 
+const [field, setField] = useState('');
 
-
+const getField = (getFieldData) => {
+  setField(getFieldData);
+}
   return (
     <>
       <Aside>
         <TopEmptyBox></TopEmptyBox>
         <TopLeftHeader>요구사항</TopLeftHeader>
+        <FieldSelect
+          onDataField={getField}/>
         {requestJson.map((requestjson, index) => (
           <RequestCheckBox
             key={index}
             onClick={() => {
               setQuestion(requestjson.sendData);
               handleCheckBoxClick(requestjson.id);
+              console.log("질문 확인: ", requestJson);
             }}
             content={requestjson.content}
             id={requestjson.id}
