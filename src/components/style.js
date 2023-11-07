@@ -575,6 +575,9 @@ export const TextContent = styled.div`
   height: 35px;
   line-height: 35px;
   font-size: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 
 //CommunityBodySection
@@ -796,13 +799,19 @@ export const Content = styled.div`
   gap: 20px;
   border-radius: 10px;
   width: 380px;
-  height: 200px;
+  height: 240px;
 `;
 
 export const ModalTItle = styled.div`
-  font-size: 30px;
+  font-size: 24px;
   font-weight: bold;
-  line-height: 30px;
+  line-height: 24px;
+`;
+
+export const ModalInput = styled.div`
+  color: red;
+  font-size: 16px;
+  line-height: 16px;
 `;
 
 export const NickBtnBox = styled.div`
