@@ -54,6 +54,31 @@ function GradeSelect ({onDataGrade}) {
     )
 };
 
+function FieldSelect ({onDataField}) {
+    const [currentValue, setCurrentValue] = useState("분야를 선택해주세요(선택)");
+    const [showOptions, setShowOptions] = useState(false);
+    const handleOnChangeSelectValue = (e) => {
+        const { innerText } = e.target;
+        onDataField(innerText);
+        setCurrentValue(innerText);
+    };
+
+    const field = ["수학", "과학", "정치"]
+
+    return (
+        <FieldSelectBox onClick={() => setShowOptions((prev) => !prev)}>
+            <Label value={currentValue}>{currentValue}</Label>
+            <FieldSelectOptionsCenter $show={showOptions}>
+                {field.map((field, index) => (
+                    <Option 
+                    key={index}
+                    value={field}
+                    onClick={handleOnChangeSelectValue}>{field}</Option>
+                ))}   
+            </FieldSelectOptionsCenter>
+        </FieldSelectBox>
+    )
+};
 
 function CameraItemSetting({onDataSetting}) {
 
@@ -81,7 +106,7 @@ function CameraItemSetting({onDataSetting}) {
 
 
 };
-export {MajorSelect, GradeSelect, CameraItemSetting};
+export {MajorSelect, GradeSelect, CameraItemSetting, FieldSelect};
 
 const SelectBox = styled.div`
   position: relative;
@@ -105,6 +130,48 @@ const SelectBox = styled.div`
     font-size: 20px;
   }
 
+`;
+
+const FieldSelectBox = styled.div`
+  position: relative;
+  margin-top: 10px;
+  width: 260px;
+  height: 27px;
+  padding: 8px;
+  margin-bottom: 8px;
+  background-color: #ffffff;
+  align-self: center;
+  border: 1px solid #bababa;
+  border-radius: 5px;
+  font-size: 20px;
+  
+  cursor: pointer;
+  &::before {
+    content: "⌵";
+    position: absolute;
+    top: 5px;
+    right: 14px;
+    color: #49c181;
+    font-size: 20px;
+  }
+
+`;
+
+const FieldSelectOptionsCenter = styled.ul`
+  position: absolute;
+  z-index: 3;
+  list-style: none;
+  top: 24px;
+  left: -2px;
+  width: 280px;
+  overflow: hidden;
+  max-height: ${(props) => (props.$show ? "300px" : "0")};
+  padding: 0;
+  border: 0px;
+  border-radius: 8px;
+  background-color: #E6E6E6;
+  color: #fefefe;
+  transition: max-height 0.3s ease;
 `;
 
 const SettingSelectBox = styled.div`
