@@ -37,6 +37,9 @@ const CameraHeader = () => {
   function ScreenHandler() {
     setFullScreen(!fullScreen);
   }
+
+  const loading = useSelector((state) => state.loading.isLoading);
+  console.log("로딩 확인: ", loading);
   //useSelector 훅을 사용해서 visibility슬라이스의 isAsideVisible 상태를 추출한다.
   const isAsideVisible = useSelector((state) => state.visibility.isAsideVisible);
   //useDispatch를 호출하여 dispatch함수를 가져와 이 함수를 이용해 리덕스 스토어에 액션을 보낼 수 있다.

@@ -17,7 +17,8 @@ import Cropper from "react-cropper";
 import 'cropperjs/dist/cropper.css';
 import { useLocation, useNavigate } from "react-router-dom";
 import axiosInstance from '../../utils/axiosInterceptor/axiosInterceptor';
-import { openModal } from '../../store';
+import { openModal, LoadingHandler } from '../../store';
+import useAsync from '../../hooks/useAsync';
 
 //components
 import RequestCheckBox from '../../components/RequestCheckBox';
@@ -28,6 +29,7 @@ import { FieldSelect } from '../../components/CustomSelect';
 import AddBtn from '../../assets/AddBtn.png';
 
 const Capture = () => {
+
   const navigate = useNavigate();
   const { state } = useLocation();
 
@@ -148,6 +150,10 @@ const [field, setField] = useState('');
 const getField = (getFieldData) => {
   setField(getFieldData);
 }
+
+//로딩 애니메이션
+  const [loadingState] = useAsync(sendFormDataRequest, [], true);
+
   return (
     <>
       <Aside>
@@ -161,7 +167,6 @@ const getField = (getFieldData) => {
             onClick={() => {
               setQuestion(requestjson.sendData);
               handleCheckBoxClick(requestjson.id);
-              console.log("질문 확인: ", requestJson);
             }}
             content={requestjson.content}
             id={requestjson.id}
@@ -183,7 +188,10 @@ const getField = (getFieldData) => {
           <CameraAgainBtn onClick={captureAgainHandler}>다시 찍기</CameraAgainBtn>
         </div>
         <CameraBtn
-          onClick={getCropData}
+          onClick={()=>{
+            getCropData();
+            dispatch(LoadingHandler());
+          }}
         >사진 분석</CameraBtn>
         <BottomEmptyBox />
       </Aside>

@@ -17,6 +17,19 @@ const visibilityModal = createSlice({
   },
 });
 
+const loadingState = createSlice({
+  name: 'loading',
+  initialState: {
+    isLoading: false,
+  },
+  reducers: {
+    LoadingHandler: (state) => {
+      state.isLoading = !state.isLoading;
+      console.log("로딩 상태확인: ", state.isLoading);
+    },
+  },
+});
+
 const visibilitySlice = createSlice({
   //'visibility': 해당 슬라이스의 이름
   name: 'visibility',
@@ -79,11 +92,14 @@ export const { selectId, scrapId, historyBody, commentBody, img, deleteId } = se
 
 export const { openModal } = visibilityModal.actions;
 
+export const { LoadingHandler } = loadingState.actions;
+
 // 슬라이스 리듀서를 생성
 const rootReducer = {
   visibility: visibilitySlice.reducer,
   CameraItemId: selectStateSlice.reducer,
-  modal: visibilityModal.reducer
+  modal: visibilityModal.reducer,
+  loading: loadingState.reducer,
 };
 
 // configureStore 함수를 사용하여 리덕스 스토어 생성하여
