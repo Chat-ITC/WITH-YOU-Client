@@ -485,6 +485,7 @@ export const InputIdContainer = styled.div`
 
 export const InputId = styled.input`
   font-size: 16px;
+  line-height: 16px;
   outline: none;
   border: 0px;
   width: 240px;
