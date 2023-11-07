@@ -8,7 +8,8 @@ import {
   CameraAgainBtn,
   CameraBtn,
   ImgContainer,
-  TopRightHeader
+  TopRightHeader,
+  AddBtnBox,
 } from './style';
 //library
 import React, { useState, useRef } from 'react';
@@ -16,9 +17,14 @@ import Cropper from "react-cropper";
 import 'cropperjs/dist/cropper.css';
 import { useLocation, useNavigate } from "react-router-dom";
 import axiosInstance from '../../utils/axiosInterceptor/axiosInterceptor';
+import { openModal } from '../../store';
 
 //components
 import RequestCheckBox from '../../components/RequestCheckBox';
+import MyModal from '../../components/Modal';
+import { useDispatch, useSelector } from 'react-redux';
+//img
+import AddBtn from '../../assets/AddBtn.png';
 
 const Capture = () => {
   const navigate = useNavigate();
@@ -91,7 +97,7 @@ const Capture = () => {
     }
   };
 
-  const requestJson = [
+  const [requestJson, setRequestJson] = useState([
     {
       id: 0,
       content: "이해하기 쉬운 설명",
@@ -119,7 +125,24 @@ const Capture = () => {
       sendData: "이해했는지 테스트 할 만한 퀴즈 만들어줘"
     },
 
-  ]
+  ]);
+
+  const isOpen = useSelector((state) => state.modal.isOpen);
+  const dispatch = useDispatch();
+  const Modal = () => {
+    dispatch(openModal())
+  }
+
+const handleContentChange = (newContent) => {
+  const newRequestItem = {
+    id: requestJson.length,
+    content: newContent,
+    sendData: newContent,
+  };
+  setRequestJson([...requestJson, newRequestItem]);
+};
+
+
 
   return (
     <>
@@ -138,7 +161,10 @@ const Capture = () => {
             $done={selectedId === requestjson.id && checked}
           />
         ))}
-
+        <AddBtnBox>
+          <img width="35px" src={AddBtn} alt="요청사항 추가하기"  onClick={Modal}/>
+        </AddBtnBox>
+        
         <div>
           <input
             type="file"
@@ -170,7 +196,9 @@ const Capture = () => {
             />
           </div>
         </ImgContainer>
-
+        {isOpen && (
+          <MyModal onClose={Modal} onContentChange={handleContentChange}/>
+        )}
         <BottomEmptyBox />
       </Main>
     </>
