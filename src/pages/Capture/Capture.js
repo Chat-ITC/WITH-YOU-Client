@@ -18,7 +18,6 @@ import 'cropperjs/dist/cropper.css';
 import { useLocation, useNavigate } from "react-router-dom";
 import axiosInstance from '../../utils/axiosInterceptor/axiosInterceptor';
 import { openModal, LoadingHandler } from '../../store';
-import useAsync from '../../hooks/useAsync';
 import { useDispatch, useSelector } from 'react-redux';
 
 //components
@@ -78,7 +77,7 @@ const Capture = () => {
         const croppedFile = new File([blob], 'croppedImage.png', { type: 'image/png' });
         formData.append('imageFile', croppedFile);
         formData.append('question', question);
-        fetchData()
+        sendFormDataRequest()
       }, 'image/png');
     }
   };
@@ -163,8 +162,6 @@ const handleContentChange = (newContent) => {
 };
 
 //로딩 상태
-const [asyncState, fetchData] = useAsync(sendFormDataRequest, [], true);
-console.log(asyncState.loading);
 
   return (
     <>
@@ -202,7 +199,7 @@ console.log(asyncState.loading);
         <CameraBtn
           onClick={()=>{
             getCropData();
-            // dispatch(LoadingHandler());
+            dispatch(LoadingHandler());
           }}
         >사진 분석</CameraBtn>
         <BottomEmptyBox />

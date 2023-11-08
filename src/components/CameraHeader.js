@@ -4,7 +4,11 @@ import {
   HeaderImgBox,
   ImgBtn,
   CameraTopInput,
+  LoadingTextContainer,
   LoadingText,
+  Dot1,
+  Dot2,
+  Dot3
 } from './style';
 //library
 import { useSelector, useDispatch } from 'react-redux';
@@ -91,7 +95,14 @@ const CameraHeader = () => {
         AsideHandler();
         ScreenHandler();
       }} />
-      {loading ? (<LoadingText>분석중...</LoadingText>) : (null)}
+      {loading ? (<LoadingTextContainer>
+        <LoadingText>
+          사진 분석 중입니다
+        </LoadingText>
+          <Dot1>.</Dot1>
+          <Dot2>.</Dot2>
+          <Dot3>.</Dot3>
+      </LoadingTextContainer>) : (null)}
       <HeaderImgBox>
         <CameraTopInput
           type="file"

@@ -38,7 +38,7 @@ const CommunityHeader = () => {
         AsideHandler();
         ScreenHandler();
       }}/>
-      {loading ? (<LoadingText>분석중...</LoadingText>) : (null)}
+      {loading ? (<LoadingText>사진 분석 중입니다...</LoadingText>) : (null)}
       <HeaderImgBox>
         <Link to="/writing">
           <img src={write} alt="글쓰기 버튼" width="35"/>

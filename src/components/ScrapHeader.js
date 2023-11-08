@@ -71,7 +71,7 @@ const ScrapHeader = () => {
         AsideHandler();
         ScreenHandler();
       }}/>
-      {loading ? (<LoadingText>분석중...</LoadingText>) : (null)}
+      {loading ? (<LoadingText>사진 분석 중입니다...</LoadingText>) : (null)}
       <HeaderImgBox/>
      
     </ScrapHeaderTop>

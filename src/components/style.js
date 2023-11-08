@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes  } from 'styled-components';
 import openeye from '../assets/openEye.png';
 import closeeye from '../assets/closeEye.png';
 import fillStar from '../assets/FillStar.svg';
@@ -439,13 +439,41 @@ export const CaptureHeaderTop = styled.div`
   background-color: #FFC1C1;
 `;
 
-export const LoadingText = styled.div`
-  font-size: 24px;
-  line-height: 24px;
+export const LoadingTextContainer = styled.span`
+  padding-left: 60px;
   font-weight: bold;
-  padding-left: 20px;
-  color: white;
+  color: black;
 `;
+
+export const LoadingText = styled.span`
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
+`;
+
+const breatheAnimation = keyframes`
+  0% { vertical-align: bottom }
+ 50% { vertical-align: top }
+ 100% { vertical-align: bottom }
+`
+export const Dot1 = styled.span`
+  animation-name: ${breatheAnimation};
+  animation-delay: 0s; 
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+`
+export const Dot2 = styled.span`
+  animation-name: ${breatheAnimation};
+  animation-delay: 0.3s; 
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+`
+export const Dot3 = styled.span`
+  animation-name: ${breatheAnimation};
+  animation-delay: 0.6s; 
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+`
 
 export const HeaderImgBox = styled.div`
   display: flex;
