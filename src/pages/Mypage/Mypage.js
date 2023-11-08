@@ -80,7 +80,7 @@ const Mypage = () => {
       return <img src={Crown2} alt="Crown2" width="25" />;
     } else if (level <= 76) {
       return <img src={Crown3} alt="Crown3" width="25" />;
-    } else {
+    } else if (level <= 100){
       return <img src={Crown4} alt="Crown4" width="25" />;
     }
     return null; // 다른 경우에는 null을 반환하여 아무 왕관도 표시하지 않음

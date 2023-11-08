@@ -55,7 +55,7 @@ function GradeSelect ({onDataGrade}) {
 };
 
 function FieldSelect ({onDataField}) {
-    const [currentValue, setCurrentValue] = useState("분야 (초기값: 학과)");
+    const [currentValue, setCurrentValue] = useState("분야를 선택하세요(선택)");
     const [showOptions, setShowOptions] = useState(false);
     const handleOnChangeSelectValue = (e) => {
         const { innerText } = e.target;
@@ -63,7 +63,7 @@ function FieldSelect ({onDataField}) {
         setCurrentValue(innerText);
     };
 
-    const field = ["수학", "과학", "정치"]
+    const field = ["컴퓨터 공학", "전기 및 전자 공학", "기계 공학", "화학 공학", "IT분야", "경제학", "정치학", "경영학"];
 
     return (
         <FieldSelectBox onClick={() => setShowOptions((prev) => !prev)}>
@@ -165,6 +165,11 @@ const FieldSelectOptionsCenter = styled.ul`
   left: -2px;
   width: 280px;
   overflow: hidden;
+  overflow-y: scroll;
+  -ms-overflow-style:none;
+  &::-webkit-scrollbar{
+    display:none;
+  }
   max-height: ${(props) => (props.$show ? "300px" : "0")};
   padding: 0;
   border: 0px;

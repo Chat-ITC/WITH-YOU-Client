@@ -525,7 +525,7 @@ export const InputId = styled.input`
   font-size: 16px;
   line-height: 16px;
   outline: none;
-  border: 0px;
+  border: none;
   width: 240px;
   height: 35px;
 `;
@@ -746,7 +746,8 @@ export const CommentBox = styled.div`
   width: 780px;
   display: flex;
   flex-direction: column;
-  //gap: 10px;
+  gap: 10px;
+  margin-bottom: 15px;
 `;
 
 export const TextBox = styled.div`
@@ -794,7 +795,6 @@ export const CommentContainer = styled.div`
   border-radius: 10px;
   background-color: #D9D9D9;
   padding: 15px;
-  margin-bottom: 15px;
 `;
 
 export const ChatUser = styled.span`
@@ -843,9 +843,9 @@ export const Content = styled.div`
 `;
 
 export const ModalTItle = styled.div`
-  font-size: 24px;
+  font-size: 22px;
   font-weight: bold;
-  line-height: 24px;
+  line-height: 22px;
 `;
 
 export const ModalInput = styled.div`

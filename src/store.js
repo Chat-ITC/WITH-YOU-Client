@@ -23,10 +23,12 @@ const loadingState = createSlice({
     isLoading: false,
   },
   reducers: {
-    LoadingHandler: (state) => {
-      state.isLoading = !state.isLoading;
-      console.log("로딩 상태확인: ", state.isLoading);
+    startLoading: (state) => {
+      state.isLoading = true;
     },
+    finishLoading: (state) => {
+      state.isLoading = false;
+    }
   },
 });
 
@@ -92,7 +94,7 @@ export const { selectId, scrapId, historyBody, commentBody, img, deleteId } = se
 
 export const { openModal } = visibilityModal.actions;
 
-export const { LoadingHandler } = loadingState.actions;
+export const { startLoading, finishLoading } = loadingState.actions;
 
 // 슬라이스 리듀서를 생성
 const rootReducer = {
