@@ -99,9 +99,9 @@ const CameraHeader = () => {
         <LoadingText>
           사진 분석 중입니다
         </LoadingText>
-          <Dot1>.</Dot1>
-          <Dot2>.</Dot2>
-          <Dot3>.</Dot3>
+          <Dot1> .</Dot1>
+          <Dot2> .</Dot2>
+          <Dot3> .</Dot3>
       </LoadingTextContainer>) : (null)}
       <HeaderImgBox>
         <CameraTopInput

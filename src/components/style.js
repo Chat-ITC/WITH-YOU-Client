@@ -462,17 +462,11 @@ export const Dot1 = styled.span`
   animation-duration: 1s;
   animation-iteration-count: infinite;
 `
-export const Dot2 = styled.span`
-  animation-name: ${breatheAnimation};
+export const Dot2 = styled(Dot1)`
   animation-delay: 0.3s; 
-  animation-duration: 1s;
-  animation-iteration-count: infinite;
 `
-export const Dot3 = styled.span`
-  animation-name: ${breatheAnimation};
+export const Dot3 = styled(Dot1)`
   animation-delay: 0.6s; 
-  animation-duration: 1s;
-  animation-iteration-count: infinite;
 `
 
 export const HeaderImgBox = styled.div`
