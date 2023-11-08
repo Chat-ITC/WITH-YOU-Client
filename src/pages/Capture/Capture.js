@@ -17,7 +17,7 @@ import Cropper from "react-cropper";
 import 'cropperjs/dist/cropper.css';
 import { useLocation, useNavigate } from "react-router-dom";
 import axiosInstance from '../../utils/axiosInterceptor/axiosInterceptor';
-import { openModal, LoadingHandler } from '../../store';
+import { openModal, startLoading, finishLoading } from '../../store';
 import { useDispatch, useSelector } from 'react-redux';
 
 //components
@@ -83,6 +83,7 @@ const Capture = () => {
   };
   
   const sendFormDataRequest = async () => {
+    dispatch(startLoading());
     alert('AI가 열심히 답변중입니다. 답변 완료까지 약간의 시간이 소요됩니다.')
     navigate('/home');
     try {
@@ -92,9 +93,11 @@ const Capture = () => {
         alert("사진 분석 완료! 홈 화면으로 이동합니다.")
         window.location.replace("/home");
       }
+      dispatch(finishLoading());
       console.log("전송 성공: ", response);
     } catch (error) {
       alert("사진 분석 실패. 홈 화면으로 이동합니다.")
+      dispatch(finishLoading());
       console.log(error);
     }
   };
@@ -197,7 +200,6 @@ const handleContentChange = (newContent) => {
         <CameraBtn
           onClick={()=>{
             getCropData();
-            dispatch(LoadingHandler());
           }}
         >사진 분석</CameraBtn>
         <BottomEmptyBox />
