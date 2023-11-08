@@ -746,6 +746,7 @@ export const CommentBox = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
+  margin-bottom: 15px;
 `;
 
 export const TextBox = styled.div`
