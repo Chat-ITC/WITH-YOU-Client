@@ -4,7 +4,7 @@ import {
   HeaderImgBox,
   ImgBtn,
   CameraTopInput,
-  LoadingTextContainer,
+  LoadingTextContainerHome,
   LoadingText,
   Dot1,
   Dot2,
@@ -95,14 +95,14 @@ const CameraHeader = () => {
         AsideHandler();
         ScreenHandler();
       }} />
-      {loading ? (<LoadingTextContainer>
+      {loading ? (<LoadingTextContainerHome>
         <LoadingText>
           사진 분석 중입니다
         </LoadingText>
           <Dot1> .</Dot1>
           <Dot2> .</Dot2>
           <Dot3> .</Dot3>
-      </LoadingTextContainer>) : (null)}
+      </LoadingTextContainerHome>) : (null)}
       <HeaderImgBox>
         <CameraTopInput
           type="file"

@@ -445,6 +445,13 @@ export const LoadingTextContainer = styled.span`
   color: black;
 `;
 
+
+export const LoadingTextContainerHome = styled.span`
+  padding-left: 60px;
+  font-weight: bold;
+  color: black;
+`;
+
 export const LoadingText = styled.span`
   font-size: 20px;
   font-weight: bold;
