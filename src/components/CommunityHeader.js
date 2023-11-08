@@ -3,6 +3,10 @@ import {
   CommunityHeaderTop,
   HeaderImgBox,
   LoadingText,
+  LoadingTextContainer,
+  Dot1,
+  Dot2,
+  Dot3
 } from './style';
 //library
 import { useSelector, useDispatch } from 'react-redux';
@@ -38,7 +42,14 @@ const CommunityHeader = () => {
         AsideHandler();
         ScreenHandler();
       }}/>
-      {loading ? (<LoadingText>분석중...</LoadingText>) : (null)}
+      {loading ? (<LoadingTextContainer>
+        <LoadingText>
+          사진 분석 중입니다
+        </LoadingText>
+          <Dot1> .</Dot1>
+          <Dot2> .</Dot2>
+          <Dot3> .</Dot3>
+      </LoadingTextContainer>) : (null)}
       <HeaderImgBox>
         <Link to="/writing">
           <img src={write} alt="글쓰기 버튼" width="35"/>
