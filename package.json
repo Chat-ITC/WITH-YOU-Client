@@ -10,6 +10,7 @@
     "axios": "^1.6.0",
     "cropperjs": "^1.6.1",
     "react": "^18.2.0",
+    "react-async": "^10.0.1",
     "react-cookie": "^6.1.1",
     "react-cookies": "^0.1.1",
     "react-cropper": "^2.3.3",

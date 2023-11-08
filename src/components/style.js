@@ -439,6 +439,14 @@ export const CaptureHeaderTop = styled.div`
   background-color: #FFC1C1;
 `;
 
+export const LoadingText = styled.div`
+  font-size: 24px;
+  line-height: 24px;
+  font-weight: bold;
+  padding-left: 20px;
+  color: white;
+`;
+
 export const HeaderImgBox = styled.div`
   display: flex;
   align-items: center;
