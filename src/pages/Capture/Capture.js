@@ -12,18 +12,18 @@ import {
   AddBtnBox,
 } from './style';
 //library
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Cropper from "react-cropper";
 import 'cropperjs/dist/cropper.css';
 import { useLocation, useNavigate } from "react-router-dom";
 import axiosInstance from '../../utils/axiosInterceptor/axiosInterceptor';
 import { openModal, LoadingHandler } from '../../store';
 import useAsync from '../../hooks/useAsync';
+import { useDispatch, useSelector } from 'react-redux';
 
 //components
 import RequestCheckBox from '../../components/RequestCheckBox';
 import MyModal from '../../components/Modal';
-import { useDispatch, useSelector } from 'react-redux';
 import { FieldSelect } from '../../components/CustomSelect';
 //img
 import AddBtn from '../../assets/AddBtn.png';
@@ -33,12 +33,30 @@ const Capture = () => {
   const navigate = useNavigate();
   const { state } = useLocation();
 
+  //학과, 분야
+  const [field, setField] = useState('');
+  const requestUserInfo = async () => {
+    try{
+      const response = await axiosInstance.get('/member/mypage');
+      console.log(response.data);
+      setField(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  useEffect(() => {
+    requestUserInfo();
+  }, [])
+
+  const getField = (getFieldData) => {
+    setField(getFieldData);
+  } 
+
   const [imagePath, setImagePath] = useState(state);
   const cropperRef = useRef(null);
   const calculatedHeight = window.innerHeight - 145;
 
-
-
+  
   //다시찍기 핸들러
   const fileInputRef = useRef(null);
   const captureAgainHandler = () => {
@@ -65,6 +83,7 @@ const Capture = () => {
       }, 'image/png');
     }
   };
+  formData.append('field', field);
   const sendFormDataRequest = async () => {
     alert('AI가 열심히 답변중입니다. 답변 완료까지 약간의 시간이 소요됩니다.')
     navigate('/home');
@@ -145,14 +164,10 @@ const handleContentChange = (newContent) => {
   setRequestJson([...requestJson, newRequestItem]);
 };
 
-const [field, setField] = useState('');
-
-const getField = (getFieldData) => {
-  setField(getFieldData);
-}
-
-//로딩 애니메이션
-  const [loadingState] = useAsync(sendFormDataRequest, [], true);
+//로딩 상태
+const [asyncState, fetchData] = useAsync(getCropData, [], true);
+const { loading, data: captureData, error } = asyncState;
+console.log("로딩 확인: ", loading);
 
   return (
     <>
@@ -189,8 +204,8 @@ const getField = (getFieldData) => {
         </div>
         <CameraBtn
           onClick={()=>{
-            getCropData();
-            dispatch(LoadingHandler());
+            fetchData();
+            // dispatch(LoadingHandler());
           }}
         >사진 분석</CameraBtn>
         <BottomEmptyBox />
