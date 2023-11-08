@@ -52,7 +52,7 @@ const Modal = ({onClose, onContentChange}) => {
               value={content}
               onChange={(e) => setContent(e.target.value)}
             />
-            <ModalInput>질문을 상세화하여 요청해주세요!</ModalInput>
+            <ModalInput>질문을 상세화하여 요청해주세요</ModalInput>
             <NickBtnBox>
               <ModalSetBtn
                 onClick={()=>{
