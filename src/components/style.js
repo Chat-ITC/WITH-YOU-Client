@@ -524,7 +524,7 @@ export const InputId = styled.input`
   font-size: 16px;
   line-height: 16px;
   outline: none;
-  border: 0px;
+  border: none;
   width: 240px;
   height: 35px;
 `;
@@ -841,9 +841,9 @@ export const Content = styled.div`
 `;
 
 export const ModalTItle = styled.div`
-  font-size: 24px;
+  font-size: 22px;
   font-weight: bold;
-  line-height: 24px;
+  line-height: 22px;
 `;
 
 export const ModalInput = styled.div`
