@@ -128,6 +128,7 @@ export const CommunityItemPicture = styled.div`
 export const CommunityItemBody = styled.div`
   margin-top: 8px;
   width: 265px;
+  height: 45px;
   line-height: 23px;
   font-size: 15px;
   overflow: hidden;
@@ -745,7 +746,7 @@ export const CommentBox = styled.div`
   width: 780px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  //gap: 10px;
 `;
 
 export const TextBox = styled.div`
@@ -793,6 +794,7 @@ export const CommentContainer = styled.div`
   border-radius: 10px;
   background-color: #D9D9D9;
   padding: 15px;
+  margin-bottom: 15px;
 `;
 
 export const ChatUser = styled.span`

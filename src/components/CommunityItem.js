@@ -40,7 +40,7 @@ const CommunityItem = (props) => {
                 dispatch(historyBody(response.data.postLookupDto))
                 dispatch(img(response.data.postLookupDto.imageUrl))
                 dispatch((commentBody(response.data.commentResponseDto)))
-                console.log("스크랩2: ", response);
+                console.log("선택한 결과: ", response);
             } catch (error) {
                 console.log(error);
             }
