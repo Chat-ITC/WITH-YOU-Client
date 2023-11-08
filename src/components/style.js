@@ -440,7 +440,7 @@ export const CaptureHeaderTop = styled.div`
 `;
 
 export const LoadingTextContainer = styled.span`
-  padding-left: 60px;
+  padding-left: 30px;
   font-weight: bold;
   color: black;
 `;
