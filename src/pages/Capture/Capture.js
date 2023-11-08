@@ -38,8 +38,7 @@ const Capture = () => {
   const requestUserInfo = async () => {
     try{
       const response = await axiosInstance.get('/member/mypage');
-      console.log(response.data);
-      setField(response.data);
+      setField(response.data.major);
     } catch (error) {
       console.log(error);
     }
@@ -47,7 +46,6 @@ const Capture = () => {
   useEffect(() => {
     requestUserInfo();
   }, [])
-
   const getField = (getFieldData) => {
     setField(getFieldData);
   } 
@@ -71,6 +69,7 @@ const Capture = () => {
 
   //크롭한 이미지 저장
   const formData = new FormData();
+  formData.append('field', field);
   const getCropData = async () => {
     if (cropperRef.current && cropperRef.current.cropper) {
       const croppedCanvas = cropperRef.current.cropper.getCroppedCanvas();
@@ -79,11 +78,11 @@ const Capture = () => {
         const croppedFile = new File([blob], 'croppedImage.png', { type: 'image/png' });
         formData.append('imageFile', croppedFile);
         formData.append('question', question);
-        sendFormDataRequest()
+        fetchData()
       }, 'image/png');
     }
   };
-  formData.append('field', field);
+  
   const sendFormDataRequest = async () => {
     alert('AI가 열심히 답변중입니다. 답변 완료까지 약간의 시간이 소요됩니다.')
     navigate('/home');
@@ -93,7 +92,6 @@ const Capture = () => {
       if (response.data === "저장 완료") {
         alert("사진 분석 완료! 홈 화면으로 이동합니다.")
         window.location.replace("/home");
-
       }
       console.log("전송 성공: ", response);
     } catch (error) {
@@ -165,9 +163,8 @@ const handleContentChange = (newContent) => {
 };
 
 //로딩 상태
-const [asyncState, fetchData] = useAsync(getCropData, [], true);
-const { loading, data: captureData, error } = asyncState;
-console.log("로딩 확인: ", loading);
+const [asyncState, fetchData] = useAsync(sendFormDataRequest, [], true);
+console.log(asyncState.loading);
 
   return (
     <>
@@ -204,7 +201,7 @@ console.log("로딩 확인: ", loading);
         </div>
         <CameraBtn
           onClick={()=>{
-            fetchData();
+            getCropData();
             // dispatch(LoadingHandler());
           }}
         >사진 분석</CameraBtn>
