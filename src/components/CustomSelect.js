@@ -63,7 +63,7 @@ function FieldSelect ({onDataField}) {
         setCurrentValue(innerText);
     };
 
-    const field = ["컴퓨터 공학", "전기 및 전자 공학", "기계 공학", "화학 공학", "IT분야", "경제학", "정치학", "경영학"];
+    const field = ["컴퓨터 공학", "전기 및 전자 공학", "기계 공학", "화학 공학", "물리학", "화학", "생물학", "지구과학", "IT분야", "경제학", "정치학", "경영학"];
 
     return (
         <FieldSelectBox onClick={() => setShowOptions((prev) => !prev)}>
