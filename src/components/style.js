@@ -1,4 +1,4 @@
-import styled, { css, keyframes  } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import openeye from '../assets/openEye.png';
 import closeeye from '../assets/closeEye.png';
 import fillStar from '../assets/FillStar.svg';
@@ -6,6 +6,10 @@ import emptyStar from '../assets/star.svg';
 import camera from '../assets/camera.svg';
 import picture from '../assets/picture.png';
 import Send from '../assets/send.svg';
+import Crown1 from '../assets/crown1.png';
+import Crown2 from '../assets/crown2.png';
+import Crown3 from '../assets/crown3.png';
+import Crown4 from '../assets/crown4.png';
 
 
 //Bottom
@@ -541,7 +545,7 @@ export const InputPWContainer = styled.div`
   margin-bottom: 7px;
 `;
 
-export const  PWContainer = styled.div`
+export const PWContainer = styled.div`
   width: 240px;
   height: 43px;
 `;
@@ -797,6 +801,33 @@ export const CommentContainer = styled.div`
   background-color: #D9D9D9;
   padding: 15px;
 `;
+
+export const CommentUserBox = styled.div`
+  display: flex;
+`
+
+export const ChatUserLevel = styled.div`
+  width: 23px;
+  height: 23px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  ${props => props.level <= 40 && css`
+        background-image: url(${Crown4});
+  `} 
+
+  ${props => props.level <= 30 && css`
+        background-image: url(${Crown3});
+  `} 
+  
+  ${props => props.level <= 20 && css`
+        background-image: url(${Crown2});
+  `}  
+
+  ${props => props.level <= 10 && css`
+        background-image: url(${Crown1});
+    `}
+`
 
 export const ChatUser = styled.span`
   font-size: 16px;
