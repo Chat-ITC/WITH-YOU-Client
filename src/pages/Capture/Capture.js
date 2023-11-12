@@ -141,11 +141,6 @@ const Capture = () => {
       content: "이해를 위한 예시",
       sendData: "이해하기 쉽도록 예시 들어서 설명해줘"
     },
-    {
-      id: 4,
-      content: "비슷한 내용의 퀴즈",
-      sendData: "이해했는지 테스트 할 만한 퀴즈 만들어줘"
-    },
 
   ]);
 

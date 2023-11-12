@@ -17,7 +17,8 @@ import {
   WrongId,
   LinkBtn,
   TitleContainer,
-  SubTitleContainer
+  SubTitleContainer,
+  BottomFix
 } from './style';
 
 const Login = () => {
@@ -83,6 +84,7 @@ const Login = () => {
         <LinkBtn>
           <Link to="/join" style={linkStyle}>회원가입</Link>
         </LinkBtn>
+        <BottomFix/>
       </LoginContainer>
     </>
   );

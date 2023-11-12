@@ -17,6 +17,7 @@ export const BottomFix = styled.div`
   height: 79px;
   border-top: 1px solid #bababa;
   background-color: #fff;
+  z-index: 500;
 `;
 
 export const Ul = styled.ul`

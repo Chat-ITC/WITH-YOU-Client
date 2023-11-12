@@ -55,7 +55,7 @@ function GradeSelect ({onDataGrade}) {
 };
 
 function FieldSelect ({onDataField}) {
-    const [currentValue, setCurrentValue] = useState("분야를 선택하세요(선택)");
+    const [currentValue, setCurrentValue] = useState("분야 선택 (기본값: 내 학과)");
     const [showOptions, setShowOptions] = useState(false);
     const handleOnChangeSelectValue = (e) => {
         const { innerText } = e.target;
