@@ -19,6 +19,7 @@
 
 ## 👨‍👨‍👦 멤버 구성
 Back End: [최원빈](https://github.com/dnjsqls5973), [홍용준](https://github.com/yongjun-hong)
+
 Front End: [이지성](https://github.com/Ji-Sung05), [임시훈](https://github.com/SiHoon61)
 
 ## :page_with_curl: 페이지 구성
@@ -26,9 +27,4 @@ Front End: [이지성](https://github.com/Ji-Sung05), [임시훈](https://github
 ### 1. 로그인
 
 ### 2. 회원가입 
- 
- 
 
-### 4. To Do List & Bucket List 작성 화면
-<img src = "https://github.com/Unique-Blog/List-Client/assets/66302392/c0e99e21-5590-4e0e-ba2b-e467b02da7dd" width = "500px" >
- 
