@@ -7,7 +7,6 @@ import {
   UserData,
   UserDataSpan,
   CommunityBody,
-  LikeBtn,
   ScrapBtn,
   BtnImg,
   BtnText,
@@ -15,9 +14,6 @@ import {
   CommentBox,
   TextBox,
   TextImg,
-  CommunityLikeContainer,
-  LikeImg,
-  LikeContent,
   ChatImg,
   CommunityChatContainer,
   ChatContent,
@@ -29,7 +25,6 @@ import {
   ChatDate,
   LogoContainer,
   CommentUserBox,
-  CommunityScrapBtn,
   CommunityImg
 } from './style';
 //library

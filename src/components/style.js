@@ -82,14 +82,6 @@ export const LogoContainer = styled.div`
   transform: translate(-2%, -2%);
 `;
 
-export const CameraTopInput = styled.input`
-  display: block;
-  position: absolute;
-  width: 50px;
-  height: 65px;
-  opacity: 0;
-`;
-
 
 
 
@@ -139,19 +131,7 @@ export const BodyTitle = styled.div`
 `;
 
 //CameraHeader
-export const CameraHeaderTop = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: fixed;
-  top:0;
-  right:0;
-  left: 300px;
-  height: 65px;
-  padding: 0 20px;
-  background-color: #FFC1C1;
-  transition: all 350ms;
-`;
+
 
 export const ScrapHeaderTop = styled.div`
   display: flex;
@@ -201,13 +181,6 @@ export const LoadingTextContainer = styled.span`
   color: black;
 `;
 
-
-export const LoadingTextContainerHome = styled.span`
-  padding-left: 60px;
-  font-weight: bold;
-  color: black;
-`;
-
 export const LoadingText = styled.span`
   font-size: 20px;
   font-weight: bold;
@@ -219,15 +192,18 @@ const breatheAnimation = keyframes`
  50% { vertical-align: top }
  100% { vertical-align: bottom }
 `
+
 export const Dot1 = styled.span`
   animation-name: ${breatheAnimation};
   animation-delay: 0s; 
   animation-duration: 1s;
   animation-iteration-count: infinite;
 `
+
 export const Dot2 = styled(Dot1)`
   animation-delay: 0.3s; 
 `
+
 export const Dot3 = styled(Dot1)`
   animation-delay: 0.6s; 
 `

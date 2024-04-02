@@ -12,7 +12,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { openModal } from '../../store';
 //components
-import CameraHeader from '../../components/CameraHeader';
+import CameraHeader from '../../components/CameraHeader/CameraHeader';
 import CameraBodySection from '../../components/CameraBodySection/CameraBodySection';
 import axiosInstance from '../../utils/axiosInterceptor/axiosInterceptor';
 import CameraItem from '../../components/CameraItem/CameraItem';

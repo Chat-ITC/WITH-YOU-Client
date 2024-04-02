@@ -1,29 +1,33 @@
 //style
 import {
-  CameraHeaderTop,
   HeaderImgBox,
   ImgBtn,
-  CameraTopInput,
-  LoadingTextContainerHome,
   LoadingText,
   Dot1,
   Dot2,
-  Dot3
+  Dot3,
+} from '../style';
+
+import {
+  CameraHeaderTop,
+  CameraTopInput,
+  LoadingTextContainerHome,
 } from './style';
+
 //library
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useState } from 'react';
-import axiosInstance from '../utils/axiosInterceptor/axiosInterceptor';
+import axiosInstance from '../../utils/axiosInterceptor/axiosInterceptor';
 import { Link, useNavigate } from "react-router-dom";
 //components
-import { CameraItemSetting } from './CustomSelect'
+import { CameraItemSetting } from '../CustomSelect'
 
 //store.js에서 'toggleAsideVisibility'라는 액션을 import
-import { openModal, deleteId, toggleAsideVisibility } from '../store';
+import { openModal, deleteId, toggleAsideVisibility } from '../../store';
 //img
-import screenSplit from '../assets/screen-split.svg';
-import zoom from '../assets/zoom.svg';
-import camera from '../assets/camera.svg';
+import screenSplit from '../../assets/screen-split.svg';
+import zoom from '../../assets/zoom.svg';
+import camera from '../../assets/camera.svg';
 
 const CameraHeader = () => {
   const navigate = useNavigate();

@@ -2,6 +2,9 @@
 import { 
   CaptureHeaderTop,
   HeaderImgBox,
+} from '../style';
+
+import {
   Setting,
 } from './style';
 
