@@ -17,7 +17,8 @@ import {
   WrongId,
   LinkBtn,
   TitleContainer,
-  SubTitleContainer
+  SubTitleContainer,
+  BottomFix
 } from './style';
 
 const Login = () => {
@@ -44,10 +45,11 @@ const Login = () => {
       console.log('로그인 성공:', response.data);
       const accesstoken = response.headers['accesstoken'];
       //로그인 성공시 화면 전환
-      setCookie("accesstoken", accesstoken, {
+      localStorage.setItem('accesstoken', accesstoken);
+      /*setCookie("accesstoken", accesstoken, {
         path: '*',
         secure: false
-    })
+    }) */
       navigate('/home');
     } catch (error) {
       setWrongId("아이디 또는 비밀번호를 잘못 입력했습니다.");
@@ -82,6 +84,7 @@ const Login = () => {
         <LinkBtn>
           <Link to="/join" style={linkStyle}>회원가입</Link>
         </LinkBtn>
+        <BottomFix/>
       </LoginContainer>
     </>
   );

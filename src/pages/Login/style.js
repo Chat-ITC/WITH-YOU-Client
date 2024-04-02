@@ -55,3 +55,12 @@ export const LinkBtn = styled.div`
   margin-top: 10px;
 `;
 
+export const BottomFix = styled.div`
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 82px;
+  background-color: #fff;
+  z-index: 999;
+`;

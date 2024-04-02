@@ -113,7 +113,7 @@ const Scrap = () => {
 
   useEffect(() => {
     RequestCommunity();
-  }, [historyToggle])
+  }, [])
 
   return (
     <>

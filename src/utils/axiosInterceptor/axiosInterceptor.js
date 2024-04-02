@@ -7,8 +7,7 @@ const axiosInstance = axios.create({
 });
 
 axiosInstance.interceptors.request.use((req) => {
-  const accesstoken = getCookie('accesstoken');
-  
+  const accesstoken = localStorage.getItem('accesstoken');
   if (accesstoken) {
     req.headers.authorization = `Bearer ${accesstoken}`;
   } else {

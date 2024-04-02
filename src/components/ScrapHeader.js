@@ -2,6 +2,11 @@
 import { 
   HeaderImgBox,
   ScrapHeaderTop,
+  LoadingText,
+  LoadingTextContainer,
+  Dot1,
+  Dot2,
+  Dot3,  
 } from './style';
 //library
 import { useSelector, useDispatch } from 'react-redux';
@@ -14,6 +19,7 @@ import screenSplit from '../assets/screen-split.svg';
 import zoom from '../assets/zoom.svg';
 
 const ScrapHeader = () => {
+  const loading = useSelector((state) => state.loading.isLoading);
   
   //화면 크기 전환
   const [fullScreen, setFullScreen] = useState(false);
@@ -69,6 +75,14 @@ const ScrapHeader = () => {
         AsideHandler();
         ScreenHandler();
       }}/>
+      {loading ? (<LoadingTextContainer>
+        <LoadingText>
+          사진 분석 중입니다
+        </LoadingText>
+          <Dot1> .</Dot1>
+          <Dot2> .</Dot2>
+          <Dot3> .</Dot3>
+      </LoadingTextContainer>) : (null)}
       <HeaderImgBox/>
      
     </ScrapHeaderTop>

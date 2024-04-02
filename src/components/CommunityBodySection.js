@@ -22,17 +22,19 @@ import {
   CommunityChatContainer,
   ChatContent,
   CommentContainer,
+  ChatUserLevel,
   ChatUser,
   ChatUserMajor,
   ChatBody,
   ChatDate,
   LogoContainer,
+  CommentUserBox,
   CommunityScrapBtn,
   CommunityImg
 } from './style';
 //library
 import React, { useRef, useState } from 'react';
-import { scrapId } from '../store';
+import { scrapId, commentBody } from '../store';
 import { useSelector, useDispatch } from 'react-redux';
 import axiosInstance from '../utils/axiosInterceptor/axiosInterceptor';
 //img
@@ -47,11 +49,12 @@ const CommunityBodySection = (props) => {
   const onlyScrapState = useSelector((state) => state.CameraItemId.scrap);
   const imgURL = useSelector((state) => state.CameraItemId.imgURL);
   
+  const dispatch = useDispatch();
+
   const sendScrapHandler = async () => {
     try{
       const response = await axiosInstance.post(`/scrap/post/${idState}`);
       alert("스크랩이 완료되었습니다!");
-      
     } catch (error) {
       if(error.response.status === 400){
         alert("이미 스크랩 된 글입니다.");
@@ -66,8 +69,10 @@ const CommunityBodySection = (props) => {
   const handleSend = async () => {
     try{
       const response = await axiosInstance.post(`/comment/regist/${idState}`, { content: comment });
-      window.location.replace("/community");
-      console.log("댓글: ", response);
+      //window.location.replace("/community");
+      dispatch(commentBody(response.data.commentResponseDto));
+      setComment('');
+      console.log("댓글: ", response.data.commentResponseDto);  
     }catch (error) {
       console.log("오류", error);
     }
@@ -124,7 +129,6 @@ const CommunityBodySection = (props) => {
                 }} placeholder='댓글을 작성해 주세요' value={comment}></Textarea>
                 <TextImg alt="댓글 보내는 버튼" onClick={handleSend}/>
               </TextBox>
-              
               <CommunityChatContainer>
                 <ChatImg src={Chat} alt="댓글 버튼" width="14"/>
                 <ChatContent>
@@ -134,8 +138,13 @@ const CommunityBodySection = (props) => {
               {selectorCommentData && selectorCommentData.map((comment, index) => (
                 <div key={index}>
                   <CommentContainer>
+                    <CommentUserBox>
+                    <ChatUserLevel
+                    level={comment.userLevel}>
+                    </ChatUserLevel>
                     <ChatUser>{comment.userNickName}</ChatUser>
                     <ChatUserMajor>{comment.userMajor}</ChatUserMajor>
+                    </CommentUserBox>
                     <ChatBody>{comment.content}</ChatBody>
                     <ChatDate>{comment.createdDate[1]}/{comment.createdDate[2]}</ChatDate>
                   </CommentContainer>

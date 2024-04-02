@@ -1,9 +1,13 @@
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import openeye from '../assets/openEye.png';
 import closeeye from '../assets/closeEye.png';
 import fillStar from '../assets/FillStar.svg';
 import emptyStar from '../assets/star.svg';
 import Send from '../assets/send.svg';
+import Crown1 from '../assets/crown1.png';
+import Crown2 from '../assets/crown2.png';
+import Crown3 from '../assets/crown3.png';
+import Crown4 from '../assets/crown4.png';
 
 //이미지 크기 조정
 export const ImgBtn = styled.img`
@@ -191,6 +195,43 @@ export const CaptureHeaderTop = styled.div`
   background-color: #FFC1C1;
 `;
 
+export const LoadingTextContainer = styled.span`
+  padding-left: 30px;
+  font-weight: bold;
+  color: black;
+`;
+
+
+export const LoadingTextContainerHome = styled.span`
+  padding-left: 60px;
+  font-weight: bold;
+  color: black;
+`;
+
+export const LoadingText = styled.span`
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
+`;
+
+const breatheAnimation = keyframes`
+  0% { vertical-align: bottom }
+ 50% { vertical-align: top }
+ 100% { vertical-align: bottom }
+`
+export const Dot1 = styled.span`
+  animation-name: ${breatheAnimation};
+  animation-delay: 0s; 
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+`
+export const Dot2 = styled(Dot1)`
+  animation-delay: 0.3s; 
+`
+export const Dot3 = styled(Dot1)`
+  animation-delay: 0.6s; 
+`
+
 export const HeaderImgBox = styled.div`
   display: flex;
   align-items: center;
@@ -237,8 +278,9 @@ export const InputIdContainer = styled.div`
 
 export const InputId = styled.input`
   font-size: 16px;
+  line-height: 16px;
   outline: none;
-  border: 0px;
+  border: none;
   width: 240px;
   height: 35px;
 `;
@@ -253,7 +295,7 @@ export const InputPWContainer = styled.div`
   margin-bottom: 7px;
 `;
 
-export const  PWContainer = styled.div`
+export const PWContainer = styled.div`
   width: 240px;
   height: 43px;
 `;
@@ -327,6 +369,9 @@ export const TextContent = styled.div`
   height: 35px;
   line-height: 35px;
   font-size: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 
 //CommunityBodySection
@@ -457,6 +502,7 @@ export const CommentBox = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
+  margin-bottom: 15px;
 `;
 
 export const TextBox = styled.div`
@@ -506,6 +552,33 @@ export const CommentContainer = styled.div`
   padding: 15px;
 `;
 
+export const CommentUserBox = styled.div`
+  display: flex;
+`
+
+export const ChatUserLevel = styled.div`
+  width: 23px;
+  height: 23px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  ${props => props.level <= 40 && css`
+        background-image: url(${Crown4});
+  `} 
+
+  ${props => props.level <= 30 && css`
+        background-image: url(${Crown3});
+  `} 
+  
+  ${props => props.level <= 20 && css`
+        background-image: url(${Crown2});
+  `}  
+
+  ${props => props.level <= 10 && css`
+        background-image: url(${Crown1});
+    `}
+`
+
 export const ChatUser = styled.span`
   font-size: 16px;
   font-weight: bold;
@@ -548,13 +621,19 @@ export const Content = styled.div`
   gap: 20px;
   border-radius: 10px;
   width: 380px;
-  height: 200px;
+  height: 240px;
 `;
 
 export const ModalTItle = styled.div`
-  font-size: 30px;
+  font-size: 22px;
   font-weight: bold;
-  line-height: 30px;
+  line-height: 22px;
+`;
+
+export const ModalInput = styled.div`
+  color: red;
+  font-size: 16px;
+  line-height: 16px;
 `;
 
 export const NickBtnBox = styled.div`

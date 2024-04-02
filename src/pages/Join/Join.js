@@ -23,7 +23,7 @@ import {
   Button,
   JoinForm1,
   JoinForm2,
-
+  BottomFix,
 } from './style';
 
 
@@ -153,6 +153,7 @@ const Join = () => {
             onClick={handleNext}>
             다음
           </Button>
+          <BottomFix/>
         </JoinForm1>
 
       </JoinContainer1>
@@ -179,6 +180,7 @@ const Join = () => {
           onClick={handleSend}>
           회원가입
         </Button>
+        <BottomFix/>
       </JoinForm2>
     </>
   );

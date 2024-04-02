@@ -54,6 +54,31 @@ function GradeSelect ({onDataGrade}) {
     )
 };
 
+function FieldSelect ({onDataField}) {
+    const [currentValue, setCurrentValue] = useState("분야 선택 (기본값: 내 학과)");
+    const [showOptions, setShowOptions] = useState(false);
+    const handleOnChangeSelectValue = (e) => {
+        const { innerText } = e.target;
+        onDataField(innerText);
+        setCurrentValue(innerText);
+    };
+
+    const field = ["컴퓨터 공학", "전기 및 전자 공학", "기계 공학", "화학 공학", "물리학", "생물학", "지구과학", "IT분야", "경제학", "정치학", "경영학"];
+
+    return (
+        <FieldSelectBox onClick={() => setShowOptions((prev) => !prev)}>
+            <Label value={currentValue}>{currentValue}</Label>
+            <FieldSelectOptionsCenter $show={showOptions}>
+                {field.map((field, index) => (
+                    <Option 
+                    key={index}
+                    value={field}
+                    onClick={handleOnChangeSelectValue}>{field}</Option>
+                ))}   
+            </FieldSelectOptionsCenter>
+        </FieldSelectBox>
+    )
+};
 
 function CameraItemSetting({onDataSetting}) {
 
@@ -81,7 +106,7 @@ function CameraItemSetting({onDataSetting}) {
 
 
 };
-export {MajorSelect, GradeSelect, CameraItemSetting};
+export {MajorSelect, GradeSelect, CameraItemSetting, FieldSelect};
 
 const SelectBox = styled.div`
   position: relative;
@@ -105,6 +130,53 @@ const SelectBox = styled.div`
     font-size: 20px;
   }
 
+`;
+
+const FieldSelectBox = styled.div`
+  position: relative;
+  margin-top: 10px;
+  width: 260px;
+  height: 27px;
+  padding: 8px;
+  margin-bottom: 8px;
+  background-color: #ffffff;
+  align-self: center;
+  border: 1px solid #bababa;
+  border-radius: 5px;
+  font-size: 20px;
+  
+  cursor: pointer;
+  &::before {
+    content: "⌵";
+    position: absolute;
+    top: 5px;
+    right: 14px;
+    color: #49c181;
+    font-size: 20px;
+  }
+
+`;
+
+const FieldSelectOptionsCenter = styled.ul`
+  position: absolute;
+  z-index: 3;
+  list-style: none;
+  top: 24px;
+  left: -2px;
+  width: 280px;
+  overflow: hidden;
+  overflow-y: scroll;
+  -ms-overflow-style:none;
+  &::-webkit-scrollbar{
+    display:none;
+  }
+  max-height: ${(props) => (props.$show ? "300px" : "0")};
+  padding: 0;
+  border: 0px;
+  border-radius: 8px;
+  background-color: #E6E6E6;
+  color: #fefefe;
+  transition: max-height 0.3s ease;
 `;
 
 const SettingSelectBox = styled.div`

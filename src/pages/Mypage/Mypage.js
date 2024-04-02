@@ -74,13 +74,13 @@ const Mypage = () => {
 
   //레벨에 따라 왕관 이미지 변경
   function getLevelCrown(level) {
-    if (level <= 25) {
+    if (level <= 10) {
       return <img src={Crown1} alt="Crown1" width="25" />;
-    } else if (level <= 50) {
+    } else if (level <= 20) {
       return <img src={Crown2} alt="Crown2" width="25" />;
-    } else if (level <= 76) {
+    } else if (level <= 30) {
       return <img src={Crown3} alt="Crown3" width="25" />;
-    } else {
+    } else if (level <= 40){
       return <img src={Crown4} alt="Crown4" width="25" />;
     }
     return null; // 다른 경우에는 null을 반환하여 아무 왕관도 표시하지 않음

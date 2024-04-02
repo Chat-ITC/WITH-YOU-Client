@@ -4,6 +4,11 @@ import {
   HeaderImgBox,
   ImgBtn,
   CameraTopInput,
+  LoadingTextContainerHome,
+  LoadingText,
+  Dot1,
+  Dot2,
+  Dot3
 } from './style';
 //library
 import { useSelector, useDispatch } from 'react-redux';
@@ -37,6 +42,9 @@ const CameraHeader = () => {
   function ScreenHandler() {
     setFullScreen(!fullScreen);
   }
+
+  const loading = useSelector((state) => state.loading.isLoading);
+
   //useSelector 훅을 사용해서 visibility슬라이스의 isAsideVisible 상태를 추출한다.
   const isAsideVisible = useSelector((state) => state.visibility.isAsideVisible);
   //useDispatch를 호출하여 dispatch함수를 가져와 이 함수를 이용해 리덕스 스토어에 액션을 보낼 수 있다.
@@ -87,6 +95,14 @@ const CameraHeader = () => {
         AsideHandler();
         ScreenHandler();
       }} />
+      {loading ? (<LoadingTextContainerHome>
+        <LoadingText>
+          사진 분석 중입니다
+        </LoadingText>
+          <Dot1> .</Dot1>
+          <Dot2> .</Dot2>
+          <Dot3> .</Dot3>
+      </LoadingTextContainerHome>) : (null)}
       <HeaderImgBox>
         <CameraTopInput
           type="file"

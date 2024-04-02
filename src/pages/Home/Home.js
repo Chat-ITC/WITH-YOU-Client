@@ -60,7 +60,6 @@ const Home = () => {
 
   const [cameraListData,setCameraListData] = useState(sampleJson);
   const isOpen = useSelector((state) => state.modal.isOpen);
-  console.log("모달 상태 확인: ", isOpen);
 
   const dispatch = useDispatch();
   const Modal = () => {

@@ -39,7 +39,7 @@ export const TopLeftHeader = styled.div`
   align-items: center;
   font-size: 24px;
   font-weight: bold;
-   color: white;
+  color: white;
 `;
 
 export const TopRightHeader = styled.div`
@@ -118,4 +118,10 @@ export const CameraInput = styled.input`
   width: 200px;
   height: 55px;
   opacity: 0;
+`;
+
+export const AddBtnBox = styled.div`
+  width: 280px;
+  padding-top: 10px;
+  text-align: center;
 `;

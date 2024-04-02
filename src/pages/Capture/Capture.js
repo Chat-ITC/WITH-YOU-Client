@@ -8,28 +8,52 @@ import {
   CameraAgainBtn,
   CameraBtn,
   ImgContainer,
-  TopRightHeader
+  TopRightHeader,
+  AddBtnBox,
 } from './style';
 //library
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Cropper from "react-cropper";
 import 'cropperjs/dist/cropper.css';
 import { useLocation, useNavigate } from "react-router-dom";
 import axiosInstance from '../../utils/axiosInterceptor/axiosInterceptor';
+import { openModal, startLoading, finishLoading } from '../../store';
+import { useDispatch, useSelector } from 'react-redux';
 
 //components
 import RequestCheckBox from '../../components/RequestCheckBox';
+import MyModal from '../../components/Modal';
+import { FieldSelect } from '../../components/CustomSelect';
+//img
+import AddBtn from '../../assets/AddBtn.png';
 
 const Capture = () => {
+
   const navigate = useNavigate();
   const { state } = useLocation();
+
+  //학과, 분야
+  const [field, setField] = useState('');
+  const requestUserInfo = async () => {
+    try{
+      const response = await axiosInstance.get('/member/mypage');
+      setField(response.data.major);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  useEffect(() => {
+    requestUserInfo();
+  }, [])
+  const getField = (getFieldData) => {
+    setField(getFieldData);
+  } 
 
   const [imagePath, setImagePath] = useState(state);
   const cropperRef = useRef(null);
   const calculatedHeight = window.innerHeight - 145;
 
-
-
+  
   //다시찍기 핸들러
   const fileInputRef = useRef(null);
   const captureAgainHandler = () => {
@@ -44,6 +68,7 @@ const Capture = () => {
 
   //크롭한 이미지 저장
   const formData = new FormData();
+  formData.append('field', field);
   const getCropData = async () => {
     if (cropperRef.current && cropperRef.current.cropper) {
       const croppedCanvas = cropperRef.current.cropper.getCroppedCanvas();
@@ -56,7 +81,9 @@ const Capture = () => {
       }, 'image/png');
     }
   };
+  
   const sendFormDataRequest = async () => {
+    dispatch(startLoading());
     alert('AI가 열심히 답변중입니다. 답변 완료까지 약간의 시간이 소요됩니다.')
     navigate('/home');
     try {
@@ -65,11 +92,12 @@ const Capture = () => {
       if (response.data === "저장 완료") {
         alert("사진 분석 완료! 홈 화면으로 이동합니다.")
         window.location.replace("/home");
-
       }
+      dispatch(finishLoading());
       console.log("전송 성공: ", response);
     } catch (error) {
       alert("사진 분석 실패. 홈 화면으로 이동합니다.")
+      dispatch(finishLoading());
       console.log(error);
     }
   };
@@ -91,7 +119,7 @@ const Capture = () => {
     }
   };
 
-  const requestJson = [
+  const [requestJson, setRequestJson] = useState([
     {
       id: 0,
       content: "이해하기 쉬운 설명",
@@ -113,19 +141,31 @@ const Capture = () => {
       content: "이해를 위한 예시",
       sendData: "이해하기 쉽도록 예시 들어서 설명해줘"
     },
-    {
-      id: 4,
-      content: "비슷한 내용의 퀴즈",
-      sendData: "이해했는지 테스트 할 만한 퀴즈 만들어줘"
-    },
 
-  ]
+  ]);
+
+  const isOpen = useSelector((state) => state.modal.isOpen);
+  const dispatch = useDispatch();
+  const Modal = () => {
+    dispatch(openModal())
+  }
+
+const handleContentChange = (newContent) => {
+  const newRequestItem = {
+    id: requestJson.length,
+    content: newContent,
+    sendData: newContent,
+  };
+  setRequestJson([...requestJson, newRequestItem]);
+};
 
   return (
     <>
       <Aside>
         <TopEmptyBox></TopEmptyBox>
         <TopLeftHeader>요구사항</TopLeftHeader>
+        <FieldSelect
+          onDataField={getField}/>
         {requestJson.map((requestjson, index) => (
           <RequestCheckBox
             key={index}
@@ -138,7 +178,10 @@ const Capture = () => {
             $done={selectedId === requestjson.id && checked}
           />
         ))}
-
+        <AddBtnBox>
+          <img width="35px" src={AddBtn} alt="요청사항 추가하기"  onClick={Modal}/>
+        </AddBtnBox>
+        
         <div>
           <input
             type="file"
@@ -150,7 +193,9 @@ const Capture = () => {
           <CameraAgainBtn onClick={captureAgainHandler}>다시 찍기</CameraAgainBtn>
         </div>
         <CameraBtn
-          onClick={getCropData}
+          onClick={()=>{
+            getCropData();
+          }}
         >사진 분석</CameraBtn>
         <BottomEmptyBox />
       </Aside>
@@ -170,7 +215,9 @@ const Capture = () => {
             />
           </div>
         </ImgContainer>
-
+        {isOpen && (
+          <MyModal onClose={Modal} onContentChange={handleContentChange}/>
+        )}
         <BottomEmptyBox />
       </Main>
     </>
