@@ -11,11 +11,11 @@ import {
     HiddenBox
 } from './style'
 
-import { scrapId } from '../store';
+import { scrapId } from '../../store';
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import React from "react";
-import axiosInstance from '../utils/axiosInterceptor/axiosInterceptor'
+import axiosInstance from '../../utils/axiosInterceptor/axiosInterceptor'
 
 
 

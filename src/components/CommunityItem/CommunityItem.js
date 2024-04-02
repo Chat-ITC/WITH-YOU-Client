@@ -16,15 +16,15 @@ import {
     ChatContainer,
 } from './style';
 //img
-import Like from '../assets/like.png';
-import Chat from '../assets/chat.png';
-import picture from '../assets/picture.png'
+import Like from '../../assets/like.png';
+import Chat from '../../assets/chat.png';
+import picture from '../../assets/picture.png'
 
 //library
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import axiosInstance from '../utils/axiosInterceptor/axiosInterceptor';
-import { selectId, historyBody, commentBody, img } from '../store';
+import axiosInstance from '../../utils/axiosInterceptor/axiosInterceptor';
+import { selectId, historyBody, commentBody, img } from '../../store';
 
 const CommunityItem = (props) => {
     const dispatch = useDispatch();

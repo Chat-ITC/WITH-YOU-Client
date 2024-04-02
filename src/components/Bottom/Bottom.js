@@ -7,16 +7,16 @@ import {
 //library
 import { NavLink, useLocation } from "react-router-dom";
 import { useDispatch } from 'react-redux';
-import { historyBody } from '../store';
+import { historyBody } from '../../store';
 
 //img
-import UnHome from '../assets/emptyHome.png';
-import Home from '../assets/emptyHome2.svg';
-import Star from '../assets/star.png';
-import Community from '../assets/Community.png';
-import Community2 from '../assets/Community2.svg';
-import Star2 from '../assets/star2.svg';
-import UserIcon3 from '../assets/userIcon3.svg';
+import UnHome from '../../assets/emptyHome.png';
+import Home from '../../assets/emptyHome2.svg';
+import Star from '../../assets/star.png';
+import Community from '../../assets/Community.png';
+import Community2 from '../../assets/Community2.svg';
+import Star2 from '../../assets/star2.svg';
+import UserIcon3 from '../../assets/userIcon3.svg';
 
 const Bottom = () => {
   const dispatch = useDispatch();

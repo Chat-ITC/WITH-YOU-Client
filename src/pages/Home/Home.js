@@ -13,9 +13,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { openModal } from '../../store';
 //components
 import CameraHeader from '../../components/CameraHeader';
-import CameraBodySection from '../../components/CameraBodySection';
+import CameraBodySection from '../../components/CameraBodySection/CameraBodySection';
 import axiosInstance from '../../utils/axiosInterceptor/axiosInterceptor';
-import CameraItem from '../../components/CameraItem';
+import CameraItem from '../../components/CameraItem/CameraItem';
 import Search from '../../components/SearchInput';
 import MyModal from '../../components/Modal';
 

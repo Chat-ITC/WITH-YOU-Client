@@ -17,10 +17,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import axiosInstance from '../../utils/axiosInterceptor/axiosInterceptor';
 //components
 import ScrapHeader from '../../components/ScrapHeader';
-import HistoryItemBody from '../../components/HistoryItemBody';
+import HistoryItemBody from '../../components/CameraItem/HistoryItemBody';
 import Search from '../../components/SearchInput';
 import LogoBody from '../../components/LogoBody';
-import ScrapCommunityItem from '../../components/ScrapCommunityItem';
+import ScrapCommunityItem from '../../components/CommunityItem/ScrapCommunityItem';
 import ScrapCommunityBodySection from '../../components/ScrapCommunityBodySection';
 import { img } from '../../store';
 

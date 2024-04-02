@@ -13,9 +13,9 @@ import {
     CommunityItemPicture
 } from './style';
 //img
-import Chat from '../assets/chat.png';
-import star from '../assets/FillStar.svg';
-import picture from '../assets/picture.png';
+import Chat from '../../assets/chat.png';
+import star from '../../assets/FillStar.svg';
+import picture from '../../assets/picture.png';
 
 
 //library

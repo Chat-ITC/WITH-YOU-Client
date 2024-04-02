@@ -3,204 +3,17 @@ import openeye from '../assets/openEye.png';
 import closeeye from '../assets/closeEye.png';
 import fillStar from '../assets/FillStar.svg';
 import emptyStar from '../assets/star.svg';
-import camera from '../assets/camera.svg';
-import picture from '../assets/picture.png';
 import Send from '../assets/send.svg';
 
-
-//Bottom
-export const BottomFix = styled.div`
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 79px;
-  border-top: 1px solid #bababa;
-  background-color: #fff;
-`;
-
-export const Ul = styled.ul`
-  display: flex;
-  padding: 0 5px;
-  justify-content: space-around;
-  list-style: none;
-`;
-
+//이미지 크기 조정
 export const ImgBtn = styled.img`
   width: 35px;
   opacity: 0.3;
 `;
 
-//CameraItem
-export const CameraItemContainer = styled.div`
-  width: 275px;
-  height: 100px;
-  padding: 10px 10px 10px 15px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.20);
-`;
-
-export const CameraItemTitle = styled.div` 
-  font-weight: bold;
-  font-size: 17px; 
-  width: 265px;
-  height: 19px;
-  overflow: hidden;
-  margin-top: 5px;
-  text-overflow: ellipsis;
-  white-space: none;
-`;
-
-export const CameraItemBody = styled.div`
-  margin-top: 8px;
-  width: 265px;
-  height: 50px;
-  line-height: 23px;
-  font-size: 15px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-`;
-
-export const CameraItemBottom = styled.div`
-  display: flex;
-  width: 280px;
-  height: 20px;
-  justify-content: flex-start;
-  align-content: center;
-  gap: 5px;
-`;
-
-export const CameraItemScrap = styled.div`
-  width: 0px;
-  height: 0px;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-image: none;
-  ${props => props.$done === "YES" && css`
-        background-image: url(${fillStar});
-        width: 16px;
-        height: 16px;
-    `}
-`
-
-//CommunityItem
-export const CommunityItemContainer = styled.div`
-  width: 275px;
-  height: 70px;
-  padding: 10px 10px 10px 15px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.20);
-`;
-
-export const CommunityItemTopContainer = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  height: 20px;
-  line-height: 20px;
-  gap: 5px;
-`;
-
-export const CommunityItemTitle = styled.div` 
-  font-weight: bold;
-  font-size: 17px; 
-  height: 19px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: none;
-`;
-
-export const CommunityItemPicture = styled.div`
-  width: 0px;
-  height: 0px;
-  margin: auto 3px auto 0px;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-image: none;
-  ${props => props.$picture && css`
-        background-image: url(${picture});
-        width: 16px;
-        height: 16px;
-    `}
-`;
-
-export const CommunityItemBody = styled.div`
-  margin-top: 8px;
-  width: 265px;
-  line-height: 23px;
-  font-size: 15px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-`;
-
-export const CommunityItemBottom = styled.div`
-  display: flex;
-  width: 280px;
-  height: 20px;
-  justify-content: flex-start;
-  align-content: center;
-  gap: 5px;
-`;
-
-export const CommunityItemScrap = styled.div`
-  width: 0px;
-  height: 0px;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-image: none;
-  ${props => props.$scrap && css`
-        background-image: url(${fillStar});
-        width: 16px;
-        height: 16px;
-    `}
-`
-
-export const LikeContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 20px;
-  line-height: 20px;
-  gap: 5px;
-`;
-
-export const CommunityLikeContainer = styled.div`
-  margin-left: 15px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  height: 20px;
-  line-height: 20px;
-  gap: 5px;
-`;
-
-export const ScrapImg = styled.img`
-  width: 14px;
-  height: 14px;
-`;
-
-export const ScrapContent = styled.span`
-  font-size: 12px;
-`;
-
-export const LikeImg = styled.img`
-  width: 14px;
-  height: 14px;
-`;
-export const LikeContent = styled.span`
-  font-size: 12px;
-`;
-
 export const ChatImg = styled.img`
   width: 14px;
   height: 13px;
-`;
-export const ChatContent = styled.span`
-  font-size: 12px;
 `;
 
 export const ChatContainer = styled.div`
@@ -211,6 +24,11 @@ export const ChatContainer = styled.div`
   line-height: 20px;
   gap: 5px;
 `;
+
+export const ChatContent = styled.span`
+  font-size: 12px;
+`;
+
 
 export const CommunityChatContainer = styled.div`
   display: flex;
@@ -245,14 +63,7 @@ export const CameraDateContainer = styled.div`
 `
 
 //BodySection
-export const CameraButtonContainer = styled.div`
-  display:flex;
-  flex-direction:column;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-  margin-top: 160px;
-`;
+
 
 export const LogoContainer = styled.div`
   display:flex;
@@ -267,14 +78,6 @@ export const LogoContainer = styled.div`
   transform: translate(-2%, -2%);
 `;
 
-export const CameraInput = styled.input`
-  display: block;
-  position: absolute;
-  width: 200px;
-  height: 200px;
-  opacity: 0;
-`;
-
 export const CameraTopInput = styled.input`
   display: block;
   position: absolute;
@@ -283,52 +86,11 @@ export const CameraTopInput = styled.input`
   opacity: 0;
 `;
 
-export const CameraBigButton = styled.div`
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-image: url(${camera});
-  width: 200px;
-  height: 200px;
-  filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.4));
-`;
 
-export const CameraPhrases = styled.div`
-  position: relative;
-  top: 0px;
-  font-size: 24px;
-  color: #F07878;
-  font-weight: bold;
-`
 
-export const CameraBodyContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 79%;
-  margin: 0 auto;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  padding: 0px 45px 40px 40px;
-  white-space: pre-wrap;
-`
 
-export const ScrapBtnBox = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  margin: 0 auto;
-  margin: 10px 0;
-`
 
-export const HistoryScrapBtn = styled.div`
-  width: 40px;
-  height: 40px;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-image: url(${emptyStar});
-  ${props => props.$scrapState === "YES" && css`
-        background-image: url(${fillStar});
-    `}
-`
+
 
 export const HiddenBox = styled.div`
   width: 40px;
@@ -346,19 +108,9 @@ export const CommunityScrapBtn = styled.div`
     `}
 `
 
-export const BodyDataContainer = styled.div`
-  padding: 0px 45px 40px 40px;
-  font-size: 19px;
-  white-space: pre-wrap;
-  line-height: 30px;
-`
 
-export const BodyTitleContainer = styled.span`
-  font-size: 26px;
-  font-weight: bold;
-  text-align: center;
-  margin: 0 auto;
-`;
+
+
 
 export const ScrapBodyDataContainer = styled.div`
   padding: 20px 40px 40px 40px;

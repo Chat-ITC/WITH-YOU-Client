@@ -73,7 +73,7 @@ const Capture = () => {
       console.log(error);
     }
   };
- 
+
   //요구사항
   const [question, setQuestion] = useState("이해하기 쉬운 설명해줘");
   const [selectedId, setSelectedId] = useState(0);
@@ -101,7 +101,7 @@ const Capture = () => {
       id: 1,
       content: "자세한 설명",
       sendData: "자세하게 설명해줘"
-      
+
     },
     {
       id: 2,

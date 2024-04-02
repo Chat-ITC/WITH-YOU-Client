@@ -13,7 +13,7 @@ import { useSelector } from 'react-redux';
 import axiosInstance from '../../utils/axiosInterceptor/axiosInterceptor';
 //components
 import CommunityHeader from '../../components/CommunityHeader';
-import CommunityItem from '../../components/CommunityItem';
+import CommunityItem from '../../components/CommunityItem/CommunityItem';
 import CommunityBodySection from '../../components/CommunityBodySection';
 import Search from '../../components/SearchInput';
 
