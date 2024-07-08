@@ -22,6 +22,9 @@ Back End: [최원빈](https://github.com/dnjsqls5973), [홍용준](https://githu
 
 Front End: [이지성](https://github.com/Ji-Sung05), [임시훈](https://github.com/SiHoon61)
 
+## 미리보기
+https://github.com/Chat-ITC/WITH-YOU_Client/assets/115493374/91b1f5aa-18c7-4d0c-adc0-76119e8025d7
+
 ## :page_with_curl: 페이지 구성
 
 ### 1. 로그인
